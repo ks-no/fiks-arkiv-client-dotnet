@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ks.fiks.io.arkivintegrasjon.client.ForenkletArkivering {
+namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering {
 	public class OrganinterntNotat {
 
 		public ForenkletDokument hoveddokument;

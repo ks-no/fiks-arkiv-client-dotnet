@@ -1,7 +1,6 @@
 ﻿using System;
-using FIKS.eMeldingArkiv.eMeldingForenkletArkiv;
 
-namespace ks.fiks.io.arkivintegrasjon.client.ForenkletArkivering {
+namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering {
 	public class Korrespondansepart {
 
 		/// <summary>

@@ -1,13 +1,9 @@
-﻿using FIKS.eMeldingArkiv.eMeldingForenkletArkiv;
-
-namespace ks.fiks.io.arkivintegrasjon.client.ForenkletArkivering { 
+﻿namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering { 
 	public class ArkivmeldingForenkletInnkommende {
 
 		public Saksmappe referanseSaksmappe;
 		public InnkommendeJournalpost nyInnkommendeJournalpost;
 		public string sluttbrukerIdentifikator;
-		
-		public ArkivmeldingForenkletInnkommende(){
-		}
+
 	}
 }

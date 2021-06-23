@@ -1,4 +1,4 @@
-﻿namespace FIKS.eMeldingArkiv.eMeldingForenkletArkiv {
+﻿namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering {
 	public class EnkelAdresse {
 
 		public string adresselinje1;

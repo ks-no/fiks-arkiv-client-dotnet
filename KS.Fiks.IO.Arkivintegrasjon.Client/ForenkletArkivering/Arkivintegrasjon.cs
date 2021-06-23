@@ -4,7 +4,7 @@ using System.IO;
 using System.Xml.Serialization;
 using no.ks.fiks.io.arkivmelding;
 
-namespace ks.fiks.io.arkivintegrasjon.client.ForenkletArkivering
+namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering
 {
     public class Arkivintegrasjon
     {

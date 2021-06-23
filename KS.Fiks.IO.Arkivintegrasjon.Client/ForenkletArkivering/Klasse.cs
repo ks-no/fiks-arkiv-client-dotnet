@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ks.fiks.io.arkivintegrasjon.client.ForenkletArkivering {
+namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering {
 	/// <summary>
 	/// Et klassifikasjonssystem er bygd opp av klasser. Ved funksjonsbasert
 	/// (emnebasert)

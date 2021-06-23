@@ -1,4 +1,4 @@
-﻿namespace ks.fiks.io.arkivintegrasjon.client.ForenkletArkivering {
+﻿namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering {
 	/// <summary>
 	/// Da de fleste fagsystemer har egne nøkler for identifisering av objekter, er det
 	/// lagt til mulighet for at denne kan benyttes for identifisering overfor arkivet
