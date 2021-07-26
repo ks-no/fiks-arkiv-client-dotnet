@@ -6,7 +6,7 @@ using no.ks.fiks.io.arkivmelding;
 
 namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering
 {
-    public class Arkivintegrasjon
+    public class ArkivmeldingFactory
     {
         private static readonly string Skjermingshjemmel = "Offl. § 26.1";
         const string MottakerKode = "EM";
@@ -14,7 +14,7 @@ namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering
         const string InternavsenderKode = "IA";
         const string InternmottakerKode = "IM";
 
-        public static arkivmelding ConvertOppdaterSaksmappeToArkivmelding(OppdaterSaksmappe input)
+        public static arkivmelding GetArkivmelding(OppdaterSaksmappe input)
         {
             if (input.oppdaterSaksmappe == null)
             {
@@ -34,7 +34,7 @@ namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering
 
             return arkivmld;
         }
-        public static arkivmelding ConvertForenkletUtgaaendeToArkivmelding(ArkivmeldingForenkletUtgaaende input) {
+        public static arkivmelding GetArkivmelding(ArkivmeldingForenkletUtgaaende input) {
 
             if (input.nyUtgaaendeJournalpost == null)
             {
