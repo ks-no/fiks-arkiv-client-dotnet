@@ -8,8 +8,8 @@
         <Copyright>Ks-Kommunesektorens Organisasjon</Copyright>
         <PackageProjectUrl>https://github.com/ks-no/fiks-arkiv-client</PackageProjectUrl>
         <Company>Ks-Kommunesektorens Organisasjon</Company>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <FileVersion>1.0.0.0</FileVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <FileVersion>2.0.0.0</FileVersion>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>..\fiks-io-strongly-named-key.snk</AssemblyOriginatorKeyFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
