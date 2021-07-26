@@ -20,6 +20,7 @@
         <RootNamespace>KS.Fiks.IO.Arkivintegrasjon.Client</RootNamespace>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <VersionPrefix>2.0.0</VersionPrefix>
     </PropertyGroup>
 
     <ItemGroup>
