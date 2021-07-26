@@ -269,27 +269,7 @@ namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering
             };
         }
 
-        public static string Serialize(object arkivmelding)
-        {
-            var serializer = new XmlSerializer(arkivmelding.GetType());
-            var stringWriter = new StringWriter();
-            serializer.Serialize(stringWriter, arkivmelding);
-            return stringWriter.ToString();
-        }
-
-        public static arkivmelding DeSerialize(string arkivmelding)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(arkivmelding));
-            arkivmelding arkivmeldingDeserialized;
-            using (TextReader reader = new StringReader(arkivmelding))
-            {
-                arkivmeldingDeserialized = (arkivmelding) serializer.Deserialize(reader);
-            }
-
-            return arkivmeldingDeserialized;
-        }
-
-        public static arkivmelding ConvertForenkletInnkommendeToArkivmelding(ArkivmeldingForenkletInnkommende input)
+        public static arkivmelding GetArkivmelding(ArkivmeldingForenkletInnkommende input)
         {
             if (input.nyInnkommendeJournalpost == null) throw new Exception("Badrequest - journalpost må være angitt");
 
@@ -446,7 +426,7 @@ namespace KS.Fiks.IO.Arkivintegrasjon.Client.ForenkletArkivering
             return arkivmld;
         }
 
-        public static arkivmelding ConvertForenkletNotatToArkivmelding(ArkivmeldingForenkletNotat input)
+        public static arkivmelding GetArkivmelding(ArkivmeldingForenkletNotat input)
         {
             if (input.nyttNotat == null) throw new Exception("Badrequest -notat må være angitt");
 
