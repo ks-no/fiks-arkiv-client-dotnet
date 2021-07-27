@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.Fiks.IO.Arkivintegrasjon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.Fiks.IO.Arkivintegrasjon.Client.Tests", "KS.Fiks.IO.Arkivintegrasjon.Client.Tests\KS.Fiks.IO.Arkivintegrasjon.Client.Tests.csproj", "{4483DA74-2DD3-4D63-A7C0-50A1F08B92CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.Fiks.IO.Arkivintegrasjon.Client.Sample.Messages", "KS.Fiks.IO.Arkivintegrasjon.Client.Sample.Messages\KS.Fiks.IO.Arkivintegrasjon.Client.Sample.Messages.csproj", "{2BAB3D72-FB13-4502-AC9F-4B81A739D0E0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{4483DA74-2DD3-4D63-A7C0-50A1F08B92CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4483DA74-2DD3-4D63-A7C0-50A1F08B92CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4483DA74-2DD3-4D63-A7C0-50A1F08B92CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2BAB3D72-FB13-4502-AC9F-4B81A739D0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BAB3D72-FB13-4502-AC9F-4B81A739D0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BAB3D72-FB13-4502-AC9F-4B81A739D0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BAB3D72-FB13-4502-AC9F-4B81A739D0E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
