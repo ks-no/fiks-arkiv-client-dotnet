@@ -40,4 +40,13 @@
         </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Schema\arkivmelding.xsd" />
+      <Content Include="Schema\arkivmelding.xsd" CopyToOutputDirectory="Always"/>
+      <None Remove="Schema\metadatakatalog.xsd"/>
+      <Content Include="Schema\metadatakatalog.xsd" CopyToOutputDirectory="Always"/>
+      <None Remove="Schema\sok.xsd" />
+      <Content Include="Schema\sok.xsd" CopyToOutputDirectory="Always"/>
+    </ItemGroup>
+
 </Project>
