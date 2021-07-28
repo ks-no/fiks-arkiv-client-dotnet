@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFrameworks>netcoreapp3.1;netstandard2.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>KS FIKS IO Arkivintegrasjon Client</Title>
+        <Title>KS FIKS IO Arkiv Client</Title>
         <Authors>Ks-Kommunesektorens Organisasjon</Authors>
         <Copyright>Ks-Kommunesektorens Organisasjon</Copyright>
         <PackageProjectUrl>https://github.com/ks-no/fiks-arkiv-client-dotnet</PackageProjectUrl>

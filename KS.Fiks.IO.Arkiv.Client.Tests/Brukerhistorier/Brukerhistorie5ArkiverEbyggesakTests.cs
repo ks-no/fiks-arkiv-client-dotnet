@@ -4,7 +4,7 @@ using no.ks.fiks.io.arkivmelding;
 using no.ks.fiks.io.arkivmelding.sok;
 using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests
+namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class Brukerhistorie5ArkiverEbyggesakTests
     {

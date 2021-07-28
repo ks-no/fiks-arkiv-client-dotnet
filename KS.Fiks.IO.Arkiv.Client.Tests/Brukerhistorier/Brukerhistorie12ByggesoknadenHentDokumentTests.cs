@@ -3,25 +3,22 @@ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding.sok;
 using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests
+namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
-    public class Brukerhistorie13InfolandHentDokumentTests
+    public class Brukerhistorie12ByggesoknadHentDokumentTests
     {
         /// <summary>
-        /// Goal: Fetch saksmappe based on cadastre
-        /// Input: Kommunenummer, gårdsnummer and bruksnummer
-        /// Expected output: Saksmappe
+        /// Goal: Fetch saksmappe using cadastre information
+        /// Input: Kommunenr, gårdsnummer and bruksnummer
+        /// Expected output: Saksmappe 
         /// </summary>
         [Test]
         public void testFinnSaksmappeFraMatrikkel()
         {
-            // We want to get the casefolder based on KNR, GNR, and BNR
-            
-            // Kommunenummer, Gårdsnummer og Bruksnummer, Seksjonsnummer og Festenummer
             var KNR = 1149;
             var GNR = 43;
             var BNR = 271;
-           
+            
             var arkivmeldingsok = new sok
             {
                 respons = respons_type.saksmappe,
@@ -72,7 +69,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
             // PARAMETER DEFINITIONS END 
-
+            
             // Create new search with the defined parameters 
             var searchParams = new parameter[] {knrParam, gnrParam, bnrParam};
             arkivmeldingsok.parameter = searchParams;
@@ -82,21 +79,14 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
         }
         
         /// <summary>
-        /// Goal: Fetch saksmappe based on extended cadastre information
-        /// Input: Kommunenummer, gårdsnummer, bruksnummer, seksjonsnummer and festenummer
-        /// Expected output: Saksmappe (tegninger, ferdigattest, reguleringsplaner etc..) 
+        /// Goal: Fetch Saksmappe based on bygningsnummer
+        /// Input: Bygningsnummer
+        /// Output: Saksmappe
         /// </summary>
          [Test]
-        public void testFinnSaksmappeFraMatrikkelMedSeksjonOgFeste()
+        public void testFinnSaksmappeFraBygningsnummer()
         {
-            // We want to get the casefolder based on KNR, GNR, and BNR
-            
-            // Kommunenummer, Gårdsnummer og Bruksnummer, Seksjonsnummer og Festenummer
-            var KNR = 1149;
-            var GNR = 43;
-            var BNR = 271;
-            var SNR = 123;
-            var FNR = 321;
+            var bygningsnummer = 80486367;
             
             var arkivmeldingsok = new sok
             {
@@ -109,84 +99,25 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             };
             
             // PARAMETER DEFINITIONS START
-            
-            // Kommunenummer
-            var knrParam = new parameter
+            var bygNummerParam = new parameter
             {
-                felt = field_type.sakmatrikkelnummerkommunenummer,
+                felt = field_type.sakbyggidentbygningsnummer,
                 @operator = operator_type.equal,
                 parameterverdier = new parameterverdier
                 {
                     Item = new intvalues
                     {
-                        value = new[] {KNR}
+                        value = new[] {bygningsnummer}
                     }
                 }
             };
-            
-            //Gårdsnummer
-            var gnrParam = new parameter
-            {
-                felt = field_type.sakmatrikkelnummergaardsnummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
-                {
-                    Item = new intvalues
-                    {
-                        value = new[] {GNR}
-                    }
-                }
-            };
-            
-            // Bruksnummer
-            var bnrParam = new parameter
-            {
-                felt = field_type.sakmatrikkelnummerbruksnummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
-                {
-                    Item = new intvalues
-                    {
-                        value = new[] {BNR}
-                    }
-                }
-            };
-            
-            // Seksjonsnummer
-            var snrParam = new parameter
-            {
-                felt = field_type.sakmatrikkelnummerseksjonsnummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
-                {
-                    Item = new intvalues
-                    {
-                        value = new[] {SNR}
-                    }
-                }
-            };
-             
-            //Festenummer
-            var fnrParam = new parameter
-            {
-                felt = field_type.sakmatrikkelnummerfestenummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
-                {
-                    Item = new intvalues
-                    {
-                        value = new[] {FNR}
-                    }
-                }
-            };
-             
             // PARAMETER DEFINITIONS END 
-            
+
             // Create new search with the defined parameters 
-            var searchParams = new parameter[] {knrParam, gnrParam, bnrParam, snrParam, fnrParam};
+            var searchParams = new parameter[] {bygNummerParam};
             arkivmeldingsok.parameter = searchParams;
+
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
-            
             Assert.Pass();
         }
     }

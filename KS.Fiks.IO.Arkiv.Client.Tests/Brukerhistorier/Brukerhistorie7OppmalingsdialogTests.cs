@@ -4,7 +4,7 @@ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding.sok;
 using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests
+namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class Brukerhistorie7OppmalingsdialogTests
     {

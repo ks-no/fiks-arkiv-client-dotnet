@@ -4,47 +4,60 @@ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding.sok;
 using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests
+namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
-    class UnitTestBrukerhistorie11Oppmalingsdialog
+    class Brukerhistorie10OppmalingsdialogTests
     {
-
         public void Setup()
         {
         }
 
-        // fagsystem har dokumentID til dokumentet skal finne dokumentet for visnign i klient
+        // Skal sjekke om det finnes en sak med angitt saksår og saksseksvensnummer i akrivet
         [Test]
-        public void TestFinnDokumentFraId()
+        public void SjekkSakMedSaksnummerFinnes()
         {
-            var dokumentEkstenId  = "12345-ABCDE";
-          
+            var saksaar = 2020;
+            var saksaksekvensnummer = 123;
+
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.dokumentbeskrivelse,
+                respons = respons_type.saksmappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
                 skip = 0,
                 take = 100
             };
-            // må søke på ekstenID finner ikke noe felt for dokument id.
 
             var paramlist = new List<parameter>
             {
                 new parameter
                 {
-                    felt = field_type.dokumenteksternId,
+                    felt = field_type.saksaksaar,
                     @operator = operator_type.equal,
                     parameterverdier = new parameterverdier
                     {
-                        Item = new eksternId
+                        Item = new intvalues
                         {
-                            system = "Fagsystem X",
-                            id = dokumentEkstenId
+                            value =new[] {saksaar }
+
+                        }
+                    }
+                },
+                new parameter
+                {
+                    felt = field_type.saksaksekvensnummer,
+                    @operator = operator_type.equal,
+                    parameterverdier = new parameterverdier
+                    {
+                        Item = new intvalues
+                        {
+                            value =new[] { saksaksekvensnummer }
+
                         }
                     }
                 }
+
             };
 
             arkivmeldingsok.parameter = paramlist.ToArray();
