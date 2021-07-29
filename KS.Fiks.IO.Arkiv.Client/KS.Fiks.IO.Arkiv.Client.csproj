@@ -44,17 +44,17 @@
       <Content Include="Schema\arkivmelding.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
-          <PackagePath>Schema</PackagePath>
+          <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
       <Content Include="Schema\metadatakatalog.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
-          <PackagePath>Schema</PackagePath>
+          <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
       <Content Include="Schema\sok.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
-          <PackagePath>Schema</PackagePath>
+          <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
     </ItemGroup>
 
