@@ -33,7 +33,7 @@
     
     <xs:complexType name="resultatListe">
         <xs:sequence>
-            <xs:element name="resultat" type="resultat"/>
+            <xs:element name="resultat" type="resultat" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
