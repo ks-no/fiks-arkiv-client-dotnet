@@ -48,7 +48,7 @@
 
 			<xs:element name="klassifikasjon" type="klassifikasjon" minOccurs="0" maxOccurs="unbounded"/>
 
-      		<xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="1" maxOccurs="1"/>
+      		<xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="0" maxOccurs="1"/>
       
 			<!-- Tillater mapper uten forekomster av (under)mappe og registrering -->
 			<xs:choice>
