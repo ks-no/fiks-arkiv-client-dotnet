@@ -3,7 +3,7 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="http://www.arkivverket.no/standarder/noark5/sokeresultat" elementFormDefault="qualified">
     <xs:include schemaLocation="metadatakatalog.xsd"/>
-    <xs:include schemaLocation="arkivstruktur.xsd"/>
+    <xs:include schemaLocation="arkivstrukturSokeresultat.xsd"/>
     
     <xs:element name="sokeresultat" type="sokeresultat"/>
     
