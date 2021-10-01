@@ -61,6 +61,12 @@
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
+      <None Remove="Schema\arkivstrukturSokeresultat.xsd" />
+      <Content Include="Schema\arkivstrukturSokeresultat.xsd">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+          <Pack>true</Pack>
+          <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
     </ItemGroup>
 
 </Project>
