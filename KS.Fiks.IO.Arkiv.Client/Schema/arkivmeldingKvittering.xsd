@@ -31,7 +31,6 @@
 			<xs:element name="avsluttetDato" type="n5mdk:avsluttetDato" minOccurs="0"/>
 			<xs:element name="avsluttetAv" type="n5mdk:avsluttetAv" minOccurs="0"/>
 			<xs:element name="part" type="part" minOccurs="0" maxOccurs="unbounded"/>
-			
 			<xs:choice>
 				<xs:element name="mappe" type="mappe" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="registrering" type="registrering" minOccurs="0" maxOccurs="unbounded"/>
@@ -46,8 +45,6 @@
 					<xs:element name="saksaar" type="n5mdk:saksaar" minOccurs="0"/>
 					<xs:element name="sakssekvensnummer" type="n5mdk:sakssekvensnummer"	minOccurs="0"/>
 					<xs:element name="saksdato" type="n5mdk:saksdato" minOccurs="0"/>
-					<xs:element name="utlaantDato" type="n5mdk:utlaantDato" minOccurs="0"/>
-					<xs:element name="utlaantTil" type="n5mdk:utlaantTil" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
