@@ -13,6 +13,7 @@
             <xs:element name="skip" type="xs:int"/>
             <xs:element name="respons" type="respons_type"/>
             <xs:element name="parameter" type="parameter" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="responsFilter" type="respons_filter" minOccurs="1" maxOccurs="1" default="minimum"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -200,6 +201,14 @@
             <xs:enumeration value="registrering"/>
             <xs:enumeration value="journalpost"/>
             <xs:enumeration value="dokumentbeskrivelse"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="respons_filter">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="noekler"/>
+            <xs:enumeration value="minimum"/>
+            <xs:enumeration value="utvidet"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>
