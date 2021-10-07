@@ -46,8 +46,16 @@
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Include="Schema\arkivstrukturMinimum.xsd" />
-      <Content Include="Schema\arkivstrukturNoekler.xsd" />
+      <Content Include="Schema\arkivstrukturMinimum.xsd">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+          <Pack>true</Pack>
+          <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <Content Include="Schema\arkivstrukturNoekler.xsd">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+          <Pack>true</Pack>
+          <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
       <Content Include="Schema\metadatakatalog.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
