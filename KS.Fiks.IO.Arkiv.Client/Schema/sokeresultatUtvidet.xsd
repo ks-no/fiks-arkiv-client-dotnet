@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.arkivverket.no/standarder/noark5/sokeresultat"
+<xs:schema xmlns="http://www.ks.no/standarder/fiks/arkiv/sokeresultat"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.arkivverket.no/standarder/noark5/sokeresultat" elementFormDefault="qualified">
+           targetNamespace="http://www.ks.no/standarder/fiks/arkiv/sokeresultat" elementFormDefault="qualified">
     <xs:include schemaLocation="metadatakatalog.xsd"/>
-    <xs:include schemaLocation="arkivstrukturUtvidet.xsd"/>
+    <xs:include schemaLocation="arkivstruktur.xsd"/>
     
     <xs:element name="sokeresultat" type="sokeresultat"/>
     
