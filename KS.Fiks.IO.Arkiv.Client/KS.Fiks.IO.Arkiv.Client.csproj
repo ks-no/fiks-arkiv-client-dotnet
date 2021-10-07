@@ -46,6 +46,8 @@
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
+      <Content Include="Schema\arkivstrukturMinimum.xsd" />
+      <Content Include="Schema\arkivstrukturNoekler.xsd" />
       <Content Include="Schema\metadatakatalog.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
@@ -56,17 +58,22 @@
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Include="Schema\sokeresultat.xsd">
+      <Content Include="Schema\sokeresultatMinimum.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <Content Include="Schema\sokeresultatNoekler.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <Content Include="Schema\sokeresultatUtvidet.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
       <None Remove="Schema\arkivstrukturSokeresultat.xsd" />
-      <Content Include="Schema\arkivstrukturSokeresultat.xsd">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-          <Pack>true</Pack>
-          <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
     </ItemGroup>
 
 </Project>

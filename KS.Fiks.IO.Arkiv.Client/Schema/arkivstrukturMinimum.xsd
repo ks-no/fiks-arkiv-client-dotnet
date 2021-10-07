@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns="http://www.arkivverket.no/standarder/noark5/arkivstrukturSokeresultat"
+<xs:schema xmlns="http://www.arkivverket.no/standarder/noark5/arkivstrukturMinimum"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:n5mdk="http://www.arkivverket.no/standarder/noark5/metadatakatalog"
-  targetNamespace="http://www.arkivverket.no/standarder/noark5/arkivstrukturSokeresultat"
+  targetNamespace="http://www.arkivverket.no/standarder/noark5/arkivstrukturMinimum"
   elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
 
   <xs:annotation>
