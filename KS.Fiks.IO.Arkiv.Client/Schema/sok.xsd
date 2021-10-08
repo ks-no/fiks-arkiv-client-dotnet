@@ -11,9 +11,10 @@
             <xs:element name="tidspunkt" type="xs:dateTime"/>
             <xs:element name="take" type="xs:int"/>
             <xs:element name="skip" type="xs:int"/>
-            <xs:element name="respons" type="respons_type"/>
+            <xs:element name="respons" type="respons"/>
             <xs:element name="parameter" type="parameter" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element name="responsFilter" type="respons_filter" minOccurs="1" maxOccurs="1" default="minimum"/>
+            <xs:element name="responsType" type="respons_type" minOccurs="1" maxOccurs="1" default="minimum"/>
+            <xs:element name="inkluder" type="inkluder" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -194,7 +195,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="respons_type">
+    <xs:simpleType name="respons">
         <xs:restriction base="xs:string">
             <xs:enumeration value="mappe"/>
             <xs:enumeration value="saksmappe"/>
@@ -204,11 +205,44 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="respons_filter">
+    <xs:simpleType name="respons_type">
         <xs:restriction base="xs:string">
             <xs:enumeration value="noekler"/>
             <xs:enumeration value="minimum"/>
             <xs:enumeration value="utvidet"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="inkluder">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="oppbevaringssted"/>
+            <xs:enumeration value="arkivskaper"/>
+            <xs:enumeration value="klassifikasjonssystem"/>
+            <xs:enumeration value="arkiv"/>
+            <xs:enumeration value="arkivdel"/>
+            <xs:enumeration value="mappe"/>
+            <xs:enumeration value="registrering"/>
+            <xs:enumeration value="klasse"/>
+            <xs:enumeration value="noekkelord"/>
+            <xs:enumeration value="kryssreferanse"/>
+            <xs:enumeration value="referanseArkivdel"/>
+            <xs:enumeration value="part"/>
+            <xs:enumeration value="merknad"/>
+            <xs:enumeration value="referanseArkivdel"/>
+            <xs:enumeration value="presedens"/>
+            <xs:enumeration value="postadresse"/>
+            <xs:enumeration value="telefonnummer"/>
+            <xs:enumeration value="moetedeltaker"/>
+            <xs:enumeration value="dokumentbeskrivelse"/>
+            <xs:enumeration value="forfatter"/>
+            <xs:enumeration value="korrespondansepart"/>
+            <xs:enumeration value="avskrivning"/>
+            <xs:enumeration value="dokumentflyt"/>
+            <xs:enumeration value="referanseTilMoeteregistrering"/>
+            <xs:enumeration value="referanseFraMoeteregistrering"/>
+            <xs:enumeration value="dokumentobjekt"/>
+            <xs:enumeration value="konvertering"/>
+            <xs:enumeration value="skjermingMetadata"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>
