@@ -2,19 +2,14 @@
 using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+using Xunit;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
-    class Brukerhistorie4ProAktivTests
+    public class Brukerhistorie4ProAktivTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-        
         // Bruker en ekisterende sak dersom det finnes en sak av rett type hvis ikke opprettes ny sak
-        [Test]
+        [Fact]
         public void TestNyttDokumentBrukEksisterendeSak()
         {
             Saksmappe[] saker = FinnSakerMedMatrikkelnummer("21/400");
@@ -31,8 +26,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             }
 
             var jp = OpprettJournalpostMedDokument(sak);
-
-            Assert.Pass();
         }
        
         private object OpprettJournalpostMedDokument(Saksmappe saksmappe)

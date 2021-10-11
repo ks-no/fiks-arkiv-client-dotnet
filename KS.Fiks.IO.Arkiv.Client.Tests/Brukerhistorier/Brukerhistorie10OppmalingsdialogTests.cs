@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+using Xunit;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
-    class Brukerhistorie10OppmalingsdialogTests
+    public class Brukerhistorie10OppmalingsdialogTests
     {
-        public void Setup()
-        {
-        }
-
         // Skal sjekke om det finnes en sak med angitt saksår og saksseksvensnummer i akrivet
-        [Test]
+        [Fact]
         public void SjekkSakMedSaksnummerFinnes()
         {
             var saksaar = 2020;
@@ -62,8 +58,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 
             arkivmeldingsok.parameter = paramlist.ToArray();
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
-
-            Assert.Pass();
         }
     }
 }

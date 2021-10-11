@@ -4,27 +4,23 @@ using System.Globalization;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using KS.Fiks.IO.Arkiv.Client.Sample;
 using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+using Xunit;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests
 {
     public class SokTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
-        [Test]
+  
+        [Fact]
         public void TestSok()
         {
             var arkivmeldingsok = MessageSamples.SokTittel("tittel*");
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
-            Assert.Pass();
+            
         }
 
-        [Test]
+        [Fact]
         public void TestSokFlereFelt()
         {
             var arkivmeldingsok = new sok
@@ -68,10 +64,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             arkivmeldingsok.parameter = paramlist.ToArray();
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
-            Assert.Pass();
+            
         }
 
-        [Test]
+        [Fact]
         public void TestSokDato()
         {
             var arkivmeldingsok = new sok
@@ -109,11 +105,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             arkivmeldingsok.parameter = paramlist.ToArray();
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
-            Assert.Pass();
+            
         }
 
 
-        [Test]
+        [Fact]
         public void TestSokEksternId()
         {
             var arkivmeldingsok = new sok
@@ -146,10 +142,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             arkivmeldingsok.parameter = paramlist.ToArray();
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
-            Assert.Pass();
+            
         }
 
-        [Test]
+        [Fact]
         public void TestSokKlassifikasjon()
         {
             var arkivmeldingsok = new sok
@@ -182,11 +178,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             arkivmeldingsok.parameter = paramlist.ToArray();
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
-            Assert.Pass();
+            
         }
 
 
-        [Test]
+        [Fact]
         public void TestSøkVsm()
         {
             var arkivmeldingsok = new sok
@@ -218,7 +214,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             arkivmeldingsok.parameter = paramlist.ToArray();
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
-            Assert.Pass();
+            
         }
     }
 }

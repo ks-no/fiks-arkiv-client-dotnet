@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+using Xunit;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
-    class Brukerhistorie7OppmalingsdialogTests
+    public class Brukerhistorie7OppmalingsdialogTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
         // Brukstilfellet søker frem alle dokumenter knyttet til sak og presenterer disse for bruker. Bruker velger et av av disse og knytter til saken i fagsystemet. 
         // I denne testen søker vi bare frem dokumenter for en sak
-        [Test]
+        [Fact]
         public void TestFinnDokumenterForsak()
         {
             var saksaar = 2020;
@@ -63,8 +59,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 
             arkivmeldingsok.parameter = paramlist.ToArray();
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
-
-            Assert.Pass();
         }
     }
 }

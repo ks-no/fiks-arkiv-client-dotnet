@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding;
 using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+using Xunit;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
-    class Brukerhistorie9OppmalingsdialogTests
+    public class Brukerhistorie9OppmalingsdialogTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         // bruker skal legge inn et dokument på en journalpost med et gitt navn. Dersom journalposten finnes skal den brukes hvis ikke skal det opprettes en ny post
-        [Test]
+        [Fact]
         public void LeggTilNotatPaJournalpost()
         {
             var saksaar = 2020;
@@ -35,8 +30,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 //er ikke dette lov?
                 LeggDokumentPaJournalpost();
             }
-
-            Assert.Pass();
         }
 
         private void LeggDokumentPaJournalpost()
