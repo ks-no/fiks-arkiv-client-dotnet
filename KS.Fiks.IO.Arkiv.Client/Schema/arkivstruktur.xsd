@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns="http://www.arkivverket.no/standarder/noark5/arkivstruktur"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:n5mdk="http://www.arkivverket.no/standarder/noark5/metadatakatalog"
+  xmlns:n5mdk="http://www.arkivverket.no/standarder/noark5/metadatakatalog/v2"
   targetNamespace="http://www.arkivverket.no/standarder/noark5/arkivstruktur"
   elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
 
@@ -58,7 +58,7 @@
     <xs:documentation xml:lang="no">Hovedskjema - skjema for arkivstruktur</xs:documentation>
   </xs:annotation>
 
-  <xs:import namespace="http://www.arkivverket.no/standarder/noark5/metadatakatalog"
+  <xs:import namespace="http://www.arkivverket.no/standarder/noark5/metadatakatalog/v2"
 	  schemaLocation="metadatakatalog.xsd"/>
 
 

@@ -5,12 +5,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Integrasjonstester
     public class Integrasjonstester
     {
         [Test]
-        public void KatalogTest()
+        [Ignore("Kjør kun manuelt for å teste generering av klasser fra xsd")]
+        public void Generate_from_xsd()
         {
-            //Sjekke at orgnr og kommunenr gir samme resultat
-
-            //var kontoliste = client.Lookup(new LookupRequest("ORG_NO.987654321", "no.ks.fiks.matrikkelfoering.v1", 3));
-            //var kontoliste = client.Lookup(new LookupRequest("KOMM.3817", "no.ks.fiks.matrikkelfoering.v1", 3));
+            //TODO kjør generate scriptene, sjekk at det blir generert kode og slett igjen koden.
         }
     }
 }

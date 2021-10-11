@@ -84,4 +84,8 @@
       <None Remove="Schema\arkivstrukturSokeresultat.xsd" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Schema\Output" />
+    </ItemGroup>
+
 </Project>

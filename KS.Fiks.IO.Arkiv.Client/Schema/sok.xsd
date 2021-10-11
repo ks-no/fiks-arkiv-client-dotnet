@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.ks.no/standarder/fiks/arkiv/sok"
+<xs:schema xmlns="http://www.ks.no/standarder/fiks/arkiv/sok/v1"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.ks.no/standarder/fiks/arkiv/sok" elementFormDefault="qualified">
+           targetNamespace="http://www.ks.no/standarder/fiks/arkiv/sok/v1" elementFormDefault="qualified">
 
     <xs:element name="sok" type="sok"/>
     <xs:complexType name="sok">

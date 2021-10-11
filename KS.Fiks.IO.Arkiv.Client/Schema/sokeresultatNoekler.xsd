@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.ks.no/standarder/fiks/arkiv/sokeresultat"
+<xs:schema xmlns="http://www.ks.no/standarder/fiks/arkiv/sokeresultat/v1"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.ks.no/standarder/fiks/arkiv/sokeresultat" elementFormDefault="qualified">
-    <xs:include schemaLocation="metadatakatalog.xsd"/>
-    <xs:include schemaLocation="arkivstrukturNoekler.xsd"/>
+           targetNamespace="http://www.ks.no/standarder/fiks/arkiv/sokeresultat/v1"
+           xmlns:arkivstruktur="http://www.ks.no/standarder/fiks/arkiv/arkivstruktur/noekler/v1" elementFormDefault="qualified">
+    <xs:import namespace="http://www.ks.no/standarder/fiks/arkiv/arkivstruktur/noekler/v1" schemaLocation="arkivstrukturNoekler.xsd"/>
     
     <xs:element name="sokeresultat" type="sokeresultat"/>
     
@@ -39,11 +39,11 @@
 
     <xs:complexType name="resultat">
         <xs:choice>
-            <xs:element name="mappe" type="mappe"/>
-            <xs:element name="saksmappe" type="saksmappe"/>
-            <xs:element name="registrering" type="registrering"/>
-            <xs:element name="journalpost" type="journalpost"/>
-            <xs:element name="dokumentbeskrivelse" type="dokumentbeskrivelse"/>
+            <xs:element name="mappe" type="arkivstruktur:mappe"/>
+            <xs:element name="saksmappe" type="arkivstruktur:saksmappe"/>
+            <xs:element name="registrering" type="arkivstruktur:registrering"/>
+            <xs:element name="journalpost" type="arkivstruktur:journalpost"/>
+            <xs:element name="dokumentbeskrivelse" type="arkivstruktur:dokumentbeskrivelse"/>
         </xs:choice>
     </xs:complexType>
 </xs:schema>
