@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.Http.Json;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
@@ -18,6 +19,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
         public void Generer_fra_xsd(string arguments)
         {
             Console.Out.WriteLine($"Current directory:{Directory.GetCurrentDirectory()}");
+
+            var directories = Directory.GetDirectories(Directory.GetCurrentDirectory());
+            foreach (var s in directories)
+            {
+                Console.Out.WriteLine(s);
+            } 
+            
             var process = new Process
             {
                 StartInfo =
