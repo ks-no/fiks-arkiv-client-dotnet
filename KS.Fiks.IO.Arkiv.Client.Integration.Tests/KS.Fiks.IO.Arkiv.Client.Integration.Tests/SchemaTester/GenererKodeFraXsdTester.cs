@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Net.Http.Json;
 using NUnit.Framework;
-using Assert = NUnit.Framework.Assert;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
+namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
 {
     [TestFixture]
     public class GenererKodeFraXsdTester
     {
-        [Explicit("Kan ikke kjøres på Jenkins da xsd tilsynelatende ikke er installert på Jenkins")]
-        [Category("Integrasjon")]
         [Test] 
         [TestCase("arkivmelding.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding")]
         [TestCase("sok.xsd /c /n:no.ks.fiks.io.arkivmelding.sok")]

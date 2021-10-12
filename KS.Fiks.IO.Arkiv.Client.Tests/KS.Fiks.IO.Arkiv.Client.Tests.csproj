@@ -2,12 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-
         <IsPackable>false</IsPackable>
-
         <LangVersion>9</LangVersion>
-        <XunitConsole Condition=" '$(OS)' == 'Windows_NT' ">"$(XunitConsole472Path)"</XunitConsole>
-        <XunitConsole Condition=" '$(OS)' != 'Windows_NT' ">mono "$(XunitConsole472Path)"</XunitConsole>
         <OutputType>Library</OutputType>
     </PropertyGroup>
 
@@ -26,9 +22,4 @@
     <ItemGroup>
       <None Remove="Integrasjonstester\Scripts\genSokSchemaClasses.sh" />
     </ItemGroup>
-
-    <Target Name="Test" DependsOnTargets="Build">
-        <Exec Command="$(XunitConsole) $(TargetFileName)" WorkingDirectory="$(TargetDir)" />
-    </Target>
-
 </Project>
