@@ -8,9 +8,12 @@ using Assert = NUnit.Framework.Assert;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
 {
+    [TestFixture]
     public class GenererKodeFraXsdTester
     {
-        [Test]
+        [Explicit("Kan ikke kjøres på Jenkins da xsd tilsynelatende ikke er installert på Jenkins")]
+        [Category("Integrasjon")]
+        [Test] 
         [TestCase("arkivmelding.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding")]
         [TestCase("sok.xsd /c /n:no.ks.fiks.io.arkivmelding.sok")]
         [TestCase("sokeresultatMinimum.xsd arkivstrukturMinimum.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.sok.resultat")]
@@ -18,23 +21,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
         [TestCase("sokeresultatUtvidet.xsd arkivstruktur.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.sok.resultat")]
         public void Generer_fra_xsd(string arguments)
         {
-            Console.Out.WriteLine($"Current directory:{Directory.GetCurrentDirectory()}");
-
-            var directories = Directory.GetDirectories(Directory.GetCurrentDirectory());
-            foreach (var s in directories)
-            {
-                Console.Out.WriteLine(s);
-            }
-
+            //TODO Denne testen klarer ikke å bli kjørt på Jenkins. Mest sannsynlig fordi xsd.exe ikke er tilgjengelig som kommando. 
+            //TODO Løsning:  Bygg en docker som har xsd.exe og kjører testen i docker. 
             var workingDir = Directory.GetCurrentDirectory() + "/Schema";
-
-            var filesInFolder = Directory.GetFiles(workingDir);
-            
-            foreach (var s in filesInFolder)
-            {
-                Console.Out.WriteLine(s);
-            }
-            
             var process = new Process
             {
                 StartInfo =
