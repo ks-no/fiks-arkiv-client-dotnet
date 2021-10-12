@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net.Http.Json;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
@@ -16,6 +17,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
         [TestCase("sokeresultatUtvidet.xsd arkivstruktur.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.sok.resultat")]
         public void Generer_fra_xsd(string arguments)
         {
+            Console.Out.WriteLine($"Current directory:{Directory.GetCurrentDirectory()}");
             var process = new Process
             {
                 StartInfo =
@@ -27,7 +29,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
                     CreateNoWindow = true,
                     UseShellExecute = false,
                     ErrorDialog = false,
-                    WorkingDirectory = "Schema"
+                    WorkingDirectory = "./Schema"
                 },
                 EnableRaisingEvents = true,
             };
