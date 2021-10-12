@@ -24,7 +24,16 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
             foreach (var s in directories)
             {
                 Console.Out.WriteLine(s);
-            } 
+            }
+
+            var workingDir = Directory.GetCurrentDirectory() + "/Schema";
+
+            var filesInFolder = Directory.GetFiles(workingDir);
+            
+            foreach (var s in filesInFolder)
+            {
+                Console.Out.WriteLine(s);
+            }
             
             var process = new Process
             {
@@ -37,7 +46,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
                     CreateNoWindow = true,
                     UseShellExecute = false,
                     ErrorDialog = false,
-                    WorkingDirectory = "./Schema"
+                    WorkingDirectory = workingDir
                 },
                 EnableRaisingEvents = true,
             };
