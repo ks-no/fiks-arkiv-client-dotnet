@@ -1,15 +1,20 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding.sok;
-using Xunit;
+using NUnit.Framework;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
-    public class UnitTestBrukerhistorie11Oppmalingsdialog
+    class UnitTestBrukerhistorie11Oppmalingsdialog
     {
+
+        public void Setup()
+        {
+        }
+
         // fagsystem har dokumentID til dokumentet skal finne dokumentet for visnign i klient
-        [Fact]
+        [Test]
         public void TestFinnDokumentFraId()
         {
             var dokumentEkstenId  = "12345-ABCDE";
@@ -44,6 +49,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 
             arkivmeldingsok.parameter = paramlist.ToArray();
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
+
+            Assert.Pass();
         }
     }
 }

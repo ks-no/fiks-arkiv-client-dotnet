@@ -1,14 +1,19 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using no.ks.fiks.io.arkivmelding;
 using no.ks.fiks.io.arkivmelding.sok;
-using Xunit;
+using NUnit.Framework;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
-    public class Brukerhistorie5ArkiverEbyggesakTests
+    class Brukerhistorie5ArkiverEbyggesakTests
     {
-        [Fact]
+        [SetUp]
+        public void Setup()
+        {
+        }
+
+        [Test]
         public void TestEbyggesak()
         {
             // Name of system (eksternsystem)
@@ -249,6 +254,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             // Gjenta for notater
 
             // Gjenta for saksfremlegg
+
+            Assert.Pass();
         }
     }
 }

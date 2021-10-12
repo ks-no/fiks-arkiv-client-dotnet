@@ -1,24 +1,19 @@
-﻿using System.Diagnostics;
-using Xunit;
-using Xunit.Abstractions;
+﻿using System;
+using System.Diagnostics;
+using System.Net.Http.Json;
+using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
 {
     public class GenererKodeFraXsdTester
     {
-        private readonly ITestOutputHelper testOutputHelper;
-
-        public GenererKodeFraXsdTester(ITestOutputHelper testOutputHelper)
-        {
-            this.testOutputHelper = testOutputHelper;
-        }
-
-        [Theory]
-        [InlineData("arkivmelding.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding")]
-        [InlineData("sok.xsd /c /n:no.ks.fiks.io.arkivmelding.sok")]
-        [InlineData("sokeresultatMinimum.xsd arkivstrukturMinimum.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.sok.resultat")]
-        [InlineData("sokeresultatNoekler.xsd arkivstrukturNoekler.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.sok.resultat")]
-        [InlineData("sokeresultatUtvidet.xsd arkivstruktur.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.sok.resultat")]
+        [Test]
+        [TestCase("arkivmelding.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding")]
+        [TestCase("sok.xsd /c /n:no.ks.fiks.io.arkivmelding.sok")]
+        [TestCase("sokeresultatMinimum.xsd arkivstrukturMinimum.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.sok.resultat")]
+        [TestCase("sokeresultatNoekler.xsd arkivstrukturNoekler.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.sok.resultat")]
+        [TestCase("sokeresultatUtvidet.xsd arkivstruktur.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.sok.resultat")]
         public void Generer_fra_xsd(string arguments)
         {
             var process = new Process
@@ -46,7 +41,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.SchemaTester
 
             var exitCode = process.ExitCode;
             
-            testOutputHelper.WriteLine(stdout);
+            Console.Out.WriteLine(stdout);
            
             Assert.True(exitCode == 0, $"Feilet med exitCode {exitCode}. Se output for detaljer.");
             Assert.False(stdout.ToLower().Contains("exception"), $"Exception melding i output. Sjekk output for mer detaljer."); 

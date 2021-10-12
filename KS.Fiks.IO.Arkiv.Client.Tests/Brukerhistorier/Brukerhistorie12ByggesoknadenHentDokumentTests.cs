@@ -1,7 +1,7 @@
-﻿using System;
+﻿﻿using System;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding.sok;
-using Xunit;
+using NUnit.Framework;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
@@ -12,7 +12,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         /// Input: Kommunenr, gårdsnummer and bruksnummer
         /// Expected output: Saksmappe 
         /// </summary>
-        [Fact]
+        [Test]
         public void testFinnSaksmappeFraMatrikkel()
         {
             var KNR = 1149;
@@ -74,6 +74,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var searchParams = new parameter[] {knrParam, gnrParam, bnrParam};
             arkivmeldingsok.parameter = searchParams;
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
+            
+            Assert.Pass();
         }
         
         /// <summary>
@@ -81,7 +83,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         /// Input: Bygningsnummer
         /// Output: Saksmappe
         /// </summary>
-         [Fact]
+         [Test]
         public void testFinnSaksmappeFraBygningsnummer()
         {
             var bygningsnummer = 80486367;
@@ -116,6 +118,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             arkivmeldingsok.parameter = searchParams;
 
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
+            Assert.Pass();
         }
     }
 }

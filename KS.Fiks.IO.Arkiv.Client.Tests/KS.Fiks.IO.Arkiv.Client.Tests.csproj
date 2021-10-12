@@ -6,11 +6,17 @@
         <IsPackable>false</IsPackable>
 
         <LangVersion>9</LangVersion>
+        <XunitConsole Condition=" '$(OS)' == 'Windows_NT' ">"$(XunitConsole472Path)"</XunitConsole>
+        <XunitConsole Condition=" '$(OS)' != 'Windows_NT' ">mono "$(XunitConsole472Path)"</XunitConsole>
+        <OutputType>Library</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
-        <PackageReference Include="xunit" Version="2.4.1" />
+        <PackageReference Include="NUnit" Version="3.13.2" />
+        <PackageReference Include="NUnit.ConsoleRunner" Version="3.12.0" />
+        <PackageReference Include="NUnit.Runners" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -20,5 +26,9 @@
     <ItemGroup>
       <None Remove="Integrasjonstester\Scripts\genSokSchemaClasses.sh" />
     </ItemGroup>
+
+    <Target Name="Test" DependsOnTargets="Build">
+        <Exec Command="$(XunitConsole) $(TargetFileName)" WorkingDirectory="$(TargetDir)" />
+    </Target>
 
 </Project>

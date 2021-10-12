@@ -1,16 +1,19 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using KS.Fiks.IO.Arkiv.Client.Sample;
 using no.ks.fiks.io.arkivmelding;
-using Xunit;
+using NUnit.Framework;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests
 {
     public class ArkivintegrasjonTests
     {
-  
-        [Fact]
+        [SetUp]
+        public void Setup()
+        {
+        }
+        [Test]
         public void TestOppdaterSaksmappe1()
         {
 
@@ -19,9 +22,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             //Konverterer til arkivmelding xml
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
+
+            Assert.Pass();
         }
 
-        [Fact]
+        [Test]
         public void TestOppdaterSaksmappe2()
         {
 
@@ -30,10 +35,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             //Konverterer til arkivmelding xml
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
+
+            Assert.Pass();
         }
 
 
-        [Fact]
+        [Test]
         public void TestSaksmappereferanse()
         {
             
@@ -42,9 +49,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             //Konverterer til arkivmelding xml
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
+
+            Assert.Pass();
         }
 
-        [Fact]
+        [Test]
         public void TestnyInnkommendeJournalpostBrukerhistorie3_1()
         {
 
@@ -121,9 +130,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             //Konverterer til arkivmelding xml
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
+
+            Assert.Pass();
         }
 
-        [Fact]
+        [Test]
         public void TestnyInnkommendeJournalpostEttersendingBrukerhistorie3_2()
         {
 
@@ -199,9 +210,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             //Konverterer til arkivmelding xml
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
+
+            Assert.Pass();
         }
 
-        [Fact]
+        [Test]
         public void TestnyUtgaaendeJournalpostBrukerhistorie3_3()
         {
             //var messageRequest = new MeldingRequest(
@@ -299,9 +312,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
 
             ////Sender til FIKS IO (arkiv løsning)
             //var msg = client.Send(messageRequest, payloads).Result;
+
+            Assert.Pass();
         }
 
-        [Fact]
+        [Test]
         public void TestnyttNotatBrukerhistorie3_4()
         {
             //var messageRequest = new MeldingRequest(
@@ -378,9 +393,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
 
             ////Sender til FIKS IO (arkiv løsning)
             //var msg = client.Send(messageRequest, payloads).Result;
+
+            Assert.Pass();
         }
 
-        [Fact]
+        [Test]
         public void TestSaksmappeKlasse()
         {
 
@@ -486,10 +503,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
-            
+            Assert.Pass();
         }
 
-        [Fact]
+        [Test]
         public void TestSkjerming()
         {
 
@@ -576,9 +593,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             //Konverterer til arkivmelding xml
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
+
+            Assert.Pass();
         }
 
-        [Fact]
+        [Test]
         public void TestMapperIMappe()
         {
 
@@ -678,6 +697,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             }
 
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
+
+            Assert.Pass();
         }
     }
 }
