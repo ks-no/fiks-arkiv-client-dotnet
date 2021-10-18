@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.arkivverket.no/standarder/noark5/sok"
+<xs:schema xmlns="http://www.ks.no/standarder/fiks/arkiv/sok/v1"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.arkivverket.no/standarder/noark5/sok" elementFormDefault="qualified">
+           targetNamespace="http://www.ks.no/standarder/fiks/arkiv/sok/v1" elementFormDefault="qualified">
 
     <xs:element name="sok" type="sok"/>
     <xs:complexType name="sok">
@@ -11,8 +11,10 @@
             <xs:element name="tidspunkt" type="xs:dateTime"/>
             <xs:element name="take" type="xs:int"/>
             <xs:element name="skip" type="xs:int"/>
-            <xs:element name="respons" type="respons_type"/>
+            <xs:element name="respons" type="respons"/>
             <xs:element name="parameter" type="parameter" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="responsType" type="respons_type" minOccurs="1" maxOccurs="1" default="minimum"/>
+            <xs:element name="inkluder" type="inkluder" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -193,13 +195,40 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="respons_type">
+    <xs:simpleType name="respons">
         <xs:restriction base="xs:string">
             <xs:enumeration value="mappe"/>
             <xs:enumeration value="saksmappe"/>
             <xs:enumeration value="registrering"/>
             <xs:enumeration value="journalpost"/>
             <xs:enumeration value="dokumentbeskrivelse"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="respons_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="noekler"/>
+            <xs:enumeration value="minimum"/>
+            <xs:enumeration value="utvidet"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="inkluder">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="mappe"/>
+            <xs:enumeration value="registrering"/>
+            <xs:enumeration value="klasse"/>
+            <xs:enumeration value="noekkelord"/>
+            <xs:enumeration value="kryssreferanse"/>
+            <xs:enumeration value="part"/>
+            <xs:enumeration value="merknad"/>
+            <xs:enumeration value="presedens"/>
+            <xs:enumeration value="moetedeltaker"/>
+            <xs:enumeration value="dokumentbeskrivelse"/>
+            <xs:enumeration value="korrespondansepart"/>
+            <xs:enumeration value="avskrivning"/>
+            <xs:enumeration value="dokumentflyt"/>
+            <xs:enumeration value="dokumentobjekt"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>
