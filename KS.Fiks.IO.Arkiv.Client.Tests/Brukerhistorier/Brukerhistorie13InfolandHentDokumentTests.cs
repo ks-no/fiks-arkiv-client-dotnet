@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using no.ks.fiks.io.arkivmelding.sok;
 using NUnit.Framework;

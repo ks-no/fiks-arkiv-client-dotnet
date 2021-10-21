@@ -19,7 +19,7 @@
         <PackageTags>FIKS</PackageTags>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <VersionPrefix>2.0.2</VersionPrefix>
+        <VersionPrefix>2.0.3</VersionPrefix>
     </PropertyGroup>
 
     <ItemGroup>
@@ -51,6 +51,16 @@
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
+      <Content Include="Schema\arkivstrukturMinimum.xsd">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+          <Pack>true</Pack>
+          <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <Content Include="Schema\arkivstrukturNoekler.xsd">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+          <Pack>true</Pack>
+          <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
       <Content Include="Schema\metadatakatalog.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
@@ -61,11 +71,32 @@
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Include="Schema\sokeresultat.xsd">
+      <Content Include="Schema\sokeresultatMinimum.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
+      <Content Include="Schema\sokeresultatNoekler.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <Content Include="Schema\sokeresultatUtvidet.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <None Remove="Schema\arkivstrukturSokeresultat.xsd" />
+      <None Remove="Schema\arkivstruktur.xsd" />
+      <Content Include="Schema\arkivstruktur.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Schema\Output" />
     </ItemGroup>
 
 </Project>
