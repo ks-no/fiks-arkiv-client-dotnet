@@ -75,7 +75,6 @@
 					<xs:element name="journalposttype" type="n5mdk:journalposttype"/>
 					<xs:element name="journalstatus" type="n5mdk:journalstatus"/>
 					<xs:element name="journaldato" type="n5mdk:journaldato"/>
-					<xs:element name="dokumentetsDato" type="n5mdk:dokumentetsDato" minOccurs="0"/>
 					<xs:element name="forfallsdato" type="n5mdk:forfallsdato" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
