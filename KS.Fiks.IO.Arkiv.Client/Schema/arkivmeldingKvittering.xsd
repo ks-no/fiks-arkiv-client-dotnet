@@ -8,7 +8,7 @@
 			   schemaLocation="./metadatakatalog.xsd"/>
 
 	<xs:element name="arkivmelding" type="arkivmelding"/>
-	<!-- TODO: fix mixed value, <xs:complexType name="arkivmelding" mixed="true">-->
+	
 	<xs:complexType name="arkivmelding">
 		<xs:sequence>
 			<xs:element name="system" type="xs:string"/>
@@ -30,7 +30,6 @@
 			<xs:element name="opprettetAv" type="n5mdk:opprettetAv" minOccurs="0"/>
 			<xs:element name="avsluttetDato" type="n5mdk:avsluttetDato" minOccurs="0"/>
 			<xs:element name="avsluttetAv" type="n5mdk:avsluttetAv" minOccurs="0"/>
-			<xs:element name="part" type="part" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="0" maxOccurs="1"/>
 			<xs:choice>
 				<xs:element name="mappe" type="mappe" minOccurs="0" maxOccurs="unbounded"/>
@@ -51,12 +50,6 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="part">
-		<xs:sequence>
-			<xs:element name="partID" type="n5mdk:partID" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-
 	<xs:complexType name="registrering">
 		<xs:sequence>
 			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
@@ -64,14 +57,9 @@
 			<xs:element name="opprettetAv" type="n5mdk:opprettetAv" minOccurs="0"/>
 			<xs:element name="arkivertDato" type="n5mdk:arkivertDato" minOccurs="0"/>
 			<xs:element name="arkivertAv" type="n5mdk:arkivertAv" minOccurs="0"/>
-			<!-- Dersom ren registrering kommer alene må den kunne plasseres i en mappe eller arkivdel-->
-			<xs:choice minOccurs="0" maxOccurs="1">
-				<xs:element name="referanseForelderMappe" type="n5mdk:systemID"/>
-				<xs:element name="referanseArkivdel" type="n5mdk:referanseArkivdel"/>
-			</xs:choice>
 			<xs:element name="dokumentbeskrivelse" type="dokumentbeskrivelse" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="registreringsID" type="n5mdk:registreringsID" minOccurs="0"/>
-			<xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -79,19 +67,16 @@
 		<xs:complexContent>
 			<xs:extension base="registrering">
 				<xs:sequence>
-					<xs:element name="journalaar" type="n5mdk:journalaar" minOccurs="0"/>
+					<xs:element name="journalaar" type="n5mdk:journalaar" minOccurs="1"/>
 					<xs:element name="journalsekvensnummer" type="n5mdk:journalsekvensnummer"
-								minOccurs="0"/>
+								minOccurs="1"/>
 					<xs:element name="journalpostnummer" type="n5mdk:journalpostnummer"
-								minOccurs="0"/>
+								minOccurs="1"/>
 					<xs:element name="journalposttype" type="n5mdk:journalposttype"/>
 					<xs:element name="journalstatus" type="n5mdk:journalstatus"/>
-					<xs:element name="journaldato" type="n5mdk:journaldato" minOccurs="0"/>
+					<xs:element name="journaldato" type="n5mdk:journaldato"/>
 					<xs:element name="dokumentetsDato" type="n5mdk:dokumentetsDato" minOccurs="0"/>
-					<xs:element name="mottattDato" type="n5mdk:mottattDato" minOccurs="0"/>
-					<xs:element name="sendtDato" type="n5mdk:sendtDato" minOccurs="0"/>
 					<xs:element name="forfallsdato" type="n5mdk:forfallsdato" minOccurs="0"/>
-					<xs:element name="offentlighetsvurdertDato" type="n5mdk:offentlighetsvurdertDato" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
