@@ -8,7 +8,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
     [TestFixture]
     public class GenererKodeFraXsdTester
     {
-        [Test] 
+        [Test]
+        [Ignore("Kjøres manuelt ved behov da den ikke kan kjøres på Jenkins")]
         [TestCase("arkivmelding.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding")]
         [TestCase("arkivmeldingKvittering.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkivmelding.kvittering")]
         [TestCase("sok.xsd /c /n:no.ks.fiks.io.arkivmelding.sok")]
