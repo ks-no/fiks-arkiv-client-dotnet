@@ -11,12 +11,15 @@
 	
 	<xs:complexType name="journalpostHent">
 		<xs:sequence>
+			<!-- hvis vi kan endre systemID til å være minOccurs="1" for returnert objekt i arkivmeldingKvittering så kan denne være alt man trenger? 
+			Eller kan man ikke garantere at den er unik?-->
+			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
 			<xs:element name="journalaar" type="n5mdk:journalaar" minOccurs="0"/>
-			<xs:element name="journalsekvensnummer" type="n5mdk:journalsekvensnummer"
-						minOccurs="0"/>
-			<xs:element name="journalpostnummer" type="n5mdk:journalpostnummer"
-						minOccurs="0"/>
-			<!-- Er det enten registreringsID eller de 3 overliggende feltene som kan identifisere en unik journalpost? -->
+			<xs:element name="journalsekvensnummer" type="n5mdk:journalsekvensnummer" minOccurs="0"/>
+			<xs:element name="journalpostnummer" type="n5mdk:journalpostnummer" minOccurs="0"/>
+			<!-- Er det enten referanseEksternNoekkel eller registreringsID eller de 3 overliggende feltene som kan identifisere en unik journalpost?
+			 Klarer vi å beskrive det at man trenger bare 1 av alternativene? -->
+			<xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="registreringsID" type="n5mdk:registreringsID" minOccurs="0"/>
 			<xs:element name="responsType" type="respons_type" minOccurs="1" maxOccurs="1" default="minimum"/>
 			<xs:element name="inkluder" type="inkluder" minOccurs="0" maxOccurs="1"/>
@@ -25,7 +28,7 @@
 
 	<xs:simpleType name="respons_type">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="noekler"/> <!-- unødvendig da man allerede har nøklene? Eller kan det være man ønsker å hente "barnas" nøkler? --> 
+			<xs:enumeration value="noekler"/> 
 			<xs:enumeration value="minimum"/>
 			<xs:enumeration value="utvidet"/>
 		</xs:restriction>
@@ -48,4 +51,10 @@
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:complexType name="eksternNoekkel">
+		<xs:sequence>
+			<xs:element name="fagsystem" type = "n5mdk:fagsystem"/>
+			<xs:element name="noekkel" type = "n5mdk:noekkel"/>
+		</xs:sequence>
+	</xs:complexType>
 </xs:schema>
