@@ -262,6 +262,7 @@
 
 	<xs:complexType name="dokumentobjekt">
 		<xs:sequence>
+			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
 			<xs:element name="versjonsnummer" type="n5mdk:versjonsnummer"/>
 			<xs:element name="variantformat" type="n5mdk:variantformat"/>
 			<xs:element name="format" type="n5mdk:format"/>

@@ -23,7 +23,7 @@
 
 	<xs:complexType name="mappe">
 		<xs:sequence>
-			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
 			<xs:element name="mappeID" type="n5mdk:mappeID" minOccurs="0"/>
 			<xs:element minOccurs="0" name="ReferanseForeldermappe" type="n5mdk:systemID"/>
 			<xs:element name="opprettetDato" type="n5mdk:opprettetDato" minOccurs="0" />
@@ -52,7 +52,7 @@
 
 	<xs:complexType name="registrering">
 		<xs:sequence>
-			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
 			<xs:element name="opprettetDato" type="n5mdk:opprettetDato" minOccurs="0"/>
 			<xs:element name="opprettetAv" type="n5mdk:opprettetAv" minOccurs="0"/>
 			<xs:element name="arkivertDato" type="n5mdk:arkivertDato" minOccurs="0"/>
@@ -83,12 +83,19 @@
 
 	<xs:complexType name="dokumentbeskrivelse">
 		<xs:sequence>
-			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
 			<xs:element name="opprettetDato" type="n5mdk:opprettetDato" minOccurs="0"/>
 			<xs:element name="opprettetAv" type="n5mdk:opprettetAv" minOccurs="0"/>
+			<xs:element name="dokumentobjekt" type="dokumentobjekt" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 
+	<xs:complexType name="dokumentobjekt">
+		<xs:sequence>
+			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
 	<xs:complexType name="eksternNoekkel">
 		<xs:sequence>
 			<xs:element name="fagsystem" type = "n5mdk:fagsystem"/>
