@@ -23,7 +23,7 @@
       <xs:element name="avsluttetDato" type="n5mdk:avsluttetDato" minOccurs="0"/>
       <xs:element name="avsluttetAv" type="n5mdk:avsluttetAv" minOccurs="0"/>
       <xs:element name="part" type="partNoekler" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="referanseEksternNoekkel" type="eksternNoekkelNoekler" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="0" maxOccurs="1"/>
       <xs:choice>
         <xs:element name="mappe" type="mappeNoekler" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element name="registrering" type="registreringNoekler" minOccurs="0" maxOccurs="unbounded"/>
@@ -63,7 +63,7 @@
       </xs:choice>
       <xs:element name="dokumentbeskrivelse" type="dokumentbeskrivelseNoekler" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="registreringsID" type="n5mdk:registreringsID" minOccurs="0"/>
-      <xs:element name="referanseEksternNoekkel" type="eksternNoekkelNoekler" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -97,7 +97,7 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="eksternNoekkelNoekler">
+  <xs:complexType name="eksternNoekkel">
     <xs:sequence>
       <xs:element name="fagsystem" type = "n5mdk:fagsystem"/>
       <xs:element name="noekkel" type = "n5mdk:noekkel"/>
