@@ -18,6 +18,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
         // Sok
         public const string Sok = "no.ks.fiks.gi.arkivintegrasjon.v1.sok";
         public const string SokResultat = "no.ks.fiks.gi.arkivintegrasjon.v1.sok.resultat";
+        public const string SokResultatMinimum = "no.ks.fiks.gi.arkivintegrasjon.v1.sok.resultat.minimum";
+        public const string SokResultatNoekler = "no.ks.fiks.gi.arkivintegrasjon.v1.sok.resultat.noekler";
         
         // Komplett
         public const string KomplettArkivmelding = "no.ks.fiks.gi.arkivintegrasjon.v1.komplett.arkivmelding";
@@ -35,7 +37,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
         public static readonly List<string> SokTyper = new List<string>()
         {
             Sok,
-            SokResultat
+            SokResultat,
+            SokResultatMinimum,
+            SokResultatNoekler
         };
 
         public static readonly List<string> KompletteTyper = new List<string>()
