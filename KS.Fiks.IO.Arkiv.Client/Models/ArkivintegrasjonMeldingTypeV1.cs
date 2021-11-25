@@ -8,33 +8,30 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
         public const string Mottatt = "no.ks.fiks.arkiv.v1.mottatt";
         public const string Kvittering = "no.ks.fiks.arkiv.v1.kvittering";
         
-        // Basis
-        public const string BasisArkivmelding = "no.ks.fiks.arkiv.v1.basis.arkivmelding";
-        public const string BasisSaksmappeOppdater = "no.ks.fiks.arkiv.v1.basis.saksmappe.oppdater";
-        public const string BasisMappeHent = "no.ks.fiks.arkiv.v1.basis.mappe.hent";
-        public const string BasisMappeHentResultat = "no.ks.fiks.arkiv.v1.basis.mappe.hent.resultat";
-        public const string BasisJournalpostHent = "no.ks.fiks.arkiv.v1.basis.journalpost.hent";
-        public const string BasisJournalpostHentResultat = "no.ks.fiks.arkiv.v1.basis.journalpost.hent.resultat";
-        public const string BasisDokumentfilHent = "no.ks.fiks.arkiv.v1.basis.dokumentfil.hent";
-        public const string BasisDokumentfilHentResultat = "no.ks.fiks.arkiv.v1.basis.dokumentfil.hent.resultat";
+        // Arkivmeldinger
+        public const string Arkivmelding = "no.ks.fiks.arkiv.v1.arkivmelding";
+        public const string MappeHent = "no.ks.fiks.arkiv.v1.mappe.hent";
+        public const string MappeHentResultat = "no.ks.fiks.arkiv.v1.mappe.hent.resultat";
+        public const string JournalpostHent = "no.ks.fiks.arkiv.v1.journalpost.hent";
+        public const string JournalpostHentResultat = "no.ks.fiks.arkiv.v1.journalpost.hent.resultat";
+        public const string DokumentfilHent = "no.ks.fiks.arkiv.v1.dokumentfil.hent";
+        public const string DokumentfilHentResultat = "no.ks.fiks.arkiv.v1.dokumentfil.hent.resultat";
         
         // Sok
         public const string Sok = "no.ks.fiks.arkiv.v1.sok";
         public const string SokResultatUtvidet = "no.ks.fiks.arkiv.v1.sok.resultat.utvidet";
         public const string SokResultatMinimum = "no.ks.fiks.arkiv.v1.sok.resultat.minimum";
         public const string SokResultatNoekler = "no.ks.fiks.arkiv.v1.sok.resultat.noekler";
-        
-        // Komplett
-        public const string KomplettArkivmelding = "no.ks.fiks.arkiv.v1.komplett.arkivmelding";
-        public const string KomplettArkivmeldingUtgaaende = "no.ks.fiks.arkiv.v1.komplett.arkivmeldingUtgaaende";
-        
-        public static readonly List<string> BasisTyper = new List<string>()
+          
+        public static readonly List<string> ArkivmeldingTyper = new List<string>()
         {
-            BasisArkivmelding,
-            BasisMappeHent,
-            BasisJournalpostHent,
-            BasisDokumentfilHent,
-            BasisSaksmappeOppdater
+            Arkivmelding,
+            MappeHent,
+            MappeHentResultat,
+            JournalpostHent,
+            JournalpostHentResultat,
+            DokumentfilHent,
+            DokumentfilHentResultat
         };
             
         public static readonly List<string> SokTyper = new List<string>()
@@ -45,25 +42,14 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
             SokResultatNoekler
         };
 
-        public static readonly List<string> KompletteTyper = new List<string>()
+        public static bool IsArkivmeldingType(string meldingsType)
         {
-            KomplettArkivmelding,
-            KomplettArkivmeldingUtgaaende
-        };
-
-        public static bool IsBasis(string meldingsType)
-        {
-            return BasisTyper.Contains(meldingsType);
+            return ArkivmeldingTyper.Contains(meldingsType);
         }
 
-        public static bool IsSok(string meldingsType)
+        public static bool IsSokType(string meldingsType)
         {
             return SokTyper.Contains(meldingsType);
-        }
-        
-        public static bool IsKomplett(string meldingsType)
-        { 
-            return KompletteTyper.Contains(meldingsType);
         }
     }
 }
