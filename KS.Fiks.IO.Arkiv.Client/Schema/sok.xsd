@@ -15,13 +15,14 @@
             <xs:element name="parameter" type="parameter" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="responsType" type="respons_type" minOccurs="1" maxOccurs="1" default="minimum"/>
             <xs:element name="inkluder" type="inkluder" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="sortering" type="sortering" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="parameter">
         <xs:sequence>
-            <xs:element name="felt" type="field_type"/>
-            <xs:element name="operator" type="operator_type"/>
+            <xs:element name="felt" type="feltType"/>
+            <xs:element name="operator" type="operatorType"/>
             <xs:element name="parameterverdier" type="parameterverdier" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
@@ -76,7 +77,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:simpleType name="operator_type">
+    <xs:simpleType name="operatorType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="equal"/>
             <xs:enumeration value="notequal"/>
@@ -89,7 +90,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="field_type">
+    <xs:simpleType name="feltType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="mappe.eksternId"/>
             <xs:enumeration value="mappe.tittel"/>
@@ -231,5 +232,118 @@
             <xs:enumeration value="dokumentobjekt"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:complexType name="sortering">
+        <xs:sequence>
+            <xs:element name="felt" type="sorteringFelt" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="type" type="sorteringType" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="sorteringType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="synkende"/>
+            <xs:enumeration value="stigende"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="sorteringFelt">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="mappe.tittel"/>
+            <xs:enumeration value="mappe.opprettetDato"/>
+            <xs:enumeration value="mappe.AvsluttetDato"/>
+
+            <xs:enumeration value="sak.saksdato"/>
+            <xs:enumeration value="sak.saksaar"/>
+            <xs:enumeration value="sak.saksekvensnummer"/>
+
+            <xs:enumeration value="mappe.klasse.klassifikasjonssystem"/>
+            <xs:enumeration value="mappe.klasse.klasseID"/>
+            <xs:enumeration value="mappe.klasse.tittel"/>
+            <xs:enumeration value="mappe.klasse.beskrivelse"/>
+
+            <xs:enumeration value="mappe.part.partNavn"/>
+            <xs:enumeration value="mappe.part.partRolle"/>
+            <xs:enumeration value="mappe.part.postadresse"/>
+            <xs:enumeration value="mappe.part.postnummer"/>
+            <xs:enumeration value="mappe.part.poststed"/>
+            <xs:enumeration value="mappe.part.epostadresse"/>
+            <xs:enumeration value="mappe.part.virksomhetsspesifikkeMetadata"/>
+
+            <xs:enumeration value="mappe.skjerming.tilgangsrestriksjon"/>
+            <xs:enumeration value="mappe.skjerming.skjermingshjemmel"/>
+            <xs:enumeration value="mappe.skjerming.skjermingsvarighet"/>
+            <xs:enumeration value="mappe.skjerming.skjermingOpphoererDato"/>
+
+            <xs:enumeration value="sak.matrikkelnummer.kommunenummer"/>
+            <xs:enumeration value="sak.matrikkelnummer.gaardsnummer"/>
+            <xs:enumeration value="sak.matrikkelnummer.bruksnummer"/>
+            <xs:enumeration value="sak.matrikkelnummer.festenummer"/>
+            <xs:enumeration value="sak.matrikkelnummer.seksjonsnummer"/>
+
+            <xs:enumeration value="sak.byggident.bygningsnummer"/>
+            <xs:enumeration value="sak.byggident.endringsloepenummer"/>
+
+            <xs:enumeration value="sak.planident.stat.landkode"/>
+            <xs:enumeration value="sak.planident.fylke.fylkesnummer"/>
+            <xs:enumeration value="sak.planident.kommune.kommunenummer"/>
+            <xs:enumeration value="sak.planident.planidentifikasjon"/>
+
+            <xs:enumeration value="sak.punkt.x"/>
+            <xs:enumeration value="sak.punkt.y"/>
+            <xs:enumeration value="sak.punkt.z"/>
+
+            <xs:enumeration value="registrering.eksternId"/>
+            <xs:enumeration value="registrering.opprettetDato"/>
+            <xs:enumeration value="registrering.tittel"/>
+            <xs:enumeration value="registrering.administrativenhet"/>
+            <xs:enumeration value="registrering.journalpostansvarlig"/>
+
+            <!--Inklusive ekstern korrespondansepart?-->
+            <xs:enumeration value="registrering.part.partNavn"/>
+            <xs:enumeration value="registrering.part.partRolle"/>
+            <xs:enumeration value="registrering.part.postadresse"/>
+            <xs:enumeration value="registrering.part.postnummer"/>
+            <xs:enumeration value="registrering.part.poststed"/>
+            <xs:enumeration value="registrering.part.epostadresse"/>
+            <xs:enumeration value="registrering.part.virksomhetsspesifikkeMetadata"/>
+
+            <xs:enumeration value="registrering.skjerming.tilgangsrestriksjon"/>
+            <xs:enumeration value="registrering.skjerming.skjermingshjemmel"/>
+            <xs:enumeration value="registrering.skjerming.skjermingsvarighet"/>
+            <xs:enumeration value="registrering.skjerming.skjermingOpphoererDato"/>
+
+            <xs:enumeration value="journalpost.journalaar"/>
+            <xs:enumeration value="journalpost.journalsekvensnummer"/>
+            <xs:enumeration value="journalpost.saksaar"/>
+            <xs:enumeration value="journalpost.sakssekvensnummer"/>
+            <xs:enumeration value="journalpost.journalpostnummer"/>
+            <xs:enumeration value="journalpost.journalposttype"/>
+            <xs:enumeration value="journalpost.journalstatus"/>
+            <xs:enumeration value="journalpost.journaldato"/>
+            <xs:enumeration value="journalpost.dokumentetsdato"/>
+            <xs:enumeration value="journalpost.forfallsdato"/>
+
+            <!--Interne korrespondanseparter?-->
+
+            <xs:enumeration value="dokument.eksternId"/>
+            <xs:enumeration value="dokument.opprettetDato"/>
+            <xs:enumeration value="dokument.tittel"/>
+            <xs:enumeration value="dokument.dokumenttype"/>
+            <xs:enumeration value="dokument.dokumentstatus"/>
+            <xs:enumeration value="dokument.variantformat"/>
+            <xs:enumeration value="dokument.format"/>
+            <xs:enumeration value="dokument.filnavn"/>
+            <xs:enumeration value="dokument.mimetype"/>
+            <xs:enumeration value="dokument.referansejournalposteksternId"/>
+
+            <xs:enumeration value="dokument.skjerming.tilgangsrestriksjon"/>
+            <xs:enumeration value="dokument.skjerming.skjermingshjemmel"/>
+            <xs:enumeration value="dokument.skjerming.skjermingsvarighet"/>
+            <xs:enumeration value="dokument.skjerming.skjermingOpphoererDato"/>
+
+        </xs:restriction>
+    </xs:simpleType>
+    
 </xs:schema>
 
