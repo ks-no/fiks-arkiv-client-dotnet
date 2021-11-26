@@ -5,56 +5,51 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
     public static class ArkivintegrasjonMeldingTypeV1
     {
         // Arkivintegrasjon mottaksmelding og kvitteringsmelding
-        public const string Mottatt = "no.ks.fiks.gi.arkivintegrasjon.mottatt.v1";
-        public const string Kvittering = "no.ks.fiks.gi.arkivintegrasjon.kvittering.v1";
+        public const string Mottatt = "no.ks.fiks.arkiv.v1.mottatt";
+        public const string Kvittering = "no.ks.fiks.arkiv.v1.kvittering";
         
-        // Basis
-        public const string BasisArkivmelding = "no.ks.fiks.gi.arkivintegrasjon.oppdatering.basis.arkivmelding.v1";
-        //public const string BasisArkivmeldingUtgaaende = "no.ks.fiks.gi.arkivintegrasjon.oppdatering.basis.arkivmeldingUtgaaende.v1";
-        //public const string ForenkletArkivmeldingInnkommende = "no.ks.fiks.gi.arkivintegrasjon.oppdatering.forenklet.arkivmeldingInnkommende.v1";
-        public const string BasisOppdaterSaksmappe = "no.ks.fiks.gi.arkivintegrasjon.oppdatering.basis.oppdatersaksmappe.v1";
+        // Arkivmeldinger
+        public const string Arkivmelding = "no.ks.fiks.arkiv.v1.arkivmelding";
+        public const string MappeHent = "no.ks.fiks.arkiv.v1.mappe.hent";
+        public const string MappeHentResultat = "no.ks.fiks.arkiv.v1.mappe.hent.resultat";
+        public const string JournalpostHent = "no.ks.fiks.arkiv.v1.journalpost.hent";
+        public const string JournalpostHentResultat = "no.ks.fiks.arkiv.v1.journalpost.hent.resultat";
+        public const string DokumentfilHent = "no.ks.fiks.arkiv.v1.dokumentfil.hent";
+        public const string DokumentfilHentResultat = "no.ks.fiks.arkiv.v1.dokumentfil.hent.resultat";
         
         // Sok
-        public const string InnsynSok = "no.ks.fiks.gi.arkivintegrasjon.innsyn.sok.v1";
-        public const string InnsynSokResultat = "no.ks.fiks.gi.arkivintegrasjon.innsyn.sok.resultat.v1";
-        
-        // Avansert
-        //public const string OppdateringArkivmelding = "no.ks.fiks.gi.arkivintegrasjon.oppdatering.arkivmelding.v1";
-        //public const string OppdateringArkivmeldingUtgaaende = "no.ks.fiks.gi.arkivintegrasjon.oppdatering.arkivmeldingUtgaaende.v1";
-        
-        public static readonly List<string> Basis = new List<string>()
+        public const string Sok = "no.ks.fiks.arkiv.v1.sok";
+        public const string SokResultatUtvidet = "no.ks.fiks.arkiv.v1.sok.resultat.utvidet";
+        public const string SokResultatMinimum = "no.ks.fiks.arkiv.v1.sok.resultat.minimum";
+        public const string SokResultatNoekler = "no.ks.fiks.arkiv.v1.sok.resultat.noekler";
+          
+        public static readonly List<string> ArkivmeldingTyper = new List<string>()
         {
-            BasisArkivmelding,
-            //BasisArkivmeldingUtgaaende,
-            //ForenkletArkivmeldingInnkommende,
-            BasisOppdaterSaksmappe
+            Arkivmelding,
+            MappeHent,
+            MappeHentResultat,
+            JournalpostHent,
+            JournalpostHentResultat,
+            DokumentfilHent,
+            DokumentfilHentResultat
         };
             
-        public static readonly List<string> Sok = new List<string>()
+        public static readonly List<string> SokTyper = new List<string>()
         {
-            InnsynSok,
-            //InnsynSokResultat
+            Sok,
+            SokResultatUtvidet,
+            SokResultatMinimum,
+            SokResultatNoekler
         };
 
-        public static readonly List<string> Avansert = new List<string>()
+        public static bool IsArkivmeldingType(string meldingsType)
         {
-            //OppdateringArkivmelding,
-            //OppdateringArkivmeldingUtgaaende
-        };
-
-        public static bool IsBasis(string meldingsType)
-        {
-            return Basis.Contains(meldingsType);
+            return ArkivmeldingTyper.Contains(meldingsType);
         }
 
-        public static bool IsSok(string meldingsType)
+        public static bool IsSokType(string meldingsType)
         {
-            return Sok.Contains(meldingsType);
-        }
-        
-        public static bool IsAvansert(string meldingsType)
-        { 
-            return Avansert.Contains(meldingsType);
+            return SokTyper.Contains(meldingsType);
         }
     }
 }
