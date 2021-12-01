@@ -4,12 +4,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
 {
     public static class ArkivintegrasjonMeldingTypeV1
     {
-        // Arkivintegrasjon mottaksmelding og kvitteringsmelding
-        public const string Mottatt = "no.ks.fiks.arkiv.v1.mottatt";
-        public const string Kvittering = "no.ks.fiks.arkiv.v1.kvittering";
-        
         // Arkivering
         public const string Arkivmelding = "no.ks.fiks.arkiv.v1.arkivering.arkivmelding";
+        public const string ArkivmeldingMottatt = "no.ks.fiks.arkiv.v1.arkivering.arkivmelding.mottatt";
+        public const string ArkivmeldingKvittering = "no.ks.fiks.arkiv.v1.arkivering.arkivmelding.kvittering";
         
         // Innsyn Hent
         public const string MappeHent = "no.ks.fiks.arkiv.v1.innsyn.mappe.hent";
@@ -27,7 +25,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
           
         public static readonly List<string> ArkiveringTyper = new List<string>()
         {
-            Arkivmelding
+            Arkivmelding,
+            ArkivmeldingMottatt,
+            ArkivmeldingKvittering
         };
             
         public static readonly List<string> InnsynTyper = new List<string>()
