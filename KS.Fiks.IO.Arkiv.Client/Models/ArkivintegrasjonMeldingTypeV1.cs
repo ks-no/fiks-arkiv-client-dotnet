@@ -18,10 +18,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
         public const string DokumentfilHentResultat = "no.ks.fiks.arkiv.v1.dokumentfil.hent.resultat";
         
         // Sok
-        public const string Sok = "no.ks.fiks.arkiv.v1.sok";
-        public const string SokResultatUtvidet = "no.ks.fiks.arkiv.v1.sok.resultat.utvidet";
-        public const string SokResultatMinimum = "no.ks.fiks.arkiv.v1.sok.resultat.minimum";
-        public const string SokResultatNoekler = "no.ks.fiks.arkiv.v1.sok.resultat.noekler";
+        public const string Sok = "no.ks.fiks.arkiv.v1.innsyn.sok";
+        public const string SokResultatUtvidet = "no.ks.fiks.arkiv.v1.innsyn.sok.resultat.utvidet";
+        public const string SokResultatMinimum = "no.ks.fiks.arkiv.v1.innsyn.sok.resultat.minimum";
+        public const string SokResultatNoekler = "no.ks.fiks.arkiv.v1.innsyn.sok.resultat.noekler";
           
         public static readonly List<string> ArkivmeldingTyper = new List<string>()
         {
