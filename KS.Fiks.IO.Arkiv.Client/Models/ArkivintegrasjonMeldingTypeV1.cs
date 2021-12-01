@@ -8,8 +8,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
         public const string Mottatt = "no.ks.fiks.arkiv.v1.mottatt";
         public const string Kvittering = "no.ks.fiks.arkiv.v1.kvittering";
         
-        // Arkivmeldinger
+        // Arkivmelding
         public const string Arkivmelding = "no.ks.fiks.arkiv.v1.arkivmelding";
+        
+        //Hent
         public const string MappeHent = "no.ks.fiks.arkiv.v1.mappe.hent";
         public const string MappeHentResultat = "no.ks.fiks.arkiv.v1.mappe.hent.resultat";
         public const string JournalpostHent = "no.ks.fiks.arkiv.v1.journalpost.hent";
@@ -23,33 +25,34 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
         public const string SokResultatMinimum = "no.ks.fiks.arkiv.v1.innsyn.sok.resultat.minimum";
         public const string SokResultatNoekler = "no.ks.fiks.arkiv.v1.innsyn.sok.resultat.noekler";
           
-        public static readonly List<string> ArkivmeldingTyper = new List<string>()
+        public static readonly List<string> ArkiveringTyper = new List<string>()
         {
-            Arkivmelding,
+            Arkivmelding
+        };
+            
+        public static readonly List<string> InnsynTyper = new List<string>()
+        {
+            Sok,
+            SokResultatUtvidet,
+            SokResultatMinimum,
+            SokResultatNoekler,
             MappeHent,
             MappeHentResultat,
             JournalpostHent,
             JournalpostHentResultat,
             DokumentfilHent,
             DokumentfilHentResultat
-        };
             
-        public static readonly List<string> SokTyper = new List<string>()
-        {
-            Sok,
-            SokResultatUtvidet,
-            SokResultatMinimum,
-            SokResultatNoekler
         };
 
-        public static bool IsArkivmeldingType(string meldingsType)
+        public static bool IsArkiveringType(string meldingsType)
         {
-            return ArkivmeldingTyper.Contains(meldingsType);
+            return ArkiveringTyper.Contains(meldingsType);
         }
 
-        public static bool IsSokType(string meldingsType)
+        public static bool IsInnsynType(string meldingsType)
         {
-            return SokTyper.Contains(meldingsType);
+            return InnsynTyper.Contains(meldingsType);
         }
     }
 }
