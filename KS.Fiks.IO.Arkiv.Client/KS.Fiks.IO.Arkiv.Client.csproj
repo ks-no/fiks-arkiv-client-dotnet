@@ -66,12 +66,27 @@
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
+      <Content Include="Schema\dokumentfilHentResultat.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
       <Content Include="Schema\journalpostHent.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
+      <Content Include="Schema\journalpostHentResultat.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
       <Content Include="Schema\mappeHent.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <Content Include="Schema\mappeHentResultat.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
@@ -86,17 +101,17 @@
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Include="Schema\sokeresultatMinimum.xsd">
+      <Content Include="Schema\sokMinimumResultat.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Include="Schema\sokeresultatNoekler.xsd">
+      <Content Include="Schema\sokNoeklerResultat.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Include="Schema\sokeresultatUtvidet.xsd">
+      <Content Include="Schema\sokUtvidetResultat.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
