@@ -97,7 +97,7 @@
             <xs:enumeration value="mappe.opprettetDato"/>
             <xs:enumeration value="mappe.beskrivelse"/>
             <xs:enumeration value="mappe.noekkelord"/>
-            <xs:enumeration value="mappe.AvsluttetDato"/>
+            <xs:enumeration value="mappe.avsluttetDato"/>
             <xs:enumeration value="mappe.virksomhetsspesifikkeMetadata"/>
             <xs:enumeration value="mappe.referansearkivdel"/>
 
@@ -177,21 +177,16 @@
 
             <!--Interne korrespondanseparter?-->
 
-            <xs:enumeration value="dokument.eksternId"/>
-            <xs:enumeration value="dokument.opprettetDato"/>
-            <xs:enumeration value="dokument.tittel"/>
-            <xs:enumeration value="dokument.dokumenttype"/>
-            <xs:enumeration value="dokument.dokumentstatus"/>
-            <xs:enumeration value="dokument.variantformat"/>
-            <xs:enumeration value="dokument.format"/>
-            <xs:enumeration value="dokument.filnavn"/>
-            <xs:enumeration value="dokument.mimetype"/>
-            <xs:enumeration value="dokument.referansejournalposteksternId"/>
+            <xs:enumeration value="dokumentbeskrivelse.eksternId"/>
+            <xs:enumeration value="dokumentbeskrivelse.opprettetDato"/>
+            <xs:enumeration value="dokumentbeskrivelse.tittel"/>
+            <xs:enumeration value="dokumentbeskrivelse.dokumenttype"/>
+            <xs:enumeration value="dokumentbeskrivelse.dokumentstatus"/>
 
-            <xs:enumeration value="dokument.skjerming.tilgangsrestriksjon"/>
-            <xs:enumeration value="dokument.skjerming.skjermingshjemmel"/>
-            <xs:enumeration value="dokument.skjerming.skjermingsvarighet"/>
-            <xs:enumeration value="dokument.skjerming.skjermingOpphoererDato"/>
+            <xs:enumeration value="dokumentbeskrivelse.skjerming.tilgangsrestriksjon"/>
+            <xs:enumeration value="dokumentbeskrivelse.skjerming.skjermingshjemmel"/>
+            <xs:enumeration value="dokumentbeskrivelse.skjerming.skjermingsvarighet"/>
+            <xs:enumeration value="dokumentbeskrivelse.skjerming.skjermingOpphoererDato"/>
 
         </xs:restriction>
     </xs:simpleType>
@@ -250,7 +245,7 @@
     <xs:simpleType name="sorteringFelt">
         <xs:restriction base="xs:string">
             <xs:enumeration value="mappe.opprettetDato"/>
-            <xs:enumeration value="mappe.AvsluttetDato"/>
+            <xs:enumeration value="mappe.avsluttetDato"/>
             <xs:enumeration value="mappe.referansearkivdel"/>
 
             <xs:enumeration value="sak.saksdato"/>
@@ -275,14 +270,9 @@
             <xs:enumeration value="journalpost.dokumentetsdato"/>
             <xs:enumeration value="journalpost.forfallsdato"/>
 
-            <xs:enumeration value="dokument.opprettetDato"/>
-            <xs:enumeration value="dokument.dokumenttype"/>
-            <xs:enumeration value="dokument.dokumentstatus"/>
-            <xs:enumeration value="dokument.variantformat"/>
-            <xs:enumeration value="dokument.format"/>
-            <xs:enumeration value="dokument.filnavn"/>
-            <xs:enumeration value="dokument.mimetype"/>
-            <xs:enumeration value="dokument.referansejournalposteksternId"/>
+            <xs:enumeration value="dokumentbeskrivelse.opprettetDato"/>
+            <xs:enumeration value="dokumentbeskrivelse.dokumenttype"/>
+            <xs:enumeration value="dokumentbeskrivelse.dokumentstatus"/>
         </xs:restriction>
     </xs:simpleType>
     
