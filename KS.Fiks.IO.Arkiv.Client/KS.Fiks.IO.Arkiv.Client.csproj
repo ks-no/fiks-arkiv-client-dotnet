@@ -66,12 +66,27 @@
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
+      <Content Include="Schema\dokumentfilHentResultat.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
       <Content Include="Schema\journalpostHent.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
+      <Content Include="Schema\journalpostHentResultat.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
       <Content Include="Schema\mappeHent.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <Content Include="Schema\mappeHentResultat.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
@@ -86,10 +101,16 @@
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Include="Schema\sokeresultatMinimum.xsd">
+      <None Remove="Schema\arkivstruktur.xsd" />
+      <Content Include="Schema\arkivstruktur.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <Content Include="Schema\sokeresultatMinimum.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput> 
       </Content>
       <Content Include="Schema\sokeresultatNoekler.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -97,13 +118,6 @@
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
       <Content Include="Schema\sokeresultatUtvidet.xsd">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <Pack>true</Pack>
-        <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <None Remove="Schema\arkivstrukturSokeresultat.xsd" />
-      <None Remove="Schema\arkivstruktur.xsd" />
-      <Content Include="Schema\arkivstruktur.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.arkivverket.no/standarder/noark5/dokumentfil/hent/v2"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.arkivverket.no/standarder/noark5/dokumentfil/hent/v2"
+	elementFormDefault="qualified">
+
+	<xs:element name="dokumentfil" type="dokumentfil"/>
+	
+	<xs:complexType name="dokumentfil">
+		<xs:sequence>
+			<xs:element name="fil" type="xs:base64Binary" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>
