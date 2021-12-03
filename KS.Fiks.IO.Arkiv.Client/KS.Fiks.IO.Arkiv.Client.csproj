@@ -107,17 +107,17 @@
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Update="Schema\sokeresultatMinimum.xsd">
+      <Content Include="Schema\sokeresultatMinimum.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput> 
       </Content>
-      <Content Update="Schema\sokeresultatNoekler.xsd">
+      <Content Include="Schema\sokeresultatNoekler.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Update="Schema\sokeresultatUtvidet.xsd">
+      <Content Include="Schema\sokeresultatUtvidet.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
