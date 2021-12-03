@@ -101,22 +101,6 @@
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Include="Schema\sokMinimumResultat.xsd">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <Pack>true</Pack>
-        <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\sokNoeklerResultat.xsd">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <Pack>true</Pack>
-        <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\sokUtvidetResultat.xsd">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <Pack>true</Pack>
-        <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <None Remove="Schema\arkivstrukturSokeresultat.xsd" />
       <None Remove="Schema\arkivstruktur.xsd" />
       <Content Include="Schema\arkivstruktur.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
