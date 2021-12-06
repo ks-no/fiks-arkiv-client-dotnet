@@ -13,7 +13,7 @@
             <xs:element name="skip" type="xs:int"/>
             <xs:element name="respons" type="respons"/>
             <xs:element name="parameter" type="parameter" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element name="responsType" type="respons_type" minOccurs="1" maxOccurs="1" default="minimum"/>
+            <xs:element name="responsType" type="responsType" minOccurs="1" maxOccurs="1" default="minimum"/>
             <xs:element name="inkluder" type="inkluder" minOccurs="0" maxOccurs="1"/>
             <xs:element name="sortering" type="sortering" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
@@ -21,7 +21,7 @@
 
     <xs:complexType name="parameter">
         <xs:sequence>
-            <xs:element name="felt" type="feltType"/>
+            <xs:element name="felt" type="sokFelt"/>
             <xs:element name="operator" type="operatorType"/>
             <xs:element name="parameterverdier" type="parameterverdier" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
@@ -90,7 +90,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="feltType">
+    <xs:simpleType name="sokFelt">
         <xs:restriction base="xs:string">
             <xs:enumeration value="mappe.eksternId"/>
             <xs:enumeration value="mappe.tittel"/>
@@ -201,7 +201,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="respons_type">
+    <xs:simpleType name="responsType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="noekler"/>
             <xs:enumeration value="minimum"/>
