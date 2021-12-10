@@ -18,12 +18,12 @@
 			<xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="0" maxOccurs="1"/>
 			<!-- Er det enten referanseEksternNoekkel eller mappeID som kan identifisere en unik mappe?
 			Klarer vi å beskrive det at man trenger bare 1 av 2? -->
-			<xs:element name="responsType" type="respons_type" minOccurs="1" maxOccurs="1" default="minimum"/>
+			<xs:element name="responsType" type="responsType" minOccurs="1" maxOccurs="1" default="minimum"/>
 			<xs:element name="inkluder" type="inkluder" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:simpleType name="respons_type">
+	<xs:simpleType name="responsType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="noekler"/>
 			<xs:enumeration value="minimum"/>
