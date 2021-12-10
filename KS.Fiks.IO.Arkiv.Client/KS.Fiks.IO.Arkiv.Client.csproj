@@ -61,11 +61,6 @@
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <Content Include="Schema\dokumentfilHentResultat.xsd">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <Pack>true</Pack>
-        <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
       <Content Include="Schema\journalpostHent.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
@@ -113,6 +108,12 @@
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
       <Content Include="Schema\sokeresultatUtvidet.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </Content>
+      <None Remove="Schema\dokumentfilHent.xsd" />
+      <Content Include="Schema\dokumentfilHent.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
