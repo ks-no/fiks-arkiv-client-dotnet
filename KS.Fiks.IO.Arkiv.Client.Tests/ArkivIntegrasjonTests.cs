@@ -1,11 +1,12 @@
-﻿﻿using System;
-using System.Collections.Generic;
-using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+﻿using System;
+ using System.Collections.Generic;
+ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+using KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding;
+using KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog;
 using KS.Fiks.IO.Arkiv.Client.Sample;
-using no.ks.fiks.io.arkivmelding;
-using NUnit.Framework;
+ using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests
+ namespace KS.Fiks.IO.Arkiv.Client.Tests
 {
     public class ArkivintegrasjonTests
     {
@@ -61,10 +62,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             var inng = new ArkivmeldingForenkletInnkommende();
             inng.sluttbrukerIdentifikator = "9hs2ir";
 
-            inng.referanseSaksmappe = new Saksmappe()
+            inng.referanseSaksmappeForenklet = new SaksmappeForenklet()
             {
                 tittel = "Tittel mappe",
-                referanseEksternNoekkel = new EksternNoekkel
+                referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
                 {
                     fagsystem = "Fagsystem X",
                     noekkel = "e4reke"
@@ -79,15 +80,15 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 offentlighetsvurdertDato = DateTime.Today
             };
 
-            inng.nyInnkommendeJournalpost.referanseEksternNoekkel = new EksternNoekkel
+            inng.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "Fagsystem X",
                 noekkel = "e4reke"
             };
 
-            inng.nyInnkommendeJournalpost.mottaker = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.mottaker = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Test kommune",
                     enhetsidentifikator = new Enhetsidentifikator() {
                         organisasjonsnummer = "123456789"
@@ -101,9 +102,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
 
-            inng.nyInnkommendeJournalpost.avsender = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.avsender = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Anita Søker",
                     personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
@@ -142,9 +143,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             var inng = new ArkivmeldingForenkletInnkommende();
             inng.sluttbrukerIdentifikator = "9hs2ir";
 
-            inng.referanseSaksmappe = new Saksmappe()
+            inng.referanseSaksmappeForenklet = new SaksmappeForenklet()
             {
-                referanseEksternNoekkel = new EksternNoekkel
+                referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
                 {
                     fagsystem = "Fagsystem X",
                     noekkel = "e4reke"
@@ -159,15 +160,15 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 offentlighetsvurdertDato = DateTime.Today
             };
 
-            inng.nyInnkommendeJournalpost.referanseEksternNoekkel = new EksternNoekkel
+            inng.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "Fagsystem X",
                 noekkel = "e4reke"
             };
 
-            inng.nyInnkommendeJournalpost.mottaker = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.mottaker = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Test kommune",
                     enhetsidentifikator = new Enhetsidentifikator() {
                         organisasjonsnummer = "123456789"
@@ -181,9 +182,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
 
-            inng.nyInnkommendeJournalpost.avsender = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.avsender = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Anita Søker",
                     personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
@@ -230,9 +231,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 nyUtgaaendeJournalpost = new UtgaaendeJournalpost()
             };
 
-            utg.referanseSaksmappe = new Saksmappe()
+            utg.referanseSaksmappeForenklet = new SaksmappeForenklet()
             {
-                referanseEksternNoekkel = new EksternNoekkel
+                referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
                 {
                     fagsystem = "Fagsystem X",
                     noekkel = "e4reke"
@@ -240,7 +241,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             };
 
             utg.nyUtgaaendeJournalpost.tittel = "Vedtak og vedtaksgrunnlag for vedtaket(Ref=e4reke, SakId=e4reke)";
-            utg.nyUtgaaendeJournalpost.referanseEksternNoekkel = new EksternNoekkel
+            utg.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "SvarUt.forsendelseId",
                 noekkel = "BBBBBB-BBBB-CCCC-BBBB-BBBBBBBBB"
@@ -254,9 +255,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
 
-            utg.nyUtgaaendeJournalpost.mottaker = new List<Korrespondansepart>
+            utg.nyUtgaaendeJournalpost.mottaker = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Mons Mottaker",
                     personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
@@ -268,7 +269,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                     forsendelsemåte = "SvarUt",
                     deresReferanse = "SvarUt.forsendelseId - BBBBBB-BBBB-CCCC-BBBB-BBBBBBBBBB"
                 },
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Foretak Mottaker",
                     enhetsidentifikator = new Enhetsidentifikator() {
                         organisasjonsnummer = "123456789"
@@ -334,17 +335,17 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                
             };
 
-            notat.referanseSaksmappe = new Saksmappe()
+            notat.referanseSaksmappeForenklet = new SaksmappeForenklet()
             {
-                referanseEksternNoekkel = new EksternNoekkel
+                referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
                 {
                     fagsystem = "Fagsystem X",
                     noekkel = "e4reke"
                 }
                 ,
-                klasse = new List<Klasse>
+                klasse = new List<KlasseForenklet>
                 {
-                    new Klasse(){
+                    new KlasseForenklet(){
                         klassifikasjonssystem = "Søknadsreferanse",
                         klasseID = "9hs2ir"
 
@@ -353,7 +354,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             };
 
             notat.nyttNotat.tittel = "Internt notat ved innstilling(Ref=e4reke, SakId=e4reke)";
-            notat.nyttNotat.referanseEksternNoekkel = new EksternNoekkel
+            notat.nyttNotat.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "Fagsystem X",
                 noekkel = "e4reke"
@@ -405,28 +406,28 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             var inng = new ArkivmeldingForenkletInnkommende();
             inng.sluttbrukerIdentifikator = "Fagsystemets brukerid";
 
-            inng.referanseSaksmappe = new Saksmappe()
+            inng.referanseSaksmappeForenklet = new SaksmappeForenklet()
             {
                 tittel ="Tittel mappe",
-                klasse = new List<Klasse>
+                klasse = new List<KlasseForenklet>
                 { 
-                    new Klasse(){ 
+                    new KlasseForenklet(){ 
                         klassifikasjonssystem = "GID", 
                         klasseID = "0822-1/23"
                        
                     },
-                    new Klasse(){
+                    new KlasseForenklet(){
                         klassifikasjonssystem = "Personnummer",
                         klasseID = "19085830948",
                         tittel = "Hans Hansen"
                     },
-                    new Klasse(){
+                    new KlasseForenklet(){
                         klassifikasjonssystem = "KK",
                         klasseID = "L3",
                         tittel = "Byggesaksbehandling"
                     },
                 },
-                referanseEksternNoekkel = new EksternNoekkel
+                referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
                 {
                     fagsystem = "Fagsystem X",
                     noekkel = "752f5e31-75e0-4359-bdcb-c612ba7a04eb"
@@ -443,7 +444,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 offentlighetsvurdertDato = DateTime.Today,
             };
 
-            inng.nyInnkommendeJournalpost.referanseEksternNoekkel = new EksternNoekkel
+            inng.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "Fagsystem X",
                 noekkel = "e4712424-883c-4068-9cb7-97ac679d7232"
@@ -457,9 +458,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
 
-            inng.nyInnkommendeJournalpost.mottaker = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.mottaker = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Test kommune",
                     enhetsidentifikator = new Enhetsidentifikator() {
                         organisasjonsnummer = "123456789"
@@ -473,9 +474,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
 
-            inng.nyInnkommendeJournalpost.avsender = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.avsender = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Anita Avsender",
                     personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
@@ -522,7 +523,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 offentlighetsvurdertDato = DateTime.Today,
                 skjermetTittel = true,
                 offentligTittel = "Skjermet tittel som kan offentliggjøres",
-                skjerming = new Skjerming()
+                skjermingForenklet = new SkjermingForenklet()
                 {
                      skjermingshjemmel= "Offl. § 26.1"
                 }
@@ -530,7 +531,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             };
             //Begrunnelse for skjerming må hjemles - Offentleglova kapittel 3 https://lovdata.no/dokument/NL/lov/2006-05-19-16/KAPITTEL_3#KAPITTEL_3
 
-            inng.nyInnkommendeJournalpost.referanseEksternNoekkel = new EksternNoekkel
+            inng.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "Fagsystem X",
                 noekkel = "e4712424-883c-4068-9cb7-97ac679d7232"
@@ -544,9 +545,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
 
-            inng.nyInnkommendeJournalpost.mottaker = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.mottaker = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Test kommune",
                     enhetsidentifikator = new Enhetsidentifikator() {
                         organisasjonsnummer = "123456789"
@@ -560,9 +561,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
 
-            inng.nyInnkommendeJournalpost.avsender = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.avsender = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Anita Avsender",
                     skjermetKorrespondansepart = true,
                     personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
@@ -605,7 +606,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             var inng = new ArkivmeldingForenkletInnkommende();
             inng.sluttbrukerIdentifikator = "Fagsystemets brukerid";
 
-            inng.referanseSaksmappe = new Saksmappe()
+            inng.referanseSaksmappeForenklet = new SaksmappeForenklet()
             {
                 saksaar = 2018,
                 sakssekvensnummer = 123456
@@ -619,7 +620,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 offentlighetsvurdertDato = DateTime.Today
             };
 
-            inng.nyInnkommendeJournalpost.referanseEksternNoekkel = new EksternNoekkel
+            inng.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "Fagsystem X",
                 noekkel = "e4712424-883c-4068-9cb7-97ac679d7232"
@@ -633,9 +634,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
 
-            inng.nyInnkommendeJournalpost.mottaker = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.mottaker = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Test kommune",
                     enhetsidentifikator = new Enhetsidentifikator() {
                         organisasjonsnummer = "123456789"
@@ -649,9 +650,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 }
             };
 
-            inng.nyInnkommendeJournalpost.avsender = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.avsender = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Anita Avsender",
                     personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
@@ -679,21 +680,18 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
 
             //Legge til basismappe
-            var basismappe = new mappe();
-            basismappe.mappeID = "2020/12345";
-            basismappe.systemID = new systemID
+            var basismappe = new Mappe();
+            basismappe.MappeID = "2020/12345";
+            basismappe.SystemID = new SystemID
             {
                 Value = "f3fd5a87-8703-4771-834f-5bba65df0223"
             };
 
             //basismappe.saksbehandler //ligger på saksmappe  
-            basismappe.tittel = "Hovedmappe tittel";
+            basismappe.Tittel = "Hovedmappe tittel";
 
-            foreach (var item in arkivmelding.Items) {
-                if (item is saksmappe) {
-                    ((saksmappe)item).ReferanseForeldermappe = new systemID {Value = "f3fd5a87-8703-4771-834f-5bba65df0223"};
-                }
-            
+            foreach (var item in arkivmelding.Mappe) {
+                item.ReferanseForeldermappe = new SystemID {Value = "f3fd5a87-8703-4771-834f-5bba65df0223"};
             }
 
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);

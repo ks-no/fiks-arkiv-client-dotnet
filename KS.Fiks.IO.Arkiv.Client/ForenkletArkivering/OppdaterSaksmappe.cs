@@ -1,7 +1,7 @@
 ﻿namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
 	public class OppdaterSaksmappe {
 
-		public Saksmappe oppdaterSaksmappe;
+		public SaksmappeForenklet oppdaterSaksmappeForenklet;
 		public string sluttbrukerIdentifikator;
 
 	}

@@ -1,6 +1,6 @@
-﻿﻿using System;
+﻿using System;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding.sok;
+using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
@@ -22,60 +22,48 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var GNR = 43;
             var BNR = 271;
            
-            var arkivmeldingsok = new sok
+            var arkivmeldingsok = new Sok
             {
-                respons = respons_type.saksmappe,
-                meldingId = Guid.NewGuid().ToString(),
-                system = "Fagsystem X",
-                tidspunkt = DateTime.Now,
-                skip = 0,
-                take = 100
+                Respons = Respons.Saksmappe,
+                MeldingId = Guid.NewGuid().ToString(),
+                System = "Fagsystem X",
+                Tidspunkt = DateTime.Now,
+                Skip = 0,
+                Take = 100
             };
             
             // PARAMETER DEFINITIONS START
-            var knrParam = new parameter
+            arkivmeldingsok.Parameter.Add(new Parameter
             {
-                felt = field_type.sakmatrikkelnummerkommunenummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
+                Felt = SokFelt.SakPeriodMatrikkelnummerPeriodKommunenummer,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
                 {
-                    Item = new intvalues
-                    {
-                        value = new[] {KNR}
-                    }
+                    Intvalues = { KNR }
                 }
-            };
+            });
+
+            arkivmeldingsok.Parameter.Add(new Parameter
+            {
+                Felt = SokFelt.SakPeriodMatrikkelnummerPeriodGaardsnummer,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
+                {
+                    Intvalues = { GNR }
+                }
+            });
             
-            var gnrParam = new parameter
+            arkivmeldingsok.Parameter.Add( new Parameter
             {
-                felt = field_type.sakmatrikkelnummergaardsnummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
+                Felt = SokFelt.SakPeriodMatrikkelnummerPeriodBruksnummer,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
                 {
-                    Item = new intvalues
-                    {
-                        value = new[] {GNR}
-                    }
+                    Intvalues = { BNR }
                 }
-            };
-            
-            var bnrParam = new parameter
-            {
-                felt = field_type.sakmatrikkelnummerbruksnummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
-                {
-                    Item = new intvalues
-                    {
-                        value = new[] {BNR}
-                    }
-                }
-            };
+            });
             // PARAMETER DEFINITIONS END 
 
-            // Create new search with the defined parameters 
-            var searchParams = new parameter[] {knrParam, gnrParam, bnrParam};
-            arkivmeldingsok.parameter = searchParams;
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
             
             Assert.Pass();
@@ -98,93 +86,76 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var SNR = 123;
             var FNR = 321;
             
-            var arkivmeldingsok = new sok
+            var arkivmeldingsok = new Sok
             {
-                respons = respons_type.saksmappe,
-                meldingId = Guid.NewGuid().ToString(),
-                system = "Fagsystem X",
-                tidspunkt = DateTime.Now,
-                skip = 0,
-                take = 100
+                Respons = Respons.Saksmappe,
+                MeldingId = Guid.NewGuid().ToString(),
+                System = "Fagsystem X",
+                Tidspunkt = DateTime.Now,
+                Skip = 0,
+                Take = 100
             };
             
             // PARAMETER DEFINITIONS START
             
             // Kommunenummer
-            var knrParam = new parameter
+            arkivmeldingsok.Parameter.Add(new Parameter
             {
-                felt = field_type.sakmatrikkelnummerkommunenummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
+                Felt = SokFelt.SakPeriodMatrikkelnummerPeriodKommunenummer,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
                 {
-                    Item = new intvalues
-                    {
-                        value = new[] {KNR}
-                    }
+                    Intvalues = { KNR }
                 }
-            };
+            });
             
             //Gårdsnummer
-            var gnrParam = new parameter
+            arkivmeldingsok.Parameter.Add(new Parameter
             {
-                felt = field_type.sakmatrikkelnummergaardsnummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
+                Felt = SokFelt.SakPeriodMatrikkelnummerPeriodGaardsnummer,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
                 {
-                    Item = new intvalues
-                    {
-                        value = new[] {GNR}
-                    }
+                    Intvalues = { GNR }
                 }
-            };
+            });
             
             // Bruksnummer
-            var bnrParam = new parameter
+            arkivmeldingsok.Parameter.Add(new Parameter
             {
-                felt = field_type.sakmatrikkelnummerbruksnummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
+                Felt = SokFelt.SakPeriodMatrikkelnummerPeriodBruksnummer,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
                 {
-                    Item = new intvalues
-                    {
-                        value = new[] {BNR}
-                    }
+                    Intvalues = { BNR }
                 }
-            };
+            });
             
             // Seksjonsnummer
-            var snrParam = new parameter
+            arkivmeldingsok.Parameter.Add(new Parameter
             {
-                felt = field_type.sakmatrikkelnummerseksjonsnummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
+                Felt = SokFelt.SakPeriodMatrikkelnummerPeriodSeksjonsnummer,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
                 {
-                    Item = new intvalues
-                    {
-                        value = new[] {SNR}
-                    }
+                    Intvalues = { SNR }
                 }
-            };
+            });
              
             //Festenummer
-            var fnrParam = new parameter
+            arkivmeldingsok.Parameter.Add(new Parameter
             {
-                felt = field_type.sakmatrikkelnummerfestenummer,
-                @operator = operator_type.equal,
-                parameterverdier = new parameterverdier
+                Felt = SokFelt.SakPeriodMatrikkelnummerPeriodFestenummer,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
                 {
-                    Item = new intvalues
-                    {
-                        value = new[] {FNR}
-                    }
+                    Intvalues = { FNR }
                 }
-            };
+            });
              
             // PARAMETER DEFINITIONS END 
             
             // Create new search with the defined parameters 
-            var searchParams = new parameter[] {knrParam, gnrParam, bnrParam, snrParam, fnrParam};
-            arkivmeldingsok.parameter = searchParams;
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
             
             Assert.Pass();

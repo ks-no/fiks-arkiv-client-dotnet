@@ -1,7 +1,7 @@
 ﻿namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
 	public class ArkivmeldingForenkletUtgaaende {
 
-		public Saksmappe referanseSaksmappe;
+		public SaksmappeForenklet referanseSaksmappeForenklet;
 		public UtgaaendeJournalpost nyUtgaaendeJournalpost;
 		public string sluttbrukerIdentifikator;
 

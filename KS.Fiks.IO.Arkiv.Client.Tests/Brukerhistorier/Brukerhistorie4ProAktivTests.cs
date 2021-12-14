@@ -1,7 +1,8 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding.sok;
+using KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur;
+using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
@@ -17,8 +18,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         [Test]
         public void TestNyttDokumentBrukEksisterendeSak()
         {
-            Saksmappe[] saker = FinnSakerMedMatrikkelnummer("21/400");
-            Saksmappe sak = null;
+            SaksmappeForenklet[] saker = FinnSakerMedMatrikkelnummer("21/400");
+            SaksmappeForenklet sak = null;
             //TODO Hva er meningen her?
             //foreach (Saksmappe testSak in saker)
             //{
@@ -35,7 +36,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             Assert.Pass();
         }
        
-        private object OpprettJournalpostMedDokument(Saksmappe saksmappe)
+        private object OpprettJournalpostMedDokument(SaksmappeForenklet saksmappeForenklet)
         {
             //var messageRequest = new MeldingRequest(
             //                         mottakerKontoId: receiverId,
@@ -48,11 +49,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             {
                 sluttbrukerIdentifikator = "ABC",
                 nyUtgaaendeJournalpost = new UtgaaendeJournalpost(),
-                referanseSaksmappe = saksmappe
+                referanseSaksmappeForenklet = saksmappeForenklet
             };
 
             utg.nyUtgaaendeJournalpost.tittel = "Vedtak etter tilsyn";
-            utg.nyUtgaaendeJournalpost.referanseEksternNoekkel = new EksternNoekkel
+            utg.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "Fagsystem X",
                 noekkel = new Guid().ToString()
@@ -66,9 +67,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 }
             };
 
-            utg.nyUtgaaendeJournalpost.mottaker = new List<Korrespondansepart>
+            utg.nyUtgaaendeJournalpost.mottaker = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Mons Mottaker",
                     personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
@@ -105,9 +106,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             return null;
         }
 
-        private Saksmappe OpprettNySak()
+        private SaksmappeForenklet OpprettNySak()
         {
-            var utg = new Saksmappe
+            var utg = new SaksmappeForenklet
             {
                 tittel ="Tilsyn eiendom 21/400"
             };
@@ -120,36 +121,33 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             return null;
         }
 
-        private Saksmappe[] FinnSakerMedMatrikkelnummer(string matrikkelnummer)
+        private SaksmappeForenklet[] FinnSakerMedMatrikkelnummer(string matrikkelnummer)
         {
-            var arkivmeldingsok = new sok
+            var arkivmeldingsok = new Sok
             {
-                respons = respons_type.mappe,
-                meldingId = Guid.NewGuid().ToString(),
-                system = "Fagsystem X",
-                tidspunkt = DateTime.Now,
-                skip = 0,
-                take = 100
+                Respons = Respons.Mappe,
+                MeldingId = Guid.NewGuid().ToString(),
+                System = "Fagsystem X",
+                Tidspunkt = DateTime.Now,
+                Skip = 0,
+                Take = 100
             };
 
-            List<parameter> paramlist = new List<parameter>
-            {
-                new parameter
+            arkivmeldingsok.Parameter.Add(
+            new Parameter
                 {
-                    felt = field_type.mappetittel, // Aba kan dette være rett?
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
+                    Felt = SokFelt.MappePeriodTittel, // Aba kan dette være rett?
+                    Operator = OperatorType.Equal,
+                    Parameterverdier = new Parameterverdier
                     {
-                        Item = new klassifikasjonvalues
+                        Klassifikasjonvalues = new Klassifikasjonvalues
                         {
-                            klassifikasjonssystem = new[] {"GBNR"},
-                            klasse = new[] {matrikkelnummer}
+                            Klassifikasjonssystem = { "GBNR" },
+                            Klasse = { matrikkelnummer }
                         }
                     }
-                }
-            };
-
-            arkivmeldingsok.parameter = paramlist.ToArray();
+                });
+            
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
             
             //TODO returner saker

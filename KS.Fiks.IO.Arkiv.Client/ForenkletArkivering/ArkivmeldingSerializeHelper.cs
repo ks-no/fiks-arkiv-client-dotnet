@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
-using no.ks.fiks.io.arkivmelding;
+using KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding;
 
 namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 {
@@ -15,13 +15,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
             return stringWriter.ToString();
         }
 
-        public static arkivmelding DeSerialize(string arkivmelding)
+        public static Arkivmelding DeSerialize(string arkivmelding)
         {
-            var serializer = new XmlSerializer(typeof(arkivmelding));
-            arkivmelding arkivmeldingDeserialized;
+            var serializer = new XmlSerializer(typeof(Arkivmelding));
+            Arkivmelding arkivmeldingDeserialized;
             using (TextReader reader = new StringReader(arkivmelding))
             {
-                arkivmeldingDeserialized = (arkivmelding) serializer.Deserialize(reader);
+                arkivmeldingDeserialized = (Arkivmelding) serializer.Deserialize(reader);
             }
 
             return arkivmeldingDeserialized;

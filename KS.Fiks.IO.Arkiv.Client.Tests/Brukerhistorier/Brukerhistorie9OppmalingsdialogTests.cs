@@ -1,8 +1,8 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding;
-using no.ks.fiks.io.arkivmelding.sok;
+using KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur;
+using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
@@ -22,8 +22,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var saksaksekvensnummer = 123;
             var jpnavn = "Dokumentasjon 22/3";
 
-            Saksmappe sak = FinnSak(saksaar, saksaksekvensnummer);
-            journalpost jp = FinnJp(saksaar, saksaksekvensnummer,jpnavn);
+            var sak = FinnSak(saksaar, saksaksekvensnummer);
+            var jp = FinnJp(saksaar, saksaksekvensnummer, jpnavn);
 
             if(jp == null)
             {
@@ -44,7 +44,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
           
         }
 
-        private void OpprettJournalpostMedDokument(Saksmappe mappe, string tittel)
+        private void OpprettJournalpostMedDokument(SaksmappeForenklet mappe, string tittel)
         {
             //var messageRequest = new MeldingRequest(
             //                         mottakerKontoId: receiverId,
@@ -59,9 +59,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 nyUtgaaendeJournalpost = new UtgaaendeJournalpost()
             };
 
-            utg.referanseSaksmappe = mappe;
+            utg.referanseSaksmappeForenklet = mappe;
             utg.nyUtgaaendeJournalpost.tittel = tittel;
-            utg.nyUtgaaendeJournalpost.referanseEksternNoekkel = new EksternNoekkel
+            utg.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "Fagsystem X",
                 noekkel = new Guid().ToString()
@@ -75,9 +75,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 }
             };
 
-            utg.nyUtgaaendeJournalpost.mottaker = new List<Korrespondansepart>
+            utg.nyUtgaaendeJournalpost.mottaker = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Mons Mottaker",
                     personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
@@ -112,109 +112,92 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
            //TODO Hva er meningen her? Skal det sendes noe data? Er ikke det en integrasjonstest da?
         }
 
-        public Saksmappe FinnSak(int saksaar, int saksaksekvensnummer)
+        public SaksmappeForenklet FinnSak(int saksaar, int saksaksekvensnummer)
         {
-            var arkivmeldingsok = new sok
+            var arkivmeldingsok = new Sok
             {
-                respons = respons_type.saksmappe,
-                meldingId = Guid.NewGuid().ToString(),
-                system = "Fagsystem X",
-                tidspunkt = DateTime.Now,
-                skip = 0,
-                take = 100
+                Respons = Respons.Saksmappe,
+                MeldingId = Guid.NewGuid().ToString(),
+                System = "Fagsystem X",
+                Tidspunkt = DateTime.Now,
+                Skip = 0,
+                Take = 100
             };
 
-            var paramlist = new List<parameter>
-            {
-                new parameter
+            arkivmeldingsok.Parameter.Add(
+            new Parameter
                 {
-                    felt = field_type.saksaksaar,
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
+                    Felt = SokFelt.SakPeriodSaksaar,
+                    Operator = OperatorType.Equal,
+                    Parameterverdier = new Parameterverdier
                     {
-                        Item = new intvalues
-                        {
-                            value =new[] {saksaar }
-                        }
+                        Intvalues = { saksaar }
                     }
-                },
-                new parameter
+                });
+
+            arkivmeldingsok.Parameter.Add(
+                new Parameter
                 {
-                    felt = field_type.saksaksekvensnummer,
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
+                    Felt = SokFelt.SakPeriodSaksekvensnummer,
+                    Operator = OperatorType.Equal,
+                    Parameterverdier = new Parameterverdier
                     {
-                        Item = new intvalues
-                        {
-                            value =new[] { saksaksekvensnummer }
-                        }
+                        Intvalues = { saksaksekvensnummer }
                     }
-                }
-
-            };
-
-            arkivmeldingsok.parameter = paramlist.ToArray();
+                });
+            
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
-            return new Saksmappe();
+            return new SaksmappeForenklet();
         }
-        
-        public journalpost FinnJp(int saksaar, int saksaksekvensnummer, string journalpostTittel)
+
+        private Journalpost FinnJp(int saksaar, int saksaksekvensnummer, string journalpostTittel)
         {
-            var arkivmeldingsok = new sok
+            var arkivmeldingsok = new Sok
             {
-                respons = respons_type.journalpost,
-                meldingId = Guid.NewGuid().ToString(),
-                system = "Fagsystem X",
-                tidspunkt = DateTime.Now,
-                skip = 0,
-                take = 100
+                Respons = Respons.Journalpost,
+                MeldingId = Guid.NewGuid().ToString(),
+                System = "Fagsystem X",
+                Tidspunkt = DateTime.Now,
+                Skip = 0,
+                Take = 100
             };
 
-            var paramlist = new List<parameter>
-            {
-                new parameter
+            arkivmeldingsok.Parameter.Add(
+                new Parameter
                 {
-                    felt = field_type.saksaksaar,
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
+                    Felt = SokFelt.SakPeriodSaksaar,
+                    Operator = OperatorType.Equal,
+                    Parameterverdier = new Parameterverdier
                     {
-                        Item = new intvalues
-                        {
-                            value =new[] {saksaar }
-                        }
+                        Intvalues = { saksaar }
                     }
-                },
-                new parameter
+                });
+            
+            arkivmeldingsok.Parameter.Add(
+            new Parameter
                 {
-                    felt = field_type.saksaksekvensnummer,
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
+                    Felt = SokFelt.SakPeriodSaksekvensnummer,
+                    Operator = OperatorType.Equal,
+                    Parameterverdier = new Parameterverdier
                     {
-                        Item = new intvalues
-                        {
-                            value =new[] { saksaksekvensnummer }
-                        }
+                        Intvalues = { saksaksekvensnummer }
                     }
-                }
-                ,
-                new parameter
-                {
-                    felt = field_type.registreringtittel,
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
-                    {
-                        Item = new stringvalues
-                        {
-                            value =new[] { journalpostTittel }
-                        }
-                    }
-                }
-            };
+                });
 
-            arkivmeldingsok.parameter = paramlist.ToArray();
+            arkivmeldingsok.Parameter.Add(
+                new Parameter
+                {
+                    Felt = SokFelt.RegistreringPeriodTittel,
+                    Operator = OperatorType.Equal,
+                    Parameterverdier = new Parameterverdier
+                    {
+                        Stringvalues = { journalpostTittel }
+                    }
+                });
+            
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
-            return new journalpost();
+            return new Journalpost();
         }
     }
 }

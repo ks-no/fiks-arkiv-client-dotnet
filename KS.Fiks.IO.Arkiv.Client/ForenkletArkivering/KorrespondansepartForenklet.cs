@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
-	public class Korrespondansepart {
+	public class KorrespondansepartForenklet {
 
 		/// <summary>
 		/// Definisjon: Entydig identifikasjon av arkivenheten innenfor det
@@ -44,7 +44,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
 		/// </summary>
 		public Boolean skjermetKorrespondansepart;
 		public EnkelAdresse postadresse;
-		public Kontaktinformasjon kontaktinformasjon;
+		public KontaktinformasjonForenklet kontaktinformasjonForenklet;
 		public string kontaktperson;
 		/// <summary>
 		/// amRef i n4

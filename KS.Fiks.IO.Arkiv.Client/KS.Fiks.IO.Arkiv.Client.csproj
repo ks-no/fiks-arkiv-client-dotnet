@@ -121,6 +121,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Models\Generated" />
       <Folder Include="Schema\Output" />
     </ItemGroup>
 

@@ -14,7 +14,7 @@
 	/// den aktuelle saken.</font></li>
 	/// </ol>
 	/// </summary>
-	public class EksternNoekkel {
+	public class EksternNoekkelForenklet {
 
 		/// <summary>
 		/// eksternSystem i n4
@@ -22,7 +22,7 @@
 		public string fagsystem;
 		public string noekkel;
 
-		public EksternNoekkel(){
+		public EksternNoekkelForenklet(){
 
 		}
 	}

@@ -1,8 +1,18 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
-using no.ks.fiks.io.arkivmelding;
-using no.ks.fiks.io.arkivmelding.sok;
+using KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding;
+using KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur;
+using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;
+using Dokumentbeskrivelse = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Dokumentbeskrivelse;
+using Dokumentobjekt = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Dokumentobjekt;
+using EksternNoekkel = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.EksternNoekkel;
+using Journalpost = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Journalpost;
+using Korrespondansepart = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Korrespondansepart;
+using Merknad = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Merknad;
+using Part = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Part;
+using Saksmappe = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Saksmappe;
+using Skjerming = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Skjerming;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
@@ -22,31 +32,26 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var saksid = "123";
 
             // Finnes det sak fra før?
-            var finnSak = new no.ks.fiks.io.arkivmelding.sok.sok
+            var finnSak = new Sok
             {
-                respons = respons_type.mappe,
-                meldingId = Guid.NewGuid().ToString(),
-                system = "eByggesak",
-                tidspunkt = DateTime.Now,
-                skip = 0,
-                take = 2
+                Respons = Respons.Mappe,
+                MeldingId = Guid.NewGuid().ToString(),
+                System = "eByggesak",
+                Tidspunkt = DateTime.Now,
+                Skip = 0,
+                Take = 2
             };
 
-            var paramlist = new List<parameter>
+            finnSak.Parameter.Add(
+            new Parameter
                 {
-                    new parameter
+                    Felt = SokFelt.MappePeriodEksternId,
+                    Operator = OperatorType.Equal,
+                    Parameterverdier = new Parameterverdier
                     {
-                        felt = field_type.mappeeksternId,
-                        @operator = operator_type.equal,
-                        parameterverdier = new parameterverdier
-                        {
-                            Item = new stringvalues {value = new[] {ekstsys, saksid}}
-                        }
+                        Stringvalues = { ekstsys, saksid }
                     }
-                };
-
-
-            finnSak.parameter = paramlist.ToArray();
+                });
 
             //TODO Hva er dette?
             //var payload = Arkivintegrasjon.Serialize(finnSak);
@@ -57,58 +62,58 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             // Det fantes ikke sak, lag
             if (systemid == null)
             {
-                var gnr = new klasse
+                var gnr = new Klassifikasjon()
                 {
-                    klasseID = "1234-12/1234",
-                    klassifikasjonssystem = "GNR"
+                    KlasseID = "1234-12/1234",
+                    Klassifikasjonssystem = "GNR"
                 };
                 // TODO: Mange manglende felt vs. GI 1.1
-                var saksmappe = new saksmappe
+                var saksmappe = new Saksmappe
                 {
-                    tittel = "Byggesak 123",
-                    offentligTittel = "Byggesak 123",
-                    administrativEnhet = "Byggesaksavdelingen",
-                    saksansvarlig = "Byggesaksbehandler",
-                    saksdato = new DateTime(),
-                    saksstatus = "B",
-                    dokumentmedium = "elektronisk", // Kode?
-                    journalenhet = "BYG",
+                    Tittel = "Byggesak 123",
+                    OffentligTittel = "Byggesak 123",
+                    AdministrativEnhet = "Byggesaksavdelingen",
+                    Saksansvarlig = "Byggesaksbehandler",
+                    Saksdato = new DateTime(),
+                    Saksstatus = "B",
+                    Dokumentmedium = "elektronisk", // Kode?
+                    Journalenhet = "BYG",
                     // arkivdel = "BYGG", // Mangler og bør være kodeobjekt
-                    referanseArkivdel = new string[] {"BYGG"},  // Dette er ikke tilhører arkivdel, men arkivdeler som er relatert!
+                    ReferanseArkivdel = {"BYGG"},  // Dette er ikke tilhører arkivdel, men arkivdeler som er relatert!
                     // mappetype = new Kode
                     // { kodeverdi = "Saksmappe"}, // Standardiseres? Gitt av spesialiseringen?
-                    klasse = new klasse[] { gnr },
-                    part = new part[]
+                    Klassifikasjon = { gnr },
+                    Part = 
                     {
-                        new part
+                        new Part
                         {
-                            partNavn = "Fr Tiltakshaver"    // navn som for korrespondansepart?
+                            PartNavn = "Fr Tiltakshaver"    // navn som for korrespondansepart?
                         }
                     },
-                    merknad = new merknad[]
+                    Merknad = 
                     {
-                        new merknad
+                        new Merknad
                         {
-                            merknadstype = "BYGG",  // Kode?
-                            merknadstekst = "Saksnummer 20/123 i eByggesak"
+                            Merknadstype = "BYGG",  // Kode?
+                            Merknadstekst = "Saksnummer 20/123 i eByggesak"
                         }
                     },
                     // matrikkelnummer
                     // punkt
                     // bevaringstid
                     // kassasjonsvedtak
-                    skjerming = new skjerming
+                    Skjerming = new Skjerming
                     {
-                        tilgangsrestriksjon = "13", // Settes av server?
-                        skjermingshjemmel = "Ofl § 13, fvl § 123",
-                        skjermingMetadata = new string[] {"tittel"} // Her må det være kodeverk
+                        Tilgangsrestriksjon = "13", // Settes av server?
+                        Skjermingshjemmel = "Ofl § 13, fvl § 123",
+                        SkjermingMetadata = {"tittel"} // Her må det være kodeverk
                     },
                     // prosjekt
                     // tilgangsgruppe
-                    referanseEksternNoekkel = new eksternNoekkel
+                    ReferanseEksternNoekkel = new EksternNoekkel
                     {
-                        fagsystem = ekstsys,
-                        noekkel = saksid
+                        Fagsystem = ekstsys,
+                        Noekkel = saksid
                     }
                 };
                 // payload = Arkivintegrasjon.Serialize(saksmappe);
@@ -120,125 +125,119 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             // Løkke som går gjennom både I, U og X (og S), eksempler her
 
             // Inngående
-            journalpost inn = new journalpost   // Beholde objekttyper for inn-, ut- etc.?
+            var inn = new Journalpost()   // Beholde objekttyper for inn-, ut- etc.?
             {
                 // Saksår
                 // Sakssekvensnummer
                 // referanseForelderMappe = "", // Ligger i xsd...
-                journalposttype = "I",  // Kodeobjekt?
-                journalstatus = "J",    // Kodeobjekt?
-                dokumentetsDato = new DateTime(),
-                journaldato = new DateTime(),
-                forfallsdato = new DateTime(),
-                korrespondansepart = new korrespondansepart[] {
-                    new korrespondansepart
+                Journalposttype = "I",  // Kodeobjekt?
+                Journalstatus = "J",    // Kodeobjekt?
+                DokumentetsDato = new DateTime(),
+                Journaldato = new DateTime(),
+                Forfallsdato = new DateTime(),
+                Korrespondansepart = {
+                    new Korrespondansepart
                     {
-                        korrespondanseparttype = "avsender",    // Kode?
-                        Item = new EnhetsidentifikatorType      // Håpløst feltnavn
-                        {
-                            organisasjonsnummer = "123456789"
-                        },
-                        korrespondansepartNavn = "Testesen",
-                        postadresse = new string[] { "c/o Hei og hå", "Testveien 3" },
-                        postnummer = "1234",
-                        poststed = "Poststed",
+                        Korrespondanseparttype = "avsender",    // Kode?
+                        Organisasjonid = "123456789",
+                        KorrespondansepartNavn = "Testesen",
+                        Postadresse = { "c/o Hei og hå", "Testveien 3" },
+                        Postnummer = "1234",
+                        Poststed = "Poststed",
                     },
-                    new korrespondansepart
+                    new Korrespondansepart
                     {
-                        korrespondanseparttype = "kopimottager",    // Kode?
-                        Item = new FoedselsnummerType
-                        {
-                            foedselsnummer = "12345612345"
-                        },
-                        korrespondansepartNavn = "Advokat NN",  // Hvordan skille person og organisasjon?
-                        postadresse = new string[] { "Krøsusveien 3" },
-                        postnummer = "2345",
-                        poststed = "Poststedet",
+                        Korrespondanseparttype = "kopimottager",    // Kode?
+                        Personid = "12345612345",
+                        KorrespondansepartNavn = "Advokat NN",  // Hvordan skille person og organisasjon?
+                        Postadresse = { "Krøsusveien 3" },
+                        Postnummer = "2345",
+                        Poststed = "Poststedet",
                     },
-                    new korrespondansepart
+                    new Korrespondansepart
                     {
-                        saksbehandler = "SBBYGG",
-                        administrativEnhet = "BYGG"
+                        Saksbehandler = "SBBYGG",
+                        AdministrativEnhet = "BYGG"
                     }
                 },
-                merknad = new merknad[]
+                Merknad = 
                     {
-                        new merknad
+                        new Merknad()
                         {
-                            merknadstype = "BYGG",  // Kode?
-                            merknadstekst = "Journalpostnummer 20/123-5 i eByggesak"
+                            Merknadstype = "BYGG",  // Kode?
+                            Merknadstekst = "Journalpostnummer 20/123-5 i eByggesak"
                         }
                     },
-                referanseEksternNoekkel = new eksternNoekkel
+                ReferanseEksternNoekkel = new EksternNoekkel
                 {
-                    fagsystem = "eByggesak",
-                    noekkel = "20/1234-12"
+                    Fagsystem = "eByggesak",
+                    Noekkel = "20/1234-12"
                 },
-                tittel = "Søknad om rammetillatelse 12/123",
-                offentligTittel = "Søknad om rammetillatelse 12/123",
-                skjerming = new skjerming
+                Tittel = "Søknad om rammetillatelse 12/123",
+                OffentligTittel = "Søknad om rammetillatelse 12/123",
+                Skjerming = new Skjerming
                 {
-                   tilgangsrestriksjon = "13",
-                    skjermingshjemmel = "Off.loven § 13",
-                    skjermingsvarighet = "60"   // Antall år bør ikke være string
+                    Tilgangsrestriksjon = "13",
+                    Skjermingshjemmel = "Off.loven § 13",
+                    Skjermingsvarighet = "60"   // Antall år bør ikke være string
                 },
                 // Dokumenter
-                dokumentbeskrivelse = new dokumentbeskrivelse[]
+                Dokumentbeskrivelse =
                 {
-                    new dokumentbeskrivelse
+                    new Dokumentbeskrivelse
                     {
-                        tilknyttetRegistreringSom = "H",    // Kodeobjekt?
-                        dokumentnummer = "1",   // Tallfelt!
-                        dokumenttype = "SØKNAD",  // Kodeobjekt?
-                        dokumentstatus = "F",    // Kodeobjekt?
-                        tittel = "Søknad om rammetillatelse",
-                        dokumentobjekt = new dokumentobjekt[]
+                        TilknyttetRegistreringSom = "H",    // Kodeobjekt?
+                        Dokumentnummer = "1",   // Tallfelt!
+                        Dokumenttype = "SØKNAD",  // Kodeobjekt?
+                        Dokumentstatus = "F",    // Kodeobjekt?
+                        Tittel = "Søknad om rammetillatelse",
+                        Dokumentobjekt =
                         {
-                            new dokumentobjekt
+                            new Dokumentobjekt
                             {
-                                versjonsnummer = "1",   // Tallfelt!
-                                variantformat = "A",    // Kodefelt?
-                                format = "PDF",     // Arkade ønsker filtypen her...
-                                mimeType = "application/pdf",
-                                referanseDokumentfil = "https://ebyggesak.no/hentFil?id=12345&token=67890"
+                                Versjonsnummer = "1",   // Tallfelt!
+                                Variantformat = "A",    // Kodefelt?
+                                Format = "PDF",     // Arkade ønsker filtypen her...
+                                MimeType = "application/pdf",
+                                ReferanseDokumentfil = "https://ebyggesak.no/hentFil?id=12345&token=67890"
                             }
                         }
                     },
-                    new dokumentbeskrivelse
+                    new Dokumentbeskrivelse
                     {
-                        tilknyttetRegistreringSom = "V",    // Kodeobjekt?
-                        dokumentnummer = "2",   // Tallfelt!
-                        dokumenttype = "KART",  // Kodeobjekt?
-                        dokumentstatus = "F",    // Kodeobjekt?
-                        tittel = "Situasjonskart",
-                        dokumentobjekt = new dokumentobjekt[]
+                        TilknyttetRegistreringSom = "V",    // Kodeobjekt?
+                        Dokumentnummer = "2",   // Tallfelt!
+                        Dokumenttype = "KART",  // Kodeobjekt?
+                        Dokumentstatus = "F",    // Kodeobjekt?
+                        Tittel = "Situasjonskart",
+                        Dokumentobjekt = 
                         {
-                            new dokumentobjekt
+                            new Dokumentobjekt
                             {
-                                versjonsnummer = "1",   // Tallfelt!
-                                variantformat = "A",    // Kodefelt?
-                                format = "PDF",     // Arkade ønsker filtypen her...
-                                mimeType = "application/pdf",
-                                referanseDokumentfil = "https://ebyggesak.no/hentFil?id=12345&token=67890"
+                                Versjonsnummer = "1",   // Tallfelt!
+                                Variantformat = "A",    // Kodefelt?
+                                Format = "PDF",     // Arkade ønsker filtypen her...
+                                MimeType = "application/pdf",
+                                ReferanseDokumentfil = "https://ebyggesak.no/hentFil?id=12345&token=67890"
                             }
                         }
                     },
-                    new dokumentbeskrivelse
+                    new Dokumentbeskrivelse
                     {
-                        tilknyttetRegistreringSom = "V",    // Kodeobjekt?
-                        dokumentnummer = "3",   // Tallfelt!
-                        dokumenttype = "TEGNING",  // Kodeobjekt?
-                        dokumentstatus = "F",    // Kodeobjekt?
-                        tittel = "Fasade",
-                        dokumentobjekt = new dokumentobjekt[]
+                        TilknyttetRegistreringSom = "V",    // Kodeobjekt?
+                        Dokumentnummer = "3",   // Tallfelt!
+                        Dokumenttype = "TEGNING",  // Kodeobjekt?
+                        Dokumentstatus = "F",    // Kodeobjekt?
+                        Tittel = "Fasade",
+                        Dokumentobjekt =
                         {
-                            new dokumentobjekt
+                            new Dokumentobjekt
                             {
-                                versjonsnummer = "1",   // Tallfelt!
-                                variantformat = "A",    // Kodefelt?
-                                format = "PDF",     // Arkade ønsker filtypen her...
-                                mimeType = "application/pdf",
-                                referanseDokumentfil = "https://ebyggesak.no/hentFil?id=12345&token=67890"
+                                Versjonsnummer = "1",   // Tallfelt!
+                                Variantformat = "A",    // Kodefelt?
+                                Format = "PDF",     // Arkade ønsker filtypen her...
+                                MimeType = "application/pdf",
+                                ReferanseDokumentfil = "https://ebyggesak.no/hentFil?id=12345&token=67890"
                             }
                         }
                     }

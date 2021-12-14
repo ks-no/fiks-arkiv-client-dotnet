@@ -43,17 +43,17 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
 		/// M110 offentlighetsvurdertDato
 		/// </summary>
 		public DateTime? offentlighetsvurdertDato;
-		public EksternNoekkel referanseEksternNoekkel;
+		public EksternNoekkelForenklet referanseEksternNoekkelForenklet;
 		public string tittel;
 		public List<ForenkletDokument> vedlegg;
-		public List<Korrespondansepart> mottaker;
-		public List<Korrespondansepart> avsender;
+		public List<KorrespondansepartForenklet> mottaker;
+		public List<KorrespondansepartForenklet> avsender;
 		public List<KorrespondansepartIntern> internAvsender;
 
 		public UtgaaendeJournalpost(){
 			vedlegg = new List<ForenkletDokument>();
-			mottaker = new List<Korrespondansepart>();
-			avsender = new List<Korrespondansepart>();
+			mottaker = new List<KorrespondansepartForenklet>();
+			avsender = new List<KorrespondansepartForenklet>();
 			internAvsender = new List<KorrespondansepartIntern>();
 		}
 	}

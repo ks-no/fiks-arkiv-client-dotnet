@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
-	public class Saksmappe {
+	public class SaksmappeForenklet {
 
 		/// <summary>
 		/// Definisjon: Inngår i M003 mappeID. Viser året saksmappen ble opprettet.
@@ -119,11 +119,11 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
 		/// saU1 i n4
 		/// </summary>
 		public Boolean skjermetTittel;
-		public EksternNoekkel referanseEksternNoekkel;
+		public EksternNoekkelForenklet referanseEksternNoekkelForenklet;
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public List<Klasse> klasse;
+		public List<KlasseForenklet> klasse;
 	}
 }

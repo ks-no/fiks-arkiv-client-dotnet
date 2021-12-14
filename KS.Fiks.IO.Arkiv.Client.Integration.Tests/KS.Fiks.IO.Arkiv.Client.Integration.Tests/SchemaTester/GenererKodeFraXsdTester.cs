@@ -91,7 +91,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
 
             var outputDir = Directory.GetCurrentDirectory() + "/Schema/Output";
 
-            var commonNamespace = "Fiks.Arkiv.v1";
+            var commonNamespace = "KS.Fiks.IO.Arkiv.Client.Models";
 
 
             var generator = new Generator
@@ -107,7 +107,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/arkivmeldingkvittering/v2"), commonNamespace + ".Arkivering.Arkivmeldingkvittering"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/sok/v1"), commonNamespace + ".Innsyn.Sok"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/sokeresultat/v1"), commonNamespace + ".Innsyn.Sok"},
-                    {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/sokeresultat"), commonNamespace + ".Innsyn.Sok"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/arkivstruktur/minimum/v1"), commonNamespace + ".Arkivstruktur"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/arkivstruktur/noekler/v1"), commonNamespace + ".Arkivstruktur"},
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/arkivstruktur"), commonNamespace + ".Arkivstruktur"},

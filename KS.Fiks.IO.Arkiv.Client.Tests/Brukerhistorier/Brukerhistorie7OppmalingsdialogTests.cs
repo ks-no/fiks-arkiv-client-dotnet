@@ -1,7 +1,6 @@
-﻿﻿using System;
-using System.Collections.Generic;
+﻿using System;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding.sok;
+using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
@@ -20,48 +19,38 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var saksaar = 2020;
             var saksaksekvensnummer = 123;
 
-            var arkivmeldingsok = new sok
+            var arkivmeldingsok = new Sok
             {
-                respons = respons_type.dokumentbeskrivelse,
-                meldingId = Guid.NewGuid().ToString(),
-                system = "Fagsystem X",
-                tidspunkt = DateTime.Now,
-                skip = 0,
-                take = 100
+                Respons = Respons.Dokumentbeskrivelse,
+                MeldingId = Guid.NewGuid().ToString(),
+                System = "Fagsystem X",
+                Tidspunkt = DateTime.Now,
+                Skip = 0,
+                Take = 100
             };
 
-            var paramlist = new List<parameter>
-            {
-                new parameter
+            arkivmeldingsok.Parameter.Add(
+            new Parameter
                 {
-                    felt = field_type.saksaksaar,
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
+                    Felt = SokFelt.SakPeriodSaksaar,
+                    Operator = OperatorType.Equal,
+                    Parameterverdier = new Parameterverdier
                     {
-                        Item = new intvalues
-                        {
-                            value =new[] {saksaar }
-                            
-                        }
+                        Intvalues = { saksaar }
                     }
-                },
-                new parameter
+                });
+            
+            arkivmeldingsok.Parameter.Add(
+            new Parameter
                 {
-                    felt = field_type.saksaksekvensnummer,
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
+                    Felt = SokFelt.SakPeriodSaksekvensnummer,
+                    Operator = OperatorType.Equal,
+                    Parameterverdier = new Parameterverdier
                     {
-                        Item = new intvalues
-                        {
-                            value =new[] { saksaksekvensnummer }
-
-                        }
+                        Intvalues = { saksaksekvensnummer }
                     }
-                }
-
-            };
-
-            arkivmeldingsok.parameter = paramlist.ToArray();
+                });
+            
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
             Assert.Pass();
