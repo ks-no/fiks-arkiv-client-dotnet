@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using KS.Fiks.IO.Arkiv.Client.Models;
 using NUnit.Framework;
 using XmlSchemaClassGenerator;
 
@@ -61,7 +62,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
         [Test]
         public void GenerateWithXmlSchemaClassGenerator()
         {
-
             var fileList = new List<string>
             {
                 "metadatakatalog.xsd",
@@ -107,6 +107,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/arkivmeldingkvittering/v2"), commonNamespace + ".Arkivering.Arkivmeldingkvittering"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/sok/v1"), commonNamespace + ".Innsyn.Sok"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/sokeresultat/v1"), commonNamespace + ".Innsyn.Sok"},
+                    {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/sokeresultat"), commonNamespace + ".Innsyn.Sok"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/arkivstruktur/minimum/v1"), commonNamespace + ".Arkivstruktur"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/arkivstruktur/noekler/v1"), commonNamespace + ".Arkivstruktur"},
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/arkivstruktur"), commonNamespace + ".Arkivstruktur"},
