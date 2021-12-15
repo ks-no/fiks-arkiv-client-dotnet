@@ -1,12 +1,12 @@
 ﻿﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using KS.Fiks.IO.Arkiv.Client.Sample;
-using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+ using System.Collections.Generic;
+ using System.Globalization;
+ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+ using KS.Fiks.IO.Arkiv.Client.Sample;
+ using no.ks.fiks.io.arkivmelding.innsyn.sok;
+ using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests
+ namespace KS.Fiks.IO.Arkiv.Client.Tests
 {
     public class SokTests
     {
@@ -29,7 +29,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
         {
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.mappe,
+                respons = respons.mappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -41,8 +41,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             {
                 new parameter
                 {
-                    felt = field_type.mappetittel,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.mappetittel,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new stringvalues {value = new[] {"tittel*"}}
@@ -50,8 +50,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 },
                 new parameter
                 {
-                    felt = field_type.mappeopprettetDato,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.mappeopprettetDato,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new datevalues
@@ -76,7 +76,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
         {
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.journalpost,
+                respons = respons.journalpost,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -88,8 +88,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             {
                 new parameter
                 {
-                    felt = field_type.journalpostjournaldato,
-                    @operator = operator_type.between,
+                    felt = sokFelt.journalpostjournaldato,
+                    @operator = operatorType.between,
                     parameterverdier = new parameterverdier
                     {
                         Item = new datevalues
@@ -118,7 +118,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
         {
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.journalpost,
+                respons = respons.journalpost,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -130,8 +130,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             {
                 new parameter
                 {
-                    felt = field_type.registreringeksternId,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.registreringeksternId,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new eksternId
@@ -154,7 +154,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
         {
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.mappe,
+                respons = respons.mappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -166,8 +166,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             {
                 new parameter
                 {
-                    felt = field_type.mappetittel,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.mappetittel,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new klassifikasjonvalues
@@ -191,7 +191,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
         {
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.mappe,
+                respons = respons.mappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -203,8 +203,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             {
                 new parameter
                 {
-                    felt = field_type.mappevirksomhetsspesifikkeMetadata,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.mappevirksomhetsspesifikkeMetadata,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new vsmetadata

@@ -1,9 +1,9 @@
 ﻿﻿using System;
-using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+ using no.ks.fiks.io.arkivmelding.innsyn.sok;
+ using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
+ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     public class Brukerhistorie13InfolandHentDokumentTests
     {
@@ -24,7 +24,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
            
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.saksmappe,
+                respons = respons.saksmappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -35,8 +35,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             // PARAMETER DEFINITIONS START
             var knrParam = new parameter
             {
-                felt = field_type.sakmatrikkelnummerkommunenummer,
-                @operator = operator_type.equal,
+                felt = sokFelt.sakmatrikkelnummerkommunenummer,
+                @operator = operatorType.equal,
                 parameterverdier = new parameterverdier
                 {
                     Item = new intvalues
@@ -48,8 +48,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             
             var gnrParam = new parameter
             {
-                felt = field_type.sakmatrikkelnummergaardsnummer,
-                @operator = operator_type.equal,
+                felt = sokFelt.sakmatrikkelnummergaardsnummer,
+                @operator = operatorType.equal,
                 parameterverdier = new parameterverdier
                 {
                     Item = new intvalues
@@ -61,8 +61,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             
             var bnrParam = new parameter
             {
-                felt = field_type.sakmatrikkelnummerbruksnummer,
-                @operator = operator_type.equal,
+                felt = sokFelt.sakmatrikkelnummerbruksnummer,
+                @operator = operatorType.equal,
                 parameterverdier = new parameterverdier
                 {
                     Item = new intvalues
@@ -100,7 +100,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.saksmappe,
+                respons = respons.saksmappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -113,8 +113,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             // Kommunenummer
             var knrParam = new parameter
             {
-                felt = field_type.sakmatrikkelnummerkommunenummer,
-                @operator = operator_type.equal,
+                felt = sokFelt.sakmatrikkelnummerkommunenummer,
+                @operator = operatorType.equal,
                 parameterverdier = new parameterverdier
                 {
                     Item = new intvalues
@@ -127,8 +127,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             //Gårdsnummer
             var gnrParam = new parameter
             {
-                felt = field_type.sakmatrikkelnummergaardsnummer,
-                @operator = operator_type.equal,
+                felt = sokFelt.sakmatrikkelnummergaardsnummer,
+                @operator = operatorType.equal,
                 parameterverdier = new parameterverdier
                 {
                     Item = new intvalues
@@ -141,8 +141,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             // Bruksnummer
             var bnrParam = new parameter
             {
-                felt = field_type.sakmatrikkelnummerbruksnummer,
-                @operator = operator_type.equal,
+                felt = sokFelt.sakmatrikkelnummerbruksnummer,
+                @operator = operatorType.equal,
                 parameterverdier = new parameterverdier
                 {
                     Item = new intvalues
@@ -155,8 +155,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             // Seksjonsnummer
             var snrParam = new parameter
             {
-                felt = field_type.sakmatrikkelnummerseksjonsnummer,
-                @operator = operator_type.equal,
+                felt = sokFelt.sakmatrikkelnummerseksjonsnummer,
+                @operator = operatorType.equal,
                 parameterverdier = new parameterverdier
                 {
                     Item = new intvalues
@@ -169,8 +169,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             //Festenummer
             var fnrParam = new parameter
             {
-                felt = field_type.sakmatrikkelnummerfestenummer,
-                @operator = operator_type.equal,
+                felt = sokFelt.sakmatrikkelnummerfestenummer,
+                @operator = operatorType.equal,
                 parameterverdier = new parameterverdier
                 {
                     Item = new intvalues

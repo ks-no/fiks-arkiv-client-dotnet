@@ -1,10 +1,10 @@
 ﻿﻿using System;
-using System.Collections.Generic;
-using no.ks.fiks.io.arkivmelding;
-using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+ using System.Collections.Generic;
+ using no.ks.fiks.io.arkiv;
+ using no.ks.fiks.io.arkivmelding.innsyn.sok;
+ using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
+ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class Brukerhistorie5ArkiverEbyggesakTests
     {
@@ -22,9 +22,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var saksid = "123";
 
             // Finnes det sak fra før?
-            var finnSak = new no.ks.fiks.io.arkivmelding.sok.sok
+            var finnSak = new sok
             {
-                respons = respons_type.mappe,
+                respons = respons.mappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "eByggesak",
                 tidspunkt = DateTime.Now,
@@ -36,8 +36,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 {
                     new parameter
                     {
-                        felt = field_type.mappeeksternId,
-                        @operator = operator_type.equal,
+                        felt = sokFelt.mappeeksternId,
+                        @operator = operatorType.equal,
                         parameterverdier = new parameterverdier
                         {
                             Item = new stringvalues {value = new[] {ekstsys, saksid}}
@@ -57,7 +57,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             // Det fantes ikke sak, lag
             if (systemid == null)
             {
-                var gnr = new klasse
+                var gnr = new klassifikasjon()
                 {
                     klasseID = "1234-12/1234",
                     klassifikasjonssystem = "GNR"
@@ -77,7 +77,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     referanseArkivdel = new string[] {"BYGG"},  // Dette er ikke tilhører arkivdel, men arkivdeler som er relatert!
                     // mappetype = new Kode
                     // { kodeverdi = "Saksmappe"}, // Standardiseres? Gitt av spesialiseringen?
-                    klasse = new klasse[] { gnr },
+                    klassifikasjon = new klassifikasjon[] { gnr },
                     part = new part[]
                     {
                         new part
@@ -134,10 +134,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     new korrespondansepart
                     {
                         korrespondanseparttype = "avsender",    // Kode?
-                        Item = new EnhetsidentifikatorType      // Håpløst feltnavn
-                        {
-                            organisasjonsnummer = "123456789"
-                        },
+                        Item = "123456789",
                         korrespondansepartNavn = "Testesen",
                         postadresse = new string[] { "c/o Hei og hå", "Testveien 3" },
                         postnummer = "1234",
@@ -146,10 +143,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     new korrespondansepart
                     {
                         korrespondanseparttype = "kopimottager",    // Kode?
-                        Item = new FoedselsnummerType
-                        {
-                            foedselsnummer = "12345612345"
-                        },
+                        Item =  "12345612345",
                         korrespondansepartNavn = "Advokat NN",  // Hvordan skille person og organisasjon?
                         postadresse = new string[] { "Krøsusveien 3" },
                         postnummer = "2345",

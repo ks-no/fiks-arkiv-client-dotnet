@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using no.ks.fiks.io.arkivmelding;
+using no.ks.fiks.io.arkiv;
 
 namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 {
@@ -230,26 +230,15 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 forsendelsesmaate = mottaker.forsendelsemåte
             };
 
-            if (mottaker.enhetsidentifikator?.organisasjonsnummer != null) {
-                part.Item = new EnhetsidentifikatorType()
-                    {
-                        organisasjonsnummer = mottaker.enhetsidentifikator.organisasjonsnummer
-                    };
+            if (mottaker.enhetsidentifikator?.organisasjonsnummer != null)
+            {
+                part.Item = mottaker.enhetsidentifikator.organisasjonsnummer;
             }
             
             if (mottaker.personid?.personidentifikatorNr != null) {
                 if (mottaker.personid?.personidentifikatorType == "F")
                 {
-                    part.Item = new FoedselsnummerType()
-                    {
-                        foedselsnummer = mottaker.personid?.personidentifikatorNr
-                    };
-                }
-                else {
-                    part.Item = new DNummerType()
-                    {
-                        DNummer = mottaker.personid?.personidentifikatorNr
-                    };
+                    part.Item = mottaker.personid?.personidentifikatorNr;
                 }
             }
 
@@ -578,7 +567,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
         private static saksmappe ConvertSaksmappe(Saksmappe input)
         {
-            saksmappe mappe = new saksmappe
+            var mappe = new saksmappe
             {
                 saksansvarlig = input.saksansvarlig,
                 administrativEnhet = input.administrativEnhet,
@@ -597,18 +586,20 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
             if (input.klasse != null)
             {
-                List<klasse> klasser = new List<klasse>(); 
+                var klasser = new List<klassifikasjon>(); 
                 foreach (var kl in input.klasse)
                 {
-                    klasser.Add(new klasse() { klassifikasjonssystem = kl.klassifikasjonssystem, klasseID = kl.klasseID, tittel = kl.tittel });
+                    klasser.Add(new klassifikasjon() { klassifikasjonssystem = kl.klassifikasjonssystem, klasseID = kl.klasseID, tittel = kl.tittel });
                 }
-                mappe.klasse = klasser.ToArray();
+                mappe.klassifikasjon = klasser.ToArray();
             }
             if (input.referanseEksternNoekkel != null)
             {
-                mappe.referanseEksternNoekkel = new eksternNoekkel();
-                mappe.referanseEksternNoekkel.fagsystem = input.referanseEksternNoekkel.fagsystem;
-                mappe.referanseEksternNoekkel.noekkel = input.referanseEksternNoekkel.noekkel;
+                mappe.referanseEksternNoekkel = new eksternNoekkel
+                {
+                    fagsystem = input.referanseEksternNoekkel.fagsystem,
+                    noekkel = input.referanseEksternNoekkel.noekkel
+                };
             }
 
             return mappe;

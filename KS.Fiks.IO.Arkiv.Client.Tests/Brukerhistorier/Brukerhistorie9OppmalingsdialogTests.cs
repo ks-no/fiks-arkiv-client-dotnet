@@ -1,11 +1,11 @@
 ﻿﻿using System;
-using System.Collections.Generic;
-using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding;
-using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+ using System.Collections.Generic;
+ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+ using no.ks.fiks.io.arkiv;
+ using no.ks.fiks.io.arkivmelding.innsyn.sok;
+ using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
+ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class Brukerhistorie9OppmalingsdialogTests
     {
@@ -116,7 +116,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         {
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.saksmappe,
+                respons = respons.saksmappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -128,8 +128,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             {
                 new parameter
                 {
-                    felt = field_type.saksaksaar,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.saksaksaar,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new intvalues
@@ -140,8 +140,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 },
                 new parameter
                 {
-                    felt = field_type.saksaksekvensnummer,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.saksaksekvensnummer,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new intvalues
@@ -163,7 +163,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         {
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.journalpost,
+                respons = respons.journalpost,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -175,8 +175,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             {
                 new parameter
                 {
-                    felt = field_type.saksaksaar,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.saksaksaar,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new intvalues
@@ -187,8 +187,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 },
                 new parameter
                 {
-                    felt = field_type.saksaksekvensnummer,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.saksaksekvensnummer,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new intvalues
@@ -200,8 +200,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 ,
                 new parameter
                 {
-                    felt = field_type.registreringtittel,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.registreringtittel,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new stringvalues

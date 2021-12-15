@@ -1,10 +1,10 @@
 ﻿﻿using System;
-using System.Collections.Generic;
-using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+ using System.Collections.Generic;
+ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+ using no.ks.fiks.io.arkivmelding.innsyn.sok;
+ using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
+ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class Brukerhistorie4ProAktivTests
     {
@@ -124,7 +124,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         {
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.mappe,
+                respons = respons.mappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -136,8 +136,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             {
                 new parameter
                 {
-                    felt = field_type.mappetittel, // Aba kan dette være rett?
-                    @operator = operator_type.equal,
+                    felt = sokFelt.mappetittel, // Aba kan dette være rett?
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new klassifikasjonvalues

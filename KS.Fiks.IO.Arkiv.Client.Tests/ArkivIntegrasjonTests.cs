@@ -1,11 +1,11 @@
 ﻿﻿using System;
-using System.Collections.Generic;
-using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using KS.Fiks.IO.Arkiv.Client.Sample;
-using no.ks.fiks.io.arkivmelding;
-using NUnit.Framework;
+ using System.Collections.Generic;
+ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+ using KS.Fiks.IO.Arkiv.Client.Sample;
+ using no.ks.fiks.io.arkiv;
+ using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests
+ namespace KS.Fiks.IO.Arkiv.Client.Tests
 {
     public class ArkivintegrasjonTests
     {

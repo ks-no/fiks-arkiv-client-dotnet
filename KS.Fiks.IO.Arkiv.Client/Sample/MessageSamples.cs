@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding.sok;
+using no.ks.fiks.io.arkivmelding.innsyn.sok;
 
 namespace KS.Fiks.IO.Arkiv.Client.Sample
 {
@@ -130,7 +130,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
         {
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.mappe,
+                respons = respons.mappe,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -142,8 +142,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
             {
                 new parameter
                 {
-                    felt = field_type.mappetittel,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.mappetittel,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new stringvalues {value = new[] {tittel}}

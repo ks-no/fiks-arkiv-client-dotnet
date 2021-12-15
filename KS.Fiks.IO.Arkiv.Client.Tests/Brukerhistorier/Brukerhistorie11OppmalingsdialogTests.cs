@@ -1,10 +1,10 @@
 ﻿﻿using System;
-using System.Collections.Generic;
-using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+ using System.Collections.Generic;
+ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+ using no.ks.fiks.io.arkivmelding.innsyn.sok;
+ using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
+ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class UnitTestBrukerhistorie11Oppmalingsdialog
     {
@@ -21,7 +21,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
           
             var arkivmeldingsok = new sok
             {
-                respons = respons_type.dokumentbeskrivelse,
+                respons = respons.dokumentbeskrivelse,
                 meldingId = Guid.NewGuid().ToString(),
                 system = "Fagsystem X",
                 tidspunkt = DateTime.Now,
@@ -34,8 +34,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             {
                 new parameter
                 {
-                    felt = field_type.dokumenteksternId,
-                    @operator = operator_type.equal,
+                    felt = sokFelt.dokumentbeskrivelseeksternId,
+                    @operator = operatorType.equal,
                     parameterverdier = new parameterverdier
                     {
                         Item = new eksternId
