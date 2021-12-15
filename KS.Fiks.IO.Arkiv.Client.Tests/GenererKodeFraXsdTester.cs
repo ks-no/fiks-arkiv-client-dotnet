@@ -8,10 +8,10 @@ using XmlSchemaClassGenerator;
 namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
 {
     [TestFixture]
-    public class GenererKodeFraXsdTester
+    public class GenerateWithXsdExe
     {
         [Test]
-        //[Ignore("Kjøres manuelt ved behov da den ikke kan kjøres på Jenkins")]
+        [Ignore("Kjøres manuelt ved behov da den ikke kan kjøres på Jenkins")]
         [TestCase("arkivmelding.xsd metadatakatalog.xsd /c /n:no.ks.fiks.arkiv.v1.arkivering.arkivmelding")]
         [TestCase("arkivmeldingKvittering.xsd metadatakatalog.xsd /c /n:no.ks.fiks.arkiv.v1.arkivering.arkivmelding.kvittering")]
         [TestCase("sok.xsd /c /n:no.ks.fiks.arkiv.v1.innsyn.sok")]
@@ -26,7 +26,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
         public void Generer_fra_xsd(string arguments)
         {
             //TODO Denne testen klarer ikke å bli kjørt på Jenkins. Mest sannsynlig fordi xsd.exe ikke er tilgjengelig som kommando. 
-            //TODO Løsning:  Bygg en docker som har xsd.exe og kjører testen i docker. 
             var workingDir = Directory.GetCurrentDirectory() + "/Schema";
             var process = new Process
             {
@@ -64,7 +63,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
         [Test]
         public void GenerateWithXmlSchemaClassGenerator()
         {
-
             var fileList = new List<string>
             {
                 "metadatakatalog.xsd",
@@ -94,8 +92,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
 
             var outputDir = Directory.GetCurrentDirectory() + "/Schema/Output";
 
-            var commonNamespace = "Fiks.Arkiv.v1";
-
+            var commonNamespace = "KS.Fiks.IO.Arkiv.Client.Models";
 
             var generator = new Generator
             {
