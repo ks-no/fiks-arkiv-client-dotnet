@@ -93,7 +93,6 @@ namespace no.ks.fiks.io.arkiv.innsyn.mappe.hent.resultat {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.arkivverket.no/standarder/noark5/mappe/hent/resultat/v2", IsNullable=false)]
     public partial class mappe {
         
         private systemID systemIDField;
@@ -3525,6 +3524,28 @@ namespace no.ks.fiks.io.arkiv.innsyn.mappe.hent.resultat {
             }
             set {
                 this.punktField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "0.0.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.arkivverket.no/standarder/noark5/mappe/hent/resultat/v2")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.arkivverket.no/standarder/noark5/mappe/hent/resultat/v2", IsNullable=false)]
+    public partial class mappeHentResultat {
+        
+        private mappe mappeField;
+        
+        /// <remarks/>
+        public mappe mappe {
+            get {
+                return this.mappeField;
+            }
+            set {
+                this.mappeField = value;
             }
         }
     }

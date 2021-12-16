@@ -10,7 +10,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
     {
         
         [Test]
-        //[Ignore("Kjøres manuelt ved behov da den ikke kan kjøres på Jenkins")]
+        [Ignore("Kjøres manuelt ved behov da den ikke kan kjøres på Jenkins")]
         [TestCase("sok.xsd /c /n:no.ks.fiks.io.arkivmelding.sok")]
         [TestCase("arkivmelding.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.arkivmelding")]
         [TestCase("arkivmeldingKvittering.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.arkivmelding.kvittering")]
