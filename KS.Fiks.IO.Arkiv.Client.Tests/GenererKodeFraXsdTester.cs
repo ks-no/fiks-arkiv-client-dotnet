@@ -22,7 +22,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
         [TestCase("journalpostHentResultat.xsd metadatakatalog.xsd arkivmelding.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.journalpost.hent.resultat")]
         [TestCase("mappeHent.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.mappe.hent")]
         [TestCase("mappeHentResultat.xsd metadatakatalog.xsd arkivmelding.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.mappe.hent.resultat")]
-        [TestCase("arkivmelding.xsd arkivmeldingKvittering.xsd dokumentfilHent.xsd journalpostHent.xsd journalpostHentResultat.xsd mappeHent.xsd mappeHentResultat.xsd metadatakatalog.xsd sokeresultatMinimum.xsd arkivstrukturMinimum.xsd sokeresultatNoekler.xsd arkivstrukturNoekler.xsd sokeresultatUtvidet.xsd /c /n:no.ks.fiks.io.arkiv")]
         public void Generer_fra_xsd(string arguments)
         {
             //TODO Denne testen klarer ikke å bli kjørt på Jenkins. Mest sannsynlig fordi xsd.exe ikke er tilgjengelig som kommando. 
