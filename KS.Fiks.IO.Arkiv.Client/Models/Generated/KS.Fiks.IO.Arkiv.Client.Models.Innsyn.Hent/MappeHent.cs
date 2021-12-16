@@ -34,11 +34,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Hent
         public EksternNoekkel ReferanseEksternNoekkel { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private Respons_Type _responsType = KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Hent.Respons_Type.Minimum;
+        private ResponsType _responsType = KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Hent.ResponsType.Minimum;
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("responsType")]
-        public Respons_Type ResponsType
+        public ResponsType ResponsType
         {
             get
             {

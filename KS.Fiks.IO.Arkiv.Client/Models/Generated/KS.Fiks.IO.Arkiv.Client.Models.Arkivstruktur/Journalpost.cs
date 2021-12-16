@@ -16,6 +16,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute("journalpost", Namespace="http://www.arkivverket.no/standarder/noark5/arkivstruktur")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute("journalpost", Namespace="http://www.arkivverket.no/standarder/noark5/arkivstruktur")]
     public partial class Journalpost : Registrering
     {
         

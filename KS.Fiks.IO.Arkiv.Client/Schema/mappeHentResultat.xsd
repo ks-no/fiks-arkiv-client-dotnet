@@ -7,6 +7,12 @@
 	<xs:import namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2"
 		   schemaLocation="./arkivmelding.xsd"/>
 
-	<xs:element name="mappe" type="arkivmelding:mappe"/>
+	<xs:element name="mappeHentResultat" type="mappeHentResultat"/>
+
+	<xs:complexType name="mappeHentResultat">
+		<xs:sequence>
+			<xs:element name="mappe" type="arkivmelding:mappe"/>
+		</xs:sequence>
+	</xs:complexType>
 	
 </xs:schema>

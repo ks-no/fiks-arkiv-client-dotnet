@@ -16,7 +16,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute("journalpost", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlRootAttribute("journalpost", Namespace="http://www.arkivverket.no/standarder/noark5/journalpost/hent/resultat/v2")]
+    [System.Xml.Serialization.XmlRootAttribute("journalpost", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2")]
     public partial class Journalpost : Registrering
     {
         

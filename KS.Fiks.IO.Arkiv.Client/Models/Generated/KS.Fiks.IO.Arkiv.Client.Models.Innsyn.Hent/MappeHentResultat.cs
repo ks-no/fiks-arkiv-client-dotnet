@@ -14,18 +14,14 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Hent
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.629.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("respons_type", Namespace="http://www.arkivverket.no/standarder/noark5/mappe/hent/v2")]
-    [System.Xml.Serialization.XmlRootAttribute("respons_type", Namespace="http://www.arkivverket.no/standarder/noark5/mappe/hent/v2")]
-    public enum Respons_Type
+    [System.Xml.Serialization.XmlTypeAttribute("mappeHentResultat", Namespace="http://www.arkivverket.no/standarder/noark5/mappe/hent/resultat/v2")]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute("mappeHentResultat", Namespace="http://www.arkivverket.no/standarder/noark5/mappe/hent/resultat/v2")]
+    public partial class MappeHentResultat
     {
         
-        [System.Xml.Serialization.XmlEnumAttribute("noekler")]
-        Noekler,
-        
-        [System.Xml.Serialization.XmlEnumAttribute("minimum")]
-        Minimum,
-        
-        [System.Xml.Serialization.XmlEnumAttribute("utvidet")]
-        Utvidet,
+        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
+        [System.Xml.Serialization.XmlElementAttribute("mappe")]
+        public KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Mappe Mappe { get; set; }
     }
 }

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using NUnit.Framework;
 using XmlSchemaClassGenerator;
 
-namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
+namespace KS.Fiks.IO.Arkiv.Client.Tests
 {
     [TestFixture]
-    public class GenerateWithXsdExe
+    public class GenerateClasses
     {
         [Test]
         public void GenerateWithXmlSchemaClassGenerator()
@@ -64,6 +63,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/journalpost/hent/v2"), commonNamespace + ".Innsyn.Hent"},
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/journalpost/hent/resultat/v2"), commonNamespace + ".Innsyn.Hent"},
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/mappe/hent/v2"), commonNamespace + ".Innsyn.Hent"},
+                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/mappe/hent/resultat/v2"), commonNamespace + ".Innsyn.Hent"},
                 }
             };
             generator.Generate(fileList);
