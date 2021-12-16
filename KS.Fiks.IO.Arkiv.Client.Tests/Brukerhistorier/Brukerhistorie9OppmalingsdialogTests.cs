@@ -1,11 +1,11 @@
-﻿﻿using System;
- using System.Collections.Generic;
- using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
- using no.ks.fiks.io.arkiv;
- using no.ks.fiks.io.arkivmelding.innsyn.sok;
- using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+using no.ks.fiks.io.arkiv.arkivering.arkivmelding;
+using no.ks.fiks.io.arkiv.innsyn.sok;
+using NUnit.Framework;
 
- namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
+namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class Brukerhistorie9OppmalingsdialogTests
     {

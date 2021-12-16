@@ -10,8 +10,18 @@ namespace KS.Fiks.IO.Arkiv.Client.Integration.Tests.SchemaTester
     {
         
         [Test]
-        [Ignore("Kjøres manuelt ved behov da den ikke kan kjøres på Jenkins")]
+        //[Ignore("Kjøres manuelt ved behov da den ikke kan kjøres på Jenkins")]
         [TestCase("sok.xsd /c /n:no.ks.fiks.io.arkivmelding.sok")]
+        [TestCase("arkivmelding.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.arkivmelding")]
+        [TestCase("arkivmeldingKvittering.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.arkivmelding.kvittering")]
+        [TestCase("sokeresultatMinimum.xsd arkivstrukturMinimum.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.sok.resultat.minimum")]
+        [TestCase("sokeresultatNoekler.xsd arkivstrukturNoekler.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.sok.resultat.noekler")]
+        [TestCase("sokeresultatUtvidet.xsd arkivmelding.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.sok.resultat.utvidet")]
+        [TestCase("dokumentfilHent.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.dokumentfil.hent")]
+        [TestCase("journalpostHent.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.journalpost.hent")]
+        [TestCase("journalpostHentResultat.xsd metadatakatalog.xsd arkivmelding.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.journalpost.hent.resultat")]
+        [TestCase("mappeHent.xsd metadatakatalog.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.mappe.hent")]
+        [TestCase("mappeHentResultat.xsd metadatakatalog.xsd arkivmelding.xsd /c /n:no.ks.fiks.io.arkiv.innsyn.mappe.hent.resultat")]
         [TestCase("arkivmelding.xsd arkivmeldingKvittering.xsd dokumentfilHent.xsd journalpostHent.xsd journalpostHentResultat.xsd mappeHent.xsd mappeHentResultat.xsd metadatakatalog.xsd sokeresultatMinimum.xsd arkivstrukturMinimum.xsd sokeresultatNoekler.xsd arkivstrukturNoekler.xsd sokeresultatUtvidet.xsd /c /n:no.ks.fiks.io.arkiv")]
         public void Generer_fra_xsd(string arguments)
         {

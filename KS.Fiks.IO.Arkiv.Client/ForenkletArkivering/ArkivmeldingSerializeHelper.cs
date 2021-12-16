@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
-using no.ks.fiks.io.arkiv;
+using no.ks.fiks.io.arkiv.arkivering.arkivmelding;
 
 namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 {

@@ -4,6 +4,7 @@
            targetNamespace="http://www.ks.no/standarder/fiks/arkiv/sok/v1" elementFormDefault="qualified">
 
     <xs:element name="sok" type="sok"/>
+    
     <xs:complexType name="sok">
         <xs:sequence>
             <xs:element name="system" type="xs:string"/>

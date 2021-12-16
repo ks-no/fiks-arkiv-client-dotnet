@@ -30,7 +30,7 @@
 			<xs:element name="opprettetAv" type="n5mdk:opprettetAv" minOccurs="0"/>
 			<xs:element name="avsluttetDato" type="n5mdk:avsluttetDato" minOccurs="0"/>
 			<xs:element name="avsluttetAv" type="n5mdk:avsluttetAv" minOccurs="0"/>
-			<xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="referanseEksternNoekkel" type="eksternNoekkelKvittering" minOccurs="0" maxOccurs="1"/>
 			<xs:choice>
 				<xs:element name="mappeKvittering" type="mappeKvittering" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="registreringKvittering" type="registreringKvittering" minOccurs="0" maxOccurs="unbounded"/>
@@ -59,7 +59,7 @@
 			<xs:element name="arkivertAv" type="n5mdk:arkivertAv" minOccurs="0"/>
 			<xs:element name="dokumentbeskrivelseKvittering" type="dokumentbeskrivelseKvittering" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="registreringsID" type="n5mdk:registreringsID" minOccurs="0"/>
-			<xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="referanseEksternNoekkel" type="eksternNoekkelKvittering" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -86,11 +86,11 @@
 			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
 			<xs:element name="opprettetDato" type="n5mdk:opprettetDato" minOccurs="0"/>
 			<xs:element name="opprettetAv" type="n5mdk:opprettetAv" minOccurs="0"/>
-			<xs:element name="dokumentobjekt" type="dokumentobjekt" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="dokumentobjekt" type="dokumentobjektKvittering" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="dokumentobjekt">
+	<xs:complexType name="dokumentobjektKvittering">
 		<xs:sequence>
 			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
 			<xs:element name="opprettetDato" type="n5mdk:opprettetDato" minOccurs="0"/>
@@ -98,7 +98,7 @@
 		</xs:sequence>
 	</xs:complexType>
 	
-	<xs:complexType name="eksternNoekkel">
+	<xs:complexType name="eksternNoekkelKvittering">
 		<xs:sequence>
 			<xs:element name="fagsystem" type = "n5mdk:fagsystem"/>
 			<xs:element name="noekkel" type = "n5mdk:noekkel"/>
