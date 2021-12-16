@@ -35,14 +35,14 @@ namespace no.ks.fiks.io.arkiv.innsyn.journalpost.hent {
         
         private string registreringsIDField;
         
-        private respons_type responsTypeField;
+        private responsType responsTypeField;
         
         private inkluder inkluderField;
         
         private bool inkluderFieldSpecified;
         
         public journalpostHent() {
-            this.responsTypeField = respons_type.minimum;
+            this.responsTypeField = responsType.minimum;
         }
         
         /// <remarks/>
@@ -109,7 +109,7 @@ namespace no.ks.fiks.io.arkiv.innsyn.journalpost.hent {
         }
         
         /// <remarks/>
-        public respons_type responsType {
+        public responsType responsType {
             get {
                 return this.responsTypeField;
             }
@@ -212,7 +212,7 @@ namespace no.ks.fiks.io.arkiv.innsyn.journalpost.hent {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "0.0.0.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.arkivverket.no/standarder/noark5/journalpost/hent/v2")]
-    public enum respons_type {
+    public enum responsType {
         
         /// <remarks/>
         noekler,
