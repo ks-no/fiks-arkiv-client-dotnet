@@ -99,17 +99,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             //Konverterer til arkivmelding xml
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(utg);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
-
-            ////Lager FIKS IO melding
-            //List<IPayload> payloads = new List<IPayload>();
-            //payloads.Add(new StringPayload(payload, "utgaaendejournalpost.xml"));
-            //payloads.Add(new FilePayload(@"samples\vedtak.pdf"));
-            //payloads.Add(new FilePayload(@"samples\vedlegg.pdf"));
-
-            ////Sender til FIKS IO (arkiv løsning)
-            //var msg = client.Send(messageRequest, payloads).Result;
-
-           //TODO Hva er meningen her? Skal det sendes noe data? Er ikke det en integrasjonstest da?
+            if (!Validator.IsValidArkivmeldingXml(payload))
+            {
+                Assert.Fail("Validation errors");
+            }
         }
 
         public SaksmappeForenklet FinnSak(int saksaar, int saksaksekvensnummer)
@@ -147,6 +140,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 });
             
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
+            
+            if (!Validator.IsValidSokXml(payload))
+            {
+                Assert.Fail("Validation errors");
+            }
 
             return new SaksmappeForenklet();
         }
@@ -197,6 +195,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 });
             
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
+            
+            if (!Validator.IsValidSokXml(payload))
+            {
+                Assert.Fail("Validation errors");
+            }
+
             return new Journalpost();
         }
     }

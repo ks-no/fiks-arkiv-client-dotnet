@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding;
+using KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog;
 
 namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 {
@@ -121,10 +122,10 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     var dokbesk = new Dokumentbeskrivelse
                     {
+                        SystemID = new SystemID() {item.systemID,
                         Dokumentstatus = "F",
                         TilknyttetRegistreringSom = "V",
                         Tittel = item.tittel
-                        
                     };
 
                     var dok = new Dokumentobjekt
@@ -526,7 +527,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
             return arkivmld;
         }
 
-        private static Saksmappe ConvertSaksmappe(SaksmappeForenklet input)
+        public static Saksmappe ConvertSaksmappe(SaksmappeForenklet input)
         {
             var mappe = new Saksmappe
             {

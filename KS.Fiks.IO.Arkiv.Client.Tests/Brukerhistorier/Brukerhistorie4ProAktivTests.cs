@@ -18,7 +18,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         [Test]
         public void TestNyttDokumentBrukEksisterendeSak()
         {
-            SaksmappeForenklet[] saker = FinnSakerMedMatrikkelnummer("21/400");
+            var saker = FinnSakerMedMatrikkelnummer("21/400");
             SaksmappeForenklet sak = null;
             //TODO Hva er meningen her?
             //foreach (Saksmappe testSak in saker)
@@ -32,7 +32,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             }
 
             var jp = OpprettJournalpostMedDokument(sak);
-
+            
             Assert.Pass();
         }
        
@@ -91,17 +91,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             //Konverterer til arkivmelding xml
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(utg);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
-
-            ////Lager FIKS IO melding
-            //List<IPayload> payloads = new List<IPayload>();
-            //payloads.Add(new StringPayload(payload, "utgaaendejournalpost.xml"));
-            //payloads.Add(new FilePayload(@"samples\vedtak.pdf"));
-            //payloads.Add(new FilePayload(@"samples\vedlegg.pdf"));
-
-            ////Sender til FIKS IO (arkiv løsning)
-            //var msg = client.Send(messageRequest, payloads).Result;
             
-            //TODO Dette gir ingen mening. Hvorfor return null? Er dette egentlig en integrasjonstest gitt det som er utkommentert over?
+            if (!Validator.IsValidArkivmeldingXml(payload))
+            {
+                Assert.Fail("Validation errors");
+            }
+            
+            Assert.Pass();
 
             return null;
         }
@@ -113,12 +109,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 tittel ="Tilsyn eiendom 21/400"
             };
 
-            //Konverterer til arkivmelding xml
-            //var arkivmelding = Arkivintegrasjon.ConvertSaksmappe(utg);
-            //string payload = Arkivintegrasjon.Serialize(arkivmelding);
-
-            //TODO returner saken som ble opprettet
-            return null;
+            return utg;
         }
 
         private SaksmappeForenklet[] FinnSakerMedMatrikkelnummer(string matrikkelnummer)

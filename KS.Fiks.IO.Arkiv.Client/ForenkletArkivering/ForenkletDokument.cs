@@ -30,6 +30,8 @@
 		public string tittel;
 		public bool skjermetDokument;
 
+		public string systemID;
+
 		public ForenkletDokument(){
 
 		}

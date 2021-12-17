@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Xml;
+using System.Xml.Schema;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;
@@ -9,7 +12,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
     {
         // Skal sjekke om det finnes en sak med angitt saksår og saksseksvensnummer i akrivet
         [Test]
-        public void SjekkSakMedSaksnummerFinnes()
+        public void SjekkSakMedSaksnummerFinnesGirValidXml()
         {
             var saksaar = 2020;
             var saksaksekvensnummer = 123;
@@ -48,6 +51,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
+            if (!Validator.IsValidSokXml(payload))
+            {
+                Assert.Fail("Validation errors");
+            }
+            
             Assert.Pass();
         }
     }

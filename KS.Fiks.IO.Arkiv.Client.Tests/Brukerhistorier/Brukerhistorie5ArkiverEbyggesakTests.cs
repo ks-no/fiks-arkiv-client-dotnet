@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding;
-using KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur;
 using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;
-using Dokumentbeskrivelse = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Dokumentbeskrivelse;
-using Dokumentobjekt = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Dokumentobjekt;
-using EksternNoekkel = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.EksternNoekkel;
-using Journalpost = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Journalpost;
-using Korrespondansepart = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Korrespondansepart;
-using Merknad = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Merknad;
-using Part = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Part;
-using Saksmappe = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Saksmappe;
-using Skjerming = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Skjerming;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
+    //TODO Denne testen er totalt ubrukelig!! Hva skal den bevise? 
     class Brukerhistorie5ArkiverEbyggesakTests
     {
         [SetUp]
@@ -53,12 +44,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     }
                 });
 
-            //TODO Hva er dette?
-            //var payload = Arkivintegrasjon.Serialize(finnSak);
+            var payload = ArkivmeldingSerializeHelper.Serialize(finnSak);
+            Assert.IsTrue(Validator.IsValidSokXml(payload));
 
             // Check if there was a case
             string systemid = null;
 
+            //TODO Hva i alle dager er egentlig meningen her? Den vil jo alltid være null?
             // Det fantes ikke sak, lag
             if (systemid == null)
             {
