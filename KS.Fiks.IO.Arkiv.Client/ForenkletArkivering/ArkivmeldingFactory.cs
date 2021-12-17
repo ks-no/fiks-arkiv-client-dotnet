@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using no.ks.fiks.io.arkivmelding;
+using System.Linq;
+using KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding;
 
 namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 {
@@ -12,441 +12,411 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
         const string InternavsenderKode = "IA";
         const string InternmottakerKode = "IM";
 
-        public static arkivmelding GetArkivmelding(OppdaterSaksmappe input)
+        public static Arkivmelding GetArkivmelding(OppdaterSaksmappe input)
         {
-            if (input.oppdaterSaksmappe == null)
+            if (input.oppdaterSaksmappeForenklet == null)
             {
                 throw new Exception("Badrequest - saksmappe må være angitt");    
             }
             
-            var arkivmld = new arkivmelding();
+            var arkivmld = new Arkivmelding();
             var antFiler = 0;
-            var mappeliste = new List<saksmappe> { ConvertSaksmappe(input.oppdaterSaksmappe) };
+            //var mappeliste = new List<Saksmappe> { ConvertSaksmappe(input.oppdaterSaksmappe) };
             
-            arkivmld.Items = mappeliste.ToArray();
+            arkivmld.Mappe.Add(ConvertSaksmappe(input.oppdaterSaksmappeForenklet));
 
-            arkivmld.antallFiler = antFiler;
-            arkivmld.system = input.oppdaterSaksmappe.referanseEksternNoekkel?.fagsystem;
-            arkivmld.meldingId = input.oppdaterSaksmappe.referanseEksternNoekkel?.noekkel;
-            arkivmld.tidspunkt = DateTime.Now;
+            arkivmld.AntallFiler = antFiler;
+            arkivmld.System = input.oppdaterSaksmappeForenklet.referanseEksternNoekkelForenklet?.fagsystem;
+            arkivmld.MeldingId = input.oppdaterSaksmappeForenklet.referanseEksternNoekkelForenklet?.noekkel;
+            arkivmld.Tidspunkt = DateTime.Now;
 
             return arkivmld;
         }
-        public static arkivmelding GetArkivmelding(ArkivmeldingForenkletUtgaaende input) {
+        public static Arkivmelding GetArkivmelding(ArkivmeldingForenkletUtgaaende input) {
 
             if (input.nyUtgaaendeJournalpost == null)
             {
                 throw new Exception("Badrequest - journalpost må være angitt");
             }
 
-            var arkivmld = new arkivmelding();
+            var arkivmld = new Arkivmelding();
             var antFiler = 0;
-            saksmappe mappe = null;
-            if (input.referanseSaksmappe != null)
+            Saksmappe saksmappe = null;
+            if (input.referanseSaksmappeForenklet != null)
             {
-                mappe = ConvertSaksmappe(input.referanseSaksmappe);
-
+                saksmappe = ConvertSaksmappe(input.referanseSaksmappeForenklet);
             }
            
             if (input.nyUtgaaendeJournalpost != null) {
-                var journalpst = new journalpost
+                var journalpost = new Journalpost()
                 {
-                    tittel = input.nyUtgaaendeJournalpost.tittel,
-                    journalposttype = "U"
+                    Tittel = input.nyUtgaaendeJournalpost.tittel,
+                    Journalposttype = "U"
                 };
 
                 if (input.nyUtgaaendeJournalpost.journalaar > 0)
-                    journalpst.journalaar = input.nyUtgaaendeJournalpost.journalaar.ToString();
+                    journalpost.Journalaar = input.nyUtgaaendeJournalpost.journalaar.ToString();
                 if (input.nyUtgaaendeJournalpost.journalsekvensnummer > 0)
-                    journalpst.journalsekvensnummer = input.nyUtgaaendeJournalpost.journalsekvensnummer.ToString();
+                    journalpost.Journalsekvensnummer = input.nyUtgaaendeJournalpost.journalsekvensnummer.ToString();
                 if (input.nyUtgaaendeJournalpost.journalpostnummer > 0) 
-                    journalpst.journalpostnummer = input.nyUtgaaendeJournalpost.journalpostnummer.ToString();
+                    journalpost.Journalpostnummer = input.nyUtgaaendeJournalpost.journalpostnummer.ToString();
 
                 if (input.nyUtgaaendeJournalpost.sendtDato.HasValue) {
-                    journalpst.sendtDato = input.nyUtgaaendeJournalpost.sendtDato.Value;
-                    journalpst.sendtDatoSpecified = true;
+                    journalpost.SendtDato = input.nyUtgaaendeJournalpost.sendtDato.Value;
+                    journalpost.SendtDatoSpecified = true;
                 }
                 if (input.nyUtgaaendeJournalpost.dokumentetsDato != null)
                 {
-                    journalpst.dokumentetsDato = input.nyUtgaaendeJournalpost.dokumentetsDato.Value;
-                    journalpst.dokumentetsDatoSpecified = true;
+                    journalpost.DokumentetsDato = input.nyUtgaaendeJournalpost.dokumentetsDato.Value;
+                    journalpost.DokumentetsDatoSpecified = true;
                 }
                 if (input.nyUtgaaendeJournalpost.offentlighetsvurdertDato != null)
                 {
-                    journalpst.offentlighetsvurdertDato = input.nyUtgaaendeJournalpost.offentlighetsvurdertDato.Value;
-                    journalpst.offentlighetsvurdertDatoSpecified = true;
+                    journalpost.OffentlighetsvurdertDato = input.nyUtgaaendeJournalpost.offentlighetsvurdertDato.Value;
+                    journalpost.OffentlighetsvurdertDatoSpecified = true;
                 }
                 
-                journalpst.opprettetAv = input.sluttbrukerIdentifikator;
-                journalpst.arkivertAv = input.sluttbrukerIdentifikator; //TODO ?????
+                journalpost.OpprettetAv = input.sluttbrukerIdentifikator;
+                journalpost.ArkivertAv = input.sluttbrukerIdentifikator; //TODO ?????
                 
                 // Skjerming
                 if (input.nyUtgaaendeJournalpost.skjermetTittel)
                 {
-                    journalpst.skjerming = new skjerming()
+                    journalpost.Skjerming = new Skjerming()
                     {
-                        skjermingshjemmel = Skjermingshjemmel,
-                        skjermingMetadata = new List<string> { "tittel", "korrespondansepart" }.ToArray()
+                        Skjermingshjemmel = Skjermingshjemmel,
+                        SkjermingMetadata = { "tittel", "korrespondansepart" }
                     };
                 }
 
                 // Håndtere alle filer
-                List<dokumentbeskrivelse> dokbliste = new List<dokumentbeskrivelse>();
-
                 if (input.nyUtgaaendeJournalpost.hoveddokument != null)
                 {
-                    var dokbesk = new dokumentbeskrivelse
+                    var dokumentbeskrivelse = new Dokumentbeskrivelse
                     {
-                        dokumentstatus = "F",
-                        tilknyttetRegistreringSom = "H",
-                        tittel = input.nyUtgaaendeJournalpost.hoveddokument.tittel
+                        Dokumentstatus = "F",
+                        TilknyttetRegistreringSom = "H",
+                        Tittel = input.nyUtgaaendeJournalpost.hoveddokument.tittel
                     };
 
                     if (input.nyUtgaaendeJournalpost.hoveddokument.skjermetDokument) {
-                        dokbesk.skjerming = new skjerming()
+                        dokumentbeskrivelse.Skjerming = new Skjerming()
                         {
-                            skjermingshjemmel = Skjermingshjemmel,
-                            skjermingDokument = "Hele"
+                            Skjermingshjemmel = Skjermingshjemmel,
+                            SkjermingDokument = "Hele"
                         };
                     }
                     
-                    var dok = new dokumentobjekt
+                    var dok = new Dokumentobjekt
                     {
-                        referanseDokumentfil = input.nyUtgaaendeJournalpost.hoveddokument.filnavn
+                        ReferanseDokumentfil = input.nyUtgaaendeJournalpost.hoveddokument.filnavn
                     };
-                    List<dokumentobjekt> dokliste = new List<dokumentobjekt>
-                    {
-                        dok
-                    };
+                    
+                    dokumentbeskrivelse.Dokumentobjekt.Add(dok);
 
-                    dokbesk.dokumentobjekt = dokliste.ToArray();
-
-                    dokbliste.Add(dokbesk);
+                    journalpost.Dokumentbeskrivelse.Add(dokumentbeskrivelse);
                     antFiler++;
                 }
                 foreach (var item in input.nyUtgaaendeJournalpost.vedlegg)
                 {
-                    var dokbesk = new dokumentbeskrivelse
+                    var dokbesk = new Dokumentbeskrivelse
                     {
-                        dokumentstatus = "F",
-                        tilknyttetRegistreringSom = "V",
-                        tittel = item.tittel
+                        Dokumentstatus = "F",
+                        TilknyttetRegistreringSom = "V",
+                        Tittel = item.tittel
                         
                     };
 
-                    var dok = new dokumentobjekt
+                    var dok = new Dokumentobjekt
                     {
-                        referanseDokumentfil = item.filnavn
+                        ReferanseDokumentfil = item.filnavn
                     };
-                    List<dokumentobjekt> dokliste = new List<dokumentobjekt>
-                    {
-                        dok
-                    };
+                    
+                    dokbesk.Dokumentobjekt.Add(dok);
 
-                    dokbesk.dokumentobjekt = dokliste.ToArray();
-
-                    dokbliste.Add(dokbesk);
+                    journalpost.Dokumentbeskrivelse.Add(dokbesk);
                     antFiler++;
 
                 }
-                journalpst.dokumentbeskrivelse = dokbliste.ToArray();
-
+                
                 // Korrespondanseparter
-                List<korrespondansepart> partsListe = new List<korrespondansepart>();
-
                 foreach (var mottaker in input.nyUtgaaendeJournalpost.mottaker)
                 {
-                    korrespondansepart korrpart = KorrespondansepartToArkivPart(MottakerKode, mottaker);
-                    partsListe.Add(korrpart);
+                    var korrespondansepart = KorrespondansepartToArkivPart(MottakerKode, mottaker);
+                    journalpost.Korrespondansepart.Add(korrespondansepart);
                 }
 
                 foreach (var avsender in input.nyUtgaaendeJournalpost.avsender)
                 {
-                    korrespondansepart korrpart = KorrespondansepartToArkivPart(AvsenderKode, avsender);
-                    partsListe.Add(korrpart);
+                    var korrpart = KorrespondansepartToArkivPart(AvsenderKode, avsender);
+                    journalpost.Korrespondansepart.Add(korrpart);
                 }
                 
                 foreach (var internAvsender in input.nyUtgaaendeJournalpost.internAvsender)
                 {
-                    korrespondansepart korrpart = InternKorrespondansepartToArkivPart(InternavsenderKode, internAvsender);
-                    partsListe.Add(korrpart);
+                    var korrpart = InternKorrespondansepartToArkivPart(InternavsenderKode, internAvsender);
+                    journalpost.Korrespondansepart.Add(korrpart);
                 }
 
-                journalpst.korrespondansepart = partsListe.ToArray();
-
-                if (input.nyUtgaaendeJournalpost.referanseEksternNoekkel != null)
+                if (input.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet != null)
                 {
-                    journalpst.referanseEksternNoekkel = new eksternNoekkel();
-                    journalpst.referanseEksternNoekkel.fagsystem = input.nyUtgaaendeJournalpost.referanseEksternNoekkel.fagsystem;
-                    journalpst.referanseEksternNoekkel.noekkel = input.nyUtgaaendeJournalpost.referanseEksternNoekkel.noekkel;
+                    journalpost.ReferanseEksternNoekkel = new EksternNoekkel
+                    {
+                        Fagsystem = input.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet.fagsystem,
+                        Noekkel = input.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet.noekkel
+                    };
                 }
 
-                List<journalpost> jliste = new List<journalpost>
+                // Arkivmelding -> Saksmappe -> Journalpost
+                if (saksmappe != null)
                 {
-                    journalpst
-                };
-
-                if (mappe != null)
-                {
-                    var mappeliste = new List<saksmappe>();
-                    mappe.Items = jliste.ToArray();
-                    mappeliste.Add(mappe);
-                    arkivmld.Items = mappeliste.ToArray();
-                }
-                else {
-                    arkivmld.Items = jliste.ToArray();
+                    saksmappe.Registrering.Add(journalpost);
+                    arkivmld.Mappe.Add(saksmappe);
+                } else {
+                    arkivmld.Registrering.Add(journalpost);
                 }
             }
             
-            arkivmld.antallFiler = antFiler;
-            arkivmld.system = input.nyUtgaaendeJournalpost.referanseEksternNoekkel?.fagsystem;
-            arkivmld.meldingId = input.nyUtgaaendeJournalpost.referanseEksternNoekkel?.noekkel;
-            arkivmld.tidspunkt = DateTime.Now;
+            arkivmld.AntallFiler = antFiler;
+            arkivmld.System = input.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet?.fagsystem;
+            arkivmld.MeldingId = input.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet?.noekkel;
+            arkivmld.Tidspunkt = DateTime.Now;
 
             return arkivmld;
         }
 
-        private static korrespondansepart KorrespondansepartToArkivPart(string partRolle, Korrespondansepart mottaker)
+        private static Korrespondansepart KorrespondansepartToArkivPart(string partRolle, KorrespondansepartForenklet mottaker)
         {
-            var part= new korrespondansepart
+            var korrespondansepart = new Korrespondansepart()
             {
-                korrespondansepartNavn = mottaker.navn,
-                korrespondanseparttype = partRolle,
-                postadresse = (new List<string>() {
+                KorrespondansepartNavn = mottaker.navn,
+                Korrespondanseparttype = partRolle,
+                Postadresse =  {
                     mottaker.postadresse?.adresselinje1,
                     mottaker.postadresse?.adresselinje2,
                     mottaker.postadresse?.adresselinje3
-                }).ToArray(),
-                land = mottaker.postadresse?.landkode,
-                postnummer = mottaker.postadresse?.postnr,
-                poststed = mottaker.postadresse?.poststed,
-                kontaktperson = mottaker.kontaktperson,
-                epostadresse = mottaker.kontaktinformasjon?.epostadresse,
-                telefonnummer = (new List<string>() {
-                    mottaker.kontaktinformasjon?.mobiltelefon,
-                    mottaker.kontaktinformasjon?.telefon
-                }).ToArray(),
-                deresReferanse = mottaker.deresReferanse,
-                forsendelsesmaate = mottaker.forsendelsemåte
+                },
+                Land = mottaker.postadresse?.landkode,
+                Postnummer = mottaker.postadresse?.postnr,
+                Poststed = mottaker.postadresse?.poststed,
+                Kontaktperson = mottaker.kontaktperson,
+                Epostadresse = mottaker.kontaktinformasjonForenklet?.epostadresse,
+                Telefonnummer = {
+                    mottaker.kontaktinformasjonForenklet?.mobiltelefon,
+                    mottaker.kontaktinformasjonForenklet?.telefon
+                },
+                DeresReferanse = mottaker.deresReferanse,
+                Forsendelsesmaate = mottaker.forsendelsemåte
             };
 
-            if (mottaker.enhetsidentifikator?.organisasjonsnummer != null) {
-                part.Item = new EnhetsidentifikatorType()
+            if (mottaker.enhetsidentifikator?.organisasjonsnummer != null)
+            {
+                korrespondansepart.Organisasjonid = mottaker.enhetsidentifikator.organisasjonsnummer; 
+                /*new Enhetsidentifikator()
                     {
-                        organisasjonsnummer = mottaker.enhetsidentifikator.organisasjonsnummer
-                    };
+                        Organisasjonsnummer = mottaker.enhetsidentifikator.organisasjonsnummer
+                    };*/
             }
             
             if (mottaker.personid?.personidentifikatorNr != null) {
-                if (mottaker.personid?.personidentifikatorType == "F")
+                korrespondansepart.Personid = mottaker.personid?.personidentifikatorNr;
+                /*if (mottaker.personid?.personidentifikatorType == "F")
                 {
-                    part.Item = new FoedselsnummerType()
+                    korrespondansepart.Personid = mottaker.personid?.personidentifikatorNr;
+                    
+                    korrespondansepart.Item = new FoedselsnummerType() //TODO Hvor kom denne fra egentlig?
                     {
                         foedselsnummer = mottaker.personid?.personidentifikatorNr
                     };
                 }
-                else {
-                    part.Item = new DNummerType()
-                    {
-                        DNummer = mottaker.personid?.personidentifikatorNr
-                    };
-                }
+                else
+                {
+
+                    korrespondansepart.Personid = mottaker.personid?.personidentifikatorNr;
+                    new DNummerType() //TODO Hvor kom denne fra egentlig?
+                { 
+                    DNummer = mottaker.personid?.personidentifikatorNr
+                };*/
             }
 
-            return part;
+            return korrespondansepart;
         }
         
-        private static korrespondansepart InternKorrespondansepartToArkivPart(string internKode, KorrespondansepartIntern intern)
+        private static Korrespondansepart InternKorrespondansepartToArkivPart(string internKode, KorrespondansepartIntern intern)
         {
-            return  new korrespondansepart
+            return new Korrespondansepart
             {
-                korrespondansepartNavn = intern.saksbehandler ?? intern.administrativEnhet,
-                korrespondanseparttype = internKode,
-                administrativEnhet = intern.administrativEnhet,
-                saksbehandler = intern.saksbehandler
+                KorrespondansepartNavn = intern.saksbehandler ?? intern.administrativEnhet,
+                Korrespondanseparttype = internKode,
+                AdministrativEnhet = intern.administrativEnhet,
+                Saksbehandler = intern.saksbehandler
             };
         }
 
-        public static arkivmelding GetArkivmelding(ArkivmeldingForenkletInnkommende input)
+        public static Arkivmelding GetArkivmelding(ArkivmeldingForenkletInnkommende input)
         {
             if (input.nyInnkommendeJournalpost == null) throw new Exception("Badrequest - journalpost må være angitt");
 
-            var arkivmld = new arkivmelding();
-            int antFiler = 0;
-            saksmappe mappe = null;
+            var arkivmld = new Arkivmelding();
+            var antFiler = 0;
+            Saksmappe mappe = null;
 
-            if (input.referanseSaksmappe != null)
+            if (input.referanseSaksmappeForenklet != null)
             {
-                mappe = ConvertSaksmappe(input.referanseSaksmappe);
+                mappe = ConvertSaksmappe(input.referanseSaksmappeForenklet);
             }
 
             if (input.nyInnkommendeJournalpost != null)
             {
-                var journalpst = new journalpost();
-                journalpst.tittel = input.nyInnkommendeJournalpost.tittel;
+                var journalpost = new Journalpost();
+                journalpost.Tittel = input.nyInnkommendeJournalpost.tittel;
 
-                journalpst.journalposttype = "I";
+                journalpost.Journalposttype = "I";
                 if (input.nyInnkommendeJournalpost.mottattDato != null)
                 {
-                    journalpst.mottattDato = input.nyInnkommendeJournalpost.mottattDato.Value;
-                    journalpst.mottattDatoSpecified = true;
+                    journalpost.MottattDato = input.nyInnkommendeJournalpost.mottattDato.Value;
+                    journalpost.MottattDatoSpecified = true;
                 }
                 if (input.nyInnkommendeJournalpost.dokumentetsDato != null)
                 {
-                    journalpst.dokumentetsDato = input.nyInnkommendeJournalpost.dokumentetsDato.Value;
-                    journalpst.dokumentetsDatoSpecified = true;
+                    journalpost.DokumentetsDato = input.nyInnkommendeJournalpost.dokumentetsDato.Value;
+                    journalpost.DokumentetsDatoSpecified = true;
                 }
                 if (input.nyInnkommendeJournalpost.offentlighetsvurdertDato != null)
                 {
-                    journalpst.offentlighetsvurdertDato = input.nyInnkommendeJournalpost.offentlighetsvurdertDato.Value;
-                    journalpst.offentlighetsvurdertDatoSpecified = true;
+                    journalpost.OffentlighetsvurdertDato = input.nyInnkommendeJournalpost.offentlighetsvurdertDato.Value;
+                    journalpost.OffentlighetsvurdertDatoSpecified = true;
                 }
 
-                journalpst.offentligTittel = input.nyInnkommendeJournalpost.offentligTittel;
-                journalpst.opprettetAv = input.sluttbrukerIdentifikator;
-                journalpst.arkivertAv = input.sluttbrukerIdentifikator; //TODO ?????
+                journalpost.OffentligTittel = input.nyInnkommendeJournalpost.offentligTittel;
+                journalpost.OpprettetAv = input.sluttbrukerIdentifikator;
+                journalpost.ArkivertAv = input.sluttbrukerIdentifikator; //TODO ?????
                 
                 // Skjerming
                 if (input.nyInnkommendeJournalpost.skjermetTittel)
                 {
-                    journalpst.skjerming = new skjerming()
+                    journalpost.Skjerming = new Skjerming()
                     {
-                        skjermingshjemmel = input.nyInnkommendeJournalpost.skjerming?.skjermingshjemmel,
-                        skjermingMetadata = new List<string> { "tittel", "korrespondansepart" }.ToArray()
+                        Skjermingshjemmel = input.nyInnkommendeJournalpost.skjermingForenklet?.skjermingshjemmel,
+                        SkjermingMetadata = { "tittel", "korrespondansepart" }
                     };
                 }
                 
                 // Håndtere alle filer
-                List<dokumentbeskrivelse> dokbliste = new List<dokumentbeskrivelse>();
-                
                 if (input.nyInnkommendeJournalpost.hoveddokument != null)
                 {
-                    var dokbesk = new dokumentbeskrivelse
+                    var dokbesk = new Dokumentbeskrivelse()
                     {
-                        dokumentstatus = "F",
-                        tilknyttetRegistreringSom = "H",
-                        tittel = input.nyInnkommendeJournalpost.hoveddokument.tittel
+                        Dokumentstatus = "F",
+                        TilknyttetRegistreringSom = "H",
+                        Tittel = input.nyInnkommendeJournalpost.hoveddokument.tittel
                     };
                     
                     if (input.nyInnkommendeJournalpost.hoveddokument.skjermetDokument)
                     {
-                        dokbesk.skjerming = new skjerming()
+                        dokbesk.Skjerming = new Skjerming()
                         {
-                            skjermingshjemmel = input.nyInnkommendeJournalpost.skjerming?.skjermingshjemmel,
-                            skjermingDokument = "Hele"
+                            Skjermingshjemmel = input.nyInnkommendeJournalpost.skjermingForenklet?.skjermingshjemmel,
+                            SkjermingDokument = "Hele"
                         };
                     }
-                    var dok = new dokumentobjekt
+                    var dok = new Dokumentobjekt()
                     {
-                        referanseDokumentfil = input.nyInnkommendeJournalpost.hoveddokument.filnavn
+                        ReferanseDokumentfil = input.nyInnkommendeJournalpost.hoveddokument.filnavn
                     };
-                    List<dokumentobjekt> dokliste = new List<dokumentobjekt>();
-                    dokliste.Add(dok);
 
-                    dokbesk.dokumentobjekt = dokliste.ToArray();
-                    
-                    dokbliste.Add(dokbesk);
+                    dokbesk.Dokumentobjekt.Add(dok);
+                    journalpost.Dokumentbeskrivelse.Add(dokbesk);
                     antFiler++;
                 }
                 foreach (var item in input.nyInnkommendeJournalpost.vedlegg)
                 {
-                    var dokbesk = new dokumentbeskrivelse();
-                    dokbesk.dokumentstatus = "F";
-                    dokbesk.tilknyttetRegistreringSom = "V";
-                    dokbesk.tittel = item.tittel;
+                    var dokbesk = new Dokumentbeskrivelse();
+                    dokbesk.Dokumentstatus = "F";
+                    dokbesk.TilknyttetRegistreringSom = "V";
+                    dokbesk.Tittel = item.tittel;
 
-                    var dok = new dokumentobjekt();
-                    dok.referanseDokumentfil = item.filnavn;
-                    List<dokumentobjekt> dokliste = new List<dokumentobjekt>();
-                    dokliste.Add(dok);
-
-                    dokbesk.dokumentobjekt = dokliste.ToArray();
+                    var dok = new Dokumentobjekt();
+                    dok.ReferanseDokumentfil = item.filnavn;
                     
-                    dokbliste.Add(dokbesk);
+                    dokbesk.Dokumentobjekt.Add(dok);
+                    journalpost.Dokumentbeskrivelse.Add(dokbesk);
                     antFiler++;
-
                 }
-                journalpst.dokumentbeskrivelse = dokbliste.ToArray();
 
                 //Korrespondanseparter
-                List<korrespondansepart> partsListe = new List<korrespondansepart>();
 
-                foreach (var mottaker in input.nyInnkommendeJournalpost.mottaker)
+                //Mottakere
+                foreach (var korrpart in input.nyInnkommendeJournalpost.mottaker.Select(mottaker => KorrespondansepartToArkivPart(MottakerKode, mottaker)))
                 {
-                    korrespondansepart korrpart = KorrespondansepartToArkivPart(MottakerKode, mottaker);
-                    partsListe.Add(korrpart);
+                    journalpost.Korrespondansepart.Add(korrpart);
                 }
 
-                foreach (var avsender in input.nyInnkommendeJournalpost.avsender)
+                //Avsendere
+                foreach (var korrpart in input.nyInnkommendeJournalpost.avsender.Select(avsender => KorrespondansepartToArkivPart(AvsenderKode, avsender)))
                 {
-                    korrespondansepart korrpart = KorrespondansepartToArkivPart(AvsenderKode, avsender);
-                    partsListe.Add(korrpart);
+                    journalpost.Korrespondansepart.Add(korrpart);
                 }
 
+                //Intern mottakere
                 foreach (var internMottaker in input.nyInnkommendeJournalpost.internMottaker)
                 {
-                    korrespondansepart korrpart = InternKorrespondansepartToArkivPart(InternmottakerKode, internMottaker);
-                    partsListe.Add(korrpart);
+                    var korrpart = InternKorrespondansepartToArkivPart(InternmottakerKode, internMottaker);
+                    journalpost.Korrespondansepart.Add(korrpart);
                 }
 
-                journalpst.korrespondansepart = partsListe.ToArray();
-
-                if (input.nyInnkommendeJournalpost.referanseEksternNoekkel != null)
+                if (input.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet != null)
                 {
-                    journalpst.referanseEksternNoekkel = new eksternNoekkel();
-                    journalpst.referanseEksternNoekkel.fagsystem = input.nyInnkommendeJournalpost.referanseEksternNoekkel.fagsystem;
-                    journalpst.referanseEksternNoekkel.noekkel = input.nyInnkommendeJournalpost.referanseEksternNoekkel.noekkel;
+                    journalpost.ReferanseEksternNoekkel = new EksternNoekkel
+                    {
+                        Fagsystem = input.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet.fagsystem,
+                        Noekkel = input.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet.noekkel
+                    };
                 }
-
-                List<journalpost> jliste = new List<journalpost>
-                {
-                    journalpst
-                };
-
+              
+                // Arkivmelding -> Mappe -> Journalpost
                 if (mappe != null)
                 {
-                    var mappeliste = new List<saksmappe>();
-                    mappe.Items = jliste.ToArray();
-                    mappeliste.Add(mappe);
-                    arkivmld.Items = mappeliste.ToArray();
+                    mappe.Registrering.Add(journalpost); 
+                    arkivmld.Mappe.Add(mappe);
                 }
-                else
+                else // Arkivmelding -> Journalpost
                 {
-                    arkivmld.Items = jliste.ToArray();
+                    arkivmld.Registrering.Add(journalpost); 
                 }
 
             }
-            arkivmld.antallFiler = antFiler;
-            arkivmld.system = input.nyInnkommendeJournalpost.referanseEksternNoekkel.fagsystem;
-            arkivmld.meldingId = input.nyInnkommendeJournalpost.referanseEksternNoekkel.noekkel;
-            arkivmld.tidspunkt = DateTime.Now;
+            arkivmld.AntallFiler = antFiler;
+            arkivmld.System = input.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet.fagsystem;
+            arkivmld.MeldingId = input.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet.noekkel;
+            arkivmld.Tidspunkt = DateTime.Now;
 
             return arkivmld;
         }
 
-        public static arkivmelding GetArkivmelding(ArkivmeldingForenkletNotat input)
+        public static Arkivmelding GetArkivmelding(ArkivmeldingForenkletNotat input)
         {
-            if (input.nyttNotat == null) throw new Exception("Badrequest -notat må være angitt");
+            if (input.nyttNotat == null) throw new Exception("Badrequest - notat må være angitt");
 
-            var arkivmld = new arkivmelding();
-            int antFiler = 0;
-            saksmappe mappe = null;
+            var arkivmld = new Arkivmelding();
+            var antFiler = 0;
+            Saksmappe mappe = null;
 
-            if (input.referanseSaksmappe != null)
+            if (input.referanseSaksmappeForenklet != null)
             {
-                mappe = ConvertSaksmappe(input.referanseSaksmappe);
+                mappe = ConvertSaksmappe(input.referanseSaksmappeForenklet);
 
             }
 
             if (input.nyttNotat != null)
             {
-                var journalpst = new journalpost();
-                journalpst.tittel = input.nyttNotat.tittel;
+                var journalpost = new Journalpost();
+                journalpost.Tittel = input.nyttNotat.tittel;
 
-                journalpst.opprettetAv = input.sluttbrukerIdentifikator;
-                journalpst.arkivertAv = input.sluttbrukerIdentifikator; //TODO ?????
+                journalpost.OpprettetAv = input.sluttbrukerIdentifikator;
+                journalpost.ArkivertAv = input.sluttbrukerIdentifikator; //TODO ?????
 
-                journalpst.journalposttype = "N";
+                journalpost.Journalposttype = "N";
                 //if (input.nyttNotat.mottattDato != null)
                 //{
                 //    journalpst.mottattDato = input.nyttNotat.mottattDato.Value;
@@ -454,8 +424,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 //}
                 if (input.nyttNotat.dokumentetsDato != null)
                 {
-                    journalpst.dokumentetsDato = input.nyttNotat.dokumentetsDato.Value;
-                    journalpst.dokumentetsDatoSpecified = true;
+                    journalpost.DokumentetsDato = input.nyttNotat.dokumentetsDato.Value;
+                    journalpost.DokumentetsDatoSpecified = true;
                 }
                 //if (input.nyttNotat.offentlighetsvurdertDato != null)
                 //{
@@ -475,140 +445,120 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 //    };
                 //}
                 //Håndtere alle filer
-                List<dokumentbeskrivelse> dokbliste = new List<dokumentbeskrivelse>();
-
                 if (input.nyttNotat.hoveddokument != null)
                 {
-                    var dokbesk = new dokumentbeskrivelse
+                    var dokumentbeskrivelse = new Dokumentbeskrivelse
                     {
-                        dokumentstatus = "F",
-                        tilknyttetRegistreringSom = "H",
-                        tittel = input.nyttNotat.hoveddokument.tittel
+                        Dokumentstatus = "F",
+                        TilknyttetRegistreringSom = "H",
+                        Tittel = input.nyttNotat.hoveddokument.tittel
                     };
 
                     if (input.nyttNotat.hoveddokument.skjermetDokument)
                     {
-                        dokbesk.skjerming = new skjerming()
+                        dokumentbeskrivelse.Skjerming = new Skjerming()
                         {
                             //skjermingshjemmel = input.nyttNotat.skjerming?.skjermingshjemmel,
-                            skjermingDokument = "Hele"
+                            SkjermingDokument = "Hele"
                         };
                     }
-                    var dok = new dokumentobjekt
+                    var dokumentobjekt = new Dokumentobjekt
                     {
-                        referanseDokumentfil = input.nyttNotat.hoveddokument.filnavn
+                        ReferanseDokumentfil = input.nyttNotat.hoveddokument.filnavn
                     };
-                    List<dokumentobjekt> dokliste = new List<dokumentobjekt>();
-                    dokliste.Add(dok);
-
-                    dokbesk.dokumentobjekt = dokliste.ToArray();
-
-                    dokbliste.Add(dokbesk);
+                  
+                    dokumentbeskrivelse.Dokumentobjekt.Add(dokumentobjekt);
+                    journalpost.Dokumentbeskrivelse.Add(dokumentbeskrivelse);
                     antFiler++;
                 }
                 foreach (var item in input.nyttNotat.vedlegg)
                 {
-                    var dokbesk = new dokumentbeskrivelse();
-                    dokbesk.dokumentstatus = "F";
-                    dokbesk.tilknyttetRegistreringSom = "V";
-                    dokbesk.tittel = item.tittel;
+                    var dokumentbeskrivelse = new Dokumentbeskrivelse();
+                    dokumentbeskrivelse.Dokumentstatus = "F";
+                    dokumentbeskrivelse.TilknyttetRegistreringSom = "V";
+                    dokumentbeskrivelse.Tittel = item.tittel;
 
-                    var dok = new dokumentobjekt();
-                    dok.referanseDokumentfil = item.filnavn;
-                    List<dokumentobjekt> dokliste = new List<dokumentobjekt>();
-                    dokliste.Add(dok);
+                    var dokumentobjekt = new Dokumentobjekt();
+                    dokumentobjekt.ReferanseDokumentfil = item.filnavn;
+                    dokumentbeskrivelse.Dokumentobjekt.Add(dokumentobjekt);
 
-                    dokbesk.dokumentobjekt = dokliste.ToArray();
-
-                    dokbliste.Add(dokbesk);
+                    journalpost.Dokumentbeskrivelse.Add(dokumentbeskrivelse);
                     antFiler++;
-
                 }
-                journalpst.dokumentbeskrivelse = dokbliste.ToArray();
 
                 //Korrespondanseparter
-                List<korrespondansepart> partsListe = new List<korrespondansepart>();
-                
-                foreach (var internMottaker in input.nyttNotat.internAvsender)
+                foreach (var korrpart in input.nyttNotat.internAvsender.Select(internMottaker => InternKorrespondansepartToArkivPart(InternavsenderKode, internMottaker)))
                 {
-                    korrespondansepart korrpart = InternKorrespondansepartToArkivPart(InternavsenderKode, internMottaker);
-                    partsListe.Add(korrpart);
+                    journalpost.Korrespondansepart.Add(korrpart);
                 }
 
                 foreach (var internMottaker in input.nyttNotat.internMottaker)
                 {
-                    korrespondansepart korrpart = InternKorrespondansepartToArkivPart(InternmottakerKode, internMottaker);
-                    partsListe.Add(korrpart);
+                    var korrpart = InternKorrespondansepartToArkivPart(InternmottakerKode, internMottaker);
+                    journalpost.Korrespondansepart.Add(korrpart);
                 }
 
-                journalpst.korrespondansepart = partsListe.ToArray();
-
-                if (input.nyttNotat.referanseEksternNoekkel != null)
+                if (input.nyttNotat.referanseEksternNoekkelForenklet != null)
                 {
-                    journalpst.referanseEksternNoekkel = new eksternNoekkel();
-                    journalpst.referanseEksternNoekkel.fagsystem = input.nyttNotat.referanseEksternNoekkel.fagsystem;
-                    journalpst.referanseEksternNoekkel.noekkel = input.nyttNotat.referanseEksternNoekkel.noekkel;
+                    journalpost.ReferanseEksternNoekkel = new EksternNoekkel
+                    {
+                        Fagsystem = input.nyttNotat.referanseEksternNoekkelForenklet.fagsystem,
+                        Noekkel = input.nyttNotat.referanseEksternNoekkelForenklet.noekkel
+                    };
                 }
-
-                List<journalpost> jliste = new List<journalpost>
-                {
-                    journalpst
-                };
 
                 if (mappe != null)
                 {
-                    var mappeliste = new List<saksmappe>();
-                    mappe.Items = jliste.ToArray();
-                    mappeliste.Add(mappe);
-                    arkivmld.Items = mappeliste.ToArray();
+                    mappe.Registrering.Add(journalpost);
+                    arkivmld.Mappe.Add(mappe);
                 }
                 else
                 {
-                    arkivmld.Items = jliste.ToArray();
+                    arkivmld.Registrering.Add(journalpost);
                 }
 
             }
-            arkivmld.antallFiler = antFiler;
-            arkivmld.system = input.nyttNotat.referanseEksternNoekkel.fagsystem;
-            arkivmld.meldingId = input.nyttNotat.referanseEksternNoekkel.noekkel;
-            arkivmld.tidspunkt = DateTime.Now;
+            arkivmld.AntallFiler = antFiler;
+            arkivmld.System = input.nyttNotat.referanseEksternNoekkelForenklet.fagsystem;
+            arkivmld.MeldingId = input.nyttNotat.referanseEksternNoekkelForenklet.noekkel;
+            arkivmld.Tidspunkt = DateTime.Now;
 
             return arkivmld;
         }
 
-        private static saksmappe ConvertSaksmappe(Saksmappe input)
+        private static Saksmappe ConvertSaksmappe(SaksmappeForenklet input)
         {
-            saksmappe mappe = new saksmappe
+            var mappe = new Saksmappe
             {
-                saksansvarlig = input.saksansvarlig,
-                administrativEnhet = input.administrativEnhet,
-                tittel = input.tittel
+                Saksansvarlig = input.saksansvarlig,
+                AdministrativEnhet = input.administrativEnhet,
+                Tittel = input.tittel
             };
             if (input.saksaar > 0)
-                mappe.saksaar = input.saksaar.ToString();
+                mappe.Saksaar = input.saksaar.ToString();
             if (input.sakssekvensnummer > 0)
-                mappe.sakssekvensnummer = input.sakssekvensnummer.ToString();
+                mappe.Sakssekvensnummer = input.sakssekvensnummer.ToString();
 
             if (input.saksdato.HasValue)
             {
-                mappe.saksdato = input.saksdato.Value;
-                mappe.saksdatoSpecified = true;
+                mappe.Saksdato = input.saksdato.Value;
+                mappe.SaksdatoSpecified = true;
             }
 
             if (input.klasse != null)
             {
-                List<klasse> klasser = new List<klasse>(); 
                 foreach (var kl in input.klasse)
                 {
-                    klasser.Add(new klasse() { klassifikasjonssystem = kl.klassifikasjonssystem, klasseID = kl.klasseID, tittel = kl.tittel });
+                    mappe.Klassifikasjon.Add(new Klassifikasjon() { Klassifikasjonssystem = kl.klassifikasjonssystem, KlasseID = kl.klasseID, Tittel = kl.tittel });
                 }
-                mappe.klasse = klasser.ToArray();
             }
-            if (input.referanseEksternNoekkel != null)
+            if (input.referanseEksternNoekkelForenklet != null)
             {
-                mappe.referanseEksternNoekkel = new eksternNoekkel();
-                mappe.referanseEksternNoekkel.fagsystem = input.referanseEksternNoekkel.fagsystem;
-                mappe.referanseEksternNoekkel.noekkel = input.referanseEksternNoekkel.noekkel;
+                mappe.ReferanseEksternNoekkel = new EksternNoekkel
+                {
+                    Fagsystem = input.referanseEksternNoekkelForenklet.fagsystem,
+                    Noekkel = input.referanseEksternNoekkelForenklet.noekkel
+                };
             }
 
             return mappe;

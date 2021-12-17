@@ -6,11 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="KS.Fiks.IO.Arkiv.Client" Version="2.0.5-build.20211119095636508" />
+      <PackageReference Include="KS.Fiks.IO.Arkiv.Client" Version="2.0.9" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
       <PackageReference Include="NUnit" Version="3.13.2" />
       <PackageReference Include="NUnit.Runners" Version="3.12.0" />
       <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+      <PackageReference Include="XmlSchemaClassGenerator-beta" Version="2.0.629" />
     </ItemGroup>
 
 </Project>

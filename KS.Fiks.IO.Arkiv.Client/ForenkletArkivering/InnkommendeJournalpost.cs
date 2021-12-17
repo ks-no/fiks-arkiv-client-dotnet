@@ -65,20 +65,20 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
 		/// M110 offentlighetsvurdertDato
 		/// </summary>
 		public DateTime? offentlighetsvurdertDato;
-		public Skjerming skjerming;
+		public SkjermingForenklet skjermingForenklet;
 
-		public EksternNoekkel referanseEksternNoekkel;
+		public EksternNoekkelForenklet referanseEksternNoekkelForenklet;
 		public List<ForenkletDokument> vedlegg;
 
-		public List<Korrespondansepart> mottaker;
-		public List<Korrespondansepart> avsender;
+		public List<KorrespondansepartForenklet> mottaker;
+		public List<KorrespondansepartForenklet> avsender;
 
 		public List<KorrespondansepartIntern> internMottaker;
 
 		public InnkommendeJournalpost(){
 			vedlegg = new List<ForenkletDokument>();
-			mottaker = new List<Korrespondansepart>();
-			avsender = new List<Korrespondansepart>();
+			mottaker = new List<KorrespondansepartForenklet>();
+			avsender = new List<KorrespondansepartForenklet>();
 			internMottaker = new List<KorrespondansepartIntern>();
 		}
 	}

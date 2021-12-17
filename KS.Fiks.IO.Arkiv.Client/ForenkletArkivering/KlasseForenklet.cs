@@ -20,7 +20,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
 	/// nedover i hierarkiet, slik at det er lett å si hvilket nivå en befinner seg
 	/// på6
 	/// </summary>
-	public class Klasse {
+	public class KlasseForenklet {
 
 		/// <summary>
 		/// Definisjon: Entydig identifikasjon av klassen innenfor klassifikasjonssystemet.

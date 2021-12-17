@@ -7,6 +7,12 @@
 	<xs:import namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2"
 	schemaLocation="./arkivmelding.xsd"/>
 
-	<xs:element name="journalpost" type="arkivmelding:journalpost"/>
+	<xs:element name="journalpostHentResultat" type="journalpostHentResultat"/>
+
+	<xs:complexType name="journalpostHentResultat">
+		<xs:sequence>
+			<xs:element name="journalpost" type="arkivmelding:journalpost"/>
+		</xs:sequence>
+	</xs:complexType>
 	
 </xs:schema>

@@ -1,10 +1,10 @@
 ﻿﻿using System;
-using System.Collections.Generic;
-using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding.sok;
-using NUnit.Framework;
+ using System.Collections.Generic;
+ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
+ using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
+ using NUnit.Framework;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
+ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class UnitTestBrukerhistorie11Oppmalingsdialog
     {
@@ -19,35 +19,32 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         {
             var dokumentEkstenId  = "12345-ABCDE";
           
-            var arkivmeldingsok = new sok
+            var arkivmeldingsok = new Sok
             {
-                respons = respons_type.dokumentbeskrivelse,
-                meldingId = Guid.NewGuid().ToString(),
-                system = "Fagsystem X",
-                tidspunkt = DateTime.Now,
-                skip = 0,
-                take = 100
+                Respons = Respons.Dokumentbeskrivelse,
+                MeldingId = Guid.NewGuid().ToString(),
+                System = "Fagsystem X",
+                Tidspunkt = DateTime.Now,
+                Skip = 0,
+                Take = 100
             };
             // må søke på ekstenID finner ikke noe felt for dokument id.
 
-            var paramlist = new List<parameter>
+            var parameter = new Parameter
             {
-                new parameter
+                Felt = SokFelt.DokumentbeskrivelsePeriodEksternId,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
                 {
-                    felt = field_type.dokumenteksternId,
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
+                    EksternId = new EksternId()
                     {
-                        Item = new eksternId
-                        {
-                            system = "Fagsystem X",
-                            id = dokumentEkstenId
-                        }
+                        System = "Fagsystem X",
+                        Id = dokumentEkstenId
                     }
                 }
             };
 
-            arkivmeldingsok.parameter = paramlist.ToArray();
+            arkivmeldingsok.Parameter.Add(parameter);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
 
             Assert.Pass();

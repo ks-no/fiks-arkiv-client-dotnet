@@ -8,7 +8,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
 	/// det enkelte
 	/// dokument. (Se NOARK 5 v3.1 eget kapittel: 6.6.1 Skjerming)
 	/// </summary>
-	public class Skjerming {
+	public class SkjermingForenklet {
 
 		/// <summary>
 		/// Definisjon: Henvisning til hjemmel (paragraf) i offentlighetsloven,

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
-using no.ks.fiks.io.arkivmelding.sok;
+using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 
 namespace KS.Fiks.IO.Arkiv.Client.Sample
 {
@@ -16,7 +16,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
             ArkivmeldingForenkletInnkommende inng = new ArkivmeldingForenkletInnkommende();
             inng.sluttbrukerIdentifikator = "Fagsystemets brukerid";
 
-            inng.referanseSaksmappe = new Saksmappe()
+            inng.referanseSaksmappeForenklet = new SaksmappeForenklet()
             {
                 saksaar = 2018,
                 sakssekvensnummer = 123456
@@ -30,7 +30,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
                 offentlighetsvurdertDato = DateTime.Today,
             };
 
-            inng.nyInnkommendeJournalpost.referanseEksternNoekkel = new EksternNoekkel
+            inng.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
             {
                 fagsystem = "Fagsystem X",
                 noekkel = "e4712424-883c-4068-9cb7-97ac679d7232"
@@ -44,9 +44,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
                 }
             };
 
-            inng.nyInnkommendeJournalpost.mottaker = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.mottaker = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Test kommune",
                     enhetsidentifikator = new Enhetsidentifikator() {
                         organisasjonsnummer = "123456789"
@@ -61,9 +61,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
             };
 
 
-            inng.nyInnkommendeJournalpost.avsender = new List<Korrespondansepart>
+            inng.nyInnkommendeJournalpost.avsender = new List<KorrespondansepartForenklet>
             {
-                new Korrespondansepart() {
+                new KorrespondansepartForenklet() {
                     navn = "Anita Avsender",
                     personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
@@ -95,11 +95,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
         {
             var saksmappe = new OppdaterSaksmappe
             {
-                oppdaterSaksmappe = new Saksmappe()
+                oppdaterSaksmappeForenklet = new SaksmappeForenklet()
                 {
                     saksansvarlig = saksansvarlig,
                     referanseSaksansvarlig = idSaksansvarlig,
-                    referanseEksternNoekkel = new EksternNoekkel
+                    referanseEksternNoekkelForenklet = new EksternNoekkelForenklet
                     {
                         fagsystem = fagsystem,
                         noekkel = nøkkel
@@ -115,7 +115,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
         {
             var saksmappe = new OppdaterSaksmappe();
 
-            saksmappe.oppdaterSaksmappe = new Saksmappe
+            saksmappe.oppdaterSaksmappeForenklet = new SaksmappeForenklet
             {
                 saksaar = saksaar,
                 sakssekvensnummer = sekvensnr,
@@ -126,36 +126,30 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
             return saksmappe;
         }
 
-        public static sok SokTittel(string tittel)
+        public static Sok SokTittel(string tittel)
         {
-            var arkivmeldingsok = new sok
+            var arkivmeldingsok = new Sok
             {
-                respons = respons_type.mappe,
-                meldingId = Guid.NewGuid().ToString(),
-                system = "Fagsystem X",
-                tidspunkt = DateTime.Now,
-                skip = 0,
-                take = 100
+                Respons = Respons.Mappe,
+                MeldingId = Guid.NewGuid().ToString(),
+                System = "Fagsystem X",
+                Tidspunkt = DateTime.Now,
+                Skip = 0,
+                Take = 100
             };
 
-            var paramlist = new List<parameter>
+            var parameter = new Parameter
             {
-                new parameter
+                Felt = SokFelt.MappePeriodTittel,
+                Operator = OperatorType.Equal,
+                Parameterverdier = new Parameterverdier
                 {
-                    felt = field_type.mappetittel,
-                    @operator = operator_type.equal,
-                    parameterverdier = new parameterverdier
-                    {
-                        Item = new stringvalues {value = new[] {tittel}}
-                    }
+                    Stringvalues = { tittel }
                 }
             };
 
-
-            arkivmeldingsok.parameter = paramlist.ToArray();
-
+            arkivmeldingsok.Parameter.Add(parameter);
             return arkivmeldingsok;
-
         }
 
         public static string GetOppdaterJournalpostAnsvarlig() {

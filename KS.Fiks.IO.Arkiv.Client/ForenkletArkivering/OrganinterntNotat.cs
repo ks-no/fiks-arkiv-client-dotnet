@@ -5,7 +5,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering {
 	public class OrganinterntNotat {
 
 		public ForenkletDokument hoveddokument;
-		public EksternNoekkel referanseEksternNoekkel;
+		public EksternNoekkelForenklet referanseEksternNoekkelForenklet;
 		public string tittel;
 		public DateTime? dokumentetsDato;
 		public List<KorrespondansepartIntern> internMottaker;
