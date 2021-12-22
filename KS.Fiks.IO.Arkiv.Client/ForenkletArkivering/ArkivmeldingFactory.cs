@@ -52,7 +52,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 var journalpost = new Journalpost()
                 {
                     Tittel = input.nyUtgaaendeJournalpost.tittel,
-                    Journalposttype = "U"
+                    Journalposttype = "U",
+                    Journalstatus = "X" //TODO Hva skal her?
                 };
 
                 if (input.nyUtgaaendeJournalpost.journalaar > 0)
@@ -95,9 +96,10 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     var dokumentbeskrivelse = new Dokumentbeskrivelse
                     {
+                        Dokumenttype = "TEST", //TODO Hva skal inn her?
                         Dokumentstatus = "F",
-                        TilknyttetRegistreringSom = "H",
-                        Tittel = input.nyUtgaaendeJournalpost.hoveddokument.tittel
+                        Tittel = input.nyUtgaaendeJournalpost.hoveddokument.tittel,
+                        TilknyttetRegistreringSom = "H"
                     };
 
                     if (input.nyUtgaaendeJournalpost.hoveddokument.skjermetDokument) {
@@ -110,6 +112,10 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     
                     var dok = new Dokumentobjekt
                     {
+                        Format = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Variantformat = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Versjonsnummer = "1", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Filnavn = "", //TODO Her mangler noe eller det er noe som ikke stemmer.
                         ReferanseDokumentfil = input.nyUtgaaendeJournalpost.hoveddokument.filnavn
                     };
                     
@@ -122,14 +128,18 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     var dokbesk = new Dokumentbeskrivelse
                     {
-                        SystemID = new SystemID() {item.systemID,
+                        Dokumenttype = "TEST", //TODO Hva skal inn her?
                         Dokumentstatus = "F",
-                        TilknyttetRegistreringSom = "V",
-                        Tittel = item.tittel
+                        Tittel = item.tittel,
+                        TilknyttetRegistreringSom = "V"
                     };
 
                     var dok = new Dokumentobjekt
                     {
+                        Format = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Variantformat = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Versjonsnummer = "1", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Filnavn = "", //TODO Her mangler noe eller det er noe som ikke stemmer.
                         ReferanseDokumentfil = item.filnavn
                     };
                     
@@ -273,6 +283,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 journalpost.Tittel = input.nyInnkommendeJournalpost.tittel;
 
                 journalpost.Journalposttype = "I";
+                journalpost.Journalstatus = "X"; //TODO Hva skal her?
                 if (input.nyInnkommendeJournalpost.mottattDato != null)
                 {
                     journalpost.MottattDato = input.nyInnkommendeJournalpost.mottattDato.Value;
@@ -308,6 +319,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     var dokbesk = new Dokumentbeskrivelse()
                     {
+                        Dokumenttype = "TEST", //TODO Hva skal inn her?
                         Dokumentstatus = "F",
                         TilknyttetRegistreringSom = "H",
                         Tittel = input.nyInnkommendeJournalpost.hoveddokument.tittel
@@ -323,6 +335,10 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     }
                     var dok = new Dokumentobjekt()
                     {
+                        Format = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Variantformat = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Versjonsnummer = "1", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Filnavn = "", //TODO Her mangler noe eller det er noe som ikke stemmer.
                         ReferanseDokumentfil = input.nyInnkommendeJournalpost.hoveddokument.filnavn
                     };
 
@@ -332,14 +348,23 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 }
                 foreach (var item in input.nyInnkommendeJournalpost.vedlegg)
                 {
-                    var dokbesk = new Dokumentbeskrivelse();
-                    dokbesk.Dokumentstatus = "F";
-                    dokbesk.TilknyttetRegistreringSom = "V";
-                    dokbesk.Tittel = item.tittel;
+                    var dokbesk = new Dokumentbeskrivelse
+                    {
+                        Dokumenttype = "", //TODO Hva skal inn her? item.dokumenttype.kodeverdi?
+                        Dokumentstatus = "F",
+                        TilknyttetRegistreringSom = "V",
+                        Tittel = item.tittel
+                    };
 
-                    var dok = new Dokumentobjekt();
-                    dok.ReferanseDokumentfil = item.filnavn;
-                    
+                    var dok = new Dokumentobjekt
+                    {
+                        Format = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Variantformat = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Versjonsnummer = "1", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Filnavn = "", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        ReferanseDokumentfil = item.filnavn
+                    };
+
                     dokbesk.Dokumentobjekt.Add(dok);
                     journalpost.Dokumentbeskrivelse.Add(dokbesk);
                     antFiler++;
@@ -418,6 +443,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 journalpost.ArkivertAv = input.sluttbrukerIdentifikator; //TODO ?????
 
                 journalpost.Journalposttype = "N";
+                journalpost.Journalstatus = "X"; //TODO Hva skal her?
                 //if (input.nyttNotat.mottattDato != null)
                 //{
                 //    journalpst.mottattDato = input.nyttNotat.mottattDato.Value;
@@ -450,6 +476,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     var dokumentbeskrivelse = new Dokumentbeskrivelse
                     {
+                        Dokumenttype = "TEST", //TODO Hva skal inn her?
                         Dokumentstatus = "F",
                         TilknyttetRegistreringSom = "H",
                         Tittel = input.nyttNotat.hoveddokument.tittel
@@ -474,13 +501,22 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 }
                 foreach (var item in input.nyttNotat.vedlegg)
                 {
-                    var dokumentbeskrivelse = new Dokumentbeskrivelse();
-                    dokumentbeskrivelse.Dokumentstatus = "F";
-                    dokumentbeskrivelse.TilknyttetRegistreringSom = "V";
-                    dokumentbeskrivelse.Tittel = item.tittel;
+                    var dokumentbeskrivelse = new Dokumentbeskrivelse
+                    {
+                        Dokumenttype = "TEST", //TODO Hva skal inn her?
+                        Dokumentstatus = "F",
+                        TilknyttetRegistreringSom = "V",
+                        Tittel = item.tittel
+                    };
 
-                    var dokumentobjekt = new Dokumentobjekt();
-                    dokumentobjekt.ReferanseDokumentfil = item.filnavn;
+                    var dokumentobjekt = new Dokumentobjekt
+                    {
+                        Format = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Variantformat = "X", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Versjonsnummer = "1", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        Filnavn = "", //TODO Her mangler noe eller det er noe som ikke stemmer.
+                        ReferanseDokumentfil = item.filnavn
+                    };
                     dokumentbeskrivelse.Dokumentobjekt.Add(dokumentobjekt);
 
                     journalpost.Dokumentbeskrivelse.Add(dokumentbeskrivelse);
