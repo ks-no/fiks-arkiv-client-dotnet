@@ -19,6 +19,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         public void TestNyttDokumentBrukEksisterendeSak()
         {
             var saker = FinnSakerMedMatrikkelnummer("21/400");
+       
             SaksmappeForenklet sak = null;
             //TODO Hva er meningen her?
             //foreach (Saksmappe testSak in saker)

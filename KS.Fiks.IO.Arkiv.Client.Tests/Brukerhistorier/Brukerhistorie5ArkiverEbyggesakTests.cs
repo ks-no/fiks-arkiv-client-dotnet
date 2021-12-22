@@ -3,6 +3,15 @@ using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding;
 using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;
+using Dokumentbeskrivelse = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Dokumentbeskrivelse;
+using Dokumentobjekt = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Dokumentobjekt;
+using EksternNoekkel = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.EksternNoekkel;
+using Journalpost = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Journalpost;
+using Korrespondansepart = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Korrespondansepart;
+using Merknad = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Merknad;
+using Part = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Part;
+using Saksmappe = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Saksmappe;
+using Skjerming = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Skjerming;
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {

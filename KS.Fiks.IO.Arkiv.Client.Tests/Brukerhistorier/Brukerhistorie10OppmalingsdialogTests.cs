@@ -1,7 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Xml;
-using System.Xml.Schema;
 using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;

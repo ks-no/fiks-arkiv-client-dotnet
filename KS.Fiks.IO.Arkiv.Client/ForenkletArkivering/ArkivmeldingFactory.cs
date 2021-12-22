@@ -52,8 +52,10 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 var journalpost = new Journalpost()
                 {
                     Tittel = input.nyUtgaaendeJournalpost.tittel,
+
                     Journalposttype = "U",
                     Journalstatus = "X" //TODO Hva skal her?
+
                 };
 
                 if (input.nyUtgaaendeJournalpost.journalaar > 0)
@@ -284,6 +286,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
                 journalpost.Journalposttype = "I";
                 journalpost.Journalstatus = "X"; //TODO Hva skal her?
+                
                 if (input.nyInnkommendeJournalpost.mottattDato != null)
                 {
                     journalpost.MottattDato = input.nyInnkommendeJournalpost.mottattDato.Value;
@@ -348,6 +351,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 }
                 foreach (var item in input.nyInnkommendeJournalpost.vedlegg)
                 {
+
                     var dokbesk = new Dokumentbeskrivelse
                     {
                         Dokumenttype = "", //TODO Hva skal inn her? item.dokumenttype.kodeverdi?
@@ -364,7 +368,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         Filnavn = "", //TODO Her mangler noe eller det er noe som ikke stemmer.
                         ReferanseDokumentfil = item.filnavn
                     };
-
+                    
                     dokbesk.Dokumentobjekt.Add(dok);
                     journalpost.Dokumentbeskrivelse.Add(dokbesk);
                     antFiler++;
@@ -444,6 +448,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
                 journalpost.Journalposttype = "N";
                 journalpost.Journalstatus = "X"; //TODO Hva skal her?
+       
                 //if (input.nyttNotat.mottattDato != null)
                 //{
                 //    journalpst.mottattDato = input.nyttNotat.mottattDato.Value;
@@ -517,6 +522,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         Filnavn = "", //TODO Her mangler noe eller det er noe som ikke stemmer.
                         ReferanseDokumentfil = item.filnavn
                     };
+       
                     dokumentbeskrivelse.Dokumentobjekt.Add(dokumentobjekt);
 
                     journalpost.Dokumentbeskrivelse.Add(dokumentbeskrivelse);
