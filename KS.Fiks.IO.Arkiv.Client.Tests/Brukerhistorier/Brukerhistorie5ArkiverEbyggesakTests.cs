@@ -15,7 +15,6 @@ using Skjerming = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Skjermi
 
 namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
-    //TODO Denne testen er totalt ubrukelig!! Hva skal den bevise? 
     class Brukerhistorie5ArkiverEbyggesakTests
     {
         [SetUp]
