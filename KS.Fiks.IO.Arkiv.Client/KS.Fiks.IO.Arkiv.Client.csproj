@@ -22,6 +22,23 @@
         <VersionPrefix>2.0.11</VersionPrefix>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <CertPath>C:\something</CertPath> <!-- Jenkins pipeline will provide this property -->
+        <CertPassword>something</CertPassword> <!-- Jenkins pipeline will provide this property -->
+        <TimestampServer>http://timestamp.digicert.com</TimestampServer>
+        <SignToolPath>C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe</SignToolPath>
+    </PropertyGroup>
+
+    <Target Name="SignAssembly" DependsOnTargets="Build">
+        <Message
+                Text="Signing assembly '$(TargetDir)$(TargetFileName)'"
+                Importance="high"
+        />
+        <Exec
+                Command="&quot;$(SignToolPath)&quot; sign /f $(CertPath) /p $(CertPath) /t $(TimestampServer) &quot;$(TargetDir)$(TargetFileName)&quot;"
+        />
+    </Target>
+
     <ItemGroup>
         <None Include="..\fiks-io-strongly-named-key.snk">
             <Link>fiks-io-strongly-named-key.snk</Link>
