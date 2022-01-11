@@ -121,7 +121,7 @@ def call(body) {
                   stages {
                     stage('Build') {
                       when {
-                        expression { !config.signDllFiles }
+                        expression { !params.signDllFiles }
                       }
                       steps {
                         powershell script: 'New-Item -ItemType Directory -Force -Path $env:TMPDIR | Out-Null', label: 'Create tempdir'
@@ -137,7 +137,7 @@ def call(body) {
                     }
                     stage('Build and sign dll-files') {
                       when {
-                        expression { config.signDllFiles }
+                        expression { params.signDllFiles }
                       }
                       steps {
                         powershell script: 'New-Item -ItemType Directory -Force -Path $env:TMPDIR | Out-Null', label: 'Create tempdir'
