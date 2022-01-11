@@ -119,23 +119,36 @@ def call(body) {
                     SIGNTOOL_PATH = "TODO TRENGER DENNE"            
                   }
                   stages {
-                  
                     stage('Build') {
+                      when {
+                        expression { !config.signDllFiles }
+                      }
                       steps {
                         powershell script: 'New-Item -ItemType Directory -Force -Path $env:TMPDIR | Out-Null', label: 'Create tempdir'
                         bat script: 'dotnet restore --configfile %NUGET_CONF% --disable-parallel --verbosity detailed', label: 'Restore dependencies'
                         bat script: 'dotnet build --no-restore -c Debug %BUILD_SUFFIX%', label: 'Build using Debug profile on Windows'
-                        if(params.signDllFiles) {
-                            bat script: 'dotnet build -target:SignAssembly --no-restore -c Release %BUILD_SUFFIX% -p:CertPath=$env:CODE_SIGN_CERT;CertPassword=$env:CODE_SIGN_KEY;TimestampServer=$env:TIMESTAMP_URL', label: 'Build using Release profile on Windows'
-                        } else {
-                            bat script: 'dotnet build --no-restore -c Release %BUILD_SUFFIX%', label: 'Build using Release profile on Windows'
-                        }
+                        bat script: 'dotnet build --no-restore -c Release %BUILD_SUFFIX%', label: 'Build using Release profile on Windows'
                       }
                       post {
                         failure {
                           archiveArtifacts artifacts: "${env.MSBUILDDEBUGPATH}\\MSBuild_*.failure.txt", fingerprint: true, allowEmptyArchive: true
                         }
-
+                      }
+                    }
+                    stage('Build and sign dll-files') {
+                      when {
+                        expression { config.signDllFiles }
+                      }
+                      steps {
+                        powershell script: 'New-Item -ItemType Directory -Force -Path $env:TMPDIR | Out-Null', label: 'Create tempdir'
+                        bat script: 'dotnet restore --configfile %NUGET_CONF% --disable-parallel --verbosity detailed', label: 'Restore dependencies'
+                        bat script: 'dotnet build --no-restore -c Debug %BUILD_SUFFIX%', label: 'Build using Debug profile on Windows'
+                        bat script: 'dotnet build -target:SignAssembly --no-restore -c Release %BUILD_SUFFIX% -p:CertPath=$env:CODE_SIGN_CERT;CertPassword=$env:CODE_SIGN_KEY;TimestampServer=$env:TIMESTAMP_URL', label: 'Build using Release profile on Windows'
+                      }
+                      post {
+                        failure {
+                          archiveArtifacts artifacts: "${env.MSBUILDDEBUGPATH}\\MSBuild_*.failure.txt", fingerprint: true, allowEmptyArchive: true
+                        }
                       }
                     }
                     stage('Run tests') {
