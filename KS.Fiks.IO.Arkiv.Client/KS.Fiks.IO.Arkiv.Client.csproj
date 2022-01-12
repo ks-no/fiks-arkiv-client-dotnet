@@ -41,83 +41,83 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="Schema\arkivmelding.xsd">
+      <EmbeddedResource Include="Schema\arkivmelding.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\arkivmeldingKvittering.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\arkivmeldingKvittering.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\arkivstrukturMinimum.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\arkivstrukturMinimum.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\arkivstrukturNoekler.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\arkivstrukturNoekler.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\journalpostHent.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\journalpostHent.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\journalpostHentResultat.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\journalpostHentResultat.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\mappeHent.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\mappeHent.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\mappeHentResultat.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\mappeHentResultat.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\metadatakatalog.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\metadatakatalog.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\sok.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\sok.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>
           <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
+      </EmbeddedResource>
       <None Remove="Schema\arkivstruktur.xsd" />
-      <Content Include="Schema\arkivstruktur.xsd">
+      <EmbeddedResource Include="Schema\arkivstruktur.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\sokeresultatMinimum.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\sokeresultatMinimum.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput> 
-      </Content>
-      <Content Include="Schema\sokeresultatNoekler.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\sokeresultatNoekler.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-      <Content Include="Schema\sokeresultatUtvidet.xsd">
+      </EmbeddedResource>
+      <EmbeddedResource Include="Schema\sokeresultatUtvidet.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
+      </EmbeddedResource>
       <None Remove="Schema\dokumentfilHent.xsd" />
-      <Content Include="Schema\dokumentfilHent.xsd">
+      <EmbeddedResource Include="Schema\dokumentfilHent.xsd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
