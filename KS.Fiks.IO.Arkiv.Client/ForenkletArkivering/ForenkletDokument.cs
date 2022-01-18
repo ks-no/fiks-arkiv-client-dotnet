@@ -29,7 +29,10 @@
 		/// </summary>
 		public string tittel;
 		public bool skjermetDokument;
-
+		/// <summary>
+		/// Definisjon: Full sti/url inklusiv evt filnavn
+		/// </summary>
+		public string referanseDokumentFil;
 		public string systemID;
 
 		public ForenkletDokument(){
