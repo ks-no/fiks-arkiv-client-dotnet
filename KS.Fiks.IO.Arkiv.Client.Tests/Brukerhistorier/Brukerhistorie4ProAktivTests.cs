@@ -107,7 +107,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
         {
             var utg = new SaksmappeForenklet
             {
-                tittel ="Tilsyn eiendom 21/400"
+                tittel = "Tilsyn eiendom 21/400"
             };
 
             return utg;

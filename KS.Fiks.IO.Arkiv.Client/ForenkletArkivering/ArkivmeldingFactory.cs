@@ -230,7 +230,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
             if (mottaker.enhetsidentifikator?.organisasjonsnummer != null)
             {
-                korrespondansepart.Organisasjonid = mottaker.enhetsidentifikator.organisasjonsnummer; 
+                korrespondansepart.Organisasjonid = mottaker.enhetsidentifikator.organisasjonsnummer;
             }
             
             if (mottaker.personid?.personidentifikatorNr != null) {
