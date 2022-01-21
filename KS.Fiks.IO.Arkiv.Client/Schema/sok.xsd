@@ -149,6 +149,7 @@
             <xs:enumeration value="registrering.tittel"/>
             <xs:enumeration value="registrering.administrativenhet"/>
             <xs:enumeration value="registrering.journalpostansvarlig"/>
+            <xs:enumeration value="registrering.endretEtterDato"/>
 
             <!--Inklusive ekstern korrespondansepart?-->
             <xs:enumeration value="registrering.part.partNavn"/>
@@ -174,6 +175,7 @@
             <xs:enumeration value="journalpost.journaldato"/>
             <xs:enumeration value="journalpost.dokumentetsdato"/>
             <xs:enumeration value="journalpost.forfallsdato"/>
+            <xs:enumeration value="journalpost.endretEtterDato"/>
 
             <!--Interne korrespondanseparter?-->
 
