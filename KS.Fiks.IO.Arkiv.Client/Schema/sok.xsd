@@ -34,7 +34,6 @@
             <xs:element name="intvalues" type="intvalues"/>
             <xs:element name="eksternId" type="eksternId"/>
             <xs:element name="klassifikasjonvalues" type="klassifikasjonvalues"/>
-            <xs:element name="virksomhetsspesifikkemetadata" type="vsmetadata"/>
         </xs:choice>
     </xs:complexType>
 
@@ -60,13 +59,6 @@
         <xs:sequence minOccurs="1" maxOccurs="unbounded">
             <xs:element name="klassifikasjonssystem" type="xs:string" minOccurs="0"/>
             <xs:element name="klasse" type="xs:string" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="vsmetadata">
-        <xs:sequence minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="key" type="xs:string" minOccurs="0"/>
-            <xs:element name="value" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -98,7 +90,6 @@
             <xs:enumeration value="mappe.beskrivelse"/>
             <xs:enumeration value="mappe.noekkelord"/>
             <xs:enumeration value="mappe.avsluttetDato"/>
-            <xs:enumeration value="mappe.virksomhetsspesifikkeMetadata"/>
             <xs:enumeration value="mappe.referansearkivdel"/>
 
             <xs:enumeration value="sak.saksdato"/>
@@ -119,7 +110,6 @@
             <xs:enumeration value="mappe.part.postnummer"/>
             <xs:enumeration value="mappe.part.poststed"/>
             <xs:enumeration value="mappe.part.epostadresse"/>
-            <xs:enumeration value="mappe.part.virksomhetsspesifikkeMetadata"/>
 
             <xs:enumeration value="mappe.skjerming.tilgangsrestriksjon"/>
             <xs:enumeration value="mappe.skjerming.skjermingshjemmel"/>
@@ -157,7 +147,6 @@
             <xs:enumeration value="registrering.part.postnummer"/>
             <xs:enumeration value="registrering.part.poststed"/>
             <xs:enumeration value="registrering.part.epostadresse"/>
-            <xs:enumeration value="registrering.part.virksomhetsspesifikkeMetadata"/>
 
             <xs:enumeration value="registrering.skjerming.tilgangsrestriksjon"/>
             <xs:enumeration value="registrering.skjerming.skjermingshjemmel"/>
