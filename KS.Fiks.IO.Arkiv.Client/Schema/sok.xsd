@@ -140,8 +140,8 @@
             <xs:enumeration value="sak.planident.kommune.kommunenummer"/>
             <xs:enumeration value="sak.planident.planidentifikasjon"/>
             
-            <xs:enumeration value="sak.part.referansenummer"/>
-            <xs:enumeration value="sak.part.kontaktperson"/>
+            <xs:enumeration value="sak.part.organisasjonsid"/>
+            <xs:enumeration value="sak.part.personid"/>
 
             <xs:enumeration value="sak.punkt.x"/>
             <xs:enumeration value="sak.punkt.y"/>
