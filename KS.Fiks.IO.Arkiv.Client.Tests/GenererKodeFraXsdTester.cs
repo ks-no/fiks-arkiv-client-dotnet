@@ -54,6 +54,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 {
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/metadatakatalog/v2"), commonNamespace + ".Metadatakatalog"},
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/arkivmelding/v2"), commonNamespace + ".Arkivering.Arkivmelding"},
+                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2"), commonNamespace + ".Arkivering.Arkivmelding.Oppdatering"},
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/arkivmeldingkvittering/v2"), commonNamespace + ".Arkivering.Arkivmeldingkvittering"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/sok/v1"), commonNamespace + ".Innsyn.Sok"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/sokeresultat/v1"), commonNamespace + ".Innsyn.Sok"},
