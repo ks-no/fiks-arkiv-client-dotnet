@@ -51,6 +51,11 @@
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </EmbeddedResource>
+      <EmbeddedResource Include="Schema\arkivmeldingOppdatering.xsd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Pack>true</Pack>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </EmbeddedResource>
       <EmbeddedResource Include="Schema\arkivstrukturMinimum.xsd">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <Pack>true</Pack>

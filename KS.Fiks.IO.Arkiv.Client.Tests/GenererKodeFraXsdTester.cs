@@ -16,6 +16,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
             {
                 "metadatakatalog.xsd",
                 "arkivmelding.xsd", 
+                "arkivmeldingOppdatering.xsd",
                 "arkivmeldingKvittering.xsd",
                 "sok.xsd",
                 "sokeresultatUtvidet.xsd", 

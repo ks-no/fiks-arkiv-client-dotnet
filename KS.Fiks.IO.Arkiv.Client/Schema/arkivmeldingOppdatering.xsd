@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:n5mdk="http://www.arkivverket.no/standarder/noark5/metadatakatalog/v2"
+           xmlns:arkivmelding="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2"
+           targetNamespace="http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2"
+           elementFormDefault="qualified">
+    <xs:import namespace="http://www.arkivverket.no/standarder/noark5/metadatakatalog/v2" schemaLocation="./metadatakatalog.xsd"/>
+    <xs:import namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2" schemaLocation="./arkivmelding.xsd"/>
+    
+    <xs:element name="arkivmeldingOppdatering" type="arkivmeldingOppdatering"/>
+
+    <xs:complexType name="arkivmeldingOppdatering">
+        <xs:sequence>
+            <xs:element name="system" type="xs:string"/>
+            <xs:element name="meldingId" type="xs:string"/>
+            <xs:element name="tidspunkt" type="xs:dateTime"/>
+            <xs:choice minOccurs="1" maxOccurs="1">
+                <xs:element name="mappeOppdatering" type="mappeOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="mappeSlett" type="mappeSlett" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="registreringOppdatering" type="registreringOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="registreringSlett" type="registreringSlett" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="mappeOppdatering">
+        <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="1"> <!-- Hvilke id'er er gyldige ved en oppdatering? Og burde de være i en choice sånn som dette med minOccurs=1? systemID, mappeID og referanseEksternNoekkel? Det må jo alltid være med 1 id og bare 1 av dem. -->
+                <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>  
+                <xs:element name="mappeID" type="n5mdk:mappeID" minOccurs="0"/>
+            </xs:choice>
+            <xs:element name="tittel" type="n5mdk:tittel"/>
+            <xs:element name="offentligTittel" type="n5mdk:offentligTittel" minOccurs="0"/>
+            <xs:element name="beskrivelse" type="n5mdk:beskrivelse" minOccurs="0"/>
+            <xs:element name="virksomhetsspesifikkeMetadata" type="xs:anyType" minOccurs="0"/>
+            <xs:element name="partOppdatering" type="partOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="partSlett" type="partSlett" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="partNy" type="arkivmelding:part" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="mappeSlett">
+        <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="1"> <!-- Hvilke id'er er gyldige ved en oppdatering? Og burde de være i en choice sånn som dette med minOccurs=1? systemID, mappeID og referanseEksternNoekkel? Det må jo alltid være med 1 id og bare 1 av dem. -->
+                <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+                <xs:element name="mappeID" type="n5mdk:mappeID" minOccurs="0"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="saksmappeOppdatering">
+        <xs:complexContent>
+            <xs:extension base="mappeOppdatering">
+                <xs:sequence>
+                    <xs:element name="saksansvarlig" type="n5mdk:saksansvarlig" minOccurs="0"/>
+                    <xs:element name="matrikkelnummer" type="matrikkelnummerOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="byggident" type="byggidentOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="planident" type="planidentOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="punkt" type="punktOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="partOppdatering">
+        <xs:sequence>
+            <xs:element name="partID" type="n5mdk:partID" minOccurs="0"/>
+            <xs:element name="partNavn" type="n5mdk:partNavn"/>
+            <xs:element name="partRolle" type="n5mdk:partRolle" minOccurs="0"/>
+            <xs:choice minOccurs="0" maxOccurs="1">
+                <xs:element name="organisasjonid" minOccurs="0" type="n5mdk:organisasjonid"/>
+                <xs:element name="personid" minOccurs="0" type="n5mdk:personid"/>
+            </xs:choice>
+            <xs:element name="postadresse" type="n5mdk:postadresse" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="postnummer" type="n5mdk:postnummer" minOccurs="0"/>
+            <xs:element name="poststed" type="n5mdk:poststed" minOccurs="0"/>
+            <xs:element name="land" type="n5mdk:land" minOccurs="0"/>
+            <xs:element name="epostadresse" type="n5mdk:epostadresse" minOccurs="0"/>
+            <xs:element name="telefonnummer" type="n5mdk:telefonnummer" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="kontaktperson" type="n5mdk:kontaktperson" minOccurs="0"/>
+            <xs:element name="virksomhetsspesifikkeMetadata" type="xs:anyType" minOccurs="0"/>
+            <xs:element name="skjermetObjekt" type="n5mdk:skjermetObjekt" minOccurs="0"/>
+            <xs:element name="personnavn" type="n5mdk:personnavn" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="partSlett">
+        <xs:sequence>
+            <xs:element name="partID" type="n5mdk:partID" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="registreringOppdatering">
+        <xs:sequence>
+            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+            <xs:element name="part" type="partOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="skjerming" type="skjermingOppdatering" minOccurs="0"/>
+            <xs:element name="gradering" type="graderingOppdatering" minOccurs="0"/>
+            <xs:element name="tittel" type="n5mdk:tittel"/>
+            <xs:element name="offentligTittel" type="n5mdk:offentligTittel" minOccurs="0"/>
+            <xs:element name="beskrivelse" type="n5mdk:beskrivelse" minOccurs="0"/>
+            <xs:element name="virksomhetsspesifikkeMetadata" type="xs:anyType" minOccurs="0"/>
+            <xs:element name="merknad" type="merknadOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="korrespondansepartOppdatering" type="korrespondansepartOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="korrespondansepartSlett" type="korrespondansepartSlett" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="klassifikasjonOppdatering" type="klassifikasjonOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="klassifikasjonSlett" type="klassifikasjonSlett" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="referanseEksternNoekkel" type="eksternNoekkel" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="registreringSlett">
+        <xs:sequence>
+            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="journalpostOppdatering">
+        <xs:complexContent>
+            <xs:extension base="registreringOppdatering">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="korrespondansepartOppdatering">
+        <xs:sequence>
+            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+            <xs:element name="korrespondanseparttype" type="n5mdk:korrespondanseparttype"/>
+            <xs:element name="korrespondansepartNavn" type="n5mdk:korrespondansepartNavn"/>
+            <xs:choice minOccurs="0" maxOccurs="1">
+                <xs:element name="organisasjonid" minOccurs="0" type="n5mdk:organisasjonid"/>
+                <xs:element name="personid" minOccurs="0" type="n5mdk:personid"/>
+            </xs:choice>
+            <xs:element name="postadresse" type="n5mdk:postadresse" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="postnummer" type="n5mdk:postnummer" minOccurs="0"/>
+            <xs:element name="poststed" type="n5mdk:poststed" minOccurs="0"/>
+            <xs:element name="land" type="n5mdk:land" minOccurs="0"/>
+            <xs:element name="epostadresse" type="n5mdk:epostadresse" minOccurs="0"/>
+            <xs:element name="telefonnummer" type="n5mdk:telefonnummer" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="kontaktperson" type="n5mdk:kontaktperson" minOccurs="0"/>
+            <xs:element name="administrativEnhet" type="n5mdk:administrativEnhet" minOccurs="0"/>
+            <xs:element name="saksbehandler" type="n5mdk:saksbehandler" minOccurs="0"/>
+            <xs:element name="skjermetObjekt" type="n5mdk:skjermetObjekt" minOccurs="0"/>
+            <xs:element name="personnavn" type="n5mdk:personnavn" minOccurs="0"/>
+            <xs:element name="forsendelsesmaate" type="n5mdk:forsendelsesmaate" minOccurs="0"/>
+            <xs:element name="deresReferanse" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="korrespondansepartSlett">
+        <xs:sequence>
+            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="merknadOppdatering">
+        <xs:sequence>
+            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+            <xs:element name="merknadstekst" type="n5mdk:merknadstekst"/>
+            <xs:element name="merknadstype" type="n5mdk:merknadstype" minOccurs="0"/>
+            <xs:element name="merknadsdato" type="n5mdk:merknadsdato"/>
+            <xs:element name="merknadRegistrertAv" type="n5mdk:merknadRegistrertAv"/>
+            <xs:element name="skjermetObjekt" type="n5mdk:skjermetObjekt" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="skjermingOppdatering">
+        <xs:sequence>
+            <xs:element name="tilgangsrestriksjon" type="n5mdk:tilgangsrestriksjon"/>
+            <xs:element name="skjermingshjemmel" type="n5mdk:skjermingshjemmel"/>
+            <xs:element name="skjermingMetadata" type="n5mdk:skjermingMetadata" maxOccurs="unbounded"/>
+            <xs:element name="skjermingDokument" type="n5mdk:skjermingDokument" minOccurs="0"/>
+            <xs:element name="skjermingsvarighet" type="n5mdk:skjermingsvarighet" minOccurs="0"/>
+            <xs:element name="skjermingOpphoererDato" type="n5mdk:skjermingOpphoererDato" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="graderingOppdatering">
+        <xs:sequence>
+            <xs:element name="grad" type="n5mdk:grad"/>
+            <xs:element name="graderingsdato" type="n5mdk:graderingsdato"/>
+            <xs:element name="gradertAv" type="n5mdk:gradertAv"/>
+            <xs:element name="nedgraderingsdato" type="n5mdk:nedgraderingsdato" minOccurs="0"/>
+            <xs:element name="nedgradertAv" type="n5mdk:nedgradertAv" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="klassifikasjonOppdatering">
+        <xs:sequence>
+            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+            <xs:element name="klasseID" type="n5mdk:klasseID"/>
+            <xs:element name="tittel" type="n5mdk:tittel" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="klassifikasjonSlett">
+        <xs:sequence>
+            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="eksternNoekkel">
+        <xs:sequence>
+            <xs:element name="fagsystem" type="n5mdk:fagsystem"/>
+            <xs:element name="noekkel" type="n5mdk:noekkel"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="matrikkelnummerOppdatering">
+        <xs:sequence>
+            <xs:element name="kommunenummer" type="n5mdk:kommunenummer"/>
+            <xs:element name="gardsnummer" type="n5mdk:gardsnummer"/>
+            <xs:element name="bruksnummer" type="n5mdk:bruksnummer"/>
+            <xs:element name="festenummer" type="n5mdk:festenummer" minOccurs="0"/>
+            <xs:element name="seksjonsnummer" type="n5mdk:seksjonsnummer" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="byggidentOppdatering">
+        <xs:sequence>
+            <xs:element name="bygningsnummer" type="n5mdk:bygningsnummer"/>
+            <xs:element name="endringsloepenummer" type="n5mdk:endringsloepenummer" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="planidentOppdatering">
+        <xs:sequence>
+            <xs:element name="planidentifikasjon" type="n5mdk:planidentifikasjon"/>
+            <xs:choice minOccurs="0" maxOccurs="1">
+                <xs:element name="kommunenummer" minOccurs="0" type="n5mdk:kommunenummer"/>
+                <xs:element name="fylkesnummer" minOccurs="0" type="n5mdk:fylkesnummer"/>
+                <xs:element name="landkode" minOccurs="0" type="n5mdk:landkode"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="punktOppdatering">
+        <xs:sequence>
+            <xs:element name="koordinatsystem" type="n5mdk:koordinatsystem"/>
+            <xs:element name="x" type="n5mdk:x"/>
+            <xs:element name="y" type="n5mdk:y"/>
+            <xs:element name="z" type="n5mdk:z" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
