@@ -165,38 +165,5 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
 
             Assert.Pass();
         }
-
-
-        [Test]
-        public void TestSøkVsm()
-        {
-            var arkivmeldingsok = new Sok
-            {
-                Respons = Respons.Mappe,
-                MeldingId = Guid.NewGuid().ToString(),
-                System = "Fagsystem X",
-                Tidspunkt = DateTime.Now,
-                Skip = 0,
-                Take = 100
-            };
-
-            arkivmeldingsok.Parameter.Add(
-                new Parameter
-                {
-                    Felt = SokFelt.MappePeriodVirksomhetsspesifikkeMetadata,
-                    Operator = OperatorType.Equal,
-                    Parameterverdier = new Parameterverdier
-                    {
-                        Virksomhetsspesifikkemetadata = new Vsmetadata()
-                        {
-                            Key = { "Kaffetype" }, Value = { "arabica" }
-                        }
-                    }
-                });
-            
-            var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
-
-            Assert.Pass();
-        }
     }
 }

@@ -27,6 +27,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
         public static readonly List<string> ArkiveringTyper = new List<string>()
         {
             Arkivmelding,
+            ArkivmeldingOppdater,
             ArkivmeldingMottatt,
             ArkivmeldingKvittering
         };
