@@ -117,8 +117,5 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok
         
         [System.Xml.Serialization.XmlElementAttribute("klassifikasjonvalues")]
         public Klassifikasjonvalues Klassifikasjonvalues { get; set; }
-        
-        [System.Xml.Serialization.XmlElementAttribute("virksomhetsspesifikkemetadata")]
-        public Vsmetadata Virksomhetsspesifikkemetadata { get; set; }
     }
 }

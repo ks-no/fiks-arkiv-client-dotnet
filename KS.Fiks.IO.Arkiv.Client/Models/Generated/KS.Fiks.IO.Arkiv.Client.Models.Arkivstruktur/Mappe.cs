@@ -16,6 +16,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute("mappe", Namespace="http://www.arkivverket.no/standarder/noark5/arkivstruktur")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute("mappe", Namespace="http://www.arkivverket.no/standarder/noark5/arkivstruktur")]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Moetemappe))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Saksmappe))]
     public partial class Mappe

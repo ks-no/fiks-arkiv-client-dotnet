@@ -401,7 +401,7 @@
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="punkt">
 		<xs:sequence>
 			<xs:element name="koordinatsystem" type = "n5mdk:koordinatsystem"/>

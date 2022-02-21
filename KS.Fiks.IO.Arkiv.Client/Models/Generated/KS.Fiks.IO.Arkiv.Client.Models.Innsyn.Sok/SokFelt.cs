@@ -36,9 +36,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok
         [System.Xml.Serialization.XmlEnumAttribute("mappe.avsluttetDato")]
         MappePeriodAvsluttetDato,
         
-        [System.Xml.Serialization.XmlEnumAttribute("mappe.virksomhetsspesifikkeMetadata")]
-        MappePeriodVirksomhetsspesifikkeMetadata,
-        
         [System.Xml.Serialization.XmlEnumAttribute("mappe.referansearkivdel")]
         MappePeriodReferansearkivdel,
         
@@ -89,9 +86,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok
         
         [System.Xml.Serialization.XmlEnumAttribute("mappe.part.epostadresse")]
         MappePeriodPartPeriodEpostadresse,
-        
-        [System.Xml.Serialization.XmlEnumAttribute("mappe.part.virksomhetsspesifikkeMetadata")]
-        MappePeriodPartPeriodVirksomhetsspesifikkeMetadata,
         
         [System.Xml.Serialization.XmlEnumAttribute("mappe.skjerming.tilgangsrestriksjon")]
         MappePeriodSkjermingPeriodTilgangsrestriksjon,
@@ -179,9 +173,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok
         
         [System.Xml.Serialization.XmlEnumAttribute("registrering.part.epostadresse")]
         RegistreringPeriodPartPeriodEpostadresse,
-        
-        [System.Xml.Serialization.XmlEnumAttribute("registrering.part.virksomhetsspesifikkeMetadata")]
-        RegistreringPeriodPartPeriodVirksomhetsspesifikkeMetadata,
         
         [System.Xml.Serialization.XmlEnumAttribute("registrering.skjerming.tilgangsrestriksjon")]
         RegistreringPeriodSkjermingPeriodTilgangsrestriksjon,
