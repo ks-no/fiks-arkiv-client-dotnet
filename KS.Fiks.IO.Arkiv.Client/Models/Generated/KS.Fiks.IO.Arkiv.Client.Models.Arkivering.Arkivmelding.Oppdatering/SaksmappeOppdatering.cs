@@ -26,14 +26,14 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         [System.Xml.Serialization.XmlElementAttribute("saksansvarlig")]
         public string Saksansvarlig { get; set; }
         
-        [System.Xml.Serialization.XmlElementAttribute("matrikkelnummerOppdateringer")]
-        public MatrikkelnummerOppdateringer MatrikkelnummerOppdateringer { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("matrikkelnummerOppdateringe")]
+        public MatrikkelnummerOppdateringer MatrikkelnummerOppdateringe { get; set; }
         
-        [System.Xml.Serialization.XmlElementAttribute("byggidentOppdateringer")]
-        public Byggident ByggidentOppdateringer { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("byggidentOppdateringe")]
+        public ByggidentOppdateringer ByggidentOppdateringe { get; set; }
         
-        [System.Xml.Serialization.XmlElementAttribute("planidentOppdateringer")]
-        public Planident PlanidentOppdateringer { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("planidentOppdateringe")]
+        public PlanidentOppdateringer PlanidentOppdateringe { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Punkt> _punkt;

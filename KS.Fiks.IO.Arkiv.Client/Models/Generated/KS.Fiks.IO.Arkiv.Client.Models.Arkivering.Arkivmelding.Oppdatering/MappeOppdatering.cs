@@ -34,7 +34,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         /// <para>M020</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("tittel")]
         public string Tittel { get; set; }
         
@@ -55,7 +54,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         [System.Xml.Serialization.XmlElementAttribute("virksomhetsspesifikkeMetadata")]
         public object VirksomhetsspesifikkeMetadata { get; set; }
         
-        [System.Xml.Serialization.XmlElementAttribute("partOppdateringer")]
-        public Part PartOppdateringer { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("partOppdatering")]
+        public PartOppdateringer PartOppdatering { get; set; }
     }
 }

@@ -26,7 +26,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         /// <para>M310</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("merknadstekst")]
         public string Merknadstekst { get; set; }
         
@@ -40,15 +39,18 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         /// <summary>
         /// <para>M611</para>
         /// </summary>
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("merknadsdato", DataType="dateTime")]
         public System.DateTime Merknadsdato { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool MerknadsdatoSpecified { get; set; }
         
         /// <summary>
         /// <para>M612</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("merknadRegistrertAv")]
         public string MerknadRegistrertAv { get; set; }
         

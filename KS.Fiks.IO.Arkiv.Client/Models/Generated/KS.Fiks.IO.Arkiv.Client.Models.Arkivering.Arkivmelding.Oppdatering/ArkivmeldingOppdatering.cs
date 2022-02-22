@@ -21,10 +21,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
     {
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
-        [System.Xml.Serialization.XmlElementAttribute("system")]
-        public string System { get; set; }
-        
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("meldingId")]
         public string MeldingId { get; set; }
         
@@ -33,29 +29,29 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         public System.DateTime Tidspunkt { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.ObjectModel.Collection<MappeOppdatering> _mappeOppdatering;
+        private System.Collections.ObjectModel.Collection<MappeOppdatering> _mappeOppdateringer;
         
-        [System.Xml.Serialization.XmlElementAttribute("mappeOppdatering")]
-        public System.Collections.ObjectModel.Collection<MappeOppdatering> MappeOppdatering
+        [System.Xml.Serialization.XmlElementAttribute("mappeOppdateringer")]
+        public System.Collections.ObjectModel.Collection<MappeOppdatering> MappeOppdateringer
         {
             get
             {
-                return this._mappeOppdatering;
+                return this._mappeOppdateringer;
             }
             private set
             {
-                this._mappeOppdatering = value;
+                this._mappeOppdateringer = value;
             }
         }
         
         /// <summary>
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MappeOppdateringSpecified
+        public bool MappeOppdateringerSpecified
         {
             get
             {
-                return (this.MappeOppdatering.Count != 0);
+                return (this.MappeOppdateringer.Count != 0);
             }
         }
         
@@ -63,34 +59,34 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         /// </summary>
         public ArkivmeldingOppdatering()
         {
-            this._mappeOppdatering = new System.Collections.ObjectModel.Collection<MappeOppdatering>();
-            this._registreringOppdatering = new System.Collections.ObjectModel.Collection<RegistreringOppdatering>();
+            this._mappeOppdateringer = new System.Collections.ObjectModel.Collection<MappeOppdatering>();
+            this._registreringOppdateringer = new System.Collections.ObjectModel.Collection<RegistreringOppdatering>();
         }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.ObjectModel.Collection<RegistreringOppdatering> _registreringOppdatering;
+        private System.Collections.ObjectModel.Collection<RegistreringOppdatering> _registreringOppdateringer;
         
-        [System.Xml.Serialization.XmlElementAttribute("registreringOppdatering")]
-        public System.Collections.ObjectModel.Collection<RegistreringOppdatering> RegistreringOppdatering
+        [System.Xml.Serialization.XmlElementAttribute("registreringOppdateringer")]
+        public System.Collections.ObjectModel.Collection<RegistreringOppdatering> RegistreringOppdateringer
         {
             get
             {
-                return this._registreringOppdatering;
+                return this._registreringOppdateringer;
             }
             private set
             {
-                this._registreringOppdatering = value;
+                this._registreringOppdateringer = value;
             }
         }
         
         /// <summary>
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool RegistreringOppdateringSpecified
+        public bool RegistreringOppdateringerSpecified
         {
             get
             {
-                return (this.RegistreringOppdatering.Count != 0);
+                return (this.RegistreringOppdateringer.Count != 0);
             }
         }
     }

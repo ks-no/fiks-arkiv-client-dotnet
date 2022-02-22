@@ -20,11 +20,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
     public partial class RegistreringOppdatering
     {
         
+        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("systemID")]
         public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SystemID SystemID { get; set; }
         
-        [System.Xml.Serialization.XmlElementAttribute("part")]
-        public Part Part { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("partOppdatering")]
+        public PartOppdateringer PartOppdatering { get; set; }
         
         [System.Xml.Serialization.XmlElementAttribute("skjerming")]
         public KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Skjerming Skjerming { get; set; }
@@ -36,7 +37,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         /// <para>M020</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("tittel")]
         public string Tittel { get; set; }
         
@@ -58,15 +58,14 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         public object VirksomhetsspesifikkeMetadata { get; set; }
         
         [System.Xml.Serialization.XmlElementAttribute("merknad")]
-        public Merknad Merknad { get; set; }
+        public MerknadOppdateringer Merknad { get; set; }
         
         [System.Xml.Serialization.XmlElementAttribute("korrespondansepart")]
-        public Korrespondansepart Korrespondansepart { get; set; }
+        public KorrespondansepartOppdateringer Korrespondansepart { get; set; }
         
         [System.Xml.Serialization.XmlElementAttribute("klassifikasjon")]
-        public Klassifikasjon Klassifikasjon { get; set; }
+        public KlassifikasjonOppdateringer Klassifikasjon { get; set; }
         
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("referanseEksternNoekkel")]
         public KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.EksternNoekkel ReferanseEksternNoekkel { get; set; }
     }

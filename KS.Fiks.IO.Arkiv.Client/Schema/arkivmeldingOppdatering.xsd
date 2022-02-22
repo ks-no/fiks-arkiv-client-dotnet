@@ -12,12 +12,12 @@
 
     <xs:complexType name="arkivmeldingOppdatering">
         <xs:sequence>
-            <xs:element name="system" type="xs:string"/>
+            <!--xs:element name="system" type="xs:string"/-->
             <xs:element name="meldingId" type="xs:string"/>
             <xs:element name="tidspunkt" type="xs:dateTime"/>
             <xs:choice minOccurs="1" maxOccurs="1">
-                <xs:element name="mappeOppdatering" type="mappeOppdatering" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="registreringOppdatering" type="registreringOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="mappeOppdateringer" type="mappeOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="registreringOppdateringer" type="registreringOppdatering" minOccurs="0" maxOccurs="unbounded"/>
             </xs:choice>
         </xs:sequence>
     </xs:complexType>
@@ -28,11 +28,11 @@
                 <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>  
                 <xs:element name="mappeID" type="n5mdk:mappeID" minOccurs="0"/>
             </xs:choice>
-            <xs:element name="tittel" type="n5mdk:tittel"/>
+            <xs:element name="tittel" type="n5mdk:tittel" minOccurs="0"/>
             <xs:element name="offentligTittel" type="n5mdk:offentligTittel" minOccurs="0"/>
             <xs:element name="beskrivelse" type="n5mdk:beskrivelse" minOccurs="0"/>
             <xs:element name="virksomhetsspesifikkeMetadata" type="xs:anyType" minOccurs="0"/>
-            <xs:element name="partOppdateringer" type="part" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="partOppdatering" type="partOppdateringer" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -41,16 +41,17 @@
             <xs:extension base="mappeOppdatering">
                 <xs:sequence>
                     <xs:element name="saksansvarlig" type="n5mdk:saksansvarlig" minOccurs="0"/>
-                    <xs:element name="matrikkelnummerOppdateringer" type="matrikkelnummerOppdateringer" minOccurs="0" maxOccurs="1"/>
-                    <xs:element name="byggidentOppdateringer" type="byggident" minOccurs="0" maxOccurs="1"/>
-                    <xs:element name="planidentOppdateringer" type="planident" minOccurs="0" maxOccurs="1"/>
-                    <xs:element name="punkt" type="arkivmelding:punkt" minOccurs="0" maxOccurs="unbounded"/> <!-- hva skal være id på denne hvis den skal kunne oppdateres? x og y? Eller burde det være en systemID her?-->
+                    <xs:element name="matrikkelnummerOppdateringe" type="matrikkelnummerOppdateringer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="byggidentOppdateringe" type="byggidentOppdateringer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="planidentOppdateringe" type="planidentOppdateringer" minOccurs="0" maxOccurs="1"/>
+                    <!-- hva skal være id på punkt hvis den skal kunne oppdateres? x og y? Eller burde det være en systemID på punkt?-->
+                    <xs:element name="punkt" type="arkivmelding:punkt" minOccurs="0" maxOccurs="unbounded"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
 
-    <xs:complexType name="part">
+    <xs:complexType name="partOppdateringer">
         <xs:sequence>
             <xs:element name="oppdatering" type="partOppdatering" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="slett" type="partSlett" minOccurs="0" maxOccurs="unbounded"/>
@@ -60,8 +61,8 @@
 
     <xs:complexType name="partOppdatering">
         <xs:sequence>
-            <xs:element name="partID" type="n5mdk:partID" minOccurs="0"/>
-            <xs:element name="partNavn" type="n5mdk:partNavn"/>
+            <xs:element name="partID" type="n5mdk:partID" minOccurs="1"/>
+            <xs:element name="partNavn" type="n5mdk:partNavn" minOccurs="0"/>
             <xs:element name="partRolle" type="n5mdk:partRolle" minOccurs="0"/>
             <xs:choice minOccurs="0" maxOccurs="1">
                 <xs:element name="organisasjonid" minOccurs="0" type="n5mdk:organisasjonid"/>
@@ -88,18 +89,19 @@
 
     <xs:complexType name="registreringOppdatering">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
-            <xs:element name="part" type="part" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
+            <xs:element name="partOppdatering" type="partOppdateringer" minOccurs="0" maxOccurs="1"/>
             <xs:element name="skjerming" type="arkivmelding:skjerming" minOccurs="0"/>
             <xs:element name="gradering" type="arkivmelding:gradering" minOccurs="0"/>
-            <xs:element name="tittel" type="n5mdk:tittel"/>
+            <xs:element name="tittel" type="n5mdk:tittel" minOccurs="0"/>
             <xs:element name="offentligTittel" type="n5mdk:offentligTittel" minOccurs="0"/>
             <xs:element name="beskrivelse" type="n5mdk:beskrivelse" minOccurs="0"/>
             <xs:element name="virksomhetsspesifikkeMetadata" type="xs:anyType" minOccurs="0"/>
-            <xs:element name="merknad" type="merknad" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="korrespondansepart" type="korrespondansepart" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="klassifikasjon" type="klassifikasjon" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="referanseEksternNoekkel" type="arkivmelding:eksternNoekkel" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="merknad" type="merknadOppdateringer" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="korrespondansepart" type="korrespondansepartOppdateringer" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="klassifikasjon" type="klassifikasjonOppdateringer" minOccurs="0" maxOccurs="1"/>
+            <!-- Skal referanseEksternNoekkel kunne oppdateres? -->
+            <xs:element name="referanseEksternNoekkel" type="arkivmelding:eksternNoekkel" minOccurs="0" maxOccurs="1"/> 
         </xs:sequence>
     </xs:complexType>
 
@@ -110,7 +112,7 @@
         </xs:complexContent>
     </xs:complexType>
     
-    <xs:complexType name="korrespondansepart">
+    <xs:complexType name="korrespondansepartOppdateringer">
         <xs:sequence>
             <xs:element name="oppdatering" type="korrespondansepartOppdatering" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="slett" type="korrespondansepartSlett" minOccurs="0" maxOccurs="unbounded"/>
@@ -121,8 +123,8 @@
     <xs:complexType name="korrespondansepartOppdatering">
         <xs:sequence>
             <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
-            <xs:element name="korrespondanseparttype" type="n5mdk:korrespondanseparttype"/>
-            <xs:element name="korrespondansepartNavn" type="n5mdk:korrespondansepartNavn"/>
+            <xs:element name="korrespondanseparttype" type="n5mdk:korrespondanseparttype" minOccurs="0"/>
+            <xs:element name="korrespondansepartNavn" type="n5mdk:korrespondansepartNavn" minOccurs="0"/>
             <xs:choice minOccurs="0" maxOccurs="1">
                 <xs:element name="organisasjonid" minOccurs="0" type="n5mdk:organisasjonid"/>
                 <xs:element name="personid" minOccurs="0" type="n5mdk:personid"/>
@@ -149,7 +151,7 @@
         </xs:sequence>
     </xs:complexType>
     
-    <xs:complexType name="merknad">
+    <xs:complexType name="merknadOppdateringer">
         <xs:sequence>
             <xs:element name="oppdatering" type="merknadOppdatering" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="slett" type="merknadSlett" minOccurs="0" maxOccurs="unbounded"/>
@@ -160,10 +162,10 @@
     <xs:complexType name="merknadOppdatering">
         <xs:sequence>
             <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
-            <xs:element name="merknadstekst" type="n5mdk:merknadstekst"/>
+            <xs:element name="merknadstekst" type="n5mdk:merknadstekst" minOccurs="0"/>
             <xs:element name="merknadstype" type="n5mdk:merknadstype" minOccurs="0"/>
-            <xs:element name="merknadsdato" type="n5mdk:merknadsdato"/>
-            <xs:element name="merknadRegistrertAv" type="n5mdk:merknadRegistrertAv"/>
+            <xs:element name="merknadsdato" type="n5mdk:merknadsdato" minOccurs="0"/>
+            <xs:element name="merknadRegistrertAv" type="n5mdk:merknadRegistrertAv" minOccurs="0"/>
             <xs:element name="skjermetObjekt" type="n5mdk:skjermetObjekt" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
@@ -195,7 +197,7 @@
         </xs:sequence>
     </xs:complexType-->
     
-    <xs:complexType name="klassifikasjon">
+    <xs:complexType name="klassifikasjonOppdateringer">
         <xs:sequence>
             <xs:element name="oppdatering" type="klassifikasjonOppdatering" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="slett" type="klassifikasjonSlett" minOccurs="0" maxOccurs="unbounded"/>
@@ -205,8 +207,8 @@
     
     <xs:complexType name="klassifikasjonOppdatering">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
-            <xs:element name="klasseID" type="n5mdk:klasseID"/>
+            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
+            <xs:element name="klasseID" type="n5mdk:klasseID" minOccurs="0"/>
             <xs:element name="tittel" type="n5mdk:tittel" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
@@ -241,7 +243,7 @@
         </xs:sequence>
     </xs:complexType>
     
-    <xs:complexType name="byggident">
+    <xs:complexType name="byggidentOppdateringer">
         <xs:sequence>
             <xs:element name="Oppdatering" type="byggidentOppdatering" minOccurs="0" maxOccurs="unbounded"/> <!-- er det naturlig å endre dette? -->
             <xs:element name="Slett" type="byggidentSlett" minOccurs="0" maxOccurs="unbounded"/> <!-- skal man kunne slette? -->
@@ -249,6 +251,7 @@
         </xs:sequence>
     </xs:complexType>
 
+    <!-- Trengs denne? Eller skal man bare kunne legge til ny og slette? -->
     <xs:complexType name="byggidentOppdatering">
         <xs:sequence>
             <xs:element name="bygningsnummer" type="n5mdk:bygningsnummer"/>
@@ -262,7 +265,7 @@
         </xs:sequence>
     </xs:complexType>
     
-    <xs:complexType name="planident">
+    <xs:complexType name="planidentOppdateringer">
         <xs:sequence>
             <xs:element name="oppdatering" type="planidentOppdatering" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="slett" type="planidentSlett" minOccurs="0" maxOccurs="unbounded"/>
