@@ -28,7 +28,7 @@
 			<xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
 			<xs:element name="mappeID" type="n5mdk:mappeID" minOccurs="0"/>
 			<!-- ReferanseForelderMappe gir mulighet for putte en mappe inn under en eksisterende mappe -->
-			<xs:element minOccurs="0" name="ReferanseForeldermappe" type="n5mdk:systemID"/>
+			<xs:element name="ReferanseForeldermappe" type="n5mdk:systemID" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="tittel" type="n5mdk:tittel"/>
 			<xs:element name="offentligTittel" type="n5mdk:offentligTittel" minOccurs="0"/>
 			<xs:element name="beskrivelse" type="n5mdk:beskrivelse" minOccurs="0"/>
@@ -112,7 +112,7 @@
 			<xs:element name="arkivertDato" type="n5mdk:arkivertDato" minOccurs="0"/>
 			<xs:element name="arkivertAv" type="n5mdk:arkivertAv" minOccurs="0"/>
 
-			<!-- Dersom ren registrering kommer alene må den kunne plasseres i en mappe eller arkivdel-->
+			<!-- Dersom en registrering kommer alene må den kunne plasseres i en mappe eller arkivdel-->
 			<xs:choice minOccurs="0" maxOccurs="1">
 				<xs:element name="referanseForelderMappe" type="n5mdk:systemID"/>
 				<xs:element name="referanseArkivdel" type="n5mdk:referanseArkivdel"/>
