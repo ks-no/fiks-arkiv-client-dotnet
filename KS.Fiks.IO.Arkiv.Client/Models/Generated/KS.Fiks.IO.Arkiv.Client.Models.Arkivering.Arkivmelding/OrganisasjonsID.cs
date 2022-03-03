@@ -14,20 +14,19 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.629.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("personID", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2")]
+    [System.Xml.Serialization.XmlTypeAttribute("organisasjonsID", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class PersonID
+    public partial class OrganisasjonsID
     {
-        
-        /// <summary>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.RegularExpressionAttribute("[A-Z]{3}")]
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
-        [System.Xml.Serialization.XmlElementAttribute("landkode")]
-        public string Landkode { get; set; }
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("identifikator")]
         public string Identifikator { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [System.ComponentModel.DataAnnotations.RegularExpressionAttribute("[A-Z]{3}")]
+        [System.Xml.Serialization.XmlElementAttribute("landkode")]
+        public string Landkode { get; set; }
     }
 }

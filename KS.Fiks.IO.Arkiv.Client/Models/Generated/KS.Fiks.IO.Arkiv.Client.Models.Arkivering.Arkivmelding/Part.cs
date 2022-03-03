@@ -42,14 +42,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
         [System.Xml.Serialization.XmlElementAttribute("partRolle")]
         public string PartRolle { get; set; }
         
-        /// <summary>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.RegularExpressionAttribute("[0-9]{4}:[0-9]{1,35}")]
-        [System.Xml.Serialization.XmlElementAttribute("organisasjonid")]
-        public string Organisasjonid { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("organisasjonID")]
+        public OrganisasjonsID OrganisasjonID { get; set; }
         
-        [System.Xml.Serialization.XmlElementAttribute("personid")]
-        public PersonID Personid { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("personID")]
+        public PersonID PersonID { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.ObjectModel.Collection<string> _postadresse;

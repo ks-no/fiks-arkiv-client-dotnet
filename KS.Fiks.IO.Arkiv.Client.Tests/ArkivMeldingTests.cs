@@ -28,7 +28,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                             new Part
                             {
                                 PartNavn = "navn",
-                                Personid = new PersonID
+                                PersonID = new PersonID
                                 {
                                     Identifikator = "123456789",
                                     Landkode = "NO"
@@ -66,7 +66,48 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                             new Part
                             {
                                 PartNavn = "navn",
-                                Organisasjonid = "0192:123456789"
+                                OrganisasjonID = new OrganisasjonsID
+                                {
+                                    Identifikator = "123456789",
+                                    Landkode = "NOR"
+                                }
+                            }
+                        },
+                        Tittel = "tittel",
+                        ReferanseEksternNoekkel = new EksternNoekkel
+                        {
+                            Fagsystem = "system",
+                            Noekkel = "noekkel"
+                        }
+                    }
+                }
+            };
+            var serialized = ArkivmeldingSerializeHelper.Serialize(arkivMelding);
+            Assert.True(Validator.IsValidArkivmeldingXml(serialized));
+        }
+        
+        [Test]
+        public void ArkivMelding_WithOrganisationIdWithoutLandkode_IsValid()
+        {
+            var arkivMelding = new Arkivmelding
+            {
+                System = "system",
+                MeldingId = "id",
+                Tidspunkt = DateTime.Now,
+                AntallFiler = 1,
+                Registrering =
+                {
+                    new Registrering
+                    {
+                        Part =
+                        {
+                            new Part
+                            {
+                                PartNavn = "navn",
+                                OrganisasjonID = new OrganisasjonsID
+                                {
+                                    Identifikator = "123456789"
+                                }
                             }
                         },
                         Tittel = "tittel",
@@ -100,12 +141,16 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                             new Part
                             {
                                 PartNavn = "navn",
-                                Personid = new PersonID
+                                PersonID = new PersonID
                                 {
                                     Identifikator = "123456789",
-                                    Landkode = "NO"
+                                    Landkode = "NOR"
                                 },
-                                Organisasjonid = "0192:123456789"
+                                OrganisasjonID = new OrganisasjonsID
+                                {
+                                    Identifikator = "123456789",
+                                    Landkode = "NOR"
+                                }
                             }
                         },
                         Tittel = "tittel",

@@ -88,8 +88,8 @@
 			<xs:element name="partNavn" type="n5mdk:partNavn"/>
 			<xs:element name="partRolle" type="n5mdk:partRolle" minOccurs="0"/>
 			<xs:choice minOccurs="0" maxOccurs="1">
-				<xs:element name="organisasjonid" minOccurs="0" type="organisasjonsID"/>
-				<xs:element name="personid" minOccurs="0" type="personID"/>
+				<xs:element name="organisasjonID" minOccurs="0" type="organisasjonsID"/>
+				<xs:element name="personID" minOccurs="0" type="personID"/>
 			</xs:choice>
 			<xs:element name="postadresse" type="n5mdk:postadresse" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="postnummer" type="n5mdk:postnummer" minOccurs="0"/>
@@ -411,11 +411,12 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:simpleType name="organisasjonsID">
-		<xs:restriction base="xs:string">
-			<xs:pattern value="[0-9]{4}:[0-9]{1,35}"/>
-		</xs:restriction>
-	</xs:simpleType>
+	<xs:complexType name="organisasjonsID">
+		<xs:sequence>
+			<xs:element name="identifikator" type="xs:string" />
+			<xs:element name="landkode" type="landkode" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
 
 	<xs:complexType name="personID">
 		<xs:sequence>
@@ -426,7 +427,7 @@
 	
 	<xs:simpleType name="landkode">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="[A-Z]{2,3}"/>
+			<xs:pattern value="[A-Z]{3}"/>
 		</xs:restriction>
 	</xs:simpleType>
 
