@@ -12,7 +12,6 @@
 
     <xs:complexType name="arkivmeldingOppdatering">
         <xs:sequence>
-            <!--xs:element name="system" type="xs:string"/-->
             <xs:element name="meldingId" type="xs:string"/>
             <xs:element name="tidspunkt" type="xs:dateTime"/>
             <xs:choice minOccurs="1" maxOccurs="1">
@@ -41,9 +40,9 @@
             <xs:extension base="mappeOppdatering">
                 <xs:sequence>
                     <xs:element name="saksansvarlig" type="n5mdk:saksansvarlig" minOccurs="0"/>
-                    <xs:element name="matrikkelnummerOppdateringe" type="matrikkelnummerOppdateringer" minOccurs="0" maxOccurs="1"/>
-                    <xs:element name="byggidentOppdateringe" type="byggidentOppdateringer" minOccurs="0" maxOccurs="1"/>
-                    <xs:element name="planidentOppdateringe" type="planidentOppdateringer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="matrikkelnummerOppdatering" type="matrikkelnummerOppdateringer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="byggidentOppdatering" type="byggidentOppdateringer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="planidentOppdatering" type="planidentOppdateringer" minOccurs="0" maxOccurs="1"/>
                     <!-- hva skal være id på punkt hvis den skal kunne oppdateres? x og y? Eller burde det være en systemID på punkt?-->
                     <xs:element name="punkt" type="arkivmelding:punkt" minOccurs="0" maxOccurs="unbounded"/>
                 </xs:sequence>
@@ -61,7 +60,7 @@
 
     <xs:complexType name="partOppdatering">
         <xs:sequence>
-            <xs:element name="partID" type="n5mdk:partID" minOccurs="1"/>
+            <xs:element name="partID" type="n5mdk:partID"/>
             <xs:element name="partNavn" type="n5mdk:partNavn" minOccurs="0"/>
             <xs:element name="partRolle" type="n5mdk:partRolle" minOccurs="0"/>
             <xs:choice minOccurs="0" maxOccurs="1">
@@ -83,25 +82,24 @@
 
     <xs:complexType name="partSlett">
         <xs:sequence>
-            <xs:element name="partID" type="n5mdk:partID" minOccurs="0"/>
+            <xs:element name="partID" type="n5mdk:partID" minOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="registreringOppdatering">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
-            <xs:element name="partOppdatering" type="partOppdateringer" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
+            <xs:element name="partOppdatering" type="partOppdateringer" minOccurs="0"/>
             <xs:element name="skjerming" type="arkivmelding:skjerming" minOccurs="0"/>
             <xs:element name="gradering" type="arkivmelding:gradering" minOccurs="0"/>
             <xs:element name="tittel" type="n5mdk:tittel" minOccurs="0"/>
             <xs:element name="offentligTittel" type="n5mdk:offentligTittel" minOccurs="0"/>
             <xs:element name="beskrivelse" type="n5mdk:beskrivelse" minOccurs="0"/>
             <xs:element name="virksomhetsspesifikkeMetadata" type="xs:anyType" minOccurs="0"/>
-            <xs:element name="merknad" type="merknadOppdateringer" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="korrespondansepart" type="korrespondansepartOppdateringer" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="klassifikasjon" type="klassifikasjonOppdateringer" minOccurs="0" maxOccurs="1"/>
-            <!-- Skal referanseEksternNoekkel kunne oppdateres? -->
-            <xs:element name="referanseEksternNoekkel" type="arkivmelding:eksternNoekkel" minOccurs="0" maxOccurs="1"/> 
+            <xs:element name="merknad" type="merknadOppdateringer" minOccurs="0"/>
+            <xs:element name="korrespondansepart" type="korrespondansepartOppdateringer" minOccurs="0"/>
+            <xs:element name="klassifikasjon" type="klassifikasjonOppdateringer" minOccurs="0"/>
+            <xs:element name="referanseEksternNoekkel" type="arkivmelding:eksternNoekkel" minOccurs="0"/> 
         </xs:sequence>
     </xs:complexType>
 
@@ -122,7 +120,7 @@
 
     <xs:complexType name="korrespondansepartOppdatering">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
             <xs:element name="korrespondanseparttype" type="n5mdk:korrespondanseparttype" minOccurs="0"/>
             <xs:element name="korrespondansepartNavn" type="n5mdk:korrespondansepartNavn" minOccurs="0"/>
             <xs:choice minOccurs="0" maxOccurs="1">
@@ -147,7 +145,7 @@
 
     <xs:complexType name="korrespondansepartSlett">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -161,7 +159,7 @@
 
     <xs:complexType name="merknadOppdatering">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
             <xs:element name="merknadstekst" type="n5mdk:merknadstekst" minOccurs="0"/>
             <xs:element name="merknadstype" type="n5mdk:merknadstype" minOccurs="0"/>
             <xs:element name="merknadsdato" type="n5mdk:merknadsdato" minOccurs="0"/>
@@ -172,31 +170,10 @@
 
     <xs:complexType name="merknadSlett">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
         </xs:sequence>
     </xs:complexType>
 
-    <!--xs:complexType name="skjerming">
-        <xs:sequence>
-            <xs:element name="tilgangsrestriksjon" type="n5mdk:tilgangsrestriksjon"/>
-            <xs:element name="skjermingshjemmel" type="n5mdk:skjermingshjemmel"/>
-            <xs:element name="skjermingMetadata" type="n5mdk:skjermingMetadata" maxOccurs="unbounded"/>
-            <xs:element name="skjermingDokument" type="n5mdk:skjermingDokument" minOccurs="0"/>
-            <xs:element name="skjermingsvarighet" type="n5mdk:skjermingsvarighet" minOccurs="0"/>
-            <xs:element name="skjermingOpphoererDato" type="n5mdk:skjermingOpphoererDato" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType-->
-
-    <!--xs:complexType name="gradering">
-        <xs:sequence>
-            <xs:element name="grad" type="n5mdk:grad"/>
-            <xs:element name="graderingsdato" type="n5mdk:graderingsdato"/>
-            <xs:element name="gradertAv" type="n5mdk:gradertAv"/>
-            <xs:element name="nedgraderingsdato" type="n5mdk:nedgraderingsdato" minOccurs="0"/>
-            <xs:element name="nedgradertAv" type="n5mdk:nedgradertAv" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType-->
-    
     <xs:complexType name="klassifikasjonOppdateringer">
         <xs:sequence>
             <xs:element name="oppdatering" type="klassifikasjonOppdatering" minOccurs="0" maxOccurs="unbounded"/>
@@ -207,7 +184,7 @@
     
     <xs:complexType name="klassifikasjonOppdatering">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="1"/>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
             <xs:element name="klasseID" type="n5mdk:klasseID" minOccurs="0"/>
             <xs:element name="tittel" type="n5mdk:tittel" minOccurs="0"/>
         </xs:sequence>
@@ -215,17 +192,10 @@
 
     <xs:complexType name="klassifikasjonSlett">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
         </xs:sequence>
     </xs:complexType>
 
-    <!--xs:complexType name="eksternNoekkel">
-        <xs:sequence>
-            <xs:element name="fagsystem" type="n5mdk:fagsystem"/>
-            <xs:element name="noekkel" type="n5mdk:noekkel"/>
-        </xs:sequence>
-    </xs:complexType-->
-    
     <xs:complexType name="matrikkelnummerOppdateringer">
         <xs:sequence>
             <xs:element name="ny" type="arkivmelding:matrikkelnummer" minOccurs="0" maxOccurs="unbounded"/>
@@ -290,12 +260,4 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!--xs:complexType name="punkt">
-        <xs:sequence>
-            <xs:element name="koordinatsystem" type="n5mdk:koordinatsystem"/>
-            <xs:element name="x" type="n5mdk:x"/>
-            <xs:element name="y" type="n5mdk:y"/>
-            <xs:element name="z" type="n5mdk:z" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType-->
 </xs:schema>
