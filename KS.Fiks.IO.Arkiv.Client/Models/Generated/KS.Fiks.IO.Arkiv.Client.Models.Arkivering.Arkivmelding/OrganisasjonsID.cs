@@ -25,7 +25,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
         
         /// <summary>
         /// </summary>
-        [System.ComponentModel.DataAnnotations.RegularExpressionAttribute("[A-Z]{3}")]
+        [System.ComponentModel.DataAnnotations.RegularExpressionAttribute("[A-Z]{2}")]
         [System.Xml.Serialization.XmlElementAttribute("landkode")]
         public string Landkode { get; set; }
     }

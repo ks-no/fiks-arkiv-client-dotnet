@@ -69,7 +69,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                                 OrganisasjonID = new OrganisasjonsID
                                 {
                                     Identifikator = "123456789",
-                                    Landkode = "NOR"
+                                    Landkode = "NO"
                                 }
                             }
                         },
@@ -144,12 +144,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                                 PersonID = new PersonID
                                 {
                                     Identifikator = "123456789",
-                                    Landkode = "NOR"
+                                    Landkode = "NO"
                                 },
                                 OrganisasjonID = new OrganisasjonsID
                                 {
                                     Identifikator = "123456789",
-                                    Landkode = "NOR"
+                                    Landkode = "NO"
                                 }
                             }
                         },
