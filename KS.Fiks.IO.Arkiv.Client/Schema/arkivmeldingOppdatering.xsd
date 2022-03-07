@@ -23,15 +23,12 @@
 
     <xs:complexType name="mappeOppdatering">
         <xs:sequence>
-            <xs:choice minOccurs="1" maxOccurs="1"> <!-- Hvilke id'er er gyldige ved en oppdatering? Og burde de være i en choice sånn som dette med minOccurs=1? systemID, mappeID og referanseEksternNoekkel? Det må jo alltid være med 1 id og bare 1 av dem. -->
-                <xs:element name="systemID" type="n5mdk:systemID" minOccurs="0"/>  
-                <xs:element name="mappeID" type="n5mdk:mappeID" minOccurs="0"/>
-            </xs:choice>
+            <xs:element name="systemID" type="n5mdk:systemID"/>  
             <xs:element name="tittel" type="n5mdk:tittel" minOccurs="0"/>
             <xs:element name="offentligTittel" type="n5mdk:offentligTittel" minOccurs="0"/>
             <xs:element name="beskrivelse" type="n5mdk:beskrivelse" minOccurs="0"/>
             <xs:element name="virksomhetsspesifikkeMetadata" type="xs:anyType" minOccurs="0"/>
-            <xs:element name="partOppdatering" type="partOppdateringer" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="partOppdatering" type="partOppdateringer" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -40,14 +37,38 @@
             <xs:extension base="mappeOppdatering">
                 <xs:sequence>
                     <xs:element name="saksansvarlig" type="n5mdk:saksansvarlig" minOccurs="0"/>
-                    <xs:element name="matrikkelnummerOppdatering" type="matrikkelnummerOppdateringer" minOccurs="0" maxOccurs="1"/>
-                    <xs:element name="byggidentOppdatering" type="byggidentOppdateringer" minOccurs="0" maxOccurs="1"/>
-                    <xs:element name="planidentOppdatering" type="planidentOppdateringer" minOccurs="0" maxOccurs="1"/>
-                    <!-- hva skal være id på punkt hvis den skal kunne oppdateres? x og y? Eller burde det være en systemID på punkt?-->
+                    <xs:element name="matrikkelnummerOppdatering" type="matrikkelnummerOppdateringer" minOccurs="0"/>
+                    <xs:element name="byggidentOppdatering" type="byggidentOppdateringer" minOccurs="0"/>
+                    <xs:element name="planidentOppdatering" type="planidentOppdateringer" minOccurs="0"/>
+                    <!-- Punkt har ikke systemID og en oppdatering her erstatter da eksisterende liste. Alternativt må det introduseres systemID på punkt for arkivmelding-->
                     <xs:element name="punkt" type="arkivmelding:punkt" minOccurs="0" maxOccurs="unbounded"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="punktOppdateringer">
+        <xs:sequence>
+            <xs:element name="oppdatering" type="punktOppdatering" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="slett" type="punktSlett" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="ny" type="arkivmelding:punkt" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="punktOppdatering">
+        <xs:sequence>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
+            <xs:element name="koordinatsystem" type="n5mdk:koordinatsystem" minOccurs="0"/>
+            <xs:element name="x" type="n5mdk:x" minOccurs="0"/>
+            <xs:element name="y" type="n5mdk:y" minOccurs="0"/>
+            <xs:element name="z" type="n5mdk:z" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="punktSlett">
+        <xs:sequence>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
+        </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="partOppdateringer">
@@ -82,7 +103,7 @@
 
     <xs:complexType name="partSlett">
         <xs:sequence>
-            <xs:element name="partID" type="n5mdk:partID" minOccurs="1"/>
+            <xs:element name="partID" type="n5mdk:partID"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -123,7 +144,7 @@
             <xs:element name="systemID" type="n5mdk:systemID"/>
             <xs:element name="korrespondanseparttype" type="n5mdk:korrespondanseparttype" minOccurs="0"/>
             <xs:element name="korrespondansepartNavn" type="n5mdk:korrespondansepartNavn" minOccurs="0"/>
-            <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:choice minOccurs="0">
                 <xs:element name="organisasjonid" minOccurs="0" type="n5mdk:organisasjonid"/>
                 <xs:element name="personid" minOccurs="0" type="n5mdk:personid"/>
             </xs:choice>
@@ -203,7 +224,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="matrikkelnummerSlett"> <!-- her er vel alle til sammen nøkkelen for å slå opp. Eller burde det være mulig med en systemID her også? -->
+    <xs:complexType name="matrikkelnummerSlett">
         <xs:sequence>
             <xs:element name="kommunenummer" type="n5mdk:kommunenummer"/>
             <xs:element name="gardsnummer" type="n5mdk:gardsnummer"/>
@@ -224,14 +245,15 @@
     <!-- Trengs denne? Eller skal man bare kunne legge til ny og slette? -->
     <xs:complexType name="byggidentOppdatering">
         <xs:sequence>
-            <xs:element name="bygningsnummer" type="n5mdk:bygningsnummer"/>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
+            <xs:element name="bygningsnummer" type="n5mdk:bygningsnummer" minOccurs="0"/>
             <xs:element name="endringsloepenummer" type="n5mdk:endringsloepenummer" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="byggidentSlett">
         <xs:sequence>
-            <xs:element name="bygningsnummer" type="n5mdk:bygningsnummer"/>
+            <xs:element name="systemID" type="n5mdk:systemID"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -246,7 +268,7 @@
     <xs:complexType name="planidentOppdatering">
         <xs:sequence>
             <xs:element name="planidentifikasjon" type="n5mdk:planidentifikasjon"/>
-            <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:choice minOccurs="0">
                 <xs:element name="kommunenummer" minOccurs="0" type="n5mdk:kommunenummer"/>
                 <xs:element name="fylkesnummer" minOccurs="0" type="n5mdk:fylkesnummer"/>
                 <xs:element name="landkode" minOccurs="0" type="n5mdk:landkode"/>
