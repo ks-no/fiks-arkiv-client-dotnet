@@ -2,6 +2,7 @@
 	public class Enhetsidentifikator {
 
 		public string organisasjonsnummer;
+		public string landkode;
 
 		public Enhetsidentifikator(){
 

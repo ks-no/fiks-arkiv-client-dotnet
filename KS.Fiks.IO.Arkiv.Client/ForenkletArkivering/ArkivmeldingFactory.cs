@@ -13,8 +13,11 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
         private const string InternavsenderKode = "IA";
         private const string InternmottakerKode = "IM";
         private const string JournalstatusDefault = "J";
-        private const string VariantformatDefault = "P";
+        private const string VariantformatProduksjonsformat = "P";
         private const string VersjonsnummerDefault = "1";
+        private const string SkjermingDokumentHele = "Hele";
+        private const string DokumentstatusFullfoert = "F";
+        private const string DokumenttypeKorrespondanse = "KORR";
 
         public static Arkivmelding GetArkivmelding(OppdaterSaksmappe input)
         {
@@ -83,7 +86,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 }
                 
                 journalpost.OpprettetAv = input.sluttbrukerIdentifikator;
-                journalpost.ArkivertAv = input.sluttbrukerIdentifikator; //TODO ????? Hva er egentlig problemet her?
+                journalpost.ArkivertAv = input.sluttbrukerIdentifikator; 
                 
                 // Skjerming
                 if (input.nyUtgaaendeJournalpost.skjermetTittel)
@@ -100,8 +103,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     var dokumentbeskrivelse = new Dokumentbeskrivelse
                     {
-                        Dokumenttype = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodeverdi,
-                        Dokumentstatus = "F",
+                        Dokumenttype = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
+                        Dokumentstatus = DokumentstatusFullfoert,
                         Tittel = input.nyUtgaaendeJournalpost.hoveddokument.tittel,
                         TilknyttetRegistreringSom = "H"
                     };
@@ -110,7 +113,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         dokumentbeskrivelse.Skjerming = new Skjerming()
                         {
                             Skjermingshjemmel = Skjermingshjemmel,
-                            SkjermingDokument = "Hele"
+                            SkjermingDokument = SkjermingDokumentHele
                         };
                     }
 
@@ -119,7 +122,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     var dok = new Dokumentobjekt
                     {
                         Format = filnavn.Substring(filnavn.LastIndexOf('.')),
-                        Variantformat = VariantformatDefault,
+                        Variantformat = VariantformatProduksjonsformat,
                         Versjonsnummer = VersjonsnummerDefault, 
                         Filnavn = filnavn,
                         ReferanseDokumentfil = input.nyUtgaaendeJournalpost.hoveddokument.referanseDokumentFil
@@ -134,8 +137,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     var dokbesk = new Dokumentbeskrivelse
                     {
-                        Dokumenttype = item.dokumenttype.kodeverdi,
-                        Dokumentstatus = "F",
+                        Dokumenttype = item.dokumenttype != null ? item.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
+                        Dokumentstatus = DokumentstatusFullfoert,
                         Tittel = item.tittel,
                         TilknyttetRegistreringSom = "V"
                     };
@@ -145,7 +148,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     var dok = new Dokumentobjekt
                     {
                         Format = filnavn.Substring(filnavn.LastIndexOf('.')),
-                        Variantformat = VariantformatDefault,
+                        Variantformat = VariantformatProduksjonsformat,
                         Versjonsnummer = VersjonsnummerDefault,
                         Filnavn = filnavn, 
                         ReferanseDokumentfil = item.referanseDokumentFil
@@ -231,10 +234,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
             if (mottaker.enhetsidentifikator?.organisasjonsnummer != null)
             {
                 korrespondansepart.Organisasjonid = mottaker.enhetsidentifikator.organisasjonsnummer;
+                korrespondansepart.Land = mottaker.enhetsidentifikator.landkode;
             }
             
             if (mottaker.personid?.personidentifikatorNr != null) {
                 korrespondansepart.Personid = mottaker.personid?.personidentifikatorNr;
+                korrespondansepart.Land = mottaker.personid?.personidentifikatorLandkode;
             }
 
             return korrespondansepart;
@@ -308,8 +313,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     var filnavn = input.nyInnkommendeJournalpost.hoveddokument.filnavn;
                     var dokbesk = new Dokumentbeskrivelse()
                     {
-                        Dokumenttype = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodeverdi,
-                        Dokumentstatus = "F",
+                        Dokumenttype = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
+                        Dokumentstatus = DokumentstatusFullfoert,
                         TilknyttetRegistreringSom = "H",
                         Tittel = input.nyInnkommendeJournalpost.hoveddokument.tittel
                     };
@@ -325,7 +330,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     var dok = new Dokumentobjekt()
                     {
                         Format = filnavn.Substring(filnavn.LastIndexOf('.')),
-                        Variantformat = VariantformatDefault,
+                        Variantformat = VariantformatProduksjonsformat,
                         Versjonsnummer = VersjonsnummerDefault,
                         Filnavn = filnavn,
                         ReferanseDokumentfil = input.nyInnkommendeJournalpost.hoveddokument.referanseDokumentFil
@@ -340,8 +345,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
                     var dokbesk = new Dokumentbeskrivelse
                     {
-                        Dokumenttype = item.dokumenttype.kodeverdi,
-                        Dokumentstatus = "F",
+                        Dokumenttype = item.dokumenttype != null ? item.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
+                        Dokumentstatus = DokumentstatusFullfoert,
                         TilknyttetRegistreringSom = "V",
                         Tittel = item.tittel
                     };
@@ -351,7 +356,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     var dok = new Dokumentobjekt
                     {
                         Format = filnavn.Substring(filnavn.LastIndexOf('.')),
-                        Variantformat = VariantformatDefault,
+                        Variantformat = VariantformatProduksjonsformat,
                         Versjonsnummer = VersjonsnummerDefault,
                         Filnavn = filnavn,
                         ReferanseDokumentfil = item.referanseDokumentFil
@@ -432,7 +437,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 journalpost.Tittel = input.nyttNotat.tittel;
 
                 journalpost.OpprettetAv = input.sluttbrukerIdentifikator;
-                journalpost.ArkivertAv = input.sluttbrukerIdentifikator; //TODO ????? Hvorfor todo?
+                journalpost.ArkivertAv = input.sluttbrukerIdentifikator; 
 
                 journalpost.Journalposttype = "N";
                 journalpost.Journalstatus = JournalstatusDefault;
@@ -448,8 +453,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     var dokumentbeskrivelse = new Dokumentbeskrivelse
                     {
-                        Dokumenttype = input.nyttNotat.hoveddokument.dokumenttype.kodeverdi,
-                        Dokumentstatus = "F",
+                        Dokumenttype = input.nyttNotat.hoveddokument.dokumenttype != null ? input.nyttNotat.hoveddokument.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
+                        Dokumentstatus = DokumentstatusFullfoert,
                         TilknyttetRegistreringSom = "H",
                         Tittel = input.nyttNotat.hoveddokument.tittel
                     };
@@ -458,11 +463,18 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         dokumentbeskrivelse.Skjerming = new Skjerming()
                         {
-                            SkjermingDokument = "Hele"
+                            SkjermingDokument = SkjermingDokumentHele
                         };
                     }
+                    
+                    var filnavn = input.nyttNotat.hoveddokument.filnavn;
+                    
                     var dokumentobjekt = new Dokumentobjekt
                     {
+                        Format = filnavn.Substring(filnavn.LastIndexOf('.')),
+                        Variantformat = VariantformatProduksjonsformat,
+                        Versjonsnummer = VersjonsnummerDefault,
+                        Filnavn = filnavn,
                         ReferanseDokumentfil = input.nyttNotat.hoveddokument.referanseDokumentFil
                     };
                   
@@ -475,7 +487,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     var dokumentbeskrivelse = new Dokumentbeskrivelse
                     {
                         Dokumenttype = item.dokumenttype.kodeverdi,
-                        Dokumentstatus = "F",
+                        Dokumentstatus = DokumentstatusFullfoert,
                         TilknyttetRegistreringSom = "V",
                         Tittel = item.tittel
                     };
@@ -484,7 +496,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     var dokumentobjekt = new Dokumentobjekt
                     {
                         Format = filnavn.Substring(filnavn.LastIndexOf('.')),
-                        Variantformat = VariantformatDefault,
+                        Variantformat = VariantformatProduksjonsformat,
                         Versjonsnummer = VersjonsnummerDefault,
                         Filnavn = filnavn,
                         ReferanseDokumentfil = item.referanseDokumentFil

@@ -79,7 +79,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             {
                 new KorrespondansepartForenklet() {
                     navn = "Mons Mottaker",
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         adresselinje2 = "Andre adresselinje",

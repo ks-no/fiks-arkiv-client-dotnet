@@ -21,11 +21,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var saker = FinnSakerMedMatrikkelnummer("21/400");
        
             SaksmappeForenklet sak = null;
-            //TODO Hva er meningen her?
-            //foreach (Saksmappe testSak in saker)
-            //{
-                // sjekk om testSak er av rett type i tilfelle sett sak til testSak
-            //}
 
             if (sak == null)
             {
@@ -39,12 +34,6 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
        
         private object OpprettJournalpostMedDokument(SaksmappeForenklet saksmappeForenklet)
         {
-            //var messageRequest = new MeldingRequest(
-            //                         mottakerKontoId: receiverId,
-            //                         avsenderKontoId: senderId,
-            //                         meldingType: "no.geointegrasjon.arkiv.oppdatering.arkivmeldingforenkletUtgaaende.v1"); // Message type as string
-            //                                                                                                                //Se oversikt over meldingstyper på https://github.com/ks-no/fiks-io-meldingstype-katalog/tree/test/schema
-
             //Fagsystem definerer ønsket struktur
             var utg = new ArkivmeldingForenkletUtgaaende
             {
@@ -72,7 +61,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             {
                 new KorrespondansepartForenklet() {
                     navn = "Mons Mottaker",
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         adresselinje2 = "Andre adresselinje",
@@ -86,7 +75,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             utg.nyUtgaaendeJournalpost.hoveddokument = new ForenkletDokument
             {
                 tittel = "Vedtak",
-                filnavn = "vedtak.pdf"
+                filnavn = "vedtak.pdf",
+                referanseDokumentFil = "/en/path"
             };
 
             //Konverterer til arkivmelding xml
