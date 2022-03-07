@@ -42,19 +42,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
         [System.Xml.Serialization.XmlElementAttribute("partRolle")]
         public string PartRolle { get; set; }
         
-        /// <summary>
-        /// <para>M4..</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.Xml.Serialization.XmlElementAttribute("organisasjonid")]
-        public string Organisasjonid { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("organisasjonID")]
+        public OrganisasjonsID OrganisasjonID { get; set; }
         
-        /// <summary>
-        /// <para>M4..</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.Xml.Serialization.XmlElementAttribute("personid")]
-        public string Personid { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("personID")]
+        public PersonID PersonID { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.ObjectModel.Collection<string> _postadresse;
