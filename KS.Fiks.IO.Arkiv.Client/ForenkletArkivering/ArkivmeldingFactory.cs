@@ -18,6 +18,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
         private const string SkjermingDokumentHele = "Hele";
         private const string DokumentstatusFullfoert = "F";
         private const string DokumenttypeKorrespondanse = "KORR";
+        private const string JournalposttypeUtgaaende = "U";
 
         public static Arkivmelding GetArkivmelding(OppdaterSaksmappe input)
         {
@@ -58,7 +59,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     Tittel = input.nyUtgaaendeJournalpost.tittel,
 
-                    Journalposttype = "U",
+                    Journalposttype = JournalposttypeUtgaaende,
                     Journalstatus = JournalstatusDefault
 
                 };
