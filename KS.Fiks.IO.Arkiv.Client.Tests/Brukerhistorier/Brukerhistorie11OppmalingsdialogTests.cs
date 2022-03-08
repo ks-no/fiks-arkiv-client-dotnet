@@ -46,13 +46,7 @@
 
             arkivmeldingsok.Parameter.Add(parameter);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
-
-            if (!Validator.IsValidSokXml(payload))
-            {
-                Assert.Fail("Validation errors");
-            }
-            
-            Assert.Pass();
+            Assert.True(Validator.IsValidSokXml(payload), "Validation errors");
         }
     }
 }

@@ -28,7 +28,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             }
 
             var jp = OpprettJournalpostMedDokument(sak);
-            
+            //TODO hva skal testes her?
             Assert.Pass();
         }
        
@@ -83,13 +83,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(utg);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
             
-            if (!Validator.IsValidArkivmeldingXml(payload))
-            {
-                Assert.Fail("Validation errors");
-            }
+            Assert.True(Validator.IsValidArkivmeldingXml(payload), "Validation errors");
             
-            Assert.Pass();
-
+            //TODO Dette gir ikke mening? Hva skal returneres her? Payload?
             return null;
         }
 
@@ -132,7 +128,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
             
-            //TODO returner saker
+            //TODO returner saker? Det gir ikke mening å returnere null!
             return null;
         }
     }

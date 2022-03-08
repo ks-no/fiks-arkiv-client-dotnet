@@ -53,7 +53,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 });
 
             var payload = ArkivmeldingSerializeHelper.Serialize(finnSak);
-            Assert.IsTrue(Validator.IsValidSokXml(payload));
+            Assert.True(Validator.IsValidSokXml(payload), "Validation errors");
 
             // Check if there was a case
             string systemid = null;

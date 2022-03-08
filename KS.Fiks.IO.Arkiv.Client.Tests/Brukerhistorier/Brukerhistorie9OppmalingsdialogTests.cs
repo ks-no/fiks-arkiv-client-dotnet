@@ -99,10 +99,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             //Konverterer til arkivmelding xml
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(utg);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
-            if (!Validator.IsValidArkivmeldingXml(payload))
-            {
-                Assert.Fail("Validation errors");
-            }
+
+            Assert.True(Validator.IsValidArkivmeldingXml(payload), "Validation errors");
         }
 
         public SaksmappeForenklet FinnSak(int saksaar, int saksaksekvensnummer)
@@ -141,10 +139,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
             
-            if (!Validator.IsValidSokXml(payload))
-            {
-                Assert.Fail("Validation errors");
-            }
+            Assert.True(Validator.IsValidSokXml(payload), "Validation errors");
 
             return new SaksmappeForenklet();
         }
@@ -196,10 +191,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
             
-            if (!Validator.IsValidSokXml(payload))
-            {
-                Assert.Fail("Validation errors");
-            }
+            Assert.True(Validator.IsValidSokXml(payload), "Validation errors");
 
             return new Journalpost();
         }
