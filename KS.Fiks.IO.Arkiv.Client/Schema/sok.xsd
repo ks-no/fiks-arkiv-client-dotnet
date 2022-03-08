@@ -91,6 +91,8 @@
             <xs:enumeration value="mappe.noekkelord"/>
             <xs:enumeration value="mappe.avsluttetDato"/>
             <xs:enumeration value="mappe.referansearkivdel"/>
+            <xs:enumeration value="mappe.endretFoerDato"/>
+            <xs:enumeration value="mappe.endretEtterDato"/>
 
             <xs:enumeration value="sak.saksdato"/>
             <xs:enumeration value="sak.saksaar"/>
@@ -139,6 +141,8 @@
             <xs:enumeration value="registrering.tittel"/>
             <xs:enumeration value="registrering.administrativenhet"/>
             <xs:enumeration value="registrering.journalpostansvarlig"/>
+            <xs:enumeration value="registrering.endretFoerDato"/>
+            <xs:enumeration value="registrering.endretEtterDato"/>
 
             <xs:enumeration value="registrering.part.partNavn"/>
             <xs:enumeration value="registrering.part.partRolle"/>
