@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using KS.Fiks.IO.Arkiv.Client.ForenkletArkivering;
 using KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding;
-using KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur;
 using KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok;
 using NUnit.Framework;
 using Dokumentbeskrivelse = KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Dokumentbeskrivelse;
@@ -53,12 +52,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     }
                 });
 
-            //TODO Hva er dette?
-            //var payload = Arkivintegrasjon.Serialize(finnSak);
+            var payload = ArkivmeldingSerializeHelper.Serialize(finnSak);
+            Assert.True(Validator.IsValidSokXml(payload), "Validation errors");
 
             // Check if there was a case
             string systemid = null;
 
+            //TODO Hva i alle dager er egentlig meningen her? Den vil jo alltid være null?
             // Det fantes ikke sak, lag
             if (systemid == null)
             {

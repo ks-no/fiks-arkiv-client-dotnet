@@ -68,7 +68,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             arkivmeldingsok.Parameter.Add(bnrParam);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
             
-            Assert.Pass();
+           Assert.True(Validator.IsValidSokXml(payload), "Validation errors");
         }
         
         /// <summary>
@@ -105,9 +105,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 
             // Create new search with the defined parameters 
             arkivmeldingsok.Parameter.Add(bygNummerParam);
-
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
-            Assert.Pass();
+            Assert.True(Validator.IsValidSokXml(payload), "Validation errors");
         }
     }
 }

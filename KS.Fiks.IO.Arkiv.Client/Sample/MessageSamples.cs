@@ -65,7 +65,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Sample
             {
                 new KorrespondansepartForenklet() {
                     navn = "Anita Avsender",
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         postnr = "3801",
