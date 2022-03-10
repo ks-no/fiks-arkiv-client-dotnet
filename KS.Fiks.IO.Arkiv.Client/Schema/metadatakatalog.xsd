@@ -240,7 +240,7 @@
   <xs:complexType name="arkivstatus">
     <xs:annotation>
       <xs:documentation>M050</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -250,7 +250,7 @@
   <xs:complexType name="arkivdelstatus">
     <xs:annotation>
       <xs:documentation>M051</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -260,7 +260,7 @@
   <xs:complexType name="saksstatus">
     <xs:annotation>
       <xs:documentation>M052</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -270,7 +270,7 @@
   <xs:complexType name="journalstatus">
     <xs:annotation>
       <xs:documentation>M053</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -280,7 +280,7 @@
   <xs:complexType name="dokumentstatus">
     <xs:annotation>
       <xs:documentation>M054</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -290,7 +290,7 @@
   <xs:complexType name="moeteregistreringsstatus">
     <xs:annotation>
       <xs:documentation>M055</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -300,7 +300,7 @@
   <xs:complexType name="presedensStatus">
     <xs:annotation>
       <xs:documentation>M056</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -312,7 +312,7 @@
   <xs:complexType name="journalposttype">
     <xs:annotation>
       <xs:documentation>M082</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -322,7 +322,7 @@
   <xs:complexType name="dokumenttype">
     <xs:annotation>
       <xs:documentation>M083</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -332,7 +332,7 @@
   <xs:complexType name="merknadstype">
     <xs:annotation>
       <xs:documentation>M084</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -342,7 +342,7 @@
   <xs:complexType name="moeteregistreringstype">
     <xs:annotation>
       <xs:documentation>M085</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -352,7 +352,7 @@
   <xs:complexType name="klassifikasjonstype">
     <xs:annotation>
       <xs:documentation>M086</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -362,7 +362,7 @@
   <xs:complexType name="korrespondanseparttype">
     <xs:annotation>
       <xs:documentation>M087</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -372,7 +372,7 @@
   <xs:complexType name="moetesakstype">
     <xs:annotation>
       <xs:documentation>M088</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -382,7 +382,7 @@
   <xs:complexType name="slettingstype">
     <xs:annotation>
       <xs:documentation>M089</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -543,7 +543,7 @@
   <xs:complexType name="tilknyttetRegistreringSom">
     <xs:annotation>
       <xs:documentation>M217</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -599,7 +599,7 @@
   <xs:complexType name="dokumentmedium">
     <xs:annotation>
       <xs:documentation>M300</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -627,7 +627,7 @@
   <xs:complexType name="partRolle">
     <xs:annotation>
       <xs:documentation>M303</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -754,7 +754,7 @@
   <xs:complexType name="moetedeltakerFunksjon">
     <xs:annotation>
       <xs:documentation>M373</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -840,7 +840,7 @@
   <xs:complexType name="kassasjonsvedtak">
     <xs:annotation>
       <xs:documentation>M450</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -875,7 +875,7 @@
   <xs:complexType name="tilgangsrestriksjon">
     <xs:annotation>
       <xs:documentation>M500</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -894,7 +894,7 @@
   <xs:complexType name="skjermingMetadata">
     <xs:annotation>
       <xs:documentation>M502</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -904,7 +904,7 @@
   <xs:complexType name="skjermingDokument">
     <xs:annotation>
       <xs:documentation>M503</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -929,7 +929,7 @@
   <xs:complexType name="grad">
     <xs:annotation>
       <xs:documentation>M506</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -939,7 +939,7 @@
   <xs:complexType name="elektroniskSignaturSikkerhetsnivaa">
     <xs:annotation>
       <xs:documentation>M507</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -949,7 +949,7 @@
   <xs:complexType name="elektroniskSignaturVerifisert">
     <xs:annotation>
       <xs:documentation>M508</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -1136,7 +1136,7 @@
   <xs:complexType name="avskrivningsmaate">
     <xs:annotation>
       <xs:documentation>M619</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -1267,7 +1267,7 @@
   <xs:complexType name="flytStatus">
     <xs:annotation>
       <xs:documentation>M663</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -1351,7 +1351,7 @@
   <xs:complexType name="variantformat">
     <xs:annotation>
       <xs:documentation>M700</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
@@ -1361,7 +1361,7 @@
   <xs:complexType name="format">
     <xs:annotation>
       <xs:documentation>M701</xs:documentation>
-      <xs:documentation>Endret fra simpletype med string til complextype som ekstender kode</xs:documentation>
+      <xs:documentation>Fiks-arkiv: endret datatypen fra en xs:string til en egen kode datatype som inneholder verdi og beskrivelse</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="kode"/>
