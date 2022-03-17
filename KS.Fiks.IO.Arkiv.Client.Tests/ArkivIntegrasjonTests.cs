@@ -106,7 +106,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             {
                 new KorrespondansepartForenklet() {
                     navn = "Anita Søker",
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         postnr = "3801",
@@ -186,7 +186,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             {
                 new KorrespondansepartForenklet() {
                     navn = "Anita Søker",
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         postnr = "3801",
@@ -259,7 +259,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             {
                 new KorrespondansepartForenklet() {
                     navn = "Mons Mottaker",
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         adresselinje2 = "Andre adresselinje",
@@ -478,7 +478,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             {
                 new KorrespondansepartForenklet() {
                     navn = "Anita Avsender",
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         postnr = "3801",
@@ -566,7 +566,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
                 new KorrespondansepartForenklet() {
                     navn = "Anita Avsender",
                     skjermetKorrespondansepart = true,
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         postnr = "3801",
@@ -654,7 +654,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             {
                 new KorrespondansepartForenklet() {
                     navn = "Anita Avsender",
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         postnr = "3801",

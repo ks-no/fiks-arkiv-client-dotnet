@@ -79,7 +79,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             {
                 new KorrespondansepartForenklet() {
                     navn = "Mons Mottaker",
-                    personid = new Personidentifikator() { personidentifikatorType = "F",  personidentifikatorNr = "12345678901"},
+                    personid = new Personidentifikator() { personidentifikatorLandkode = "NO",  personidentifikatorNr = "12345678901"},
                     postadresse = new EnkelAdresse() {
                         adresselinje1 = "Gate 1",
                         adresselinje2 = "Andre adresselinje",
@@ -100,16 +100,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             var arkivmelding = ArkivmeldingFactory.GetArkivmelding(utg);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
-            ////Lager FIKS IO melding
-            //List<IPayload> payloads = new List<IPayload>();
-            //payloads.Add(new StringPayload(payload, "utgaaendejournalpost.xml"));
-            //payloads.Add(new FilePayload(@"samples\vedtak.pdf"));
-            //payloads.Add(new FilePayload(@"samples\vedlegg.pdf"));
-
-            ////Sender til FIKS IO (arkiv løsning)
-            //var msg = client.Send(messageRequest, payloads).Result;
-
-           //TODO Hva er meningen her? Skal det sendes noe data? Er ikke det en integrasjonstest da?
+            Assert.True(Validator.IsValidArkivmeldingXml(payload), "Validation errors");
         }
 
         public SaksmappeForenklet FinnSak(int saksaar, int saksaksekvensnummer)
@@ -147,6 +138,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 });
             
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
+            
+            Assert.True(Validator.IsValidSokXml(payload), "Validation errors");
 
             return new SaksmappeForenklet();
         }
@@ -197,6 +190,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 });
             
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmeldingsok);
+            
+            Assert.True(Validator.IsValidSokXml(payload), "Validation errors");
+
             return new Journalpost();
         }
     }

@@ -1,7 +1,7 @@
 using System;
 using System.Xml.Schema;
 
-namespace KS.Fiks.IO.Arkiv.Client.Tests
+namespace KS.Fiks.IO.Arkiv.Client.Tests.Validering
 {
     public class ValidationHandler
     {
@@ -21,7 +21,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 Console.WriteLine(e.Message);
             }
         }
-      
+
         public bool HasErrors()
         {
             return numberOfErrors > 0;

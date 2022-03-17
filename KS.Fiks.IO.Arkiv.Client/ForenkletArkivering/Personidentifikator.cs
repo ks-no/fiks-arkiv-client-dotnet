@@ -2,7 +2,7 @@
 	public class Personidentifikator {
 
 		public string personidentifikatorNr;
-		public string personidentifikatorType;
+		public string personidentifikatorLandkode;
 
 	}
 }
