@@ -21,7 +21,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                 Console.WriteLine(e.Message);
             }
         }
-        
+      
         public bool HasErrors()
         {
             return numberOfErrors > 0;

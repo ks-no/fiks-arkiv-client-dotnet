@@ -16,7 +16,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute("mappe", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlRootAttribute("mappe", Namespace="http://www.arkivverket.no/standarder/noark5/mappe/hent/resultat/v2")]
+    [System.Xml.Serialization.XmlRootAttribute("mappe", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmelding/v2")]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Saksmappe))]
     public partial class Mappe
     {
