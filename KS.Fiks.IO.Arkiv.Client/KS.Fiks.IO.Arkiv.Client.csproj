@@ -19,7 +19,7 @@
         <PackageTags>FIKS</PackageTags>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <VersionPrefix>2.0.13</VersionPrefix>
+        <VersionPrefix>2.0.14</VersionPrefix>
     </PropertyGroup>
 
     <ItemGroup>
