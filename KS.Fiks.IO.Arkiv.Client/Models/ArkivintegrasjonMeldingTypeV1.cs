@@ -7,6 +7,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
         // Arkivering
         public const string Arkivmelding = "no.ks.fiks.arkiv.v1.arkivering.arkivmelding";
         public const string ArkivmeldingOppdater = "no.ks.fiks.arkiv.v1.arkivering.arkivmelding.oppdater";
+        public const string ArkivmeldingOppdaterKvittering = "no.ks.fiks.arkiv.v1.arkivering.arkivmelding.oppdater.kvittering";
         public const string ArkivmeldingMottatt = "no.ks.fiks.arkiv.v1.arkivering.arkivmelding.mottatt";
         public const string ArkivmeldingKvittering = "no.ks.fiks.arkiv.v1.arkivering.arkivmelding.kvittering";
         
@@ -28,6 +29,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models
         {
             Arkivmelding,
             ArkivmeldingOppdater,
+            ArkivmeldingOppdaterKvittering,
             ArkivmeldingMottatt,
             ArkivmeldingKvittering
         };
