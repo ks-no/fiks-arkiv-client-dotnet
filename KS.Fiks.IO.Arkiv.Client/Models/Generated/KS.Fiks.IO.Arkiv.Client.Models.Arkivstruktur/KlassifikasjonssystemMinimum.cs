@@ -23,12 +23,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("systemID")]
         public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SystemID SystemID { get; set; }
         
-        /// <summary>
-        /// <para>M086</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("klassifikasjonstype")]
-        public string Klassifikasjonstype { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Klassifikasjonstype Klassifikasjonstype { get; set; }
         
         /// <summary>
         /// <para>M020</para>

@@ -54,12 +54,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("beskrivelse")]
         public string Beskrivelse { get; set; }
         
-        /// <summary>
-        /// <para>M300</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("dokumentmedium")]
-        public string Dokumentmedium { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Dokumentmedium Dokumentmedium { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.ObjectModel.Collection<string> _oppbevaringssted;

@@ -19,13 +19,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
     public partial class Kassasjon
     {
         
-        /// <summary>
-        /// <para>M450</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("kassasjonsvedtak")]
-        public string Kassasjonsvedtak { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Kassasjonsvedtak Kassasjonsvedtak { get; set; }
         
         /// <summary>
         /// <para>M453</para>

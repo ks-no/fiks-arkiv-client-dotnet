@@ -16,6 +16,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute("mappe", Namespace="http://www.arkivverket.no/standarder/noark5/arkivstruktur")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlRootAttribute("mappe", Namespace="http://www.arkivverket.no/standarder/noark5/arkivstruktur")]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Moetemappe))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Saksmappe))]
     public partial class Mappe
@@ -100,12 +101,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
             this._registrering = new System.Collections.ObjectModel.Collection<Registrering>();
         }
         
-        /// <summary>
-        /// <para>M300</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("dokumentmedium")]
-        public string Dokumentmedium { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Dokumentmedium Dokumentmedium { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.ObjectModel.Collection<string> _oppbevaringssted;

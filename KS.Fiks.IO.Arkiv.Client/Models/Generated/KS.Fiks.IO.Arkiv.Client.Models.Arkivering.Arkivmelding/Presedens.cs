@@ -108,11 +108,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
         [System.Xml.Serialization.XmlElementAttribute("avsluttetAv")]
         public string AvsluttetAv { get; set; }
         
-        /// <summary>
-        /// <para>M056</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("presedensStatus")]
-        public string PresedensStatus { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.PresedensStatus PresedensStatus { get; set; }
     }
 }

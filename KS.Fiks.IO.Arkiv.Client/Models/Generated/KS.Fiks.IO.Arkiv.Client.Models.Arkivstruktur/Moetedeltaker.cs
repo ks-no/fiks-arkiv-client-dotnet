@@ -27,11 +27,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("moetedeltakerNavn")]
         public string MoetedeltakerNavn { get; set; }
         
-        /// <summary>
-        /// <para>M373</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("moetedeltakerFunksjon")]
-        public string MoetedeltakerFunksjon { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.MoetedeltakerFunksjon MoetedeltakerFunksjon { get; set; }
     }
 }

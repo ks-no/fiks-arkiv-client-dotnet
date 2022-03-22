@@ -63,13 +63,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("journalenhet")]
         public string Journalenhet { get; set; }
         
-        /// <summary>
-        /// <para>M052</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("saksstatus")]
-        public string Saksstatus { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Saksstatus Saksstatus { get; set; }
         
         /// <summary>
         /// <para>M106</para>

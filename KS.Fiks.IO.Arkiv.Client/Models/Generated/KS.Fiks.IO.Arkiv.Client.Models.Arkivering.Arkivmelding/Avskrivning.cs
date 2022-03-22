@@ -35,13 +35,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
         [System.Xml.Serialization.XmlElementAttribute("avskrevetAv")]
         public string AvskrevetAv { get; set; }
         
-        /// <summary>
-        /// <para>M619</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("avskrivningsmaate")]
-        public string Avskrivningsmaate { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Avskrivningsmaate Avskrivningsmaate { get; set; }
         
         /// <summary>
         /// <para>M215</para>

@@ -23,21 +23,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("systemID")]
         public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SystemID SystemID { get; set; }
         
-        /// <summary>
-        /// <para>M083</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("dokumenttype")]
-        public string Dokumenttype { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Dokumenttype Dokumenttype { get; set; }
         
-        /// <summary>
-        /// <para>M054</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("dokumentstatus")]
-        public string Dokumentstatus { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Dokumentstatus Dokumentstatus { get; set; }
         
         /// <summary>
         /// <para>M020</para>
@@ -109,12 +101,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("opprettetAv")]
         public string OpprettetAv { get; set; }
         
-        /// <summary>
-        /// <para>M300</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("dokumentmedium")]
-        public string Dokumentmedium { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Dokumentmedium Dokumentmedium { get; set; }
         
         /// <summary>
         /// <para>M301</para>
@@ -153,13 +141,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
             }
         }
         
-        /// <summary>
-        /// <para>M217</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("tilknyttetRegistreringSom")]
-        public string TilknyttetRegistreringSom { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.TilknyttetRegistreringSom TilknyttetRegistreringSom { get; set; }
         
         /// <summary>
         /// <para>M007</para>

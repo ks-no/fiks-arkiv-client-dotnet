@@ -19,13 +19,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
     public partial class SkjermingMinimum
     {
         
-        /// <summary>
-        /// <para>M500</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("tilgangsrestriksjon")]
-        public string Tilgangsrestriksjon { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Tilgangsrestriksjon Tilgangsrestriksjon { get; set; }
         
         /// <summary>
         /// <para>M501</para>
@@ -36,15 +32,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         public string Skjermingshjemmel { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.ObjectModel.Collection<string> _skjermingMetadata;
+        private System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SkjermingMetadata> _skjermingMetadata;
         
-        /// <summary>
-        /// <para>M502</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("skjermingMetadata")]
-        public System.Collections.ObjectModel.Collection<string> SkjermingMetadata
+        public System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SkjermingMetadata> SkjermingMetadata
         {
             get
             {
@@ -60,15 +52,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         /// </summary>
         public SkjermingMinimum()
         {
-            this._skjermingMetadata = new System.Collections.ObjectModel.Collection<string>();
+            this._skjermingMetadata = new System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SkjermingMetadata>();
         }
         
-        /// <summary>
-        /// <para>M503</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("skjermingDokument")]
-        public string SkjermingDokument { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SkjermingDokument SkjermingDokument { get; set; }
         
         /// <summary>
         /// <para>M504</para>

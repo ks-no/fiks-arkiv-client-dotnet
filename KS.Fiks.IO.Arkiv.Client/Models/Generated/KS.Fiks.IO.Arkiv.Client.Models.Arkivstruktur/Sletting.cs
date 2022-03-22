@@ -19,13 +19,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
     public partial class Sletting
     {
         
-        /// <summary>
-        /// <para>M089</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("slettingstype")]
-        public string Slettingstype { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Slettingstype Slettingstype { get; set; }
         
         /// <summary>
         /// <para>M613</para>

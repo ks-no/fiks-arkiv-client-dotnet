@@ -31,12 +31,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
         [System.Xml.Serialization.XmlElementAttribute("merknadstekst")]
         public string Merknadstekst { get; set; }
         
-        /// <summary>
-        /// <para>M084</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("merknadstype")]
-        public string Merknadstype { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Merknadstype Merknadstype { get; set; }
         
         /// <summary>
         /// <para>M611</para>

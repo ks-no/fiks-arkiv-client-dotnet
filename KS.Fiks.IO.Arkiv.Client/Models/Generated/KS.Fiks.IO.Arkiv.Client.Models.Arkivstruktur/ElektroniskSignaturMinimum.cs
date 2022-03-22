@@ -19,21 +19,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
     public partial class ElektroniskSignaturMinimum
     {
         
-        /// <summary>
-        /// <para>M507</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("elektroniskSignaturSikkerhetsnivaa")]
-        public string ElektroniskSignaturSikkerhetsnivaa { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.ElektroniskSignaturSikkerhetsnivaa ElektroniskSignaturSikkerhetsnivaa { get; set; }
         
-        /// <summary>
-        /// <para>M508</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("elektroniskSignaturVerifisert")]
-        public string ElektroniskSignaturVerifisert { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.ElektroniskSignaturVerifisert ElektroniskSignaturVerifisert { get; set; }
         
         /// <summary>
         /// <para>M622</para>

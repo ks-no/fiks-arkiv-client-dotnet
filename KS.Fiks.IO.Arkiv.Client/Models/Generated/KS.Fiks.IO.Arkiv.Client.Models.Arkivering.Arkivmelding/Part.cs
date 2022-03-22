@@ -35,12 +35,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
         [System.Xml.Serialization.XmlElementAttribute("partNavn")]
         public string PartNavn { get; set; }
         
-        /// <summary>
-        /// <para>M303</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("partRolle")]
-        public string PartRolle { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.PartRolle PartRolle { get; set; }
         
         [System.Xml.Serialization.XmlElementAttribute("organisasjonID")]
         public OrganisasjonsID OrganisasjonID { get; set; }
