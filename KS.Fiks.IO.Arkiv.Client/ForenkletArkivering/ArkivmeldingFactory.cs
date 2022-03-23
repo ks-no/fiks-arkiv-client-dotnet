@@ -30,15 +30,14 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
         public Arkivmelding GetArkivmelding(OppdaterSaksmappe input)
         {
-            var test = DokumenttypeKoder.Korrespondanse.Verdi;
             if (input.oppdaterSaksmappeForenklet == null)
             {
-                throw new Exception("Badrequest - saksmappe må være angitt");    
+                throw new Exception("Badrequest - saksmappe må være angitt");
             }
-            
+
             var arkivmelding = new Arkivmelding();
             const int antFiler = 0;
-            
+
             arkivmelding.Mappe.Add(ConvertSaksmappe(input.oppdaterSaksmappeForenklet));
 
             arkivmelding.AntallFiler = antFiler;
@@ -48,8 +47,9 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
             return arkivmelding;
         }
-        public Arkivmelding GetArkivmelding(ArkivmeldingForenkletUtgaaende input) {
 
+        public Arkivmelding GetArkivmelding(ArkivmeldingForenkletUtgaaende input)
+        {
             if (input.nyUtgaaendeJournalpost == null)
             {
                 throw new Exception("Badrequest - journalpost må være angitt");
@@ -62,8 +62,9 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
             {
                 saksmappe = ConvertSaksmappe(input.referanseSaksmappeForenklet);
             }
-           
-            if (input.nyUtgaaendeJournalpost != null) {
+
+            if (input.nyUtgaaendeJournalpost != null)
+            {
                 var journalpost = new Journalpost()
                 {
                     Tittel = input.nyUtgaaendeJournalpost.tittel,
@@ -78,34 +79,36 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         Verdi = JournalstatusDefault,
                         Beskrivelse = ""
                     }
-
                 };
 
                 if (input.nyUtgaaendeJournalpost.journalaar > 0)
                     journalpost.Journalaar = input.nyUtgaaendeJournalpost.journalaar.ToString();
                 if (input.nyUtgaaendeJournalpost.journalsekvensnummer > 0)
                     journalpost.Journalsekvensnummer = input.nyUtgaaendeJournalpost.journalsekvensnummer.ToString();
-                if (input.nyUtgaaendeJournalpost.journalpostnummer > 0) 
+                if (input.nyUtgaaendeJournalpost.journalpostnummer > 0)
                     journalpost.Journalpostnummer = input.nyUtgaaendeJournalpost.journalpostnummer.ToString();
 
-                if (input.nyUtgaaendeJournalpost.sendtDato.HasValue) {
+                if (input.nyUtgaaendeJournalpost.sendtDato.HasValue)
+                {
                     journalpost.SendtDato = input.nyUtgaaendeJournalpost.sendtDato.Value;
                     journalpost.SendtDatoSpecified = true;
                 }
+
                 if (input.nyUtgaaendeJournalpost.dokumentetsDato != null)
                 {
                     journalpost.DokumentetsDato = input.nyUtgaaendeJournalpost.dokumentetsDato.Value;
                     journalpost.DokumentetsDatoSpecified = true;
                 }
+
                 if (input.nyUtgaaendeJournalpost.offentlighetsvurdertDato != null)
                 {
                     journalpost.OffentlighetsvurdertDato = input.nyUtgaaendeJournalpost.offentlighetsvurdertDato.Value;
                     journalpost.OffentlighetsvurdertDatoSpecified = true;
                 }
-                
+
                 journalpost.OpprettetAv = input.sluttbrukerIdentifikator;
-                journalpost.ArkivertAv = input.sluttbrukerIdentifikator; 
-                
+                journalpost.ArkivertAv = input.sluttbrukerIdentifikator;
+
                 // Skjerming
                 if (input.nyUtgaaendeJournalpost.skjermetTittel)
                 {
@@ -119,7 +122,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                                 Verdi = "tittel",
                                 Beskrivelse = ""
                             },
-                            new SkjermingMetadata 
+                            new SkjermingMetadata
                             {
                                 Verdi = "korrespondansepart",
                                 Beskrivelse = ""
@@ -135,8 +138,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype
                         {
-                            Verdi = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
-                            Beskrivelse = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse
+                            Verdi = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null
+                                ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodeverdi
+                                : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null
+                                ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodebeskrivelse
+                                : _dokumenttypeKodeDefault.Beskrivelse
                         },
                         Dokumentstatus = new Dokumentstatus
                         {
@@ -151,7 +158,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         }
                     };
 
-                    if (input.nyUtgaaendeJournalpost.hoveddokument.skjermetDokument) {
+                    if (input.nyUtgaaendeJournalpost.hoveddokument.skjermetDokument)
+                    {
                         dokumentbeskrivelse.Skjerming = new Skjerming()
                         {
                             Skjermingshjemmel = Skjermingshjemmel,
@@ -164,7 +172,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     }
 
                     var filnavn = input.nyUtgaaendeJournalpost.hoveddokument.filnavn;
-                    
+
                     var dok = new Dokumentobjekt
                     {
                         Format = new Format
@@ -177,24 +185,29 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                             Verdi = VariantformatProduksjonsformat,
                             Beskrivelse = ""
                         },
-                        Versjonsnummer = VersjonsnummerDefault, 
+                        Versjonsnummer = VersjonsnummerDefault,
                         Filnavn = filnavn,
                         ReferanseDokumentfil = input.nyUtgaaendeJournalpost.hoveddokument.referanseDokumentFil
                     };
-                    
+
                     dokumentbeskrivelse.Dokumentobjekt.Add(dok);
 
                     journalpost.Dokumentbeskrivelse.Add(dokumentbeskrivelse);
                     antFiler++;
                 }
+
                 foreach (var item in input.nyUtgaaendeJournalpost.vedlegg)
                 {
                     var dokbesk = new Dokumentbeskrivelse
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = item.dokumenttype != null ? item.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
-                            Beskrivelse = item.dokumenttype != null ? item.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse
+                            Verdi = item.dokumenttype != null
+                                ? item.dokumenttype.kodeverdi
+                                : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = item.dokumenttype != null
+                                ? item.dokumenttype.kodebeskrivelse
+                                : _dokumenttypeKodeDefault.Beskrivelse
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
@@ -224,17 +237,16 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                             Beskrivelse = "" //TODO
                         },
                         Versjonsnummer = VersjonsnummerDefault,
-                        Filnavn = filnavn, 
+                        Filnavn = filnavn,
                         ReferanseDokumentfil = item.referanseDokumentFil
                     };
-                    
+
                     dokbesk.Dokumentobjekt.Add(dok);
 
                     journalpost.Dokumentbeskrivelse.Add(dokbesk);
                     antFiler++;
-
                 }
-                
+
                 // Korrespondanseparter
                 foreach (var mottaker in input.nyUtgaaendeJournalpost.mottaker)
                 {
@@ -247,7 +259,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     var korrpart = KorrespondansepartToArkivPart(AvsenderKode, avsender);
                     journalpost.Korrespondansepart.Add(korrpart);
                 }
-                
+
                 foreach (var internAvsender in input.nyUtgaaendeJournalpost.internAvsender)
                 {
                     var korrpart = InternKorrespondansepartToArkivPart(InternavsenderKode, internAvsender);
@@ -268,11 +280,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     saksmappe.Registrering.Add(journalpost);
                     arkivmelding.Mappe.Add(saksmappe);
-                } else {
+                }
+                else
+                {
                     arkivmelding.Registrering.Add(journalpost);
                 }
             }
-            
+
             arkivmelding.AntallFiler = antFiler;
             arkivmelding.System = input.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet?.fagsystem;
             arkivmelding.MeldingId = input.nyUtgaaendeJournalpost.referanseEksternNoekkelForenklet?.noekkel;
@@ -291,7 +305,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     Verdi = partRolle,
                     Beskrivelse = ""
                 },
-                Postadresse =  {
+                Postadresse =
+                {
                     mottaker.postadresse?.adresselinje1,
                     mottaker.postadresse?.adresselinje2,
                     mottaker.postadresse?.adresselinje3
@@ -301,7 +316,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 Poststed = mottaker.postadresse?.poststed,
                 Kontaktperson = mottaker.kontaktperson,
                 Epostadresse = mottaker.kontaktinformasjonForenklet?.epostadresse,
-                Telefonnummer = {
+                Telefonnummer =
+                {
                     mottaker.kontaktinformasjonForenklet?.mobiltelefon,
                     mottaker.kontaktinformasjonForenklet?.telefon
                 },
@@ -314,16 +330,18 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 korrespondansepart.Organisasjonid = mottaker.enhetsidentifikator.organisasjonsnummer;
                 korrespondansepart.Land = mottaker.enhetsidentifikator.landkode;
             }
-            
-            if (mottaker.personid?.personidentifikatorNr != null) {
+
+            if (mottaker.personid?.personidentifikatorNr != null)
+            {
                 korrespondansepart.Personid = mottaker.personid?.personidentifikatorNr;
                 korrespondansepart.Land = mottaker.personid?.personidentifikatorLandkode;
             }
 
             return korrespondansepart;
         }
-        
-        private static Korrespondansepart InternKorrespondansepartToArkivPart(string internKode, KorrespondansepartIntern intern)
+
+        private static Korrespondansepart InternKorrespondansepartToArkivPart(string internKode,
+            KorrespondansepartIntern intern)
         {
             return new Korrespondansepart
             {
@@ -366,34 +384,39 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     Verdi = JournalstatusDefault,
                     Beskrivelse = "" //TODO
                 };
-                
+
                 if (input.nyInnkommendeJournalpost.mottattDato != null)
                 {
                     journalpost.MottattDato = input.nyInnkommendeJournalpost.mottattDato.Value;
                     journalpost.MottattDatoSpecified = true;
                 }
+
                 if (input.nyInnkommendeJournalpost.dokumentetsDato != null)
                 {
                     journalpost.DokumentetsDato = input.nyInnkommendeJournalpost.dokumentetsDato.Value;
                     journalpost.DokumentetsDatoSpecified = true;
                 }
+
                 if (input.nyInnkommendeJournalpost.offentlighetsvurdertDato != null)
                 {
-                    journalpost.OffentlighetsvurdertDato = input.nyInnkommendeJournalpost.offentlighetsvurdertDato.Value;
+                    journalpost.OffentlighetsvurdertDato =
+                        input.nyInnkommendeJournalpost.offentlighetsvurdertDato.Value;
                     journalpost.OffentlighetsvurdertDatoSpecified = true;
                 }
 
                 journalpost.OffentligTittel = input.nyInnkommendeJournalpost.offentligTittel;
                 journalpost.OpprettetAv = input.sluttbrukerIdentifikator;
-                journalpost.ArkivertAv = input.sluttbrukerIdentifikator; //TODO ????? Hva er egentlig problemet her? Samme bruker ikke bra?
-                
+                journalpost.ArkivertAv =
+                    input.sluttbrukerIdentifikator; //TODO ????? Hva er egentlig problemet her? Samme bruker ikke bra?
+
                 // Skjerming
                 if (input.nyInnkommendeJournalpost.skjermetTittel)
                 {
                     journalpost.Skjerming = new Skjerming()
                     {
                         Skjermingshjemmel = input.nyInnkommendeJournalpost.skjermingForenklet?.skjermingshjemmel,
-                        SkjermingMetadata = { 
+                        SkjermingMetadata =
+                        {
                             new SkjermingMetadata()
                             {
                                 Verdi = "tittel",
@@ -407,7 +430,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         }
                     };
                 }
-                
+
                 // Håndtere alle filer
                 if (input.nyInnkommendeJournalpost.hoveddokument != null)
                 {
@@ -416,8 +439,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
-                            Beskrivelse = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse,
+                            Verdi = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null
+                                ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodeverdi
+                                : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null
+                                ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodebeskrivelse
+                                : _dokumenttypeKodeDefault.Beskrivelse,
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
@@ -431,7 +458,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         },
                         Tittel = input.nyInnkommendeJournalpost.hoveddokument.tittel
                     };
-                    
+
                     if (input.nyInnkommendeJournalpost.hoveddokument.skjermetDokument)
                     {
                         dokbesk.Skjerming = new Skjerming()
@@ -444,6 +471,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                             }
                         };
                     }
+
                     var dok = new Dokumentobjekt()
                     {
                         Format = new Format()
@@ -465,14 +493,19 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     journalpost.Dokumentbeskrivelse.Add(dokbesk);
                     antFiler++;
                 }
+
                 foreach (var item in input.nyInnkommendeJournalpost.vedlegg)
                 {
                     var dokbesk = new Dokumentbeskrivelse
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = item.dokumenttype != null ? item.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
-                            Beskrivelse = item.dokumenttype != null ? item.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse
+                            Verdi = item.dokumenttype != null
+                                ? item.dokumenttype.kodeverdi
+                                : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = item.dokumenttype != null
+                                ? item.dokumenttype.kodebeskrivelse
+                                : _dokumenttypeKodeDefault.Beskrivelse
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
@@ -488,7 +521,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     };
 
                     var filnavn = item.filnavn;
-                    
+
                     var dok = new Dokumentobjekt
                     {
                         Format = new Format()
@@ -505,7 +538,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         Filnavn = filnavn,
                         ReferanseDokumentfil = item.referanseDokumentFil
                     };
-                    
+
                     dokbesk.Dokumentobjekt.Add(dok);
                     journalpost.Dokumentbeskrivelse.Add(dokbesk);
                     antFiler++;
@@ -514,13 +547,15 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 //Korrespondanseparter
 
                 //Mottakere
-                foreach (var korrpart in input.nyInnkommendeJournalpost.mottaker.Select(mottaker => KorrespondansepartToArkivPart(MottakerKode, mottaker)))
+                foreach (var korrpart in input.nyInnkommendeJournalpost.mottaker.Select(mottaker =>
+                    KorrespondansepartToArkivPart(MottakerKode, mottaker)))
                 {
                     journalpost.Korrespondansepart.Add(korrpart);
                 }
 
                 //Avsendere
-                foreach (var korrpart in input.nyInnkommendeJournalpost.avsender.Select(avsender => KorrespondansepartToArkivPart(AvsenderKode, avsender)))
+                foreach (var korrpart in input.nyInnkommendeJournalpost.avsender.Select(avsender =>
+                    KorrespondansepartToArkivPart(AvsenderKode, avsender)))
                 {
                     journalpost.Korrespondansepart.Add(korrpart);
                 }
@@ -540,19 +575,19 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         Noekkel = input.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet.noekkel
                     };
                 }
-              
+
                 // Arkivmelding -> Mappe -> Journalpost
                 if (mappe != null)
                 {
-                    mappe.Registrering.Add(journalpost); 
+                    mappe.Registrering.Add(journalpost);
                     arkivmld.Mappe.Add(mappe);
                 }
                 else // Arkivmelding -> Journalpost
                 {
-                    arkivmld.Registrering.Add(journalpost); 
+                    arkivmld.Registrering.Add(journalpost);
                 }
-
             }
+
             arkivmld.AntallFiler = antFiler;
             arkivmld.System = input.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet.fagsystem;
             arkivmld.MeldingId = input.nyInnkommendeJournalpost.referanseEksternNoekkelForenklet.noekkel;
@@ -572,7 +607,6 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
             if (input.referanseSaksmappeForenklet != null)
             {
                 mappe = ConvertSaksmappe(input.referanseSaksmappeForenklet);
-
             }
 
             if (input.nyttNotat != null)
@@ -593,13 +627,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     Verdi = JournalstatusDefault,
                     Beskrivelse = "" //TODO
                 };
-                
+
                 if (input.nyttNotat.dokumentetsDato != null)
                 {
                     journalpost.DokumentetsDato = input.nyttNotat.dokumentetsDato.Value;
                     journalpost.DokumentetsDatoSpecified = true;
                 }
-                
+
                 //Håndtere alle filer
                 if (input.nyttNotat.hoveddokument != null)
                 {
@@ -607,9 +641,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = input.nyttNotat.hoveddokument.dokumenttype != null ? input.nyttNotat.hoveddokument.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
-                            Beskrivelse = input.nyttNotat.hoveddokument.dokumenttype != null ? input.nyttNotat.hoveddokument.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse
-                        }, 
+                            Verdi = input.nyttNotat.hoveddokument.dokumenttype != null
+                                ? input.nyttNotat.hoveddokument.dokumenttype.kodeverdi
+                                : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = input.nyttNotat.hoveddokument.dokumenttype != null
+                                ? input.nyttNotat.hoveddokument.dokumenttype.kodebeskrivelse
+                                : _dokumenttypeKodeDefault.Beskrivelse
+                        },
                         Dokumentstatus = new Dokumentstatus()
                         {
                             Verdi = _dokumentstatusKodeDefault.Verdi,
@@ -634,9 +672,9 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                             }
                         };
                     }
-                    
+
                     var filnavn = input.nyttNotat.hoveddokument.filnavn;
-                    
+
                     var dokumentobjekt = new Dokumentobjekt
                     {
                         Format = new Format()
@@ -653,29 +691,30 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         Filnavn = filnavn,
                         ReferanseDokumentfil = input.nyttNotat.hoveddokument.referanseDokumentFil
                     };
-                  
+
                     dokumentbeskrivelse.Dokumentobjekt.Add(dokumentobjekt);
                     journalpost.Dokumentbeskrivelse.Add(dokumentbeskrivelse);
                     antFiler++;
                 }
+
                 foreach (var item in input.nyttNotat.vedlegg)
                 {
                     var dokumentbeskrivelse = new Dokumentbeskrivelse
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi  = item.dokumenttype.kodeverdi,
+                            Verdi = item.dokumenttype.kodeverdi,
                             Beskrivelse = "" //TODO
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi  = _dokumentstatusKodeDefault.Verdi,
+                            Verdi = _dokumentstatusKodeDefault.Verdi,
                             Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
-                           Verdi = "V",
-                           Beskrivelse = "" //TODO
+                            Verdi = "V",
+                            Beskrivelse = "" //TODO
                         },
                         Tittel = item.tittel
                     };
@@ -690,14 +729,14 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         },
                         Variantformat = new Variantformat()
                         {
-                            Verdi   = VariantformatProduksjonsformat,
+                            Verdi = VariantformatProduksjonsformat,
                             Beskrivelse = "" //TODO
                         },
                         Versjonsnummer = VersjonsnummerDefault,
                         Filnavn = filnavn,
                         ReferanseDokumentfil = item.referanseDokumentFil
                     };
-       
+
                     dokumentbeskrivelse.Dokumentobjekt.Add(dokumentobjekt);
 
                     journalpost.Dokumentbeskrivelse.Add(dokumentbeskrivelse);
@@ -705,7 +744,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 }
 
                 //Korrespondanseparter
-                foreach (var korrpart in input.nyttNotat.internAvsender.Select(internMottaker => InternKorrespondansepartToArkivPart(InternavsenderKode, internMottaker)))
+                foreach (var korrpart in input.nyttNotat.internAvsender.Select(internMottaker =>
+                    InternKorrespondansepartToArkivPart(InternavsenderKode, internMottaker)))
                 {
                     journalpost.Korrespondansepart.Add(korrpart);
                 }
@@ -734,8 +774,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 {
                     arkivmld.Registrering.Add(journalpost);
                 }
-
             }
+
             arkivmld.AntallFiler = antFiler;
             arkivmld.System = input.nyttNotat.referanseEksternNoekkelForenklet.fagsystem;
             arkivmld.MeldingId = input.nyttNotat.referanseEksternNoekkelForenklet.noekkel;
@@ -767,9 +807,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
             {
                 foreach (var kl in input.klasse)
                 {
-                    mappe.Klassifikasjon.Add(new Klassifikasjon() { Klassifikasjonssystem = kl.klassifikasjonssystem, KlasseID = kl.klasseID, Tittel = kl.tittel });
+                    mappe.Klassifikasjon.Add(new Klassifikasjon()
+                    {
+                        Klassifikasjonssystem = kl.klassifikasjonssystem, KlasseID = kl.klasseID, Tittel = kl.tittel
+                    });
                 }
             }
+
             if (input.referanseEksternNoekkelForenklet != null)
             {
                 mappe.ReferanseEksternNoekkel = new EksternNoekkel
