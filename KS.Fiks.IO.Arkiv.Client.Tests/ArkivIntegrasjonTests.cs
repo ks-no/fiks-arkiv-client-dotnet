@@ -10,9 +10,12 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
 {
     public class ArkivintegrasjonTests
     {
+        private ArkivmeldingFactory _arkivmeldingFactory;
+        
         [SetUp]
         public void Setup()
         {
+            _arkivmeldingFactory = new ArkivmeldingFactory();
         }
         [Test]
         public void TestOppdaterSaksmappe1()
@@ -21,7 +24,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             var inng = MessageSamples.GetOppdaterSaksmappeAnsvarligPaaSaksnummer(2020,1234,"Testing Testesen", "id343463346"  );
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             Assert.Pass();
@@ -34,7 +37,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             var inng = MessageSamples.GetOppdaterSaksmappeAnsvarligPaaFagsystemnoekkel("Fagsystem X", "1234", "Testing Testesen", "id343463346");
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             Assert.Pass();
@@ -48,7 +51,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             var inng = MessageSamples.GetForenkletArkivmeldingInngåendeMedSaksreferanse();
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             Assert.Pass();
@@ -129,7 +132,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             };
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             Assert.Pass();
@@ -209,7 +212,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             };
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             Assert.Pass();
@@ -302,7 +305,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             //osv...
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(utg);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(utg);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             ////Lager FIKS IO melding
@@ -383,7 +386,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             };
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(notat);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(notat);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             ////Lager FIKS IO melding
@@ -501,7 +504,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             };
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             Assert.Pass();
@@ -592,7 +595,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             //osv...
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(inng);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             Assert.Pass();
@@ -677,7 +680,7 @@ using KS.Fiks.IO.Arkiv.Client.Sample;
             };
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(inng);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(inng);
 
             //Legge til basismappe
             var basismappe = new Mappe();

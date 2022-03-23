@@ -9,9 +9,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class Brukerhistorie4ProAktivTests
     {
+        private ArkivmeldingFactory _arkivmeldingFactory;
+        
         [SetUp]
         public void Setup()
         {
+            _arkivmeldingFactory = new ArkivmeldingFactory();
         }
         
         // Bruker en ekisterende sak dersom det finnes en sak av rett type hvis ikke opprettes ny sak
@@ -80,7 +83,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             };
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(utg);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(utg);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
             
             Assert.True(Validator.IsValidArkivmeldingXml(payload), "Validation errors");

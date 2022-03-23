@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding;
+using KS.Fiks.IO.Arkiv.Client.Models.Kodelister;
 using KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog;
 
 namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
@@ -16,12 +17,20 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
         private const string VariantformatProduksjonsformat = "P";
         private const string VersjonsnummerDefault = "1";
         private const string SkjermingDokumentHele = "Hele";
-        private const string DokumentstatusFullfoert = "F";
-        private const string DokumenttypeKorrespondanse = "KORR";
-        private const string JournalposttypeUtgaaende = "U";
+        private readonly Models.Kodelister.Kode _dokumentstatusKodeDefault;
+        private readonly Models.Kodelister.Kode _dokumenttypeKodeDefault;
+        private readonly Models.Kodelister.Kode _journalposttypeUtgaaende;
 
-        public static Arkivmelding GetArkivmelding(OppdaterSaksmappe input)
+        public ArkivmeldingFactory()
         {
+            _dokumenttypeKodeDefault = DokumenttypeKoder.Korrespondanse;
+            _dokumentstatusKodeDefault = DokumentstatusKoder.Ferdig;
+            _journalposttypeUtgaaende = JournalposttypeKoder.UtgaaendeDokument;
+        }
+
+        public Arkivmelding GetArkivmelding(OppdaterSaksmappe input)
+        {
+            var test = DokumenttypeKoder.Korrespondanse.Verdi;
             if (input.oppdaterSaksmappeForenklet == null)
             {
                 throw new Exception("Badrequest - saksmappe må være angitt");    
@@ -39,7 +48,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
             return arkivmelding;
         }
-        public static Arkivmelding GetArkivmelding(ArkivmeldingForenkletUtgaaende input) {
+        public Arkivmelding GetArkivmelding(ArkivmeldingForenkletUtgaaende input) {
 
             if (input.nyUtgaaendeJournalpost == null)
             {
@@ -61,8 +70,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
                     Journalposttype = new Journalposttype()
                     {
-                        Verdi = JournalposttypeUtgaaende,
-                        Beskrivelse = ""
+                        Verdi = _journalposttypeUtgaaende.Verdi,
+                        Beskrivelse = _journalposttypeUtgaaende.Beskrivelse
                     },
                     Journalstatus = new Journalstatus()
                     {
@@ -126,13 +135,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype
                         {
-                            Verdi = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
-                            Beskrivelse = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodebeskrivelse : "" //TODO Finn en default beskrivelse
+                            Verdi = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse
                         },
                         Dokumentstatus = new Dokumentstatus
                         {
-                            Verdi = DokumentstatusFullfoert,
-                            Beskrivelse = "" //TODO Finn en defaultbeskrivelse
+                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         Tittel = input.nyUtgaaendeJournalpost.hoveddokument.tittel,
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom
@@ -184,13 +193,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = item.dokumenttype != null ? item.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
-                            Beskrivelse = item.dokumenttype != null ? item.dokumenttype.kodebeskrivelse : "" //TODO
+                            Verdi = item.dokumenttype != null ? item.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = item.dokumenttype != null ? item.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = DokumentstatusFullfoert,
-                            Beskrivelse = "" //TODO
+                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         Tittel = item.tittel,
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
@@ -272,7 +281,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
             return arkivmelding;
         }
 
-        private static Korrespondansepart KorrespondansepartToArkivPart(string partRolle, KorrespondansepartForenklet mottaker)
+        private Korrespondansepart KorrespondansepartToArkivPart(string partRolle, KorrespondansepartForenklet mottaker)
         {
             var korrespondansepart = new Korrespondansepart()
             {
@@ -329,7 +338,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
             };
         }
 
-        public static Arkivmelding GetArkivmelding(ArkivmeldingForenkletInnkommende input)
+        public Arkivmelding GetArkivmelding(ArkivmeldingForenkletInnkommende input)
         {
             if (input.nyInnkommendeJournalpost == null) throw new Exception("Badrequest - journalpost må være angitt");
 
@@ -407,13 +416,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
-                            Beskrivelse = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodebeskrivelse : "" //TODO
+                            Verdi = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse,
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = DokumentstatusFullfoert,
-                            Beskrivelse = "" //TODO
+                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
@@ -462,13 +471,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = item.dokumenttype != null ? item.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
-                            Beskrivelse = item.dokumenttype != null ? item.dokumenttype.kodebeskrivelse : "" //TODO
+                            Verdi = item.dokumenttype != null ? item.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = item.dokumenttype != null ? item.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = DokumentstatusFullfoert,
-                            Beskrivelse = "" //TODO
+                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
@@ -552,7 +561,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
             return arkivmld;
         }
 
-        public static Arkivmelding GetArkivmelding(ArkivmeldingForenkletNotat input)
+        public Arkivmelding GetArkivmelding(ArkivmeldingForenkletNotat input)
         {
             if (input.nyttNotat == null) throw new Exception("Badrequest - notat må være angitt");
 
@@ -598,13 +607,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = input.nyttNotat.hoveddokument.dokumenttype != null ? input.nyttNotat.hoveddokument.dokumenttype.kodeverdi : DokumenttypeKorrespondanse,
-                            Beskrivelse = input.nyttNotat.hoveddokument.dokumenttype != null ? input.nyttNotat.hoveddokument.dokumenttype.kodebeskrivelse : "" //TODO
+                            Verdi = input.nyttNotat.hoveddokument.dokumenttype != null ? input.nyttNotat.hoveddokument.dokumenttype.kodeverdi : _dokumenttypeKodeDefault.Verdi,
+                            Beskrivelse = input.nyttNotat.hoveddokument.dokumenttype != null ? input.nyttNotat.hoveddokument.dokumenttype.kodebeskrivelse : _dokumenttypeKodeDefault.Beskrivelse
                         }, 
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = DokumentstatusFullfoert,
-                            Beskrivelse = "" //TODO
+                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
@@ -660,8 +669,8 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi  = DokumentstatusFullfoert,
-                            Beskrivelse = ""
+                            Verdi  = _dokumentstatusKodeDefault.Verdi,
+                            Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
