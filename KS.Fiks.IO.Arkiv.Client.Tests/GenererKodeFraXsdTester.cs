@@ -61,11 +61,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/arkivstruktur/minimum/v1"), commonNamespace + ".Arkivstruktur"},
                     {new NamespaceKey("http://www.ks.no/standarder/fiks/arkiv/arkivstruktur/noekler/v1"), commonNamespace + ".Arkivstruktur"},
                     {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/arkivstruktur"), commonNamespace + ".Arkivstruktur"},
-                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/dokumentfil/hent/v2"), commonNamespace + ".Innsyn.Hent"},
-                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/journalpost/hent/v2"), commonNamespace + ".Innsyn.Hent"},
-                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/journalpost/hent/resultat/v2"), commonNamespace + ".Innsyn.Hent"},
-                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/mappe/hent/v2"), commonNamespace + ".Innsyn.Hent"},
-                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/mappe/hent/resultat/v2"), commonNamespace + ".Innsyn.Hent"},
+                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/dokumentfil/hent/v2"), commonNamespace + ".Innsyn.Hent.Dokumentfil"},
+                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/journalpost/hent/v2"), commonNamespace + ".Innsyn.Hent.Journalpost"},
+                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/journalpost/hent/resultat/v2"), commonNamespace + ".Innsyn.Hent.Journalpost"},
+                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/mappe/hent/v2"), commonNamespace + ".Innsyn.Hent.Mappe"},
+                    {new NamespaceKey("http://www.arkivverket.no/standarder/noark5/mappe/hent/resultat/v2"), commonNamespace + ".Innsyn.Hent.Mappe"},
                 }
             };
             generator.Generate(fileList);
