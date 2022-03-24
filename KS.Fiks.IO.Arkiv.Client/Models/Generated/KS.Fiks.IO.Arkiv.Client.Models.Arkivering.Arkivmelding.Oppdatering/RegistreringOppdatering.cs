@@ -20,9 +20,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
     public partial class RegistreringOppdatering
     {
         
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("systemID")]
         public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SystemID SystemID { get; set; }
+        
+        [System.Xml.Serialization.XmlElementAttribute("referanseEksternNoekkel")]
+        public KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.EksternNoekkel ReferanseEksternNoekkel { get; set; }
         
         [System.Xml.Serialization.XmlElementAttribute("partOppdatering")]
         public PartOppdateringer PartOppdatering { get; set; }
@@ -65,8 +67,5 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         
         [System.Xml.Serialization.XmlElementAttribute("klassifikasjon")]
         public KlassifikasjonOppdateringer Klassifikasjon { get; set; }
-        
-        [System.Xml.Serialization.XmlElementAttribute("referanseEksternNoekkel")]
-        public KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.EksternNoekkel ReferanseEksternNoekkel { get; set; }
     }
 }

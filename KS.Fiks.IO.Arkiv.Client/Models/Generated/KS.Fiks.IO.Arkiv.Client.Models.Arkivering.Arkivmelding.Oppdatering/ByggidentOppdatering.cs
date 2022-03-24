@@ -19,10 +19,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
     public partial class ByggidentOppdatering
     {
         
+        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
+        [System.Xml.Serialization.XmlElementAttribute("systemID")]
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SystemID SystemID { get; set; }
+        
         /// <summary>
         /// <para>M3..</para>
         /// </summary>
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("bygningsnummer")]
         public string Bygningsnummer { get; set; }
         

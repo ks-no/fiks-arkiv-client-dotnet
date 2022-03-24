@@ -23,7 +23,10 @@
 
     <xs:complexType name="mappeOppdatering">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID"/>  
+            <xs:choice>
+                <xs:element name="systemID" type="n5mdk:systemID"/>
+                <xs:element name="referanseEksternNoekkel" type="arkivmelding:eksternNoekkel"/>
+            </xs:choice>
             <xs:element name="tittel" type="n5mdk:tittel" minOccurs="0"/>
             <xs:element name="offentligTittel" type="n5mdk:offentligTittel" minOccurs="0"/>
             <xs:element name="beskrivelse" type="n5mdk:beskrivelse" minOccurs="0"/>
@@ -84,7 +87,7 @@
             <xs:element name="partID" type="n5mdk:partID"/>
             <xs:element name="partNavn" type="n5mdk:partNavn" minOccurs="0"/>
             <xs:element name="partRolle" type="n5mdk:partRolle" minOccurs="0"/>
-            <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:choice minOccurs="0">
                 <xs:element name="organisasjonid" minOccurs="0" type="n5mdk:organisasjonid"/>
                 <xs:element name="personid" minOccurs="0" type="n5mdk:personid"/>
             </xs:choice>
@@ -109,7 +112,10 @@
 
     <xs:complexType name="registreringOppdatering">
         <xs:sequence>
-            <xs:element name="systemID" type="n5mdk:systemID"/>
+            <xs:choice>
+                <xs:element name="systemID" type="n5mdk:systemID"/>
+                <xs:element name="referanseEksternNoekkel" type="arkivmelding:eksternNoekkel"/>
+            </xs:choice>
             <xs:element name="partOppdatering" type="partOppdateringer" minOccurs="0"/>
             <xs:element name="skjerming" type="arkivmelding:skjerming" minOccurs="0"/>
             <xs:element name="gradering" type="arkivmelding:gradering" minOccurs="0"/>
@@ -120,7 +126,6 @@
             <xs:element name="merknad" type="merknadOppdateringer" minOccurs="0"/>
             <xs:element name="korrespondansepart" type="korrespondansepartOppdateringer" minOccurs="0"/>
             <xs:element name="klassifikasjon" type="klassifikasjonOppdateringer" minOccurs="0"/>
-            <xs:element name="referanseEksternNoekkel" type="arkivmelding:eksternNoekkel" minOccurs="0"/> 
         </xs:sequence>
     </xs:complexType>
 
@@ -281,5 +286,4 @@
             <xs:element name="planidentifikasjon" type="n5mdk:planidentifikasjon"/>
         </xs:sequence>
     </xs:complexType>
-
 </xs:schema>

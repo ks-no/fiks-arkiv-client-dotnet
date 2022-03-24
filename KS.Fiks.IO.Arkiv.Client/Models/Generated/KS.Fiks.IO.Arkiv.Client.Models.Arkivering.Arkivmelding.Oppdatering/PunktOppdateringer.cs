@@ -14,17 +14,16 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.629.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("korrespondansepart", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2")]
+    [System.Xml.Serialization.XmlTypeAttribute("punktOppdateringer", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlRootAttribute("korrespondansepart", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2")]
-    public partial class Korrespondansepart
+    public partial class PunktOppdateringer
     {
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.ObjectModel.Collection<KorrespondansepartOppdatering> _oppdatering;
+        private System.Collections.ObjectModel.Collection<PunktOppdatering> _oppdatering;
         
         [System.Xml.Serialization.XmlElementAttribute("oppdatering")]
-        public System.Collections.ObjectModel.Collection<KorrespondansepartOppdatering> Oppdatering
+        public System.Collections.ObjectModel.Collection<PunktOppdatering> Oppdatering
         {
             get
             {
@@ -49,18 +48,18 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         
         /// <summary>
         /// </summary>
-        public Korrespondansepart()
+        public PunktOppdateringer()
         {
-            this._oppdatering = new System.Collections.ObjectModel.Collection<KorrespondansepartOppdatering>();
-            this._slett = new System.Collections.ObjectModel.Collection<KorrespondansepartSlett>();
-            this._ny = new System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Korrespondansepart>();
+            this._oppdatering = new System.Collections.ObjectModel.Collection<PunktOppdatering>();
+            this._slett = new System.Collections.ObjectModel.Collection<PunktSlett>();
+            this._ny = new System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Punkt>();
         }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.ObjectModel.Collection<KorrespondansepartSlett> _slett;
+        private System.Collections.ObjectModel.Collection<PunktSlett> _slett;
         
         [System.Xml.Serialization.XmlElementAttribute("slett")]
-        public System.Collections.ObjectModel.Collection<KorrespondansepartSlett> Slett
+        public System.Collections.ObjectModel.Collection<PunktSlett> Slett
         {
             get
             {
@@ -84,10 +83,10 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Korrespondansepart> _ny;
+        private System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Punkt> _ny;
         
         [System.Xml.Serialization.XmlElementAttribute("ny")]
-        public System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Korrespondansepart> Ny
+        public System.Collections.ObjectModel.Collection<KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Punkt> Ny
         {
             get
             {

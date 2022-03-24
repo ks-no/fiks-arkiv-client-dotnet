@@ -14,9 +14,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.629.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("merknadOppdatering", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2")]
+    [System.Xml.Serialization.XmlTypeAttribute("punktOppdatering", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class MerknadOppdatering
+    public partial class PunktOppdatering
     {
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
@@ -24,42 +24,43 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
         public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.SystemID SystemID { get; set; }
         
         /// <summary>
-        /// <para>M310</para>
+        /// <para>M3..</para>
         /// </summary>
         [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.Xml.Serialization.XmlElementAttribute("merknadstekst")]
-        public string Merknadstekst { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("koordinatsystem")]
+        public string Koordinatsystem { get; set; }
         
         /// <summary>
-        /// <para>M084</para>
+        /// <para>M3..</para>
         /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.Xml.Serialization.XmlElementAttribute("merknadstype")]
-        public string Merknadstype { get; set; }
-        
-        /// <summary>
-        /// <para>M611</para>
-        /// </summary>
-        [System.Xml.Serialization.XmlElementAttribute("merknadsdato", DataType="dateTime")]
-        public System.DateTime Merknadsdato { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("x")]
+        public double X { get; set; }
         
         /// <summary>
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MerknadsdatoSpecified { get; set; }
+        public bool XSpecified { get; set; }
         
         /// <summary>
-        /// <para>M612</para>
+        /// <para>M3..</para>
         /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.Xml.Serialization.XmlElementAttribute("merknadRegistrertAv")]
-        public string MerknadRegistrertAv { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("y")]
+        public double Y { get; set; }
         
         /// <summary>
-        /// <para>M5..</para>
         /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
-        [System.Xml.Serialization.XmlElementAttribute("skjermetObjekt")]
-        public string SkjermetObjekt { get; set; }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool YSpecified { get; set; }
+        
+        /// <summary>
+        /// <para>M3..</para>
+        /// </summary>
+        [System.Xml.Serialization.XmlElementAttribute("z")]
+        public double Z { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ZSpecified { get; set; }
     }
 }

@@ -14,9 +14,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding.Oppdatering
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "2.0.629.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("klassifikasjonSlett", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2")]
+    [System.Xml.Serialization.XmlTypeAttribute("punktSlett", Namespace="http://www.arkivverket.no/standarder/noark5/arkivmeldingoppdatering/v2")]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class KlassifikasjonSlett
+    public partial class PunktSlett
     {
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
