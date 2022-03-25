@@ -240,34 +240,11 @@
     <xs:simpleType name="sorteringFelt">
         <xs:restriction base="xs:string">
             <xs:enumeration value="mappe.opprettetDato"/>
-            <xs:enumeration value="mappe.avsluttetDato"/>
-            <xs:enumeration value="mappe.referansearkivdel"/>
-
-            <xs:enumeration value="sak.saksdato"/>
-            <xs:enumeration value="sak.saksaar"/>
-            <xs:enumeration value="sak.saksekvensnummer"/>
-            <xs:enumeration value="sak.saksstatus"/>
-            <xs:enumeration value="sak.administrativenhet"/>
-            <xs:enumeration value="sak.saksansvarlig"/>
-
+            <xs:enumeration value="sak.saksaar-saksekvensnummer"/>
             <xs:enumeration value="registrering.opprettetDato"/>
-            <xs:enumeration value="registrering.administrativenhet"/>
-            <xs:enumeration value="registrering.journalpostansvarlig"/>
-
-            <xs:enumeration value="journalpost.journalaar"/>
-            <xs:enumeration value="journalpost.journalsekvensnummer"/>
-            <xs:enumeration value="journalpost.saksaar"/>
-            <xs:enumeration value="journalpost.sakssekvensnummer"/>
-            <xs:enumeration value="journalpost.journalpostnummer"/>
-            <xs:enumeration value="journalpost.journalposttype"/>
-            <xs:enumeration value="journalpost.journalstatus"/>
             <xs:enumeration value="journalpost.journaldato"/>
-            <xs:enumeration value="journalpost.dokumentetsdato"/>
-            <xs:enumeration value="journalpost.forfallsdato"/>
-
-            <xs:enumeration value="dokumentbeskrivelse.opprettetDato"/>
-            <xs:enumeration value="dokumentbeskrivelse.dokumenttype"/>
-            <xs:enumeration value="dokumentbeskrivelse.dokumentstatus"/>
+            <xs:enumeration value="journalpost.journalaar-journalsekvensnummer"/>
+            <xs:enumeration value="journalpost.journalpostnummer"/>
         </xs:restriction>
     </xs:simpleType>
 
