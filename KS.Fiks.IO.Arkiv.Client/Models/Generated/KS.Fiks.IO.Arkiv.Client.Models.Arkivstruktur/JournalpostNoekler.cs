@@ -37,21 +37,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("journalpostnummer")]
         public string Journalpostnummer { get; set; }
         
-        /// <summary>
-        /// <para>M082</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("journalposttype")]
-        public string Journalposttype { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Journalposttype Journalposttype { get; set; }
         
-        /// <summary>
-        /// <para>M053</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("journalstatus")]
-        public string Journalstatus { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Journalstatus Journalstatus { get; set; }
         
         /// <summary>
         /// <para>M101</para>

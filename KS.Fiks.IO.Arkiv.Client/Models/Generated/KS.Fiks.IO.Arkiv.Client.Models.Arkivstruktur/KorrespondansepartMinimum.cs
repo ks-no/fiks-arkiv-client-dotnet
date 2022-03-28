@@ -19,13 +19,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
     public partial class KorrespondansepartMinimum
     {
         
-        /// <summary>
-        /// <para>M087</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("korrespondanseparttype")]
-        public string Korrespondanseparttype { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Korrespondanseparttype Korrespondanseparttype { get; set; }
         
         /// <summary>
         /// <para>M400</para>

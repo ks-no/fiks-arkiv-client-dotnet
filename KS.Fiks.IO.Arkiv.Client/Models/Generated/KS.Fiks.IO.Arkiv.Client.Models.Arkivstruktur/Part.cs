@@ -35,13 +35,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("partNavn")]
         public string PartNavn { get; set; }
         
-        /// <summary>
-        /// <para>M303</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("partRolle")]
-        public string PartRolle { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.PartRolle PartRolle { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.ObjectModel.Collection<string> _postadresse;

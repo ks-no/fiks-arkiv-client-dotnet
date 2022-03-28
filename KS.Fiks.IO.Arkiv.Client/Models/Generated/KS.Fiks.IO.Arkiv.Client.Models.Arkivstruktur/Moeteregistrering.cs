@@ -19,27 +19,15 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
     public partial class Moeteregistrering : Registrering
     {
         
-        /// <summary>
-        /// <para>M085</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("moeteregistreringstype")]
-        public string Moeteregistreringstype { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Moeteregistreringstype Moeteregistreringstype { get; set; }
         
-        /// <summary>
-        /// <para>M088</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("moetesakstype")]
-        public string Moetesakstype { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Moetesakstype Moetesakstype { get; set; }
         
-        /// <summary>
-        /// <para>M055</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("moeteregistreringsstatus")]
-        public string Moeteregistreringsstatus { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Moeteregistreringsstatus Moeteregistreringsstatus { get; set; }
         
         /// <summary>
         /// <para>M305</para>

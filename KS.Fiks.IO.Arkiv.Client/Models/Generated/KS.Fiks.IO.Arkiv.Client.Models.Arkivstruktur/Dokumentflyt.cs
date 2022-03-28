@@ -50,13 +50,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("flytSendtDato", DataType="dateTime")]
         public System.DateTime FlytSendtDato { get; set; }
         
-        /// <summary>
-        /// <para>M663</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("flytStatus")]
-        public string FlytStatus { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.FlytStatus FlytStatus { get; set; }
         
         /// <summary>
         /// <para>M664</para>

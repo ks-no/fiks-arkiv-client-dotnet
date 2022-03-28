@@ -30,21 +30,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivstruktur
         [System.Xml.Serialization.XmlElementAttribute("versjonsnummer")]
         public string Versjonsnummer { get; set; }
         
-        /// <summary>
-        /// <para>M700</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("variantformat")]
-        public string Variantformat { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Variantformat Variantformat { get; set; }
         
-        /// <summary>
-        /// <para>M701</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("format")]
-        public string Format { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Format Format { get; set; }
         
         /// <summary>
         /// <para>M702</para>

@@ -39,6 +39,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok
         [System.Xml.Serialization.XmlEnumAttribute("mappe.referansearkivdel")]
         MappePeriodReferansearkivdel,
         
+        [System.Xml.Serialization.XmlEnumAttribute("mappe.endretFoerDato")]
+        MappePeriodEndretFoerDato,
+        
+        [System.Xml.Serialization.XmlEnumAttribute("mappe.endretEtterDato")]
+        MappePeriodEndretEtterDato,
+        
         [System.Xml.Serialization.XmlEnumAttribute("sak.saksdato")]
         SakPeriodSaksdato,
         
@@ -132,6 +138,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok
         [System.Xml.Serialization.XmlEnumAttribute("sak.planident.planidentifikasjon")]
         SakPeriodPlanidentPeriodPlanidentifikasjon,
         
+        [System.Xml.Serialization.XmlEnumAttribute("sak.part.organisasjonsid")]
+        SakPeriodPartPeriodOrganisasjonsid,
+        
+        [System.Xml.Serialization.XmlEnumAttribute("sak.part.personid")]
+        SakPeriodPartPeriodPersonid,
+        
         [System.Xml.Serialization.XmlEnumAttribute("sak.punkt.x")]
         SakPeriodPunktPeriodX,
         
@@ -155,6 +167,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Innsyn.Sok
         
         [System.Xml.Serialization.XmlEnumAttribute("registrering.journalpostansvarlig")]
         RegistreringPeriodJournalpostansvarlig,
+        
+        [System.Xml.Serialization.XmlEnumAttribute("registrering.endretFoerDato")]
+        RegistreringPeriodEndretFoerDato,
+        
+        [System.Xml.Serialization.XmlEnumAttribute("registrering.endretEtterDato")]
+        RegistreringPeriodEndretEtterDato,
         
         [System.Xml.Serialization.XmlEnumAttribute("registrering.part.partNavn")]
         RegistreringPeriodPartPeriodPartNavn,

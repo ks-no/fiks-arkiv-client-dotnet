@@ -9,9 +9,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
 {
     class Brukerhistorie9OppmalingsdialogTests
     {
+        private ArkivmeldingFactory _arkivmeldingFactory;
+        
         [SetUp]
         public void Setup()
         {
+            _arkivmeldingFactory = new ArkivmeldingFactory();
         }
 
         // bruker skal legge inn et dokument på en journalpost med et gitt navn. Dersom journalposten finnes skal den brukes hvis ikke skal det opprettes en ny post
@@ -97,7 +100,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
             };
 
             //Konverterer til arkivmelding xml
-            var arkivmelding = ArkivmeldingFactory.GetArkivmelding(utg);
+            var arkivmelding = _arkivmeldingFactory.GetArkivmelding(utg);
             var payload = ArkivmeldingSerializeHelper.Serialize(arkivmelding);
 
             Assert.True(Validator.IsValidArkivmeldingXml(payload), "Validation errors");

@@ -20,13 +20,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
     public partial class Gradering
     {
         
-        /// <summary>
-        /// <para>M506</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("grad")]
-        public string Grad { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Grad Grad { get; set; }
         
         /// <summary>
         /// <para>M624</para>

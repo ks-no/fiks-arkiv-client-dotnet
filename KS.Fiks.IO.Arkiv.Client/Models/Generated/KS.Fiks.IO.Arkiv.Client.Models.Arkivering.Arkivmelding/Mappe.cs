@@ -102,12 +102,8 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Arkivering.Arkivmelding
             this._registrering = new System.Collections.ObjectModel.Collection<Registrering>();
         }
         
-        /// <summary>
-        /// <para>M300</para>
-        /// </summary>
-        [System.ComponentModel.DataAnnotations.MinLengthAttribute(1)]
         [System.Xml.Serialization.XmlElementAttribute("dokumentmedium")]
-        public string Dokumentmedium { get; set; }
+        public KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog.Dokumentmedium Dokumentmedium { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private System.Collections.ObjectModel.Collection<string> _oppbevaringssted;
