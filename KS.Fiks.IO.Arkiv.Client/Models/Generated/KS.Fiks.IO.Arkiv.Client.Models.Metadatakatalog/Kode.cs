@@ -53,10 +53,9 @@ namespace KS.Fiks.IO.Arkiv.Client.Models.Metadatakatalog
     {
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute()]
-        [System.Xml.Serialization.XmlElementAttribute("verdi")]
-        public string Verdi { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute("kode")]
+        public string KodeProperty { get; set; }
         
-        [System.ComponentModel.DataAnnotations.RequiredAttribute()]
         [System.Xml.Serialization.XmlElementAttribute("beskrivelse")]
         public string Beskrivelse { get; set; }
     }

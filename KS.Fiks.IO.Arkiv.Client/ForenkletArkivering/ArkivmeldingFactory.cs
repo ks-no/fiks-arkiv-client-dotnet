@@ -71,12 +71,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
                     Journalposttype = new Journalposttype()
                     {
-                        Verdi = _journalposttypeUtgaaende.Verdi,
+                        KodeProperty = _journalposttypeUtgaaende.Verdi,
                         Beskrivelse = _journalposttypeUtgaaende.Beskrivelse
                     },
                     Journalstatus = new Journalstatus()
                     {
-                        Verdi = JournalstatusDefault,
+                        KodeProperty = JournalstatusDefault,
                         Beskrivelse = ""
                     }
                 };
@@ -119,12 +119,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         {
                             new SkjermingMetadata
                             {
-                                Verdi = "tittel",
+                                KodeProperty = "tittel",
                                 Beskrivelse = ""
                             },
                             new SkjermingMetadata
                             {
-                                Verdi = "korrespondansepart",
+                                KodeProperty = "korrespondansepart",
                                 Beskrivelse = ""
                             }
                         }
@@ -138,7 +138,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype
                         {
-                            Verdi = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null
+                            KodeProperty = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null
                                 ? input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype.kodeverdi
                                 : _dokumenttypeKodeDefault.Verdi,
                             Beskrivelse = input.nyUtgaaendeJournalpost.hoveddokument.dokumenttype != null
@@ -147,13 +147,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         },
                         Dokumentstatus = new Dokumentstatus
                         {
-                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            KodeProperty = _dokumentstatusKodeDefault.Verdi,
                             Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         Tittel = input.nyUtgaaendeJournalpost.hoveddokument.tittel,
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom
                         {
-                            Verdi = "H",
+                            KodeProperty = "H",
                             Beskrivelse = "" //TODO Finn en defaultbeskrivelse
                         }
                     };
@@ -165,7 +165,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                             Skjermingshjemmel = Skjermingshjemmel,
                             SkjermingDokument = new SkjermingDokument
                             {
-                                Verdi = SkjermingDokumentHele,
+                                KodeProperty = SkjermingDokumentHele,
                                 Beskrivelse = ""
                             }
                         };
@@ -177,12 +177,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Format = new Format
                         {
-                            Verdi = filnavn.Substring(filnavn.LastIndexOf('.')),
+                            KodeProperty = filnavn.Substring(filnavn.LastIndexOf('.')),
                             Beskrivelse = "",
                         },
                         Variantformat = new Variantformat()
                         {
-                            Verdi = VariantformatProduksjonsformat,
+                            KodeProperty = VariantformatProduksjonsformat,
                             Beskrivelse = ""
                         },
                         Versjonsnummer = VersjonsnummerDefault,
@@ -202,7 +202,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = item.dokumenttype != null
+                            KodeProperty = item.dokumenttype != null
                                 ? item.dokumenttype.kodeverdi
                                 : _dokumenttypeKodeDefault.Verdi,
                             Beskrivelse = item.dokumenttype != null
@@ -211,13 +211,13 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            KodeProperty = _dokumentstatusKodeDefault.Verdi,
                             Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         Tittel = item.tittel,
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
-                            Verdi = "V",
+                            KodeProperty = "V",
                             Beskrivelse = "" //TODO 
                         }
                     };
@@ -228,12 +228,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Format = new Format()
                         {
-                            Verdi = filnavn.Substring(filnavn.LastIndexOf('.')), //TODO
+                            KodeProperty = filnavn.Substring(filnavn.LastIndexOf('.')), //TODO
                             Beskrivelse = "" //TODO
                         },
                         Variantformat = new Variantformat()
                         {
-                            Verdi = VariantformatProduksjonsformat,
+                            KodeProperty = VariantformatProduksjonsformat,
                             Beskrivelse = "" //TODO
                         },
                         Versjonsnummer = VersjonsnummerDefault,
@@ -302,7 +302,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 KorrespondansepartNavn = mottaker.navn,
                 Korrespondanseparttype = new Korrespondanseparttype()
                 {
-                    Verdi = partRolle,
+                    KodeProperty = partRolle,
                     Beskrivelse = ""
                 },
                 Postadresse =
@@ -348,7 +348,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                 KorrespondansepartNavn = intern.saksbehandler ?? intern.administrativEnhet,
                 Korrespondanseparttype = new Korrespondanseparttype()
                 {
-                    Verdi = internKode,
+                    KodeProperty = internKode,
                     Beskrivelse = "" //TODO
                 },
                 AdministrativEnhet = intern.administrativEnhet,
@@ -376,12 +376,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
                 journalpost.Journalposttype = new Journalposttype()
                 {
-                    Verdi = "I",
+                    KodeProperty = "I",
                     Beskrivelse = "" //TODO
                 };
                 journalpost.Journalstatus = new Journalstatus()
                 {
-                    Verdi = JournalstatusDefault,
+                    KodeProperty = JournalstatusDefault,
                     Beskrivelse = "" //TODO
                 };
 
@@ -419,12 +419,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         {
                             new SkjermingMetadata()
                             {
-                                Verdi = "tittel",
+                                KodeProperty = "tittel",
                                 Beskrivelse = "",
                             },
                             new SkjermingMetadata()
                             {
-                                Verdi = "korrespondansepart",
+                                KodeProperty = "korrespondansepart",
                                 Beskrivelse = ""
                             }
                         }
@@ -439,7 +439,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null
+                            KodeProperty = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null
                                 ? input.nyInnkommendeJournalpost.hoveddokument.dokumenttype.kodeverdi
                                 : _dokumenttypeKodeDefault.Verdi,
                             Beskrivelse = input.nyInnkommendeJournalpost.hoveddokument.dokumenttype != null
@@ -448,12 +448,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            KodeProperty = _dokumentstatusKodeDefault.Verdi,
                             Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
-                            Verdi = "H",
+                            KodeProperty = "H",
                             Beskrivelse = "" //TODO
                         },
                         Tittel = input.nyInnkommendeJournalpost.hoveddokument.tittel
@@ -466,7 +466,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                             Skjermingshjemmel = input.nyInnkommendeJournalpost.skjermingForenklet?.skjermingshjemmel,
                             SkjermingDokument = new SkjermingDokument()
                             {
-                                Verdi = "Hele",
+                                KodeProperty = "Hele",
                                 Beskrivelse = "" //TODO
                             }
                         };
@@ -476,12 +476,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Format = new Format()
                         {
-                            Verdi = filnavn.Substring(filnavn.LastIndexOf('.')),
+                            KodeProperty = filnavn.Substring(filnavn.LastIndexOf('.')),
                             Beskrivelse = "" //TODO
                         },
                         Variantformat = new Variantformat()
                         {
-                            Verdi = VariantformatProduksjonsformat,
+                            KodeProperty = VariantformatProduksjonsformat,
                             Beskrivelse = ""
                         },
                         Versjonsnummer = VersjonsnummerDefault,
@@ -500,7 +500,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = item.dokumenttype != null
+                            KodeProperty = item.dokumenttype != null
                                 ? item.dokumenttype.kodeverdi
                                 : _dokumenttypeKodeDefault.Verdi,
                             Beskrivelse = item.dokumenttype != null
@@ -509,12 +509,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            KodeProperty = _dokumentstatusKodeDefault.Verdi,
                             Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
-                            Verdi = "V",
+                            KodeProperty = "V",
                             Beskrivelse = "" //TODO
                         },
                         Tittel = item.tittel
@@ -526,12 +526,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Format = new Format()
                         {
-                            Verdi = filnavn.Substring(filnavn.LastIndexOf('.')),
+                            KodeProperty = filnavn.Substring(filnavn.LastIndexOf('.')),
                             Beskrivelse = "" //TODO
                         },
                         Variantformat = new Variantformat()
                         {
-                            Verdi = VariantformatProduksjonsformat,
+                            KodeProperty = VariantformatProduksjonsformat,
                             Beskrivelse = "" //TODO
                         },
                         Versjonsnummer = VersjonsnummerDefault,
@@ -619,12 +619,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
 
                 journalpost.Journalposttype = new Journalposttype()
                 {
-                    Verdi = "N",
+                    KodeProperty = "N",
                     Beskrivelse = "" //TODO
                 };
                 journalpost.Journalstatus = new Journalstatus()
                 {
-                    Verdi = JournalstatusDefault,
+                    KodeProperty = JournalstatusDefault,
                     Beskrivelse = "" //TODO
                 };
 
@@ -641,7 +641,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = input.nyttNotat.hoveddokument.dokumenttype != null
+                            KodeProperty = input.nyttNotat.hoveddokument.dokumenttype != null
                                 ? input.nyttNotat.hoveddokument.dokumenttype.kodeverdi
                                 : _dokumenttypeKodeDefault.Verdi,
                             Beskrivelse = input.nyttNotat.hoveddokument.dokumenttype != null
@@ -650,12 +650,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            KodeProperty = _dokumentstatusKodeDefault.Verdi,
                             Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
-                            Verdi = "H",
+                            KodeProperty = "H",
                             Beskrivelse = ""
                         },
                         Tittel = input.nyttNotat.hoveddokument.tittel
@@ -667,7 +667,7 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                         {
                             SkjermingDokument = new SkjermingDokument()
                             {
-                                Verdi = SkjermingDokumentHele,
+                                KodeProperty = SkjermingDokumentHele,
                                 Beskrivelse = "" //TODO
                             }
                         };
@@ -679,12 +679,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Format = new Format()
                         {
-                            Verdi = filnavn.Substring(filnavn.LastIndexOf('.')),
+                            KodeProperty = filnavn.Substring(filnavn.LastIndexOf('.')),
                             Beskrivelse = "" //TODO
                         },
                         Variantformat = new Variantformat()
                         {
-                            Verdi = VariantformatProduksjonsformat,
+                            KodeProperty = VariantformatProduksjonsformat,
                             Beskrivelse = "" //TODO
                         },
                         Versjonsnummer = VersjonsnummerDefault,
@@ -703,17 +703,17 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = item.dokumenttype.kodeverdi,
+                            KodeProperty = item.dokumenttype.kodeverdi,
                             Beskrivelse = "" //TODO
                         },
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = _dokumentstatusKodeDefault.Verdi,
+                            KodeProperty = _dokumentstatusKodeDefault.Verdi,
                             Beskrivelse = _dokumentstatusKodeDefault.Beskrivelse
                         },
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
-                            Verdi = "V",
+                            KodeProperty = "V",
                             Beskrivelse = "" //TODO
                         },
                         Tittel = item.tittel
@@ -724,12 +724,12 @@ namespace KS.Fiks.IO.Arkiv.Client.ForenkletArkivering
                     {
                         Format = new Format()
                         {
-                            Verdi = filnavn.Substring(filnavn.LastIndexOf('.')),
+                            KodeProperty = filnavn.Substring(filnavn.LastIndexOf('.')),
                             Beskrivelse = "" //TODO
                         },
                         Variantformat = new Variantformat()
                         {
-                            Verdi = VariantformatProduksjonsformat,
+                            KodeProperty = VariantformatProduksjonsformat,
                             Beskrivelse = "" //TODO
                         },
                         Versjonsnummer = VersjonsnummerDefault,

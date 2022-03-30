@@ -78,11 +78,11 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     Saksdato = new DateTime(),
                     Saksstatus = new Saksstatus()
                     {
-                        Verdi = "B"
+                        KodeProperty = "B"
                     },
                     Dokumentmedium = new Dokumentmedium()
                     {
-                        Verdi = "elektronisk",
+                        KodeProperty = "elektronisk",
                         Beskrivelse = "" //TOOD
                     }, 
                     Journalenhet = "BYG",
@@ -104,7 +104,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                         {
                             Merknadstype = new Merknadstype()
                             {
-                                Verdi = "BYGG",
+                                KodeProperty = "BYGG",
                                 Beskrivelse = "", //TODO
                             },  // Kode?
                             Merknadstekst = "Saksnummer 20/123 i eByggesak"
@@ -118,13 +118,13 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     {
                         Tilgangsrestriksjon = new Tilgangsrestriksjon()
                         {
-                            Verdi = "13",
+                            KodeProperty = "13",
                             Beskrivelse = "" //TOOD
                         }, // Settes av server?
                         Skjermingshjemmel = "Ofl § 13, fvl § 123",
                         SkjermingMetadata = { new SkjermingMetadata()
                         {
-                            Verdi = "tittel",
+                            KodeProperty = "tittel",
                             Beskrivelse = ""
                         }} //TODO Her må det være kodeverk
                     },
@@ -152,12 +152,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 // referanseForelderMappe = "", // Ligger i xsd...
                 Journalposttype = new Journalposttype()
                 {
-                    Verdi = "I",
+                    KodeProperty = "I",
                     Beskrivelse = ""
                 }, //TODO Kodeobjekt?
                 Journalstatus = new Journalstatus()
                 {
-                    Verdi = "J",
+                    KodeProperty = "J",
                     Beskrivelse = ""
                 }, //TODO Kodeobjekt?
                 DokumentetsDato = new DateTime(),
@@ -169,7 +169,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     {
                         Korrespondanseparttype = new Korrespondanseparttype()
                         {
-                            Verdi = "avsender",
+                            KodeProperty = "avsender",
                             Beskrivelse = ""
                         }, //TODO Kode?
                         Organisasjonid = "123456789",
@@ -182,7 +182,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     {
                         Korrespondanseparttype = new Korrespondanseparttype()
                         {
-                            Verdi = "kopimottager",
+                            KodeProperty = "kopimottager",
                             Beskrivelse = ""
                         }, //TODO Kode?
                         Personid = "12345612345",
@@ -203,7 +203,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     {
                         Merknadstype = new Merknadstype()
                         {
-                            Verdi = "BYGG",
+                            KodeProperty = "BYGG",
                             Beskrivelse = ""
                         }, //TODO Kode?
                         Merknadstekst = "Journalpostnummer 20/123-5 i eByggesak"
@@ -220,7 +220,7 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                 {
                     Tilgangsrestriksjon = new Tilgangsrestriksjon()
                     {
-                        Verdi = "13",
+                        KodeProperty = "13",
                         Beskrivelse = ""
                     },
                     Skjermingshjemmel = "Off.loven § 13",
@@ -233,18 +233,18 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     {
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
-                            Verdi = "H",
+                            KodeProperty = "H",
                             Beskrivelse = ""
                         }, //TODO Kodeobjekt?
                         Dokumentnummer = "1", // Tallfelt!
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = "SØKNAD",
+                            KodeProperty = "SØKNAD",
                             Beskrivelse = ""
                         }, //TODO Kodeobjekt?
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = "F",
+                            KodeProperty = "F",
                             Beskrivelse = "",
                         }, //TODO Kodeobjekt?
                         Tittel = "Søknad om rammetillatelse",
@@ -255,12 +255,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                                 Versjonsnummer = "1", // Tallfelt!
                                 Variantformat = new Variantformat()
                                 {
-                                    Verdi = "A",
+                                    KodeProperty = "A",
                                     Beskrivelse = ""
                                 }, //TODO Kodefelt?
                                 Format = new Format()
                                 {
-                                    Verdi = "PDF",
+                                    KodeProperty = "PDF",
                                     Beskrivelse = ""
                                 }, //TODO Arkade ønsker filtypen her...
                                 MimeType = "application/pdf",
@@ -272,18 +272,18 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     {
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
-                            Verdi = "V",
+                            KodeProperty = "V",
                             Beskrivelse = ""
                         }, //TODO Kodeobjekt?
                         Dokumentnummer = "2", // Tallfelt!
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = "KART",
+                            KodeProperty = "KART",
                             Beskrivelse = "",
                         }, //TODO Kodeobjekt?
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = "F",
+                            KodeProperty = "F",
                             Beskrivelse = ""
                         }, //TODO Kodeobjekt?
                         Tittel = "Situasjonskart",
@@ -294,12 +294,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                                 Versjonsnummer = "1", // Tallfelt!
                                 Variantformat = new Variantformat()
                                 {
-                                    Verdi = "A",
+                                    KodeProperty = "A",
                                     Beskrivelse = ""
                                 }, //TODO Kodefelt?
                                 Format = new Format()
                                 {
-                                    Verdi = "PDF",
+                                    KodeProperty = "PDF",
                                     Beskrivelse = ""
                                 }, // Arkade ønsker filtypen her...
                                 MimeType = "application/pdf",
@@ -311,18 +311,18 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                     {
                         TilknyttetRegistreringSom = new TilknyttetRegistreringSom()
                         {
-                            Verdi = "V",
+                            KodeProperty = "V",
                             Beskrivelse = "",
                         }, //TODO Kodeobjekt?
                         Dokumentnummer = "3", // Tallfelt!
                         Dokumenttype = new Dokumenttype()
                         {
-                            Verdi = "TEGNING",
+                            KodeProperty = "TEGNING",
                             Beskrivelse = ""
                         }, //TODO Kodeobjekt?
                         Dokumentstatus = new Dokumentstatus()
                         {
-                            Verdi = "F",
+                            KodeProperty = "F",
                             Beskrivelse = ""
                         }, //TODO Kodeobjekt?
                         Tittel = "Fasade",
@@ -333,12 +333,12 @@ namespace KS.Fiks.IO.Arkiv.Client.Tests.Brukerhistorier
                                 Versjonsnummer = "1", // Tallfelt!
                                 Variantformat = new Variantformat()
                                 {
-                                    Verdi = "A",
+                                    KodeProperty = "A",
                                     Beskrivelse = ""
                                 }, //TODO Kodefelt?
                                 Format = new Format()
                                 {
-                                    Verdi = "PDF",
+                                    KodeProperty = "PDF",
                                     Beskrivelse = ""
                                 }, // Arkade ønsker filtypen her...
                                 MimeType = "application/pdf",
